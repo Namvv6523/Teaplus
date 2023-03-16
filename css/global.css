@@ -14,6 +14,7 @@
   --font-size: 1.6em;
   --padding-website : 15%;
   --admin-sideBar-border : #7c7c7c;
+  --border-cart :rgb(193, 193, 193);
 }
 html {
   font-size: 62.5%;
@@ -68,4 +69,7 @@ li{
 }
 .m-t-b10{
   margin: 10px 0px;
+}
+.m-t-b5{
+  margin: 5px 0px;
 }

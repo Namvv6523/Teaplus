@@ -41,22 +41,30 @@ productCart.forEach((element, index) => {
   });
 });
 
-closeShow.addEventListener("click", () => {
-  isClose = false;
-  console.log(isClose);
+// ----------------------------Đóng mở menu--------------------------------
+if(closeShow){
+  closeShow.addEventListener("click", () => {
+    isClose = false;
+    console.log(isClose);
+  
+    if (!isClose) {
+      containOverlayProductDetail.style.display = "none";
+    }
+  });
 
-  if (!isClose) {
-    containOverlayProductDetail.style.display = "none";
-  }
-});
-closeText.addEventListener("click", () => {
-  isClose = false;
-  console.log(isClose);
 
-  if (!isClose) {
-    containOverlayProductDetail.style.display = "none";
-  }
-});
+  closeText.addEventListener("click", () => {
+    isClose = false;
+    console.log(isClose);
+  
+    if (!isClose) {
+      containOverlayProductDetail.style.display = "none";
+    }
+  });
+
+}
+
+
 // ---------------------- logic tính toán tiền-------------------------
 
 const subtract = document.querySelector(".subtract");
@@ -88,11 +96,12 @@ const handleResult = (sugarValue = 0,  sizeValue = 0, iceValue = 0,  toppingValu
   const blockUpPrice = document.querySelector(".block_up-price").value;
   const quantity = handleQuantity();
   const total =
-    parseInt(sugarValue, 10) +
-    parseInt(sizeValue, 10) +
-    parseInt(iceValue, 10) +
-    parseInt(toppingValue, 10);
-
+  parseInt(sugarValue, 10) +
+  parseInt(sizeValue, 10) +
+  parseInt(iceValue, 10) +
+  parseInt(toppingValue, 10);
+  
+  console.log(blockUpPrice)
   result.innerHTML = (parseInt(blockUpPrice, 10) + total) * quantity + "đ";
 };
 
@@ -107,7 +116,6 @@ input.forEach((element) => {
     let sizeValue;
     let iceRockValue;
     let toppingValue = 0;
-    const arrTopping = [];
 
     for (var i = 0; i < sugar.length; i++) {
       if (sugar[i].checked) {
@@ -148,7 +156,6 @@ function getValue(sugarValue, sizeValue, iceRockValue, toppingValue) {
 add.addEventListener("click", () => {
   handleAdd();
   handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
-  console.log(1);
 });
 subtract.addEventListener("click", () => {
   handleSubtract();

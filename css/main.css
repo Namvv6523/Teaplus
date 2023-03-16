@@ -85,9 +85,35 @@ transition-delay: 0.2s;
 .active_rotate {
   transform: rotate(720deg);
   transition: 0.4s;
+  color: var(--white);    
+}
+.contain-name-price-product{
+  padding: 5px 10px;
+  /* box-sizing: border-box; */
+}
+.product_name{
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.product_price{
+  color: red;
+  font-weight: 600;
+  font-size: 1.8rem;
+  background-color: var(--primary-color);
   color: var(--white);
-  
-  
+  display: inline-block;
+  padding: 0px 10px;
+}
+.product_heart_number{
+  color: red;
+}
+.product_comment_number{
+color: rgb(206, 175, 2);
+}
+.number_show{
+  color: #888;
+  margin: 0px 5px;
+  font-size: 1.45rem;
 }
 /* ------------------------- Phần chọn topping------------------- */
 .contain-overlay-product-detail{
@@ -100,11 +126,13 @@ transition-delay: 0.2s;
   display: none;
   justify-content: center;
   align-items: center;
+
 }
 .contain-product-detail{
-  width: 60%;
+  width: 50%;
+  padding: 10px ;
+
   background-color: var(--white);
-  padding: 10px;
   border-radius: 5px;
 }
 .block_up{
@@ -146,6 +174,12 @@ transition-delay: 0.2s;
   font-size: 1.7rem;
 }
 .block_up-price{
+  font-size: 1.4rem;
+  
+  border: none;
+  
+}
+.label_block_up-price{
   font-size: 1.4rem;
   
   border: none;
