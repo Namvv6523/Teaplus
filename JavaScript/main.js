@@ -1,5 +1,5 @@
 // js thuộc phần main <main>
-
+import handleUpgradeCart from "./cart.js"
 const product = document.querySelectorAll(".product");
 
 product.forEach((element, index) => {
@@ -89,7 +89,10 @@ const handleSubtract = () => {
 };
 
 const handleQuantity = () => {
-  productQuantity.innerHTML = quantity;
+  
+
+    productQuantity.innerHTML = quantity;
+  
   return quantity;
 };
 const handleResult = (sugarValue = 0,  sizeValue = 0, iceValue = 0,  toppingValue = 0) => {
@@ -101,7 +104,6 @@ const handleResult = (sugarValue = 0,  sizeValue = 0, iceValue = 0,  toppingValu
   parseInt(iceValue, 10) +
   parseInt(toppingValue, 10);
   
-  console.log(blockUpPrice)
   result.innerHTML = (parseInt(blockUpPrice, 10) + total) * quantity + "đ";
 };
 
@@ -153,11 +155,27 @@ function getValue(sugarValue, sizeValue, iceRockValue, toppingValue) {
   getIceRockValue = iceRockValue;
   getToppingValue = toppingValue;
 }
-add.addEventListener("click", () => {
-  handleAdd();
-  handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
-});
-subtract.addEventListener("click", () => {
-  handleSubtract();
-  handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
-});
+let isClickQuantity = false;
+
+  add.addEventListener("click", () => {
+    
+    handleAdd();
+    isClickQuantity = true;
+    // handleUpgradeCart(isClickQuantity)
+    handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
+  });
+
+
+
+  subtract.addEventListener("click", () => {
+    handleSubtract();
+    isClickQuantity = true;
+    // handleUpgradeCart(isClickQuantity)
+  
+  
+    handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
+  });
+
+
+
+

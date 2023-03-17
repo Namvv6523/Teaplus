@@ -33,7 +33,7 @@
 
 }
 .upgrade-cart{
-    padding: 10px 20px ;
+    
     border-radius: 5px;
     color: #999;
     border: none;
@@ -41,10 +41,55 @@
     cursor: no-drop;
 
 }
+.contain-upgrade-cart{
+    padding: 10px 20px ;
+    border-radius: 5px;
+    color: #999;
+    border: none;
+    font-size: 1.7rem;
+    cursor: no-drop;
+    background-color: #f1f1f1   ;
+}
+.continue-buy{
+    padding: 10px 20px ;
+    border-radius: 5px;
+    color: #999;
+    border: none;
+    font-size: 1.7rem;
+    cursor: no-drop;
+}
+.buy-now{
+    padding: 10px 0px ;
+    background-color: #b9b9b9;
+    border: none;
+}
+.active-upgrade-cart{
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+}
+.rotate-upgrade-cart{
+    animation: rotate 1s infinite linear;
+    display: none;
+}
+.note{
+    display: none;
+}
+@keyframes rotate{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
 /* <!-- ------------------ Nhập thông tin người dùng và thanh toán----------------v--------------- --> */
 .contain-info_user-pay{
     padding: 0px 15%;
     margin-top: 50px;
+}
+.info_user h4{
+    margin-top: 8px;
 }
 .get-old-info{
     background-color: var(--primary-color);
@@ -91,10 +136,7 @@
 .block-pay_ul li:last-child{
     border-bottom: none;
 }
-.buy-now{
-    padding: 10px 0px ;
-    background-color: #b9b9b9;
-}
+
 .cash{
     color: red;
 }
