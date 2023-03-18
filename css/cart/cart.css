@@ -140,3 +140,11 @@
 .cash{
     color: red;
 }
+.label_input-confirm-user{
+    padding: 4px 8px;
+}
+.delete-cart-confirm{
+    color: var(--white) !important;
+    background-color: red;
+    padding: 8px 10px;
+}

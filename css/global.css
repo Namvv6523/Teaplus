@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 :root {
-  --primary-color: rgb(3, 179, 3);
+  --primary-color: rgb(28, 205, 28);
   --white: rgb(255, 255, 255);
   --black: black;
   --font-family: "Montserrat", sans-serif;
@@ -12,7 +12,7 @@
   --bg-header-contact: rgb(237, 237, 237);
   --font-weight: 500;
   --font-size: 1.6em;
-  --padding-website : 15%;
+  --padding-website : 5%;
   --admin-sideBar-border : #7c7c7c;
   --border-cart :rgb(193, 193, 193);
 }
@@ -72,4 +72,7 @@ li{
 }
 .m-t-b5{
   margin: 5px 0px;
+}
+.jf-e{
+justify-content: flex-end;
 }

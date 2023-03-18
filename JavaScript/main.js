@@ -1,5 +1,5 @@
 // js thuộc phần main <main>
-import handleUpgradeCart from "./cart.js"
+// import handleUpgradeCart from "./cart.js"
 const product = document.querySelectorAll(".product");
 
 product.forEach((element, index) => {
