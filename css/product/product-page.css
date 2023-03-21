@@ -1,0 +1,71 @@
+.product-page-banner{
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-image: url(https://meetandmore.vn/wp-content/uploads/2018/02/banner3.jpg);
+    
+    background-size: cover;
+    background-position: 10% 10%;
+}
+.product-page-banner::after{
+    content: "";
+    background-color: rgb(27, 27, 27,0.5);
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    top: 0px;
+    left: 0px;
+}
+.product-page-banner_title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    z-index: 11;
+    font-weight: 600;
+    font-size: 3rem;
+}
+.contain_sideBar-filter_list-product{
+ margin-top: 30px;   
+ padding: 0px var(--padding-website);
+}
+.block-filter{
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.side-bar_filter-product{
+    width: 25%;
+    background-color: antiquewhite;
+    padding: 10px 20px;
+}
+.label-filter{
+    font-weight: 600;
+}
+.filter-price{
+    justify-content: space-between;
+}
+.filter-price input{
+width: 45%;
+padding: 5px 10px;
+outline: none;
+}
+.contain-product-page{
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex: 1;
+    margin-left: 30px;
+}
+.contain-product-page .product{
+    width: 31%;
+    margin-bottom: 30px;
+}
