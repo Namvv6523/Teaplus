@@ -1,0 +1,91 @@
+main {
+  position: relative;
+}
+.title_product_new {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.title_product_new::after {
+  content: "";
+  position: absolute;
+  width: 35%;
+  height: 5px;
+  background-color: var(--primary-color);
+  top: 115%;
+  left: 50%;
+  transition: 0.3s;
+  transform: translateX(-50%);
+}
+.title_product_new:hover::after {
+  transform: translateX(-50%);
+  width: 80%;
+  transition: 0.3s;
+}
+/* ---------------------------Sản phẩm------------------------ */
+.contain-product {
+  padding: 0px var(--padding-website);
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.product {
+  width: 23%;
+  box-shadow: 0px 0px 10px #d1d1d1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.product:hover .product_icon{
+background-color: var(--primary-color);
+transition: 0.5s;
+transition-delay: 0.2s;
+}
+
+.product-img {
+  position: relative;
+  overflow: hidden;
+}
+.product-icon-cart-heart {
+  gap: 15px;
+  position: absolute;
+  bottom: -30%;
+  left: 50%;
+  transform: translateX(-50%) ;
+  transition: 0.4s;
+}
+.active_show_cart_heart {
+  transition: 0.4s;
+  bottom: 30%;
+  transform: translateX(-50%) ;
+}
+.product-img a img {
+  width: 100%;
+}
+
+.product_icon {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  background-color: var(--bg-header-contact);
+}
+.product_icon i {
+  margin-top: 3px;
+}
+.product-heart i {
+  margin-top: 1px;
+}
+.product_heart {
+  transform: rotate(0);
+  transition: 0.4s;
+}
+.product_cart {
+  transform: rotate(0);
+  transition: 0.4s;
+}
+.active_rotate {
+  transform: rotate(720deg);
+  transition: 0.4s;
+  color: var(--white);
+  
+  
+}

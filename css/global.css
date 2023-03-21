@@ -1,0 +1,132 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: rgb(3, 179, 3);
+  --white: rgb(255, 255, 255);
+  --black: black;
+  --font-family: "Montserrat", sans-serif;
+  --text-color: #333;
+  --bg-header-contact: rgb(237, 237, 237);
+  --font-weight: 500;
+  --font-size: 1.6em;
+  --padding-website : 15%;
+  --admin-sideBar-border : #7c7c7c;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  line-height: 1.5;
+  font-weight: var(--font-weight);
+  text-rendering: optimizeSpeed;
+  color: var(--text-color);
+}
+a[href] {
+  text-decoration: none;
+  color: var(--text-color);
+
+}
+li{
+    list-style: none;
+}
+.container {
+  display: flex;
+}
+.d-f {
+  display: flex;
+}
+.jf-c {
+  justify-content: center;
+}
+.f-d {
+  flex-direction: column;
+}
+.al-c {
+  align-items: center;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+ /* Style cho bảng sản phẩm */
+.table_sp {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.th_sp,
+.td_sp {
+  padding: 10px;
+  text-align: center;
+}
+
+.th_sp {
+  background-color: #333;
+  color: #fff;
+}
+
+.sua,
+.xoa {
+  background-color: green;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*style cho addsp*/
+h1{
+  text-align: center;
+}
+.form_sp { 
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 90%;
+  margin-bottom: 20px;
+  margin-left: 5%;
+}
+
+.label_addsp {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  
+}
+
+.ten_addsp[type="text"] {
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  color: black;
+}
+.ten_addsp[type="file"] {
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  width: 100%;
+  color: black;
+}
+
+.input_addsp{
+  background-color: green;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}

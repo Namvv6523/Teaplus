@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/admin/admin.css" />
+    <title>Admin</title>
+  </head>
+  <body>
+    <div class="container d-f w-100">
+      <div class="side-bar" style="height: 200vh" >
+        <div class="shop_name block">
+          <div class="image">
+            <img src="../upload/img/logo/logo.jpg" alt="" />
+          </div>
+          <span>Tea plus</span>
+        </div>
+        <div class="team_name block">
+          <div class="image">
+            <img src="../upload/img/product/ts3.jpg" alt="" />
+          </div>
+          <span>Tea plus</span>
+        </div>
+        <div class="admin-search-sideBar block">
+          <form action="" class="d-f w-100">
+            <input type="text" placeholder="Search" />
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+        </div>
+        <div class="contain-list-menu w-100">
+          <ul>
+            <li >
+              <a href="#" >
+                <div>
+                  <i class="fa-solid fa-gauge"></i>
+                  <span>Dashboard</span>
+                </div>
+              </a>
+
+            </li>
+            <!-- --------------------------------------- -->
+            <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
+                <div>
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>Đơn hàng</span>
+                </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="index.php?act=listbill">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Quản lý đơn hàng</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+
+                      <span>Dashboard</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- ----------------------------- -->
+            <!-- --------------------------------------- -->
+            <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
+                <div>
+                  <i class="fa-solid fa-list"></i>
+                  <span>Danh mục</span>
+                </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <!-- --------------- menu con --------------------- -->
+
+              <ul class="sub-menu">
+                <li>
+                  <a href="index.php?act=listdm">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Quản lý danh mục</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="index.php?act=adddm">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Thêm danh mục</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- ----------------------------- -->
+            <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
+                <div>
+                  <i class="fa-solid fa-users"></i>
+                  <span>Tài khoản</span>
+                </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <!-- --------------- menu con --------------------- -->
+              <ul class="sub-menu">
+                <li>
+                  <a href="#">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Quản lý tài khoản</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Thêm tài khoản</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- ----------------------------- -->
+            <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
+                <div>
+                  <i class="fa-solid fa-mug-hot"></i>
+                  <span>Sản phẩm</span>
+                </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <!-- --------------- menu con --------------------- -->
+
+              <ul class="sub-menu">
+                <li>
+                  <a href="index.php?act=listsp">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Quản lý sản phẩm</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="index.php?act=addsp">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Thêm sản phẩm</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- ----------------------------- -->
+            <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
+                <div>
+                  <!-- <i class="fa-solid fa-list-check"></i> -->
+                  <i class="fa-solid fa-pen-to-square"></i>
+                  <span>Bình luận</span>
+                </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <!-- --------------- menu con --------------------- -->
+
+              <ul class="sub-menu">
+                <li>
+                  <a href="index.php?act=dsbl">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Quản lý bình luận</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- ----------------------------- -->
+            <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
+                <div>
+                  <i class="fa-solid fa-list"></i>
+                  <span>Thống kê </span>
+                </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <!-- --------------- menu con --------------------- -->
+
+              <ul class="sub-menu">
+                <li>
+                  <a href="#">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Dashboard</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Dashboard</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- ----------------------------- -->
+          </ul>
+        </div>
+      </div>
+      <div class="dash-board">
+        <header class="w-100">
+          <div class="admin-bar w-100">
+            <div class="left-menu d-f">
+              <div class="left-menu-bar">
+                <i class="fa-solid fa-bars"></i>
+              </div>
+              <div class="left-menu-bar">
+                <a href="index.php">Home</a>
+              </div>
+              <div class="left-menu-bar">Contact</div>
+            </div>
+          </div>
+        </header>
+        <script src="../JavaScript/admin/admin.js"></script>
