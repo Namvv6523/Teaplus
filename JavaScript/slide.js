@@ -69,6 +69,9 @@ function autoSlide1() {
     slideInfoProduct1(slide1);
   }, 5000);
 }
+if(backSlideProduct){
+
+
 backSlideProduct.addEventListener("click", () => {
   slideBackBanner1();
   slideInfoProduct1(slide1);
@@ -92,3 +95,4 @@ nextSlideProduct.addEventListener("mouseout", () => {
 choseInfoProduct1();
 
 autoSlide1();
+}
