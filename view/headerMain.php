@@ -50,7 +50,7 @@
               </div>
             </div>
             <div class="line"></div>
-            <div class="login">
+            <div class="login d-f al-c">
               <!-- -------------- Chưa đăng nhập-------------- -->
   
               <!-- <a href="">
@@ -58,20 +58,38 @@
                 </a> -->
   
               <!-- -------------- Đăng nhập rồi------------------ -->
-  
+
+
+              <?php
+                if(isset($_SESSION['user']) && ($_SESSION['user']!="") ){
+                    extract($_SESSION['user']);
+              ?>
               <i class="fa-solid fa-chevron-down"></i>
-              <a
-                class="login-userName"
-                onclick="redirect('test.html?act=good',1000)"
-                >Nguyễn Văn Đức</a
-              >
+              <div class="avatar d-f al-c jf-c">
+                <?php if($avatar){ ?>
+                <img width="20" src="./upload/<?= $avatar ?>" alt="">
+
+               <?php }  else{?>
+                <img width="20" src="./upload/img_user.jpg" alt="">
+                <?php } ?>
+              </div>
+              <a ><?=$user?></a>
               <ul>
-                <li><a href="#">Thông tin tài khoản</a></li>
+                <li><a href="index.php?act=thongtintk&header=headerSecond">Thông tin tài khoản</a></li>
                 <li><a href="#">Đơn hàng</a></li>
                 <li><a href="#">Giỏ hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
-                <li><a href="#">Đăng xuất</a></li>
+                <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
+              <?php } else { ?>
+                <a href="index.php?act=dangnhap&header=headerSecond">  
+                  <input type="button" value="đăng nhập">
+                </a>
+              <?php } ?>
+
+
+  
+            
             </div>
             <div class="contain_like_cart d-f">
               <div class="like">
