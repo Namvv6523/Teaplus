@@ -217,10 +217,10 @@
 
               <ul class="sub-menu">
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=thongke">
                     <div>
                       <i class="fa-regular fa-circle"></i>
-                      <span>Dashboard</span>
+                      <span>List Thống Kê</span>
                     </div>
                   </a>
                 </li>
@@ -228,7 +228,7 @@
                   <a href="#">
                     <div>
                       <i class="fa-regular fa-circle"></i>
-                      <span>Dashboard</span>
+                      <span>Biểu đồ thống kê</span>
                     </div>
                   </a>
                 </li>

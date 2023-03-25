@@ -43,7 +43,6 @@
                             </tr>';
                     }
                     ?>
-
                     <tr>DAM-2</th>
                         <td class="td_sp">
                             Trần Nguyên Anh
@@ -54,9 +53,6 @@
                         <td class="td_sp"><strong>25000</strong>VNĐ</td>
                         <td class="td_sp">Đơn hàng mới</td>
                         <td class="td_sp">
-                            <input type="button" value="Sửa">
-                            <input type="button" value="Xóa">
-                        </td>
                     </tr>
 
           <!-- <tr>

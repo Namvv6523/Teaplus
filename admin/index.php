@@ -24,7 +24,7 @@ if (isset($_GET['act'])) {
 
             include "danhmuc/add.php";
             break;
-        case 'lisdm':
+        case 'listdm':
             $listdanhmuc = loadall_danhmuc();
             include "danhmuc/list.php";
             break;
@@ -106,7 +106,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'updatesp':
-            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+            if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
                 $id = $_POST["id"];
                 $iddm = $_POST["iddm"];
                 $tensp = $_POST["tensp"];
@@ -129,12 +129,20 @@ if (isset($_GET['act'])) {
             include "sanpham/list.php";
             break;
 
+
         case 'dskh':
             $listtaikhoan = loadall_taikhoan();
             include "taikhoan/list.php";
             break;
         case 'dsbl':
             $listbinhluan = loadall_binhluan(0);
+            include "binhluan/list.php";
+            break;
+        case 'xoabl':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_binhluan($_GET['id']);
+            }
+            $listbinhluan=loadall_binhluan(0);
             include "binhluan/list.php";
             break;
         case 'thongke':
