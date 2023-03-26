@@ -56,7 +56,7 @@
     color: #999;
     border: none;
     font-size: 1.7rem;
-    cursor: no-drop;
+    cursor: pointer;
 }
 .buy-now{
     padding: 10px 0px ;

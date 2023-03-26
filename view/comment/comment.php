@@ -20,7 +20,7 @@ $comment = loadall_binhluan($id_pro);
 <body>
     <div class="product_category contain_comment w-100">
         <ul>
-            <li class="li-comment" >Comment</li>
+            <li style="position: sticky;top:0px;left:0px;" class="li-comment" >Comment</li>
             <table class="table-comment">
             <?php 
                 $count ;
@@ -47,7 +47,7 @@ $comment = loadall_binhluan($id_pro);
             
 
 
-                    <li style="position:<?php if($count > 2){echo "sticky";}else{echo "absolute";}?>;bottom:0px;box-sizing:border-box;width:100%;">
+                    <li style="position:<?php if($count > 2){echo "sticky";}else{echo "absolute";}?>;bottom:-0.5px;box-sizing:border-box;width:100%;">
                         <form action="<?= $_SERVER['PHP_SELF'];  ?>" class="d-f " method="POST">
                             <input hidden type="text" id="search_product" name="id_pro" value="<?= $id_pro ?>">
                             <textarea class="comment_textarea" style="width:90%;resize: none;" name="comment" id="" rows="5"  placeholder="Nhập phần bình luận của bạn ở đây"></textarea>
@@ -74,7 +74,7 @@ $comment = loadall_binhluan($id_pro);
     <?php   
     if (isset($_POST['sendComment']) && $_POST['sendComment']) {
         $id_product = isset($_POST['id_pro']) ? $_POST['id_pro'] : 0;
-        $user_id = 1;
+        $user_id = $_SESSION['user']['id'];
         $content = isset($_POST['comment']) ? $_POST['comment'] : 0;
         $date_comment = date('H:i:sa d/m/Y');
         insert_binhluan($content,$user_id,$id_product,$date_comment);

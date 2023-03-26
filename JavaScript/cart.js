@@ -2,6 +2,7 @@ export default function handleUpgradeCart(isClickQuantity) {
   const upgradeCart = document.querySelector(".upgrade-cart");
   const containUpgradeCart = document.querySelector(".contain-upgrade-cart");
   const rotateUpgradeCart = document.querySelector(".rotate-upgrade-cart");
+  const formSubmitCart = document.querySelector(".form-submit-cart");
   if (isClickQuantity) {
     upgradeCart.classList.add("active-upgrade-cart");
     containUpgradeCart.classList.add("active-upgrade-cart");
@@ -13,7 +14,7 @@ export default function handleUpgradeCart(isClickQuantity) {
         rotateUpgradeCart.style.display="none";
         upgradeCart.classList.remove("active-upgrade-cart");
         containUpgradeCart.classList.remove("active-upgrade-cart");
-        // window.location = "detail-product.html";
+        formSubmitCart.submit();
         isClickQuantity = false;
       }, 2000);
     });
@@ -27,24 +28,38 @@ export default function handleUpgradeCart(isClickQuantity) {
 const subtract = document.querySelectorAll(".subtract");
 const add = document.querySelectorAll(".add");
 const productQuantity = document.querySelectorAll(".product_quantity");
+
+
+const inputQuantity1 = document.querySelectorAll("input[name='quantity1[]']");
+if(inputQuantity1){
+var arrayBooleanValue = [];
+var booleanValueLength = inputQuantity1.length;     
+for( var i=0; i<booleanValueLength;i++)
+{
+  arrayBooleanValue.push(true);
+}
+
+
+
+
 var cart = [
   {
-    quantity: 1,
+    quantity:  arrayBooleanValue[0] ? inputQuantity1[0].value : null,
   },
   {
-    quantity: 1,
+    quantity: arrayBooleanValue[1] ? inputQuantity1[1].value : null,
   },
   {
-    quantity: 1,
+    quantity: arrayBooleanValue[2] ? inputQuantity1[2].value : null,
   },
   {
-    quantity: 1,
+    quantity:  arrayBooleanValue[3] ? inputQuantity1[3].value : null,
   },
   {
-    quantity: 1,
+    quantity: arrayBooleanValue[4] ? inputQuantity1[4].value : null,
   },
   {
-    quantity: 1,
+    quantity: arrayBooleanValue[5] ? inputQuantity1[5].value : null,
   },
   {
     quantity: 1,
@@ -59,7 +74,7 @@ var cart = [
 
 var quantity = 1;
 const handleAdd = (index) => {
-  if (cart[index].quantity) {
+  if (cart[index]) {
     // Nếu đã có sản phẩm trong đơn hàng, tăng số lượng sản phẩm lên 1
     cart[index].quantity++;
   } else {
@@ -84,16 +99,37 @@ const handleSubtract = (index) => {
 const handleQuantity = (index) => {
   if (index || index === 0) {
     productQuantity[index].innerHTML = cart[index].quantity;
+    inputQuantity1[index].value = cart[index].quantity;
   }
   return cart[index].quantity;
 };
+
+
+const handleTotalCash = (index) =>{
+  const totalCash = document.querySelectorAll(".totalCash");
+  const inputTotalCash = document.querySelectorAll("input[name='totalCash[]']");
+  const inputSugar = document.querySelectorAll("input[name='sugar']");
+  const inputSize = document.querySelectorAll("input[name='size']");
+  const inputToppping = document.querySelectorAll("input[name='toppping']");
+  const inputPrice = document.querySelectorAll("input[name='price']");
+
+  const inputQuan = handleQuantity(index)
+  const sum = ( parseInt(inputPrice[index].value,10) +  parseInt(inputSugar[index].value,10) + parseInt(inputSize[index].value,10) + parseInt(inputToppping[index].value,10)) * parseInt(inputQuan,10)
+  console.log(sum);
+  inputTotalCash[index].value = sum;
+  const localStringSum = sum.toLocaleString();
+  totalCash[index].innerHTML = localStringSum + "đ";
+
+}
 
 let isClickQuantity = false;
 add.forEach((ele, index) => {
   ele.addEventListener("click", () => {
     handleAdd(index);
     isClickQuantity = true;
+   
     handleUpgradeCart(isClickQuantity);
+    handleTotalCash(index);
   });
 });
 subtract.forEach((ele, index) => {
@@ -101,6 +137,7 @@ subtract.forEach((ele, index) => {
     handleSubtract(index);
     isClickQuantity = true;
     handleUpgradeCart(isClickQuantity);
+    handleTotalCash(index);
   });
 });
 // ---------------------------------------Phần thanh toán tiền------------------------------
@@ -118,7 +155,9 @@ const  validate = (e)=>{
     }
 
 }
+if(formPay){
 formPay.addEventListener("submit",validate);
+}
     const required = ["user","number-phone","address"];
     const inputInfo = document.querySelectorAll(".input-info");
     const buyNow = document.querySelector(".buy-now");
@@ -138,4 +177,5 @@ inputInfo.forEach((input,index)=>{
     }
   })
 })
+}
 

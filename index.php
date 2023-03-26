@@ -5,8 +5,10 @@ include "model/sanpham.php";
 include "model/danhmuc.php";
 include "model/pdo.php";
 include "model/taikhoan.php";
+include "model/cart.php";
 // include "model/account.php";
 // include "model/cart.php";
+
 include "global.php";
 if(!isset($_SESSION['mycart'])){
     $_SESSION['mycart'] = [];
@@ -86,20 +88,20 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         include "view/searchProduct.php";
                     }
                   else{
-                    header("Location:index.php");
+                        header("Location:index.php");
                   }
                 }
 
-                else{
-                    header("Location:index.php");
-                }            
+                    else{
+                        header("Location:index.php");
+                    }            
                   
                 break;
             case 'productDetail':
                     $id = isset($_GET['id']) ? $_GET['id'] : 0;
                     $productDetail = loadone_sanpham($id);
                     $category_id = $productDetail['iddm'];
-                    $product_same_category =    load_sanpham_cungloai($id, $category_id);
+                    $product_same_category =   load_sanpham_cungloai($id, $category_id);
         
                     include "view/productDetail.php";
                     break;
@@ -122,67 +124,130 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                          
                  }
                  
-                         include "./view/taikhoan/dangnhap.php";
-                         break;
-                case 'dangky': 
-                             if (isset($_POST['dangky']) && ($_POST['dangky'])) {
-                                 $email= $_POST['email'];
-                                 $user= $_POST['user'];
-                                 $pass= $_POST['password'];
-                                 insert_taikhoan($email,$user,$pass);
-                                 $thongbao="đã đăng ký thành công .vui lòng đăng nhập để sử dụng thêm chức năng bình luận";
+                        include "./view/taikhoan/dangnhap.php";
+                        break;
+            case 'dangky': 
+                        if (isset($_POST['dangky']) && ($_POST['dangky'])) {
+                            $email= $_POST['email'];
+                            $user= $_POST['user'];
+                            $pass= $_POST['password'];
+                            insert_taikhoan($email,$user,$pass);
+                            $thongbao="đã đăng ký thành công .vui lòng đăng nhập để sử dụng thêm chức năng bình luận";                 
+                        }
                  
-                             }
-                 
-                             include "./view/taikhoan/dangky.php";
+                        include "./view/taikhoan/dangky.php";
                              
-                             break;
-                case 'thongtintk':
+                        break;
+            case 'thongtintk':
                  
-                             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                 
-                                 $user= $_POST['user'];
-                                 $pass= $_POST['pass'];
-                                 $email= $_POST['email'];
-                                 // 
-                                 $address= $_POST['address'];
-                                 $tel= $_POST['tel'];
-                                 $id= $_POST['id'];
-                                 // 
-                                 $img = $_FILES['hinh']['name'];
-                                 $target_dir = "./upload/";
-                                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-                                 if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                                     // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-                                 } else {
-                                     //echo "Sorry, there was an error uploading your file.";
-                                 }
+                            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                            $user= $_POST['user'];
+                            $pass= $_POST['pass'];
+                            $email= $_POST['email'];
+                            $address= $_POST['address'];
+                            $tel= $_POST['tel'];
+                            $id= $_POST['id'];
+                            $img = $_FILES['hinh']['name'];
+                            $target_dir = "./upload/";
+                            $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
+                            if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+
+                            } else {
+
+                            }
                                  
                                  update_taikhoan($id,$user,$pass,$email,$img,$address,$tel);
-                 
-                                 $_SESSION['user']= checkuser($user,$pass);
-                                 // header("location: index.php?act=thongtintk");
-                                 // insert_taikhoan($email,$user,$pass);
-                 
+                                 $_SESSION['user']= checkuser($user,$pass);  
+                                                                                
                                  $thongbao="đã cập nhật thành công ";
                  
                              }
                              
-                             include "./view/taikhoan/edit_taikhoan.php";
+                            include "./view/taikhoan/edit_taikhoan.php";
                              
                              
-                               break;
-                case 'logout': 
-                         session_destroy();
-                                     // header('location: index.php');
-                                     header('location: index.php');
+                            break;
+            case 'logout': 
+                        session_destroy();
+                        header('location: index.php');
+                        include "./view/home.php"; 
                  
-                         include "./view/home.php"; 
-                 
-                               break;
-        
-        
-        default:
+                            break;
+            case 'addToCart':
+                if(isset($_SESSION['user']['id'])){
+                        if(isset($_POST['addToCart']) && $_POST['addToCart'] ){
+                        $product_name = isset($_POST['product_name']) ? $_POST['product_name'] : "";                             
+                        $product_price = isset($_POST['product_price']) ? $_POST['product_price'] : 1;                             
+                        $sugar = isset($_POST['sugar']) ? $_POST['sugar'] : 1;                             
+                        $ice = isset($_POST['ice-rock']) ? $_POST['ice-rock'] : 1;                             
+                        $size = isset($_POST['size']) ? $_POST['size'] : 1;                             
+                        $topping = isset($_POST['topping']) ? $_POST['topping'] : 1;                             
+                        $image = isset($_POST['image']) ? $_POST['image'] : "";
+                        $id = isset($_POST['id']) ? $_POST['id'] : 0;
+                        $id_user = $_SESSION['user']['id'];
+                        $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : 1;
+                        $stringTopping = 0;
+                        for($i = 0 ; $i < count($topping);$i++){
+                            $stringTopping += floatval($topping[$i]);
+                        }
+                        $result = ($product_price + floatval($sugar) + floatval($size) + floatval($ice) + floatval($stringTopping)) * floatval($quantity);
+                       
+                           
+
+                        insert_giohang($id,$id_user,$product_name,$image,$sugar,$size,$ice,$stringTopping,$product_price,$quantity,$result);
+                        // $addProductCart = [$id,$image,$product_name,$product_price,$sugar,$size,$ice,$topping,$quantity,$total];
+
+                        // array_push($_SESSION['mycart'],$addProductCart);
+                                    
+                        // $_SESSION['mycart'] = [];
+                        $cart_result = loadall_cart_idUser($id_user);
+                            }
+                            include "view/cart/view_cart.php";
+                        }
+                        else{
+                            header("Location: index.php");
+                        }
+                        
+                        break;
+            case 'delete_cart':
+                    if(isset($_GET['id_Cart'])){
+                                $id = $_GET['id_Cart'];
+                        delete_giohang($id)    ;        
+                    }
+                    else{
+                        $_SESSION['mycart'] = [];
+                    }
+                    header("Location:index.php?act=viewCart&&header=headerSecond&f=1");
+                    break;
+            case 'viewCart':
+                $id_user = $_SESSION['user']['id'];
+                $cart_result = loadall_cart_idUser($id_user);
+                    include "view/cart/view_cart.php";
+                    break;
+            case 'orderCart':
+                    $id_user = $_SESSION['user']['id'];
+                    $cart_result = loadall_cart_idUser($id_user);
+                    include "view/cart/bill.php";
+                    break;
+            case 'upgradeGiohang':
+                
+                if(isset($_SESSION['user']['id']) && $_SESSION['user']['id'] ){
+                    $id = isset($_POST['giohang_id']) ? $_POST['giohang_id'] : 0; 
+                    $quantity1 = isset($_POST['quantity1']) ? $_POST['quantity1'] : 1;                                  
+                    $totalCash = isset($_POST['totalCash']) ? $_POST['totalCash'] : 1;                                  
+                    for($i = 0 ; $i < count($quantity1);$i++){
+                        $sql = "UPDATE giohang SET soluong ='$quantity1[$i]',thanhtien = '$totalCash[$i]' WHERE id =$id[$i]";
+                        pdo_execute($sql);
+                    }
+                    
+                    }
+                    $id_user = $_SESSION['user']['id'];
+                    $cart_result = loadall_cart_idUser($id_user);
+                    include "view/cart/view_cart.php";
+                    
+                    break;
+                
+            default:
             include "view/home.php";
             break;
     }
@@ -195,4 +260,4 @@ include "view/footer.php";
 
 
 ob_end_flush()
-?>
+ ?>

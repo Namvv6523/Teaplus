@@ -48,7 +48,7 @@ if(closeShow){
     console.log(isClose);
   
     if (!isClose) {
-      containOverlayProductDetail.style.display = "none";
+      containOverlayProductDetail.style.display = "none"; 
     }
   });
 
@@ -97,22 +97,25 @@ const handleQuantity = () => {
 };
 const handleResult = (sugarValue = 0,  sizeValue = 0, iceValue = 0,  toppingValue = 0) => {
   const blockUpPrice = document.querySelector(".block_up-price").value;
+  const inputQuantity = document.querySelector("input[name='quantity']");
+
   const quantity = handleQuantity();
-  const total =
+  inputQuantity.value = quantity;
+  
+  const totalMenu =
   parseInt(sugarValue, 10) +
   parseInt(sizeValue, 10) +
   parseInt(iceValue, 10) +
   parseInt(toppingValue, 10);
-  
-  result.innerHTML = (parseInt(blockUpPrice, 10) + total) * quantity + "đ";
+  const total = (totalMenu + parseInt(blockUpPrice, 10)) * quantity
+  result.innerHTML = total.toLocaleString() + "đ";
 };
-
 input.forEach((element) => {
   element.addEventListener("change", function (e) {
     const sugar = document.querySelectorAll("input[name='sugar']");
     const size = document.querySelectorAll("input[name='size']");
     const iceRock = document.querySelectorAll("input[name='ice-rock']");
-    const topping = document.querySelectorAll("input[name='topping']");
+    const topping = document.querySelectorAll("input[name='topping[]']");
 
     let sugarValue;
     let sizeValue;
@@ -122,6 +125,7 @@ input.forEach((element) => {
     for (var i = 0; i < sugar.length; i++) {
       if (sugar[i].checked) {
         sugarValue = sugar[i].value;
+        
       }
     }
     for (var i = 0; i < size.length; i++) {
@@ -156,7 +160,7 @@ function getValue(sugarValue, sizeValue, iceRockValue, toppingValue) {
   getToppingValue = toppingValue;
 }
 let isClickQuantity = false;
-
+if(add){
   add.addEventListener("click", () => {
     
     handleAdd();
@@ -164,7 +168,6 @@ let isClickQuantity = false;
     // handleUpgradeCart(isClickQuantity)
     handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
   });
-
 
 
   subtract.addEventListener("click", () => {
@@ -175,6 +178,7 @@ let isClickQuantity = false;
   
     handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
   });
+}
 
 
 

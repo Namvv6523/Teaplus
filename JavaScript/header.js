@@ -5,7 +5,6 @@ const cart = document.querySelector(".cart i")
 if(header){
 window.addEventListener("scroll",()=>{
     const scrollY = window.scrollY;
-    console.log(scrollY)
     if(scrollY > 200){
         header.classList.add("active-header");
         header.style.color="black"

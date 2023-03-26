@@ -118,7 +118,7 @@
                   $category_name = $category_home[$i]["name"];                                    
                   $id =  $category_home[$i]["id"];            
                   $url_productByType = "index.php?act=productByType&id=$id&header=headerSecond";
-
+                  
 
                 ?>
 

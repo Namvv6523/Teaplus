@@ -16,6 +16,8 @@
         $image_name = $productDetail['img'];
         $image_url = "upload/";
         $image = $image_url . $image_name;
+        $number = 5000 + 2000 + 5000;
+        $totalPrice = $price + $number;
         ?>
 
             <!-- ------------------Phần tên sản phẩm và ảnh sản phẩm----------V--------- -->
@@ -36,19 +38,24 @@
                   Mô tả : <?= $description ?>
                 </div>
                 <div class="detail_size">
-                    <form action="" class="w-100">
+                    <form action="index.php?act=addToCart&header=headerSecond&f=1" class="w-100" method="POST">
+                        <input hidden type="text" name="product_name" value="<?= $product_name ?>">
+                        <input hidden type="number" name="product_price" value="<?= $price ?>">
+                        <input hidden type="text" name="image" value="<?= $image ?>">
+                        <input hidden type="text" name="id" value="<?= $id ?>">
                         <section class="block_up d-f jf-b al-t">
                           
                           <div class="block_up-product-name-price d-f f-d">
-                            <div class="d-f al-c m-t-b10  g-10">
+                            <div class="d-f al-c m-t-b10 g-10">
                               <label for="" style="font-size: 1.65rem" class="label_block_up-price"
-                                >Giá :</label
+                                >Giá :
+                              </label
                               >
                               <input
-                              style="padding: 5px 0px;width: 80px;padding-left: 10px;text-align: center;"
+                                style="padding: 5px 0px;width: 80px;padding-left: 10px;text-align: center;"
                                 type="number"
-                                value="<?=$price ?>"
-                                class="block_up-price product_price"
+                                value="<?= $price ?>"
+                                class="block_up-price product_price"                                
                                 disabled
                               />
                             </div>
@@ -57,10 +64,11 @@
                                 <i class="fa-solid fa-minus"></i>
                               </div>
                               <div class="product_quantity">1</div>
+                              <input style="width:40px" type="number" name="quantity" hidden>
                               <div class="add circle_border">
                                 <i class="fa-solid fa-plus"></i>
                               </div>
-                              <div class="result"><?= number_format($price) ?>đ</div>
+                              <div class="result"><?= number_format($totalPrice) ?>đ</div>
                             </div>
                           </div>
               
@@ -74,20 +82,23 @@
                                 <i class="fa-solid fa-cubes-stacked"></i> Chọn đường</span
                               >
                               <div class="d-f jf-b contain-choice">
+                                <div class="d-f f-d">
                                 <div class="d-f g-10">
-                                  <input
-                                    type="radio"
-                                    value="10"
-                                    class="input"
-                                    name="sugar"
-                                    checked
-                                  />
-                                  <label for="">100%</label>
+                                  <input type="radio" value="2000" class="input" name="sugar" checked />
+                                  <label for="">100% </label>
                                 </div>
-                                <div class="d-f g-10">
-                                  <input type="radio" value="5" class="input" name="sugar" />
-                                  <label for="">70%</label>
+                                <span>(2,000 VNĐ)</span>
                                 </div>
+
+                               <div class="d-f f-d">
+
+                               <div class="d-f g-10">
+                                  <input type="radio" value="1000" class="input" name="sugar" />
+                                  <label for="">70% </label>
+                                </div>
+                                <span>(1,000 VNĐ)</span>
+
+                               </div>
                               </div>
                             </div>
                             <!-- ------ -->
@@ -96,26 +107,29 @@
                                 ><i class="fa-solid fa-mug-hot"></i> Chọn size</span
                               >
                               <div class="d-f jf-b contain-choice">
+
+                                <div class="d-f f-d">
+
                                 <div class="d-f g-10">
                                   <input
                                     type="radio"
-                                    value="20"
+                                    value="5000"
                                     class="input"
                                     id="size"
                                     name="size"
                                     checked
                                   />
-                                  <label for="">M</label>
+                                  <label for="">M </label>
                                 </div>
+                                <span>(5,000 VNĐ)</span>
+
+                                </div>
+                                <div class="d-f f-d">
                                 <div class="d-f g-10">
-                                  <input
-                                    type="radio"
-                                    value="10"
-                                    class="input"
-                                    id="size"
-                                    name="size"
-                                  />
-                                  <label for="">L</label>
+                                  <input type="radio" value="10000" class="input" id="size" name="size" />
+                                  <label for="">L </label>
+                                </div>
+                                <span>(10,000 VNĐ)</span>
                                 </div>
                               </div>
                             </div>
@@ -131,7 +145,7 @@
                                 <div class="d-f g-10">
                                   <input
                                     type="radio"
-                                    value="15"
+                                    value="5"
                                     class="input"
                                     name="ice-rock"
                                     checked
@@ -141,7 +155,7 @@
                                 <div class="d-f g-10">
                                   <input
                                     type="radio"
-                                    value="12"
+                                    value="4"
                                     class="input"
                                     name="ice-rock"
                                   />
@@ -150,7 +164,7 @@
                                 <div class="d-f g-10">
                                   <input
                                     type="radio"
-                                    value="10"
+                                    value="3"
                                     class="input"
                                     name="ice-rock"
                                   />
@@ -159,7 +173,7 @@
                                 <div class="d-f g-10">
                                   <input
                                     type="radio"
-                                    value="5"
+                                    value="2"
                                     class="input"
                                     name="ice-rock"
                                   />
@@ -168,7 +182,7 @@
                                 <div class="d-f g-10">
                                   <input
                                     type="radio"
-                                    value="0"
+                                    value="1"
                                     class="input"
                                     name="ice-rock"
                                   />
@@ -184,49 +198,68 @@
                                 ><i class="fa-solid fa-wine-bottle"></i> Chọn Topping</span
                               >
                               <div class="d-f jf-b f-d contain-choice">
+                                
+                                <div class="d-f jf-b">
                                 <div class="d-f g-10">
                                   <input
                                     type="checkbox"
-                                    name="topping"
+                                    name="topping[]"
                                     class="input"
-                                    value="15"
+                                    value="5000"
                                     checked
                                   />
-                                  <label for="">Chân trâu baby</label>
+                                  <label for="">Chân trâu baby </label>
                                 </div>
+                                <span class="price-beside">(5000 VNĐ)</span>
+
+                                </div>
+
+                                <div class="d-f jf-b">
                                 <div class="d-f g-10">
                                   <input
                                     type="checkbox"
-                                    name="topping"
+                                    name="topping[]"
                                     class="input"
-                                    value="12"
+                                    value="6000"
                                   />
                                   <label for="">Khoai môn</label>
                                 </div>
+                                <span class="price-beside">(6000 VNĐ)</span>
+                                </div>
+
+                                <div class="d-f jf-b">
                                 <div class="d-f g-10">
                                   <input
                                     type="checkbox"
-                                    name="topping"
+                                    name="topping[]"
                                     class="input"
-                                    value="10"
+                                    value="7000"
                                   />
                                   <label for="">Trân châu đen</label>
                                 </div>
+                                <span class="price-beside">(7000 VNĐ)</span>
+                                </div>
+
+                                <div class="d-f jf-b">
                                 <div class="d-f g-10">
                                   <input
                                     type="checkbox"
-                                    name="topping"
+                                    name="topping[]"
                                     class="input"
-                                    value="5"
+                                    value="8000"
                                   />
                                   <label for="">Trân châu cam</label>
                                 </div>
+                                <span class="price-beside">(8000 VNĐ)</span>
+                                </div>
+
+
                               </div>
                             </div>
                           </div>
                         </section>
                         <div class="submit-form d-f jf-b">
-                            <input type="submit"  value="Thêm vào giỏ hàng" class="submit_order detail_submit" />
+                            <input type="submit"  value="Thêm vào giỏ hàng" name="addToCart" class="submit_order detail_submit" />
                             <input type="submit"  value="Mua ngay" class="submit_order detail_submit" />
 
                         </div>
