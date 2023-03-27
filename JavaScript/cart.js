@@ -145,19 +145,34 @@ const formPay = document.querySelector(".form-pay");
 
 
 const  validate = (e)=>{
+  // const listener = function (e) {
+  //   e.preventDefault();
+  // };
     e.preventDefault()
     const inputUser = document.querySelector("input[name='user']").value;
     const inputPhone = document.querySelector("input[name='number-phone']").value;
     const inputAddress = document.querySelector("input[name='address']").value;
     const note = document.querySelector(".note");
-    if(inputUser.length == 0 && inputPhone.length == 0 && inputAddress.length == 0){
-      note.style.display = "block"
+    let isSubmit = true;
+    if(inputUser.length == 0 || inputPhone.length == 0 || inputAddress.length == 0){
+      note.style.display = "block";
+      isSubmit = false;
     }
+    else{
+      isSubmit = true;
+    }
+    if(isSubmit){
+      formPay.submit();
+
+    }
+    
 
 }
 if(formPay){
 formPay.addEventListener("submit",validate);
 }
+
+
     const required = ["user","number-phone","address"];
     const inputInfo = document.querySelectorAll(".input-info");
     const buyNow = document.querySelector(".buy-now");

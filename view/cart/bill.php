@@ -21,9 +21,10 @@
 
         ?>
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
-              <section class="contain-form-submit-cart w-100">
-               
-              <form action="index.php?act=upgradeGiohang&header=headerSecond&f=1" class="form-submit-cart w-100" method="POST">         
+              <form action="index.php?act=confirm_bill&header=headerSecond" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;" method="POST">
+                <section class="contain-form-submit-cart w-100">
+
+                <div  class="form-submit-cart w-100" method="POST">         
                <table class="table-cart w-100">
       
                 <thead>
@@ -55,6 +56,7 @@
                     $quantity =   $cart_result[$i]['soluong'] ;
                     $total =   $cart_result[$i]['thanhtien'] ;
                     $totalSum += $total;
+                    $billTotal = $totalSum + 10000;
                     
                     $result = [($price + floatval($sugar) + floatval($size) + floatval($ice) + floatval($topping)) * floatval($quantity)];
 
@@ -86,7 +88,7 @@
                          
                          <div class="product_quantity"><?= $quantity ?></div>
                          <input style="width:30px" type="number" name="quantity1[]" hidden value="<?= $quantity ?>">
-                         <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
+                         
                          
                        </div>
                      </td>
@@ -98,6 +100,7 @@
                     <input type="text" hidden name="size" style="width:60px" value="<?= $size ?>">
                     <input type="text" hidden name="toppping" style="width:60px" value="<?= $topping ?>">
                     <input type="text" hidden name="price" style="width:60px" value="<?= $price ?>">
+                    <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
                     
                   </tr>
                   <?php } ?>
@@ -118,7 +121,7 @@
                 
                  
                </div>
-              </form>
+              </div>
               </section>
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----^--------------------- -->
      
@@ -127,7 +130,7 @@
                <section class="contain-info_user-pay w-100 ">
      
                  <!-- --------------Thông tin người dùng---------v----- -->
-                 <form action="" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;">
+                 <div class="d-f jf-b w-100">
                  <div class="info_user w-45">
                    <h4>Thông tin mua hàng</h4>
                    <div>
@@ -176,11 +179,11 @@
                      <h4>Hình thức chuyển khoản</h4>
                      <div  class="w-100">
                      <div class="m-t-b10">
-                       <input type="radio" name="bank" checked>
+                       <input type="radio" name="credit" value="1" checked>
                        <label for="">Chuyển khoản ngân hàng</label>
                      </div>
                      <div class="m-t-b10">
-                       <input type="radio" name="bank">
+                       <input type="radio" name="credit" value="2">
                        <label for="">Thanh toán tiền mặt</label>
                      </div>
                    </div>
@@ -197,40 +200,46 @@
                          Tiền tạm tính
                        </span>
                        <span class="cash">
-                         80,000đ
+                        <?= number_format($totalSum) ?>đ
                        </span>
                      </li>
                      <li class="d-f jf-b">
                        <span>
-                         Tổng tiền
+                          Phí vận chuyển
                        </span>
                        <span class="cash">
-                         80,000đ
+                         10,000đ
                        </span>
                      </li>
                      <li class="d-f jf-b">
                        <span>
-                         Phí vận chuyển
+                       Tổng tiền
                        </span>
                        <span class="cash">
-                         <?= number_format($totalSum) ?>đ
+                         <?= number_format( $billTotal) ?>đ
+                         <input hidden type="text" value="<?=  $billTotal ?>" name="total">
                        </span>
                      </li>
                      <li class="d-f jf-c">
+
                       <!-- <span class="w-100 d-f jf-c buy-now " >Mua ngay</span> -->
-                      <input type="submit" style="text-align: center;" class="w-100 d-f jf-c buy-now " value="Mua ngay">
+                      <input type="submit" style="text-align: center;" class="w-100 d-f jf-c buy-now " value="Mua ngay" name="order">
                      </li>
                      
                    </ul>
+                 </div>
                  </div>
      
      
                  <!-- -------------------- Thanh toán -----------^----- -->
      
+
+                 </section>
                </form>
+               
      
      
-               </section>
+           
                                                             
              <!-- ------------------ Nhập thông tin người dùng và thanh toán---------------^--------------- -->
                                            

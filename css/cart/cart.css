@@ -85,8 +85,8 @@
 }
 /* <!-- ------------------ Nhập thông tin người dùng và thanh toán----------------v--------------- --> */
 .contain-info_user-pay{
-    padding: 0px 15%;
-    margin-top: 50px;
+    padding: 0px 10%;
+    margin-top: 40px;
 }
 .info_user h4{
     margin-top: 8px;
@@ -124,6 +124,8 @@
     background-color: #f0f0f0;
     padding: 8px 13px;
     padding-bottom: 3px;
+    border: 1px solid var(--border-cart);
+    border-bottom: none;
 }
 .block-pay_ul{
     border: 1px solid var(--border-cart);
@@ -147,4 +149,9 @@
     color: var(--white) !important;
     background-color: red;
     padding: 8px 10px;
+}
+.form-pay{
+    padding-left: 15px; 
+    border-bottom: 1px solid var(--border-cart);
+    padding-bottom: 20px;
 }

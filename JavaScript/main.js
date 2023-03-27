@@ -23,46 +23,46 @@ product.forEach((element, index) => {
 
 // ---------------show menu choice---------------
 // ----------- close and open menu ----------------
-const containOverlayProductDetail = document.querySelector(
-  ".contain-overlay-product-detail"
-);
-const productCart = document.querySelectorAll(".product_cart");
-const closeShow = document.querySelector(".close_show");
-const closeText = document.querySelector(".close-text");
+// const containOverlayProductDetail = document.querySelector(
+//   ".contain-overlay-product-detail"
+// );
+// const productCart = document.querySelectorAll(".product_cart");
+// const closeShow = document.querySelector(".close_show");
+// const closeText = document.querySelector(".close-text");
 
-let isClose = false;
-productCart.forEach((element, index) => {
-  element.addEventListener("click", () => {
-    isClose = true;
-    if (isClose) {
-      containOverlayProductDetail.style.display = "flex";
-    }
-    console.log(isClose);
-  });
-});
+// let isClose = false;
+// productCart.forEach((element, index) => {
+//   element.addEventListener("click", () => {
+//     isClose = true;
+//     if (isClose) {
+//       containOverlayProductDetail.style.display = "flex";
+//     }  
+//     console.log(isClose);
+//   });
+// });
 
-// ----------------------------Đóng mở menu--------------------------------
-if(closeShow){
-  closeShow.addEventListener("click", () => {
-    isClose = false;
-    console.log(isClose);
+// // ----------------------------Đóng mở menu--------------------------------
+// if(closeShow){
+//   closeShow.addEventListener("click", () => {
+//     isClose = false;
+//     console.log(isClose);
   
-    if (!isClose) {
-      containOverlayProductDetail.style.display = "none"; 
-    }
-  });
+//     if (!isClose) {
+//       containOverlayProductDetail.style.display = "none"; 
+//     }
+//   });
 
 
-  closeText.addEventListener("click", () => {
-    isClose = false;
-    console.log(isClose);
+//   closeText.addEventListener("click", () => {
+//     isClose = false;
+//     console.log(isClose);
   
-    if (!isClose) {
-      containOverlayProductDetail.style.display = "none";
-    }
-  });
+//     if (!isClose) {
+//       containOverlayProductDetail.style.display = "none";
+//     }
+//   });
 
-}
+// }
 
 
 // ---------------------- logic tính toán tiền-------------------------
@@ -102,12 +102,21 @@ const handleResult = (sugarValue = 0,  sizeValue = 0, iceValue = 0,  toppingValu
   const quantity = handleQuantity();
   inputQuantity.value = quantity;
   
-  const totalMenu =
+  let totalMenu =
   parseInt(sugarValue, 10) +
   parseInt(sizeValue, 10) +
   parseInt(iceValue, 10) +
   parseInt(toppingValue, 10);
-  const total = (totalMenu + parseInt(blockUpPrice, 10)) * quantity
+  if(totalMenu == 0 ){
+
+    var total = (12000 + parseInt(blockUpPrice, 10)) * quantity
+  }
+  else{
+  
+    
+    var total = (totalMenu + parseInt(blockUpPrice, 10)) * quantity;
+  }
+  
   result.innerHTML = total.toLocaleString() + "đ";
 };
 input.forEach((element) => {
