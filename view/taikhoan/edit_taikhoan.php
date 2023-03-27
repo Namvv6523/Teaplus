@@ -3,15 +3,15 @@
                 extract($_SESSION['user']);
             }
 
-$hinhpath="./upload".$img;
-            $hinhuser=" <img  src='".$hinhpath."'>";   
+            $hinhpath="./upload/" . $avatar;
+            // var_dump($hinhuser) ;
             //   $hinhuser='<img style="width: 100px; height: auto;" src="./upload/img/user/img_user.jpg" alt="">';
           
 ?>
 
     <div class="boxtitle">Thông Tin Tài Khoản </div>
 
-        <form action="index.php?act=thongtintk" method="post">
+        <form action="index.php?act=thongtintk&header=headerSecond" method="post" enctype="multipart/form-data">
         
         emai :
         <input type="email" name="email" value="<?=$email?>"> <br>
@@ -23,7 +23,7 @@ $hinhpath="./upload".$img;
         <input type="text" name="address" value="<?=$address?>"> <br>   
          
         ảnh : <br>  
-        <?=$hinhuser?> <br>
+        <img width="50" src="<?= $hinhpath ?>" alt="">
         <input type="file" name="hinh" value=""> <br>
 
         số điện thoại: 

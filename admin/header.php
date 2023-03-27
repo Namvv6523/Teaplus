@@ -16,7 +16,7 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="stylesheet" href="../css/global.css" />
-    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/admin/admin.css" />
     <title>Admin</title>
   </head>
   <body>
@@ -43,10 +43,10 @@
         <div class="contain-list-menu w-100">
           <ul>
             <li >
-              <a href="index.php?act=dsbl" >
+              <a href="" >
                 <div>
                   <i class="fa-solid fa-gauge"></i>
-                  <span>Bình Luận</span>
+                  <span>Dashboard</span>
                 </div>
               </a>
 
@@ -179,6 +179,39 @@
             </li>
 
             <!-- ----------------------------- -->
+               <!-- ----------------------------- -->
+               <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
+                <div>
+                  <i class="fa-solid fa-mug-hot"></i>
+                  <span>Bình luận</span>
+                </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <!-- --------------- menu con --------------------- -->
+
+              <ul class="sub-menu">
+                <li>
+                  <a href="index.php?act=dsbl">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Quản lý bình luận</span>
+                    </div>
+                  </a>
+                </li>
+<li>
+                  <a href="index.php?act=addsp">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Thêm sản phẩm</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- ----------------------------- -->
             <li class="li-side-bar">
               <a href="#" class="a-side-bar">
                 <div>
@@ -226,4 +259,4 @@
             </div>
           </div>
         </header>
-        <script src="../JavaScript/admin.js"></script>
+        

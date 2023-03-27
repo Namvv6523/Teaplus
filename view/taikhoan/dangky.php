@@ -1,7 +1,7 @@
 
         <div id="" class="boxtitle">Đăng Ký Thành Viên</div>
 
-            <form action="index.php?act=dangky" method="post">
+            <form action="index.php?act=dangky&header=headerSecond" method="post">
                emai:<br>
         <input type="email" name="email"> <br>
         username:<br>
@@ -13,7 +13,7 @@
         
             </form>
             đã có tài khoản : 
-                    <a style="color:red" href="index.php?act=dangnhap">Đăng nhập </a>
+                    <a style="color:red" href="index.php?act=dangnhap&header=headerSecond">Đăng nhập </a>
           <h2 class="thongbao">   <?php 
             if(isset($thongbao) && $thongbao!=""){
                 echo $thongbao;

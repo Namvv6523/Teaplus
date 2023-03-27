@@ -34,7 +34,7 @@
                   chúng tôi
                 </li>
               </ul>
-              <div class="search">
+              <div class="search w-100">
                 <form action="" class="d-f">
                   <input
                     style="width: 175px"
@@ -61,4 +61,41 @@
           <!-- ---------------------------------- -->
         </div>
       </footer>
+    </div>
+
+
+
+    
+     <!-- ------------------loading chuột hamster ---------------------------- -->
+     <div class="container1">
+      <div
+        aria-label="Orange and tan hamster running in a metal wheel"
+        role="img"
+        class="wheel-and-hamster"
+      >
+        <div class="wheel"></div>
+        <div class="hamster">
+          <div class="hamster__body">
+            <div class="hamster__head">
+              <div class="hamster__ear"></div>
+              <div class="hamster__eye"></div>
+              <div class="hamster__nose"></div>
+            </div>
+            <div class="hamster__limb hamster__limb--fr"></div>
+            <div class="hamster__limb hamster__limb--fl"></div>
+            <div class="hamster__limb hamster__limb--br"></div>
+            <div class="hamster__limb hamster__limb--bl"></div>
+            <div class="hamster__tail"></div>
+          </div>
+        </div>
+        <div class="spoke"></div>
       </div>
+    </div>
+
+    <script type="module" src="JavaScript/main.js"></script>
+    <script type="text/javascript" src="JavaScript/link.js"></script>
+    <script type="text/javascript" src="JavaScript/header.js"></script>
+    <script type="text/javascript" src="JavaScript/banner.js"></script>
+    <script type="text/javascript" src="JavaScript/slide.js"></script>
+  </body>
+</html>

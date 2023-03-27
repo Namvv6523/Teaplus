@@ -155,7 +155,7 @@
          <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
          <section class="contain-form-submit-cart w-100">
           
-         <form action="" class="form-submit-cart w-100">         
+         <form action="detail-product.html" class="form-submit-cart w-100">         
           <table class="table-cart w-100">
  
            <thead>
@@ -242,25 +242,27 @@
           <div class="w-100 d-f jf-b m-t-b10">
             
             <button>
-              <a href="" class="upgrade-cart">
+              <a href="" class="continue-buy">
                 Tiếp tục mua hàng
               </a>
             </button>
-            <input type="submit" value="Cập nhật giỏ hàng" class="upgrade-cart">
+            <div class="contain-upgrade-cart ">
+              <i class="fa-solid fa-spinner rotate-upgrade-cart"></i>
+
+              <input type="submit" value="Cập nhật giỏ hàng" class="upgrade-cart ">
+            </div>
+            
           </div>
          </form>
          </section>
          <!-- ----------------------------------- Form hiển thị giỏ hàng ----^--------------------- -->
-<<<<<<< HEAD
-        
-=======
 
 
         <!-- ------------------ Nhập thông tin người dùng và thanh toán----------------v--------------- -->
           <section class="contain-info_user-pay w-100 ">
 
             <!-- --------------Thông tin người dùng---------v----- -->
-            <form action="" class="w-100 d-f jf-b" style="padding-left: 15px;">
+            <form action="" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;">
             <div class="info_user w-45">
               <h4>Thông tin mua hàng</h4>
               <div>
@@ -272,19 +274,19 @@
                   <!-- ------- -->
                   <div class="d-f w-100 m-t-b10">
                     <label class="label_input-info-user" for=""><i class="fa-solid fa-user"></i></label>
-                    <input type="text" placeholder="Tên người nhận" class="input-info">
+                    <input type="text" placeholder="Tên người nhận" class="input-info" name="user">
                   </div>
                   <!-- --------- -->
                   <!-- ------- -->
                   <div class="d-f w-100 m-t-b10">
                     <label class="label_input-info-user" for=""><i class="fa-solid fa-phone"></i></label>
-                    <input type="text" placeholder="Số điện thoại" class="input-info">
+                    <input type="text" placeholder="Số điện thoại" class="input-info" name="number-phone">
                   </div>
                   <!-- --------- -->
                   <!-- ------- -->
                   <div class="d-f w-100 m-t-b10">
                     <label class="label_input-info-user" for=""><i class="fa-solid fa-location-dot"></i></label>
-                    <input type="text" placeholder="Địa chỉ" class="input-info">
+                    <input type="text" placeholder="Địa chỉ" class="input-info" name="address">
                   </div>
                   <!-- --------- -->
                   <!-- ------- -->
@@ -292,11 +294,11 @@
                     <label class="label_input-info-user" for="">
                       <i class="fa-regular fa-clipboard"></i>
                     </label>
-                    <input type="text" placeholder="Ghi chú thêm địa chỉ" class="input-info">
+                    <input type="text" placeholder="Ghi chú thêm địa chỉ" class="input-info" name="note">
                   </div>
                   <!-- --------- -->
                   
-                  <span style="color:red">
+                  <span class="note" style="color:red">
                     Note : 3 trường đầu không được để trống
                   </span>
                   
@@ -350,7 +352,8 @@
                   </span>
                 </li>
                 <li class="d-f jf-c">
-                 <span class="w-100 d-f jf-c buy-now" >Mua ngay</span>
+                 <!-- <span class="w-100 d-f jf-c buy-now " >Mua ngay</span> -->
+                 <input type="submit" style="text-align: center;" class="w-100 d-f jf-c buy-now " value="Mua ngay">
                 </li>
                 
               </ul>
@@ -377,7 +380,6 @@
 
         <!-- ------------------ Nhập thông tin người dùng và thanh toán---------------^--------------- -->
 
->>>>>>> ff19dffa7be9376038b9aa046780d25cdcf6c7eb
          
               
 
@@ -446,204 +448,7 @@
         </div>
       </footer>
     </div>
-    <!-- --------------------------Phần hiện lên bảng chọn các phần của trà sữa------------------ -->
-    <div class="contain-overlay-product-detail">
-      <div class="contain-product-detail">
-        <form action="" class="w-100">
-          <section class="block_up d-f jf-b al-t">
-            <div class="block_up-product-img">
-              <img src="./img/product/ts2.jpg" alt="" />
-            </div>
-            <div class="block_up-product-name-price d-f f-d">
-              <span class="block_up-name">Trà sữa</span>
-              <div class="d-f al-c m-t-b10 g-10">
-                <label for="" style="font-size: 1.35rem" class="label_block_up-price"
-                  >Giá :</label
-                >
-                <input type="number" value="25000" class="block_up-price"  />
-              </div>
-              <div class="quantity d-f al-c">
-                <div class="subtract circle_border">
-                  <i class="fa-solid fa-minus"></i>
-                </div>
-                <div class="product_quantity">1</div>
-                <div class="add circle_border">
-                  <i class="fa-solid fa-plus"></i>
-                </div>
-                <div class="result">25,000đ</div>
-              </div>
-            </div>
-
-            <div class="close_show">
-              <i class="fa-solid fa-xmark"></i>
-            </div>
-          </section>
-          <!-- -------------------------------------- -->
-          <section class="block_down w-100">
-            <div class="d-f jf-b m-t-b10">
-              <div class="sugar choice-block choice-block w-45">
-                <span class="choice">
-                  <i class="fa-solid fa-cubes-stacked"></i> Chọn đường</span
-                >
-                <div class="d-f jf-b contain-choice">
-                  <div class="d-f g-10">
-                    <input
-                      type="radio"
-                      value="10"
-                      class="input"
-                      name="sugar"
-                      checked
-                    />
-                    <label for="">100%</label>
-                  </div>
-                  <div class="d-f g-10">
-                    <input type="radio" value="5" class="input" name="sugar" />
-                    <label for="">70%</label>
-                  </div>
-                </div>
-              </div>
-              <!-- ------ -->
-              <div class="size choice-block w-45">
-                <span class="choice"
-                  ><i class="fa-solid fa-mug-hot"></i> Chọn size</span
-                >
-                <div class="d-f jf-b contain-choice">
-                  <div class="d-f g-10">
-                    <input
-                      type="radio"
-                      value="20"
-                      class="input"
-                      id="size"
-                      name="size"
-                      checked
-                    />
-                    <label for="">M</label>
-                  </div>
-                  <div class="d-f g-10">
-                    <input
-                      type="radio"
-                      value="10"
-                      class="input"
-                      id="size"
-                      name="size"
-                    />
-                    <label for="">L</label>
-                  </div>
-                </div>
-              </div>
-              <!-- ------ -->
-            </div>
-            <!-- -------------------------- -->
-            <div class="m-t-b10">
-              <div class="ice-rock choice-block w-100">
-                <span class="choice"
-                  ><i class="fa-solid fa-snowflake"></i> Chọn đá</span
-                >
-                <div class="d-f jf-b contain-choice">
-                  <div class="d-f g-10">
-                    <input
-                      type="radio"
-                      value="15"
-                      class="input"
-                      name="ice-rock"
-                      checked
-                    />
-                    <label for="">100%</label>
-                  </div>
-                  <div class="d-f g-10">
-                    <input
-                      type="radio"
-                      value="12"
-                      class="input"
-                      name="ice-rock"
-                    />
-                    <label for="">70%</label>
-                  </div>
-                  <div class="d-f g-10">
-                    <input
-                      type="radio"
-                      value="10"
-                      class="input"
-                      name="ice-rock"
-                    />
-                    <label for="">50%</label>
-                  </div>
-                  <div class="d-f g-10">
-                    <input
-                      type="radio"
-                      value="5"
-                      class="input"
-                      name="ice-rock"
-                    />
-                    <label for="">30%</label>
-                  </div>
-                  <div class="d-f g-10">
-                    <input
-                      type="radio"
-                      value="0"
-                      class="input"
-                      name="ice-rock"
-                    />
-                    <label for="">Không đá</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- ------------ -->
-            <div>
-              <div class="topping choice-block w-100">
-                <span class="choice"
-                  ><i class="fa-solid fa-wine-bottle"></i> Chọn Topping</span
-                >
-                <div class="d-f jf-b f-d contain-choice">
-                  <div class="d-f g-10">
-                    <input
-                      type="checkbox"
-                      name="topping"
-                      class="input"
-                      value="15"
-                      checked
-                    />
-                    <label for="">Chân trâu baby</label>
-                  </div>
-                  <div class="d-f g-10">
-                    <input
-                      type="checkbox"
-                      name="topping"
-                      class="input"
-                      value="12"
-                    />
-                    <label for="">Khoai môn</label>
-                  </div>
-                  <div class="d-f g-10">
-                    <input
-                      type="checkbox"
-                      name="topping"
-                      class="input"
-                      value="10"
-                    />
-                    <label for="">Trân châu đen</label>
-                  </div>
-                  <div class="d-f g-10">
-                    <input
-                      type="checkbox"
-                      name="topping"
-                      class="input"
-                      value="5"
-                    />
-                    <label for="">Trân châu cam</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <div class="submit-form d-f jf-b">
-            <div class="close-text">Đóng</div>
-            <input type="submit" value="Đặt hàng" class="submit_order" />
-          </div>
-        </form>
-      </div>
-    </div>
+  
 
     <!-- ------------------loading chuột hamster ---------------------------- -->
     <div class="container1">
@@ -672,7 +477,8 @@
     </div>
 
     <script type="text/javascript" src="JavaScript/link.js"></script>
-    <script type="text/javascript" src="JavaScript/main.js"></script>
+    <!-- <script type="module" src="JavaScript/main.js"></script> -->
+    <script type="module" src="JavaScript/cart.js"></script>
   </body>
 </html>
 

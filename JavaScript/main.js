@@ -1,5 +1,5 @@
 // js thuộc phần main <main>
-
+// import handleUpgradeCart from "./cart.js"
 const product = document.querySelectorAll(".product");
 
 product.forEach((element, index) => {
@@ -11,7 +11,6 @@ product.forEach((element, index) => {
     productCart[index].classList.add("active_rotate");
     productHeart[index].classList.add("active_rotate");
   });
-  
   element.addEventListener("mouseout", function () {
     const activeShow = document.querySelectorAll(".product-icon-cart-heart");
     activeShow[index].classList.remove("active_show_cart_heart");
@@ -90,28 +89,33 @@ const handleSubtract = () => {
 };
 
 const handleQuantity = () => {
-  productQuantity.innerHTML = quantity;
+  
+
+    productQuantity.innerHTML = quantity;
+  
   return quantity;
 };
 const handleResult = (sugarValue = 0,  sizeValue = 0, iceValue = 0,  toppingValue = 0) => {
   const blockUpPrice = document.querySelector(".block_up-price").value;
+  const inputQuantity = document.querySelector("input[name='quantity']");
+
   const quantity = handleQuantity();
-  const total =
+  inputQuantity.value = quantity;
+  
+  const totalMenu =
   parseInt(sugarValue, 10) +
   parseInt(sizeValue, 10) +
   parseInt(iceValue, 10) +
   parseInt(toppingValue, 10);
-  
-  console.log(blockUpPrice)
-  result.innerHTML = (parseInt(blockUpPrice, 10) + total) * quantity + "đ";
+  const total = (totalMenu + parseInt(blockUpPrice, 10)) * quantity
+  result.innerHTML = total.toLocaleString() + "đ";
 };
-
 input.forEach((element) => {
   element.addEventListener("change", function (e) {
     const sugar = document.querySelectorAll("input[name='sugar']");
     const size = document.querySelectorAll("input[name='size']");
     const iceRock = document.querySelectorAll("input[name='ice-rock']");
-    const topping = document.querySelectorAll("input[name='topping']");
+    const topping = document.querySelectorAll("input[name='topping[]']");
 
     let sugarValue;
     let sizeValue;
@@ -121,6 +125,7 @@ input.forEach((element) => {
     for (var i = 0; i < sugar.length; i++) {
       if (sugar[i].checked) {
         sugarValue = sugar[i].value;
+        
       }
     }
     for (var i = 0; i < size.length; i++) {
@@ -154,11 +159,27 @@ function getValue(sugarValue, sizeValue, iceRockValue, toppingValue) {
   getIceRockValue = iceRockValue;
   getToppingValue = toppingValue;
 }
-add.addEventListener("click", () => {
-  handleAdd();
-  handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
-});
-subtract.addEventListener("click", () => {
-  handleSubtract();
-  handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
-});
+let isClickQuantity = false;
+if(add){
+  add.addEventListener("click", () => {
+    
+    handleAdd();
+    isClickQuantity = true;
+    // handleUpgradeCart(isClickQuantity)
+    handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
+  });
+
+
+  subtract.addEventListener("click", () => {
+    handleSubtract();
+    isClickQuantity = true;
+    // handleUpgradeCart(isClickQuantity)
+  
+  
+    handleResult(getSugarValue, getSizeValue, getIceRockValue, getToppingValue);
+  });
+}
+
+
+
+

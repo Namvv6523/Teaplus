@@ -3,7 +3,7 @@
  * Mở kết nối đến CSDL sử dụng PDO
  */
 function pdo_get_connection(){
-    $dburl = "mysql:host=localhost;dbname=teaplus;charset=utf8";
+    $dburl = "mysql:host=localhost;dbname=teaplussss;charset=utf8";
     $username = 'root';
     $password = '';
 
@@ -37,7 +37,7 @@ function pdo_execute_return_lastInsertId($sql){
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-        return $conn-> lastInsertId();
+        return $conn->lastInsertId();
     }
     catch(PDOException $e){
         throw $e;

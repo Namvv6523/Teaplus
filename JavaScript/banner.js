@@ -72,6 +72,7 @@ function autoSlide() {
     }, 10000);
 
 }
+if(backBanner){
 backBanner.addEventListener("click", () => {
 
     slideBackBanner();
@@ -101,3 +102,4 @@ nextBanner.addEventListener("mouseout", () => {
 choseInfoProduct()
 
 autoSlide();
+}

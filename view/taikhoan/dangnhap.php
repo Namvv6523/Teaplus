@@ -14,7 +14,7 @@
 
                     <li><a href="index.php?act=quenmk">Quên mật khẩu</a></li>
                     Chưa có tài khoản : 
-                    <li><a style="color:red" href="index.php?act=dangky">Đăng ký </a></li>
+                    <li><a style="color:red" href="index.php?act=dangky&header=headerSecond">Đăng ký </a></li>
 
 </form>
   <?php 

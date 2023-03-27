@@ -1,8 +1,35 @@
 
 
-/* --------------header---------------- */
+/* -------------------------header------------------------ */
 
  /* ---------header phần liên hệ và đăng nhập--------------  */
+ .header-main{
+  position: absolute;
+  top: 0px ;
+  z-index: 15;
+  left: 0px;
+  color: var(--white);
+ }
+ .header-main li a{
+  color: var(--white);
+
+ }
+ 
+ .active-header{
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: down 0.3s ease-in-out;
+ }
+ @keyframes down {
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+ }
 .header_contact {
   background-color: var(--bg-header-contact);
   padding: 10px var(--padding-website);
@@ -101,7 +128,7 @@ cursor: pointer;
     padding: 0px var(--padding-website);
     display: flex;
     box-sizing: border-box;
-    margin-top: 20px;
+    margin-top: 5px;
     justify-content: space-between;
     align-items: center;
 
@@ -151,7 +178,7 @@ cursor: pointer;
     padding: 0px var(--padding-website);
     display: flex;
     box-sizing: border-box;
-    height: 80px;
+    height: 60px;
     justify-content: space-between;
     align-items: center;
  }
@@ -185,6 +212,8 @@ cursor: pointer;
     border: none;
     outline: none;
     font-weight: 600;
+    border-bottom-right-radius: 92px;
+    border-top-right-radius: 92px;
  }
  .search-btn:hover{
   opacity: 0.7;
@@ -196,6 +225,8 @@ cursor: pointer;
     outline: none;
     border: 1.2px solid #d7d7d7;
     border-right: none;
+    border-bottom-left-radius: 92px;
+    border-top-left-radius: 92px;
   
  }
  .input-search:focus-within{
@@ -289,7 +320,14 @@ cursor: pointer;
 /* ---------------main----------------------- */
 
 
+.avatar{
+  border-radius: 50%;
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+  margin: 0px 10px;
+  
 
-
+}
 
 
