@@ -47,6 +47,12 @@
         $listsanpham=pdo_query($sql);
         return  $listsanpham;
     }
+    function count_productByiddm($iddm){
+        $sql="SELECT COUNT(id) AS count FROM sanpham where iddm=".$iddm;
+
+        $countSanphamByiddm=pdo_query($sql);
+        return  $countSanphamByiddm;
+    }
 
     function load_ten_dm($iddm){
         if($iddm>0){

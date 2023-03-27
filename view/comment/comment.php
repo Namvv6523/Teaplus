@@ -35,7 +35,7 @@ $comment = loadall_binhluan($id_pro);
                 ?>
                
                     <tr class="d-f f-d" >                        
-                        <td style="font-size: 1.8rem;font-weight:700"><?= $userName ?></td>
+                        <td style="font-size: 1.8rem;font-weight:700">User : <?= $userName ?></td>
                         <td><?= $content ?></td>
                         <td><?= $date ?></td>                                               
                     </tr>
@@ -50,12 +50,21 @@ $comment = loadall_binhluan($id_pro);
                     <li style="position:<?php if($count > 2){echo "sticky";}else{echo "absolute";}?>;bottom:-0.5px;box-sizing:border-box;width:100%;">
                         <form action="<?= $_SERVER['PHP_SELF'];  ?>" class="d-f " method="POST">
                             <input hidden type="text" id="search_product" name="id_pro" value="<?= $id_pro ?>">
+                            <?php 
+                            if(isset($_SESSION['user'])&& $_SESSION['user']!="" ){
+                            ?>
                             <textarea class="comment_textarea" style="width:90%;resize: none;" name="comment" id="" rows="5"  placeholder="Nhập phần bình luận của bạn ở đây"></textarea>
                             <button class="comment_product_btn">
                                 <div class="btn_send_comment">
                                     <input type="submit" value="Send" name="sendComment">
                                 </div>
                             </button>
+                            <?php 
+                            }else{
+                            ?>
+                            bạn cần đăng nhập để có thể bình luận  (<a style="color: red;" href="index.php?act=dangnhap&header=headerSecond"> đăng nhập ngay</a>)
+                           <?php } 
+                           ?>
                         </form>
                     </li>
 

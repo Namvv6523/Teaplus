@@ -40,9 +40,11 @@
                   $category_name = $category_home[$i]["name"];                                    
                   $id =  $category_home[$i]["id"];            
                   $url_productByType = "index.php?act=productByType&id=$id&header=headerprd";
+                  $count = count_productByiddm($id);
+                  extract($count);
                 ?>
               
-                <li style="text-transform:capitalize;" ><a id="name_categorys" style="color: black;" href="<?= $url_productByType ?>"><?= $category_name ?></a></li>
+                <li style="text-transform:capitalize;" ><a id="name_categorys" style="color: black;" href="<?= $url_productByType ?>"><?= $category_name ?> (<?php echo $count['0']['count'];?>)</a></li>
               
                 <?php } ?>
             </ul>
