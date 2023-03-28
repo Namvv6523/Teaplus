@@ -4,7 +4,7 @@
   <p class="form-title">Đăng nhập</p>
   <div class="input-container">
     <label for="user">Username :</label>
-   <input type="text" name="user" placeholder="username..."> 
+   <input type="text" name="user" placeholder="username..." required> 
    <span>
             <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
@@ -15,7 +15,7 @@
       <div class="input-container">
     <label for="user">Password :</label>
 
-        <input type="password" name="pass" id="" placeholder="password...">
+        <input type="password" name="pass" id="" placeholder="password..." required>
         <span>
             <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
@@ -36,15 +36,15 @@
                     <input type="submit" value="Đăng nhập" name="dangnhap" class="submit">
                     
                     <!-- <li><a href="index.php?act=quenmk">Quên mật khẩu</a></li> -->
-        <p class="signup-link">
+        <p  class="signup-link">
             Chưa có tài khoản?
         <a href="index.php?act=dangky&header=headerSecond">Đăng ký</a>
       </p>
                     <!-- Chưa có tài khoản : 
                     <li><a style="color:red" href="index.php?act=dangky&header=headerSecond">Đăng ký </a></li> -->
-</form>
   <?php 
   if(isset($thongbao)){
-  echo '<h2>'.$thongbao.'</h2>';
+  echo '<p style="color: red;">'.$thongbao.'</p>';
 }
   ?>
+</form>

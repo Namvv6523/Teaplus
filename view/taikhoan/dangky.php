@@ -5,7 +5,7 @@
 
         <div class="input-container">
             <label for="email">Email :</label>
-        <input type="email" name="email" required> 
+        <input type="email" name="email" placeholder="Email..." required> 
             
           <span>
             <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +15,7 @@
       </div>
       <div class="input-container">
       <label for="user">Username :</label>
-      <input type="text" name="user" required>
+      <input type="text" name="user" placeholder="Username..." required>
 
           <span>
             <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@
         <div class="input-container">
         <label for="passwrod">Password :</label>
 
-        <input type="password" name="password" required>
+        <input type="password" name="password" placeholder="Password..." required>
 
           <span>
             <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

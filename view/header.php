@@ -85,6 +85,14 @@
               <a ><?=$user?></a>
               <ul>
                 <li><a href="index.php?act=thongtintk&header=headerSecond">Thông tin tài khoản</a></li>
+                <?php
+            if($_SESSION['user']['role']==1){
+              ?>
+                <li><a href="admin/index.php">Đăng nhập admin</a></li>
+
+              <?php
+            }
+            ?>
                 <li><a href="#">Đơn hàng</a></li>
                 <li><a href="#">Giỏ hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>

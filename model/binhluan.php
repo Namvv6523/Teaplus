@@ -17,4 +17,8 @@ function select_comment_count($idpro)
     $result = pdo_query($sql);
     return sizeof($result);
 }
+function delete_binhluan($id){
+    $sql="delete from binhluan where id=".$id;
+    pdo_execute($sql);
+}   
 ?>

@@ -23,7 +23,7 @@
     <div class="container d-f w-100">
       <div class="side-bar" style="height: 200vh" >
         <div class="shop_name block">
-          <div class="image">
+<div class="image">
             <img src="../upload/img/logo/logo.jpg" alt="" />
           </div>
           <span>Tea plus</span>
@@ -197,14 +197,6 @@
                     <div>
                       <i class="fa-regular fa-circle"></i>
                       <span>Quản lý bình luận</span>
-                    </div>
-                  </a>
-                </li>
-<li>
-                  <a href="index.php?act=addsp">
-                    <div>
-                      <i class="fa-regular fa-circle"></i>
-                      <span>Thêm sản phẩm</span>
                     </div>
                   </a>
                 </li>
