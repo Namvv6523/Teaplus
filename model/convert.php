@@ -62,6 +62,9 @@ function handleTopping($topping){
 
 
     switch ($topping) {
+        case 0 : 
+            $toppingInfo = ["Không có"];
+            break;
         case 5000:
             $toppingInfo = ["Chân trâu baby"];
         break;

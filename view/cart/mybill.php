@@ -21,12 +21,12 @@
 
 
     <?php
-    if (is_array($list_bill)) {
+    if (is_array($list_bill) && $list_bill != null) {
 
 
         for ($i = 0; $i < count($list_bill); $i++) {
 
-            $id =  $list_bill[$i]['id'];
+            $id_bill =  $list_bill[$i]['id'];
             $bill_pttt =  $list_bill[$i]['bill_pttt'];
             $bill_name =   $list_bill[$i]['bill_name'];
             $bill_address =   $list_bill[$i]['bill_address'];
@@ -34,7 +34,7 @@
             $ngaydathang =   $list_bill[$i]['ngaydathang'];
             $tatal =   $list_bill[$i]['tatal'];
             $bill_status =   $list_bill[$i]['bill_status'];
-            $list_cart = select_cart_idBill($id);
+            $list_cart = select_cart_idBill($id_bill);
 
 
 
@@ -46,10 +46,12 @@
 
     ?>
             <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
-            <form action="index.php?act=confirm_bill&header=headerSecond"  class="w-100 d-f f-d form-pay" style="padding-left: 15px; border-bottom:1px solid var(--border-cart);" method="POST">
+            <form action="index.php?act=changeStatusBill&header=headerSecond" method="POST"  class="w-100 d-f f-d form-my-bill"  >
                 <section class="contain-form-submit-cart w-100">
+                    
 
-                    <div class="form-submit-cart w-100" method="POST">
+                    <div class="form-submit-cart w-100" >
+                    <h3 class="bill_id">Mã đơn hàng : <?= $id_bill ?></h3>
                         <table class="table-cart w-100">
 
                             <thead>
@@ -85,10 +87,7 @@
                                     $result = [($price + floatval($sugar) + floatval($size) + floatval($ice) + floatval($topping)) * floatval($quantity)];
 
                                     $toppingInfo = handleTopping($topping);
-
                                    
-
-
 
                                 ?>
 
@@ -120,10 +119,7 @@
                                             <?= number_format($result[0])  ?>đ
                                         </td>
                                         <input type="text" hidden name="totalCash[]" style="width:60px" value="<?= $result[0] ?>">
-                                        <input type="text" hidden name="sugar" style="width:60px" value="<?= $sugar ?>">
-                                        <input type="text" hidden name="size" style="width:60px" value="<?= $size ?>">
-                                        <input type="text" hidden name="toppping" style="width:60px" value="<?= $topping ?>">
-                                        <input type="text" hidden name="price" style="width:60px" value="<?= $price ?>">
+                                       
                                         <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
 
                                     </tr>
@@ -253,17 +249,9 @@
 
                             </ul>
                             <div class="w-100 d-f jf-b  " style="margin-top: 3.5%;">
-                                <div action="">
-                                    <a class="continue-buy " style="background-color:var(--primary-color);color:var(--white)"  href="">
-                                        Đã nhận được hàng 
-                                    </a>
-                               
-                                </div>
-                                <div>
-                                <a href="" style="padding: 10px 10px;"  class="continue-buy delete-cart-confirm">
-                                    Hủy đơn hàng
-                                </a>
-                                </div>
+                                    <input type="submit" value="Đã nhận được hàng " class="continue-buy receive-product" >    
+                                    <input type="text" value="<?= $id_bill ?>" hidden name="idBill">                           
+                                    <input type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" >
                                                                               
                             </div>
                         </div>
@@ -277,8 +265,10 @@
             </form>
 
     <?php }
-    } ?>
+    } else{ ?>
 
+   <h1 style="margin-top: 20px;">Không có đơn hàng nào</h1>
+<?php } ?>
 
 
 

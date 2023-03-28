@@ -11,4 +11,10 @@ function loadall_binhluan($idpro){
     $listbl=pdo_query($sql);
     return  $listbl;
 }
+function select_comment_count($idpro)
+{
+    $sql = "SELECT * FROM binhluan WHERE idpro = $idpro";
+    $result = pdo_query($sql);
+    return sizeof($result);
+}
 ?>

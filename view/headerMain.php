@@ -43,13 +43,13 @@
               <div class="menu_bar d-f al-c">
                 <ul class="d-f al-c">
                   <li><a class="header-main-link" href="index.php">Trang chủ</a></li>
-                  <li><a class="header-main-link" href="#">Sản phẩm</a></li>
+                  <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
                   <li><a class="header-main-link" href="#">Tin tức</a></li>
                   <li><a class="header-main-link" href="#">Liên hệ</a></li>
                 </ul>
               </div>
             </div>
-            <div class="line"></div>
+            <div class="d-f">
             <div class="login d-f al-c">
               <!-- -------------- Chưa đăng nhập-------------- -->
   
@@ -76,14 +76,14 @@
               <a ><?=$user?></a>
               <ul>
                 <li><a href="index.php?act=thongtintk&header=headerSecond">Thông tin tài khoản</a></li>
-                <li><a href="#">Đơn hàng</a></li>
-                <li><a href="#">Giỏ hàng</a></li>
+                <!-- <li><a href="#">Đơn hàng</a></li> -->
+                <li><a href="index.php?act=viewCart&header=headerSecond">Giỏ hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
               <?php } else { ?>
                 <a href="index.php?act=dangnhap&header=headerSecond">  
-                  <input type="button" value="đăng nhập">
+                  <input type="button" value="đăng nhập" class="input-login">
                 </a>
               <?php } ?>
 
@@ -103,6 +103,8 @@
                 <div class="number">1</div>
               </div>
             </div>
+            </div>
+
           </div>
 
           <!-- --------------header phần danh mục và tìm kiếm số điện thoại-----------------   -->
@@ -130,7 +132,7 @@
               </ul>
             </div>
             <div class="search">
-              <form action="index.php?act=search_product&header=headerSecond" class="d-f" method="POST">
+              <form action="index.php?act=search_product&header=headerprd" class="d-f" method="POST">
                 <input
                   type="text"
                   class="input-search"

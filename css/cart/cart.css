@@ -53,10 +53,20 @@
 .continue-buy{
     padding: 10px 20px ;
     border-radius: 5px;
-    color: #999;
+    /* color: #999; */
     border: none;
     font-size: 1.7rem;
     cursor: pointer;
+   
+}
+.continue-buy:hover{
+    opacity: 0.7;
+}
+.receive-product{
+    background-color:var(--primary-color);
+    color:var(--white);
+    text-align: center;
+    padding: 10px 10px;
 }
 .buy-now{
     padding: 10px 0px ;
@@ -149,9 +159,21 @@
     color: var(--white) !important;
     background-color: red;
     padding: 8px 10px;
+    text-align: center;
 }
 .form-pay{
     padding-left: 15px; 
     border-bottom: 1px solid var(--border-cart);
     padding-bottom: 20px;
+}
+.form-my-bill{
+    padding-left: 15px; 
+    border-bottom: 1px solid var(--border-cart);
+    padding-bottom: 20px;
+}
+.bill_id{
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
 }

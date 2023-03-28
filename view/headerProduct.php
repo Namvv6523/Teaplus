@@ -51,13 +51,13 @@
             <div class="menu_bar d-f al-c">
               <ul class="d-f al-c">
                 <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="index.php?act=sanpham&header=headerSecond">Sản phẩm</a></li>
                 <li><a href="#">Tin tức</a></li>
                 <li><a href="#">Liên hệ</a></li>
               </ul>
             </div>
           </div>
-          <div class="d-f">
+          <div class="line"></div>
             <div class="login d-f al-c">
               <!-- -------------- Chưa đăng nhập-------------- -->
   
@@ -91,7 +91,10 @@
               </ul>
               <?php } else { ?>
                 <a href="index.php?act=dangnhap&header=headerSecond">  
-                <input type="button" value="đăng nhập" class="input-login">
+                  <input type="button" value="đăng nhập">
+                </a>
+                <a href="index.php?act=dangky&header=headerSecond">  
+                  <input type="button" value="đăng ký">
                 </a>
               <?php } ?>
 
@@ -109,50 +112,8 @@
               <div class="number">1</div>
             </div>
           </div>
-          </div>
         </div>
 
         <!-- --------------header phần danh mục và tìm kiếm số điện thoại-----------------   -->
-
-        <div class="header-category_search d-f al-c">
-          <div class="contain_category d-f al-c">
-            <div class="d-f al-c category">
-              <i class="fa-solid fa-bars category-bar"></i>
-              <div class="category-text">Danh mục</div>
-            </div>
-            <i class="fa-solid fa-chevron-down category-icon-down"></i>
-            <ul>
-            <?php
-                for ($i = 0; $i < count($category_home); $i++) {
-                  $category_name = $category_home[$i]["name"];                                    
-                  $id =  $category_home[$i]["id"];            
-                  $url_productByType = "index.php?act=productByType&id=$id&header=headerSecond";
-
-
-                ?>
-
-                <li><a href="<?= $url_productByType ?>"><?= $category_name ?></a></li>
-              
-                <?php } ?>
-            </ul>
-          </div>
-          <div class="search">
-          <form action="index.php?act=search_product&header=headerSecond" class="d-f" method="POST">
-                <input
-                  type="text"
-                  class="input-search"
-                  placeholder="Bạn cần tìm kiếm sản phẩm..."
-                  name="value-search"
-                />
-                <input type="submit" value="Tìm kiếm" class="search-btn" name="submit-value-search" />
-            </form>
-          </div>
-          <div class="contain_number-phone d-f al-c">
-            <div class="icon-phone">
-              <i class="fa-solid fa-phone"></i>
-            </div>
-           
-          </div>
-        </div>
       </header>
       <!-- -----------------------main--------------------------- -->

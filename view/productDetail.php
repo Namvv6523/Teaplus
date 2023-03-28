@@ -259,8 +259,8 @@
                           </div>
                         </section>
                         <div class="submit-form d-f jf-b">
-                            <input type="submit"  value="Thêm vào giỏ hàng" name="addToCart" class="submit_order detail_submit" />
-                            <input type="submit"  value="Mua ngay" class="submit_order detail_submit" />
+                            <input type="submit"  value="Mua ngay" name="buynow"  class="submit_order detail_submit" />
+                            <input type="submit"  value="Thêm vào giỏ hàng" name="addToCart" onclick="alert('Đã thêm vào giỏ hàng')" class="submit_order detail_submit" />
 
                         </div>
                       </form>

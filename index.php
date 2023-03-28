@@ -8,6 +8,7 @@ include "model/taikhoan.php";
 include "model/cart.php";
 include "model/convert.php";
 include "model/bill.php";
+include "model/binhluan.php";
 
 
 include "global.php";
@@ -60,6 +61,11 @@ if (isset($_GET['header'])  && $_GET['header'] != "") {
             }
 
             break;
+        case 'headerprd':
+
+                include "view/headerProduct.php";
+    
+                break;
         default:
         include "view/headerMain.php";
             break;
@@ -75,12 +81,16 @@ $home_product = loadall_sanpham_home();
 if ((isset($_GET['act'])) && $_GET['act'] != "") {
     $act = $_GET['act'];
     switch ($act) {
+        case 'sanpham':
+            $home_product_page = loadall_product_page();
+            include "view/product-page.php";
+            break;
         case 'productByType':
             $id = isset($_GET['id']) ? $_GET['id'] : 0;
             $category_search =  loadall_sanpham("",$id );
             
 
-            include "view/products-by-type.php";
+            include "view/product-page.php";
             break;
         case 'search_product':
                
@@ -88,7 +98,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     $value_search = $_POST['value-search'];
                     if ($value_search != "") {
                         $searchProduct = loadall_sanpham($value_search,0 );
-                        include "view/searchProduct.php";
+                        include "view/product-page.php";
                     }
                   else{
                         header("Location:index.php");
@@ -100,6 +110,29 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     }            
                   
                 break;
+                case 'search_productByPrice':
+               
+                    if(isset($_POST['submit-price-search'])){
+                        $price1 = $_POST['price1'];
+                        $str_replace_price1 = str_replace(",","", $price1);
+                        $price2 = $_POST['price2'];
+                        $str_replace_price2 = str_replace(",","", $price2);
+
+                        if ($price1>0 && $price2>0 ) {
+
+                            $searchProductByprice = loadall_sanpham_price($str_replace_price1,$str_replace_price2 );
+                            include "view/product-page.php";
+                        }
+                      else{
+                        // header("Location:index.php");
+                        include "view/product-page.php";
+
+                      }
+                    }
+         
+                    // include "view/product-page.php";
+                      
+                    break;
             case 'productDetail':
                     $id = isset($_GET['id']) ? $_GET['id'] : 0;
                     $productDetail = loadone_sanpham($id);
@@ -178,34 +211,16 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             break;
             case 'addToCart':
                 if(isset($_SESSION['user']['id'])){
-                        if(isset($_POST['addToCart']) && $_POST['addToCart'] ){
-                        $product_name = isset($_POST['product_name']) ? $_POST['product_name'] : "";                             
-                        $product_price = isset($_POST['product_price']) ? $_POST['product_price'] : 1;                             
-                        $sugar = isset($_POST['sugar']) ? $_POST['sugar'] : 1;                             
-                        $ice = isset($_POST['ice-rock']) ? $_POST['ice-rock'] : 1;                             
-                        $size = isset($_POST['size']) ? $_POST['size'] : 1;                             
-                        $topping = isset($_POST['topping']) ? $_POST['topping'] : 1;                             
-                        $image = isset($_POST['image']) ? $_POST['image'] : "";
-                        $id = isset($_POST['id']) ? $_POST['id'] : 0;
-                        $id_user = $_SESSION['user']['id'];
-                        $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : 1;
-                        $stringTopping = 0;
-                        for($i = 0 ; $i < count($topping);$i++){
-                            $stringTopping += floatval($topping[$i]);
-                        }
-                        $result = ($product_price + floatval($sugar) + floatval($size) + floatval($ice) + floatval($stringTopping)) * floatval($quantity);
-                        $status = 1;
-                           
-
-                        insert_giohang($id,$id_user,$product_name,$image,$sugar,$size,$ice,$stringTopping,$product_price,$quantity,$result,$status);
-                        $addProductCart = [$id,$image,$product_name,$product_price,$sugar,$size,$ice,$topping,$quantity,$result];
-
-                        array_push($_SESSION['mycart'],$addProductCart);
-                                    
-                        // $_SESSION['mycart'] = [];
+                        if(isset($_POST['buynow']) && $_POST['buynow'] ){
+                            $id_user = $_SESSION['user']['id'];
+                        handleInsertToCart($_POST['product_name'], $_POST['product_price'], $_POST['sugar'], $_POST['ice-rock'], $_POST['size'], $_POST['topping'], $_POST['image'], $_POST['id'], $_SESSION['user']['id'], $_POST['quantity']);
                         $cart_result = loadall_cart_idUser($id_user);
-                            }
-                            include "view/cart/view_cart.php";
+                        include "view/cart/view_cart.php";
+                        }
+                        else if(isset($_POST['addToCart']) && $_POST['addToCart'] ){
+                            handleInsertToCart($_POST['product_name'], $_POST['product_price'], $_POST['sugar'], $_POST['ice-rock'], $_POST['size'], $_POST['topping'], $_POST['image'], $_POST['id'], $_SESSION['user']['id'], $_POST['quantity']);
+                            header("Location: index.php");
+                        }
                         }
                         else{
                             header("Location: index.php");
@@ -300,7 +315,30 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                          
                         include "view/cart/mybill.php";
                         break;
-                
+                case 'changeStatusBill' : 
+                    var_dump($_POST['cancelCart']);
+                    if(isset($_SESSION['user'])){
+                        if(isset($_POST['cancelCart'])){
+                            $id = isset($_POST['idBill']) ? $_POST['idBill'] : 0;
+                            $id_user = $_SESSION['user']['id'];
+                            update_bill_status($id,$id_user);
+
+
+                            $list_bill = select_bill_idUser($id_user);   
+                            include "view/cart/mybill.php";                        
+                        }
+
+
+
+                    }
+                    else{
+                        include "view/home.php";
+
+                    }
+
+
+
+                    break;                
             default:
             include "view/home.php";
             break;
