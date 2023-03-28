@@ -105,7 +105,7 @@
               <div class="number">1</div>
             </div>
             <div class="cart">
-              <i class="fa-solid fa-cart-shopping"></i>
+              <a href="index.php?act=myBill">  <i class="fa-solid fa-cart-shopping"></i></a>
               <div class="number">1</div>
             </div>
           </div>

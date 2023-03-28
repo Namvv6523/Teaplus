@@ -58,11 +58,6 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                         $quantity = $list_cart[$i]['soluong'];
                         $result = $list_cart[$i]['thanhtien'];
                         $toppingInfo = handleTopping($topping);
-                        
-                        
-
-
-
                         ?>
 
      
