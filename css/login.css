@@ -12,8 +12,8 @@ section{
     width: 100%;
 }
 body{
-  background-position: center;
-  background-size: cover;
+    background-position: center;
+    background-size: cover; 
 }
 .form-box{
     position: relative;

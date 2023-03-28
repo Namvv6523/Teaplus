@@ -5,17 +5,17 @@
 ?>
 
 <main class="w-100 d-f f-d">
-          <h3>Thêm sản phẩm</h3>
+          <h3 style="text-align: center;">Sửa Danh Mục</h3>
           <div class="search_list-product-admin w-100 d-f jf-c">
-            <form action="index.php?act=updatedm" method="post" enctype="multipart/form-data" class="general-form">
+            <form action="index.php?act=updatedm" method="post" enctype="multipart/form-data" class="form_sp">
 
               <div class="block_form d-f f-d">
-                <label for=""> Mã sản phẩm </label>
-                <input type="text" placeholder="Mã sản phẩm" name="masp" disabled>
+                <label for="label_addsp"> Mã sản phẩm </label>
+                <input class="ten_addsp" type="text" placeholder="Mã sản phẩm" name="masp" disabled>
                 <div class="block_form d-f f-d">
-                <label for=""> Tên Sản Phẩm </label>
+                <label for="label_addsp"> Tên Sản Phẩm </label>
                 
-                <input type="text" placeholder="Mã sản phẩm" name="tenloai" value="<?php if (isset($namedm)&&($namedm!="")) echo $namedm; ?>">
+                <input class="ten_addsp" type="text" placeholder="Mã sản phẩm" name="tenloai" value="<?php if (isset($namedm)&&($namedm!="")) echo $namedm; ?>">
               <!-- </div>
               <div class="block_form d-f f-d">
                 <label for=""> Ảnh </label>
@@ -40,8 +40,8 @@
               </div> -->
               <div class="block_form d-f g-10 al-c">
               <input type="hidden" value="<?php if (isset($id)&&($id>0)) echo $id;?>" class="submit-general-form"  name="id">
-               <input type="submit" value="Lưu" class="submit-general-form"  name="capnhat">
-               <input type="reset" value="Hủy" class="cancel-general-form">
+               <input type="submit" value="Lưu" class="input_addsp"  name="capnhat">
+               <input type="reset" value="Hủy" class="input_addsp">
               </div>
               <?php 
                         if(isset($thongbao)&&($thongbao)){
