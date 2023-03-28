@@ -63,7 +63,7 @@
                                 <td><input type="checkbox"></td>
                                 <td class="td_sp">' . $id . '</td>
                                 <td class="td_sp">' . $name . '</td>
-                                <td class="td_sp">' . $price . '</td>
+                                <td class="td_sp">' . number_format($price) . '</td>
                                 <td class="td_sp">' . $hinh . '</td>
                                 <td class="td_sp">' . $mota . '</td>
                                 <td class="td_sp">' . $luotxem . '</td>

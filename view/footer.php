@@ -91,8 +91,13 @@
         <div class="spoke"></div>
       </div>
     </div>
+<?php
+if(!isset($_GET['f'])){ ?>
+  <script type="module" src="JavaScript/main.js"></script>
 
-    <script type="module" src="JavaScript/main.js"></script>
+ <?php } ?>
+
+
     <script type="text/javascript" src="JavaScript/link.js"></script>
     <script type="text/javascript" src="JavaScript/header.js"></script>
     <script type="text/javascript" src="JavaScript/banner.js"></script>

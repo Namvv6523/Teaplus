@@ -27,24 +27,16 @@
              <div class="contain_sideBar-filter_list-product w-100 d-f al-t">
                  <div class="side-bar_filter-product">
                   <!--  -->
-                  <label id="title_categorys"
-                  style="
-                      margin-bottom: 10px;
-                      color: crimson;                  
-                  "
-
-                  for="">Danh Mục :</label>
+                  <label id="title_categorys" for="">Danh Mục </label>
                   <ul  id="categorys">
-            <?php
+                <?php
                 for ($i = 0; $i < count($category_home); $i++) {
                   $category_name = $category_home[$i]["name"];                                    
                   $id =  $category_home[$i]["id"];            
                   $url_productByType = "index.php?act=productByType&id=$id&header=headerprd";
-                  $count = count_productByiddm($id);
-                  extract($count);
                 ?>
               
-                <li style="text-transform:capitalize;" ><a id="name_categorys" style="color: black;" href="<?= $url_productByType ?>"><?= $category_name ?> (<?php echo $count['0']['count'];?>)</a></li>
+                <li style="text-transform:capitalize;" ><a id="name_categorys"  href="<?= $url_productByType ?>"><?= $category_name ?></a></li>
               
                 <?php } ?>
             </ul>
@@ -56,7 +48,7 @@
                                  <input name="price1" type="text" placeholder="Từ" >
                                  <input name="price2" type="text" placeholder="Đến">
                              </div>
-                             <input name="submit-price-search" type="submit" value="Tìm kiếm">
+                             <input name="submit-price-search" type="submit" value="Tìm kiếm" class="submit-price-search">
                             </form>
     
                      </div>

@@ -23,7 +23,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="../css/prd_page.css">
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -32,6 +31,7 @@
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/product/product-page.css" />
     <link rel="stylesheet" href="css/product/product-detail.css">
+    <link rel="stylesheet" href="css/dangnhap.css" />
     <link rel="stylesheet" href="css/comment.css">
     <title>Trang chủ</title>
   </head>
@@ -44,7 +44,7 @@
         <div class="header-logo-menu w-100 d-f">
           <div class="contain_logo_menu d-f">
             <div class="logo d-f al-c">
-              <a href="#" class="d-f al-c jf-c">
+              <a href="index.php" class="d-f al-c jf-c">
                 <img style="width: 80px" src="./img/logo/logo.jpg" alt="" />
               </a>
             </div>
@@ -52,13 +52,13 @@
             <div class="menu_bar d-f al-c">
               <ul class="d-f al-c">
                 <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
+                <li><a href="#">Sản phẩm</a></li>
                 <li><a href="#">Tin tức</a></li>
                 <li><a href="#">Liên hệ</a></li>
               </ul>
             </div>
           </div>
-          <div class="line"></div>
+          <div class="d-f">
             <div class="login d-f al-c">
               <!-- -------------- Chưa đăng nhập-------------- -->
   
@@ -92,10 +92,10 @@
               </ul>
               <?php } else { ?>
                 <a href="index.php?act=dangnhap&header=headerSecond">  
-                  <input type="button" value="đăng nhập">
+                <input type="button" value="đăng nhập" class="input-login">
                 </a>
                 <a href="index.php?act=dangky&header=headerSecond">  
-                  <input type="button" value="đăng ký">
+                  <input type="button" value="đăng ký" class="input-login">
                 </a>
               <?php } ?>
 
@@ -113,6 +113,7 @@
               <div class="number">1</div>
             </div>
           </div>
+          </div>
         </div>
 
         <!-- --------------header phần danh mục và tìm kiếm số điện thoại-----------------   -->
@@ -121,7 +122,7 @@
           <div class="contain_category d-f al-c">
             <div class="d-f al-c category">
               <i class="fa-solid fa-bars category-bar"></i>
-              <div style="cursor: pointer;" class="category-text">Danh mục</div>
+              <div class="category-text">Danh mục</div>
             </div>
             <i class="fa-solid fa-chevron-down category-icon-down"></i>
             <ul>
@@ -129,7 +130,7 @@
                 for ($i = 0; $i < count($category_home); $i++) {
                   $category_name = $category_home[$i]["name"];                                    
                   $id =  $category_home[$i]["id"];            
-                  $url_productByType = "index.php?act=productByType&id=$id&header=headerprd";
+                  $url_productByType = "index.php?act=productByType&id=$id&header=headerSecond";
 
 
                 ?>
@@ -140,7 +141,7 @@
             </ul>
           </div>
           <div class="search">
-          <form action="index.php?act=search_product&header=headerprd" class="d-f" method="POST">
+          <form action="index.php?act=search_product&header=headerSecond" class="d-f" method="POST">
                 <input
                   type="text"
                   class="input-search"
@@ -154,10 +155,7 @@
             <div class="icon-phone">
               <i class="fa-solid fa-phone"></i>
             </div>
-            <div class="numberPhone d-f f-d">
-              <span class="numberPhone_number">0123456678</span>
-              <span class="numberPhone_24">Hỗ trợ 24/07</span>
-            </div>
+           
           </div>
         </div>
       </header>

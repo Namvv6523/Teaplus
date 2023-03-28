@@ -8,7 +8,7 @@
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
               <section class="contain-form-submit-cart w-100">
                
-              <form action="index.php?act=upgradeGiohang" class="form-submit-cart w-100" method="POST">         
+              <form action="index.php?act=upgradeGiohang&header=headerSecond&f=1" class="form-submit-cart w-100" method="POST">         
                <table class="table-cart w-100">
       
                 <thead>
@@ -29,7 +29,7 @@
 
                 $total = 0;
                 for ($i = 0; $i < count($cart_result); $i++) {
-                  $id =  $cart_result[$i]['id'] ;
+                    $id =  $cart_result[$i]['id'] ;
                     $idsp =  $cart_result[$i]['idsp'] ;
                     $image =   $cart_result[$i]['image'] ;
                     $product =   $cart_result[$i]['tensp']  ;
@@ -73,16 +73,21 @@
                            <i style="margin-left: 1px;" class="fa-solid fa-minus"></i>
                          </div>
                          <div class="product_quantity"><?= $quantity ?></div>
-                         <input style="width:30px" type="number" name="quantity1" value="<?= $quantity ?>">
-                         <input type="text" hidden name="" value="<?= $id ?>">
+                         <input style="width:30px" type="number" name="quantity1[]" value="<?= $quantity ?>">
+                         <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
                          <div class="add circle_border">
                            <i style="margin-left: 1px;" class="fa-solid fa-plus"></i>
                          </div>
                        </div>
                      </td>
-                     <td>
-                     <?= number_format($result[0])  ?>đ
+                     <td class="totalCash">
+                      <?= number_format($result[0])  ?>đ
                     </td>
+                    <input type="text" hidden name="totalCash[]" style="width:60px" value="<?= $result[0] ?>">
+                    <input type="text" hidden name="sugar" style="width:60px" value="<?= $sugar ?>">
+                    <input type="text" hidden name="size" style="width:60px" value="<?= $size ?>">
+                    <input type="text" hidden name="toppping" style="width:60px" value="<?= $topping ?>">
+                    <input type="text" hidden name="price" style="width:60px" value="<?= $price ?>">
                      <td>
                      <a href="<?= $url_delete ?>">Xóa</a>
                      </td>
@@ -100,6 +105,11 @@
                  <button>
                    <a href="index.php" class="continue-buy">
                      Tiếp tục mua hàng
+                   </a>
+                 </button>
+                 <button>
+                   <a href="index.php?act=orderCart&header=headerSecond" class="continue-buy">
+                     Thanh toán
                    </a>
                  </button>
                  <div class="contain-upgrade-cart ">

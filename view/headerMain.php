@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/banner.css" />
     <link rel="stylesheet" href="css/slide.css" />
     <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/dangnhap.css" />
     <title>Trang chủ</title>
   </head>
   <body>
@@ -30,12 +31,11 @@
       <main class="w-100 d-f f-d al-c">
         <header class="w-100 d-f f-d header-main">
       
-
           <!-- --------------header phần logo và menu bar----------------- -->
           <div class="header-logo-menu w-100 d-f">
             <div class="contain_logo_menu d-f">
               <div class="logo d-f al-c">
-                <a href="#" class="d-f al-c jf-c">
+                <a href="index.php" class="d-f al-c jf-c">
                   <img style="width: 80px" src="./img/logo/logo_png.png" alt="" />
                 </a>
               </div>
@@ -49,7 +49,7 @@
                 </ul>
               </div>
             </div>
-            <div class="line"></div>
+            <div class="d-f">
             <div class="login d-f al-c">
               <!-- -------------- Chưa đăng nhập-------------- -->
   
@@ -76,17 +76,17 @@
               <a ><?=$user?></a>
               <ul>
                 <li><a href="index.php?act=thongtintk&header=headerSecond">Thông tin tài khoản</a></li>
-                <li><a href="#">Đơn hàng</a></li>
-                <li><a href="#">Giỏ hàng</a></li>
+                <!-- <li><a href="#">Đơn hàng</a></li> -->
+                <li><a href="index.php?act=viewCart&header=headerSecond">Giỏ hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
               <?php } else { ?>
                 <a href="index.php?act=dangnhap&header=headerSecond">  
-                  <input type="button" value="đăng nhập">
+                  <input type="button" value="đăng nhập" class="input-login">
                 </a>
                 <a href="index.php?act=dangky&header=headerSecond">  
-                  <input type="button" value="đăng ký">
+                  <input type="button" value="đăng ký" class="input-login">
                 </a>
               <?php } ?>
 
@@ -100,10 +100,14 @@
                 <div class="number">1</div>
               </div>
               <div class="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <a href="index.php?act=myBill&header=headerSecond">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </a>
                 <div class="number">1</div>
               </div>
             </div>
+            </div>
+
           </div>
 
           <!-- --------------header phần danh mục và tìm kiếm số điện thoại-----------------   -->
@@ -112,7 +116,7 @@
             <div class="contain_category d-f al-c">
               <div class="d-f al-c category">
                 <i class="fa-solid fa-bars category-bar"></i>
-                <div style="cursor: pointer;" class="category-text">Danh mục</div>
+                <div class="category-text">Danh mục</div>
               </div>
               <i class="fa-solid fa-chevron-down category-icon-down"></i>
               <ul>
@@ -120,7 +124,8 @@
                 for ($i = 0; $i < count($category_home); $i++) {
                   $category_name = $category_home[$i]["name"];                                    
                   $id =  $category_home[$i]["id"];            
-                  $url_productByType = "index.php?act=productByType&id=$id&header=headerprd";
+                  $url_productByType = "index.php?act=productByType&id=$id&header=headerSecond";
+                  
 
                 ?>
 

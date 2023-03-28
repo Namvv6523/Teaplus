@@ -11,3 +11,18 @@
   
   box-sizing:border-box;
 }
+.avatarComment{
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  overflow: hidden;
+  border-radius: 50%;
+
+}
+.avatarComment img{
+  width: 30px;
+  height: auto;
+}
+

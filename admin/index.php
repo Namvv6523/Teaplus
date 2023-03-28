@@ -107,6 +107,7 @@ if (isset($_GET['act'])) {
                 $id = $_POST["id"];
                 $iddm = $_POST["iddm"];
                 $tensp = $_POST["tensp"];
+                var_dump($tensp);
                 $giasp = $_POST["giasp"];
                 $mota = $_POST["mota"];
                 $hinh = $_FILES['hinh']['name'];

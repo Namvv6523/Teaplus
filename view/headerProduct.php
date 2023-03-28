@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/product/product-page.css" />
     <link rel="stylesheet" href="css/product/product-detail.css">
+    <link rel="stylesheet" href="css/dangnhap.css" />
     <link rel="stylesheet" href="css/comment.css">
     <title>Trang chủ</title>
   </head>
@@ -43,7 +44,7 @@
         <div class="header-logo-menu w-100 d-f">
           <div class="contain_logo_menu d-f">
             <div class="logo d-f al-c">
-              <a href="#" class="d-f al-c jf-c">
+              <a href="index.php" class="d-f al-c jf-c">
                 <img style="width: 80px" src="./img/logo/logo.jpg" alt="" />
               </a>
             </div>

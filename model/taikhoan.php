@@ -23,8 +23,8 @@
     
     function checkuser($user,$pass){
         $sql ="select * from taikhoan where user='".$user."' and pass='".$pass."'"; 
-        $sp = pdo_query_one($sql);
-        return $sp;
+        $user = pdo_query_one($sql);
+        return $user;
     
     }
     function checkemail($email){

@@ -8,10 +8,10 @@
           }else{
             $hinh="no photo";
           }
-
+var_dump($name);
 ?>
 <h1>CẬP NHẬP SẢN PHẨM</h1>
-<form class="form_sp" action="index.php?act=updatesp" method="post" enctype="multipart/form-data">
+<form class="form_sp" action="index.php?act=updatesp" method="POST" enctype="multipart/form-data">
       <!-- <label class="label_addsp" for="">Mã sản phẩm:</label>
       <input class="ten_addsp" type="text" name="masp" /> -->
       <select name="iddm">
@@ -26,6 +26,7 @@
       </select>
 
       <label class="label_addsp" for="">Tên sản phẩm</label>
+      <?php var_dump($name) ?>
       <input class="ten_addsp" type="text" name="tensp" value="<?=$name?>" />
       
       <label class="label_addsp" for="">Giá</label>
