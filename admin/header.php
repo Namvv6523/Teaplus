@@ -63,7 +63,7 @@
               </a>
               <ul class="sub-menu">
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=listbill">
                     <div>
                       <i class="fa-regular fa-circle"></i>
                       <span>Quản lý đơn hàng</span>
@@ -136,7 +136,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=addtk">
                     <div>
                       <i class="fa-regular fa-circle"></i>
                       <span>Thêm tài khoản</span>
