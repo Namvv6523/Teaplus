@@ -6,8 +6,9 @@ include "model/danhmuc.php";
 include "model/pdo.php";
 include "model/taikhoan.php";
 include "model/cart.php";
-// include "model/account.php";
-// include "model/cart.php";
+include "model/convert.php";
+include "model/bill.php";
+
 
 include "global.php";
 if(!isset($_SESSION['mycart'])){
@@ -195,9 +196,9 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                            
 
                         insert_giohang($id,$id_user,$product_name,$image,$sugar,$size,$ice,$stringTopping,$product_price,$quantity,$result);
-                        // $addProductCart = [$id,$image,$product_name,$product_price,$sugar,$size,$ice,$topping,$quantity,$total];
+                        $addProductCart = [$id,$image,$product_name,$product_price,$sugar,$size,$ice,$topping,$quantity,$result];
 
-                        // array_push($_SESSION['mycart'],$addProductCart);
+                        array_push($_SESSION['mycart'],$addProductCart);
                                     
                         // $_SESSION['mycart'] = [];
                         $cart_result = loadall_cart_idUser($id_user);
@@ -246,6 +247,54 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     include "view/cart/view_cart.php";
                     
                     break;
+                case 'confirm_bill':
+                    if(isset($_SESSION['user'])){ 
+                            $id_user = $_SESSION['user']['id'];                                                   
+                            $userName = isset($_POST['user']) ? $_POST['user'] : "";
+                            $email = isset($_POST['email']) ? $_POST['email'] : "";
+                            $bill_address = isset($_POST['address']) ? $_POST['address'] : "";
+                            $bill_tele = isset($_POST['number-phone']) ? $_POST['number-phone'] : 0;
+                            $note = isset($_POST['note']) ? $_POST['note'] : "";
+                            $payment_method = isset($_POST['credit']) ? $_POST['credit'] : 0;
+                            $bill_date = date('H:i:sa d/m/Y');
+                            $total = isset($_POST['total']) ? $_POST['total'] : 0;
+                            $status = 0;
+                            $id_bill = insert_bill($id_user,$userName,$bill_address,$bill_tele,$payment_method,$bill_date,$total,$status);
+                            // $id_user = $_SESSION['user']['id'];
+                            $cart_result = loadall_cart_idUser($id_user);
+                            for($i = 0 ; $i < count($_SESSION['mycart']);$i++){
+                                insert_cart($id_user,
+                                $cart_result[$i]['idsp'],                    
+                                 $cart_result[$i]['image'],
+                                 $cart_result[$i]['tensp'],
+                                 $cart_result[$i]['gia'],
+                                 $cart_result[$i]['sugar'],
+                                 $cart_result[$i]['size'],
+                                 $cart_result[$i]['ice'],
+                                 $cart_result[$i]['topping'],
+                                 $cart_result[$i]['soluong'],
+                                 $cart_result[$i]['thanhtien'],                                 
+                                    $id_bill);
+                            
+            
+                        }
+                        $_SESSION['mycart'] = [];
+                        $list_bill = select_bill_one($id_bill);                        
+                        $list_cart = select_cart_idBill($id_bill);                        
+                        include "view/cart/bill_confirm.php";
+                    }
+                    else{
+                        include "view/home.php";
+                    }
+                        // $list_bill = select_bill_one($id_bill);
+                        // $list_cart = select_cart_idBill($id_bill);
+                               
+                    break;
+                case 'myBill':
+                    $list_bill = select_bill_one($id_bill);                        
+                    $list_cart = select_cart_idBill($id_bill);   
+                        include "view/cart/mybill.php";
+                        break;
                 
             default:
             include "view/home.php";
