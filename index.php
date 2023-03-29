@@ -213,7 +213,12 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                 if(isset($_SESSION['user']['id'])){
                         if(isset($_POST['buynow']) && $_POST['buynow'] ){
                             $id_user = $_SESSION['user']['id'];
-                        handleInsertToCart($_POST['product_name'], $_POST['product_price'], $_POST['sugar'], $_POST['ice-rock'], $_POST['size'], $_POST['topping'], $_POST['image'], $_POST['id'], $_SESSION['user']['id'], $_POST['quantity']);
+                            if(is_array($_POST['topping']) &&  isset($_POST['topping']) ){
+                                $checkTopping = $_POST['topping'];
+                            }else{
+                                $checkTopping = 0;
+                            }
+                        handleInsertToCart($_POST['product_name'], $_POST['product_price'], $_POST['sugar'], $_POST['ice-rock'], $_POST['size'], $checkTopping, $_POST['image'], $_POST['id'], $_SESSION['user']['id'], $_POST['quantity']);
                         $cart_result = loadall_cart_idUser($id_user);
                         include "view/cart/view_cart.php";
                         }

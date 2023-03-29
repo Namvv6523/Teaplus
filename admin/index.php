@@ -107,7 +107,6 @@ if (isset($_GET['act'])) {
                 $id = $_POST["id"];
                 $iddm = $_POST["iddm"];
                 $tensp = $_POST["tensp"];
-                var_dump($tensp);
                 $giasp = $_POST["giasp"];
                 $mota = $_POST["mota"];
                 $hinh = $_FILES['hinh']['name'];
@@ -119,6 +118,7 @@ if (isset($_GET['act'])) {
                     //echo "Sorry, there was an error uploading your file.";
                 }
                 update_sanpham($id,$iddm, $tensp,$giasp,$mota,$hinh);
+               
                 $thongbao = "Cập nhật thành công";
             }
             $listdanhmuc = loadall_danhmuc();

@@ -184,11 +184,17 @@ function handleInsertToCart($productValue, $priceValue, $sugarValue, $iceValue, 
     else{
         $quantity = 1;
     }
+    if($topping == null){
+        $topping = 0;
+    }
     $stringTopping = 0;
     if (is_array($topping) && $topping != null) {
         for ($i = 0; $i < count($topping); $i++) {
             $stringTopping += floatval($topping[$i]);
         }
+    }
+    else{
+        $stringTopping = 0;
     }
     $result = ($product_price + floatval($sugar) + floatval($size) + floatval($ice) + floatval($stringTopping)) * floatval($quantity);
     $status = 1;

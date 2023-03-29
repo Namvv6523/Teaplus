@@ -35,7 +35,9 @@
             $tatal =   $list_bill[$i]['tatal'];
             $bill_status =   $list_bill[$i]['bill_status'];
             $list_cart = select_cart_idBill($id_bill);
-
+            echo "<pre>";
+            // var_dump($list_cart);
+            echo "</pre>";
 
 
 
@@ -70,17 +72,17 @@
                                 <?php
 
                                 $totalSum = 0;
-                                
-                                    $id = $list_cart[0]['id'];
-                                    $image =  $list_cart[0]['img'];
-                                    $product =  $list_cart[0]['name'];
-                                    $price =  $list_cart[0]['price'];
-                                    $sugar =  $list_cart[0]['sugar'];
-                                    $size =  $list_cart[0]['size'];
-                                    $ice =  $list_cart[0]['ice'];
-                                    $topping =  $list_cart[0]['topping'];
-                                    $quantity =  $list_cart[0]['soluong'];
-                                    $total =  $list_cart[0]['thanhtien'];
+                                for($j = 0 ; $j < count($list_cart);$j++){
+                                    $id = $list_cart[$j]['id'];
+                                    $image =  $list_cart[$j]['img'];
+                                    $product =  $list_cart[$j]['name'];
+                                    $price =  $list_cart[$j]['price'];
+                                    $sugar =  $list_cart[$j]['sugar'];
+                                    $size =  $list_cart[$j]['size'];
+                                    $ice =  $list_cart[$j]['ice'];
+                                    $topping =  $list_cart[$j]['topping'];
+                                    $quantity =  $list_cart[$j]['soluong'];
+                                    $total =  $list_cart[$j]['thanhtien'];
                                     $totalSum += $total;
                                     $billTotal = $totalSum + 10000;
 
@@ -88,7 +90,7 @@
 
                                     $toppingInfo = handleTopping($topping);
                                    
-
+                                
                                 ?>
 
                                     <!-- ----------------------------- -->
@@ -123,6 +125,7 @@
                                         <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
 
                                     </tr>
+                                    <?php } ?>
                                 
                                 <!-- ----------------------------- -->
 

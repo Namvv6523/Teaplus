@@ -2,6 +2,7 @@
 // import handleUpgradeCart from "./cart.js"
 const product = document.querySelectorAll(".product");
 
+
 product.forEach((element, index) => {
   element.addEventListener("mouseover", function () {
     const activeShow = document.querySelectorAll(".product-icon-cart-heart");
@@ -10,6 +11,7 @@ product.forEach((element, index) => {
     const productHeart = document.querySelectorAll(".product_heart");
     productCart[index].classList.add("active_rotate");
     productHeart[index].classList.add("active_rotate");
+    return likeheart(index);
   });
   element.addEventListener("mouseout", function () {
     const activeShow = document.querySelectorAll(".product-icon-cart-heart");
@@ -18,8 +20,31 @@ product.forEach((element, index) => {
     const productHeart = document.querySelectorAll(".product_heart");
     productCart[index].classList.remove("active_rotate");
     productHeart[index].classList.remove("active_rotate");
+    
+
   });
 });
+let heartNumber = 0;
+const likeheart =(index)=>{
+  const productHeartLink = document.querySelectorAll(".product-heart");
+  let isLike = false;
+  productHeartLink[index].addEventListener("click",()=>{
+    isLike = true;
+    heartNumber++;
+    console.log(heartNumber);
+    if(isLike){
+      productHeartLink[index].classList.add("isLike");
+
+    }
+    setTimeout(()=>{
+      productHeartLink[index].classList.remove("isLike");
+      isLike = true;
+
+    },500)
+  })
+
+
+}
 
 // ---------------show menu choice---------------
 // ----------- close and open menu ----------------

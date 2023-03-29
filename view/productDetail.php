@@ -99,6 +99,16 @@
                                 <span>(1,000 VNĐ)</span>
 
                                </div>
+                               <!-- ------------------ -->
+                               <div class="d-f f-d">
+
+                               <div class="d-f g-10">
+                                  <input type="radio" value="0" class="input" name="sugar" />
+                                  <label for="">0% </label>
+                                </div>
+                                <span>(0 VNĐ)</span>
+
+                               </div>
                               </div>
                             </div>
                             <!-- ------ -->
@@ -247,6 +257,14 @@
                                     name="topping[]"
                                     class="input"
                                     value="8000"
+                                  />
+                                  <input
+                                    type="checkbox"
+                                    name="topping[]"
+                                    class="input"
+                                    value="0"
+                                    checked
+                                    hidden
                                   />
                                   <label for="">Trân châu cam</label>
                                 </div>

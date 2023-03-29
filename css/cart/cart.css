@@ -165,6 +165,12 @@
     padding-left: 15px; 
     border-bottom: 1px solid var(--border-cart);
     padding-bottom: 20px;
+    flex-direction: column;
+}
+.form-confirm{
+    padding-left: 15px; 
+    border-bottom: 1px solid var(--border-cart);
+    padding-bottom: 20px;
 }
 .form-my-bill{
     padding-left: 15px; 

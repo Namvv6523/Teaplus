@@ -106,7 +106,7 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                <section class="contain-info_user-pay w-100 ">
      
                  <!-- --------------Thông tin người dùng---------v----- -->
-                 <form action="" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;">
+                 <form action="" class="w-100 d-f jf-b form-confirm" style="padding-left: 15px;">
                  <div class="info_user w-45">
                      <div>
                          <span style="color: var(--primary-color);font-weight: 600;">Trạng thái đơn hàng : </span>

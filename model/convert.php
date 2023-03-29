@@ -3,6 +3,9 @@
 
 function handleSugar($sugar){
     switch ($sugar) {
+        case '0':
+            $sugarInfo = "0%";
+        break;
         case '2000':
             $sugarInfo = "100%";
         break;
