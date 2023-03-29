@@ -44,6 +44,7 @@ var_dump($name);
       
       <input class="input_addsp" type="reset" value="NHẬP LẠI">
       <a href="index.php?act=listsp"><input class="input_addsp" type="button" value="DANH SÁCH" /></a>
+      <a href="index.php?act=listsp"><input class="input_addsp" type="button" value="DANH SÁCH" /></a>
 
       <?php
         if(isset($thongbao)&&($thongbao!="")){

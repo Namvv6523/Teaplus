@@ -14,20 +14,25 @@
         <form action="index.php?act=thongtintk&header=headerSecond" method="post" enctype="multipart/form-data">
         
         emai :
-        <input type="email" name="email" value="<?=$email?>"> <br>
+        <input type="email" name="email" value="<?=$email?>">
+         <br>
         username : 
-        <input type="text" name="user" value="<?=$user?>"> <br>
+        <input type="text" name="user" value="<?=$user?>">
+         <br>
         password : 
-        <input type="password" name="pass" value="<?=$pass?>"> <br>
+        <input type="password" name="pass" value="<?=$pass?>"> 
+        <br>
         address : 
-        <input type="text" name="address" value="<?=$address?>"> <br>   
+        <input type="text" name="address" value="<?=$address?>"> 
+        <br>   
          
         ảnh : <br>  
-        <img width="50" src="<?= $hinhpath ?>" alt="">
+        <img  src="<?= $hinhpath ?>" alt="">
         <input type="file" name="hinh" value=""> <br>
 
         số điện thoại: 
-        <input type="text" name="tel" value="<?=$tel?>"> <br>
+        <input type="text" name="tel" value="<?=$tel?>"> 
+        <br>
 
         <!-- <img style="width: 100px; height: auto;" src="./upload/img/user/img_user.jpg" alt="">" -->
         <input type="hidden" name="id" value="<?=$id?>">

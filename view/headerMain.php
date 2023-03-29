@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="css/slide.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/dangnhap.css" />
+    <!-- <link rel="stylesheet" href="css/proFileUser.css"> -->
+    <link rel="stylesheet" href="css/proFileUser.css">
+    
     <title>Trang chủ</title>
   </head>
   <body>

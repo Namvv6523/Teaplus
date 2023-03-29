@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="css/product/product-detail.css">
     <link rel="stylesheet" href="css/dangnhap.css" />
     <link rel="stylesheet" href="css/comment.css">
+    <!-- <link rel="stylesheet" href="css/proFileUser.css"> -->
+    <link rel="stylesheet" href="css/proFileUser.css">
+
     <title>Trang chủ</title>
   </head>
   <body>

@@ -118,14 +118,15 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         $price2 = $_POST['price2'];
                         $str_replace_price2 = str_replace(",","", $price2);
 
-                        if ($price1>0 && $price2>0 ) {
+                        if ($str_replace_price1>=0 && $str_replace_price2>0 ) {
 
                             $searchProductByprice = loadall_sanpham_price($str_replace_price1,$str_replace_price2 );
                             include "view/product-page.php";
                         }
                       else{
-                        // header("Location:index.php");
-                        include "view/product-page.php";
+                        header("Location: view/product-page.php");
+
+                        // include "view/product-page.php";    
 
                       }
                     }
@@ -198,7 +199,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                  
                              }
                              
-                            include "./view/taikhoan/edit_taikhoan.php";
+                            include "./view/taikhoan/proFileUser.php";
                              
                              
                             break;
