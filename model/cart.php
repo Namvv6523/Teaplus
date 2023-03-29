@@ -174,14 +174,14 @@ function loadall_thongke() {
   }
 function loadall_thongke_khachhang() {
   // Build SQL query to select data from 'sanpham' and 'taikhoan' tables
-    $sql = "SELECT COUNT(taikhoan.id) AS counttk";
+    $sql = "SELECT COUNT(taikhoan.id) AS countkh, SUM(sanpham.id) AS countsp, SUM(sanpham.price) AS sumprice";
     $sql .= " FROM sanpham";
-    $sql .= " LEFT JOIN taikhoan ON taikhoan.id = sanpham.id";
+    $sql .= "  JOIN taikhoan ON taikhoan.id = sanpham.id";
     $sql .= " GROUP BY taikhoan.id";
     $sql .= " ORDER BY taikhoan.id DESC";
     // Execute SQL query and return the result set
-    $listtk = pdo_query($sql);
-    return $listtk;
+    $listdb = pdo_query($sql);
+    return $listdb;
 }
 ?>
 
