@@ -114,9 +114,9 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                        </div>
                    <div>
                      
-                       <a class="get-old-info" href="">
+                       <!-- <a class="get-old-info" href="">
                          Cập nhật trạng thái 
-                       </a>
+                       </a> -->
                      
                        <!-- ------- -->
                        <div class="d-f w-100 m-t-b10">

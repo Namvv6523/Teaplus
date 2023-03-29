@@ -68,17 +68,17 @@ function handleTopping($topping){
         case 0 : 
             $toppingInfo = ["Không có"];
             break;
-        case 5000:
+        case 4000:
             $toppingInfo = ["Chân trâu baby"];
         break;
-        case 11000:
+        case 10000:
             $toppingInfo = ["Chân trâu baby","Khoai môn"];
         break;
-        case 18000:
-            $toppingInfo = ["Chân trâu baby","Khoai môn" ,"Trân châu đen"];
+        case 11000:
+            $toppingInfo = ["Chân trâu baby","Trân châu đen"];
         break;
-        case 26000:
-            $toppingInfo = ["Chân trâu baby", "Khoai môn", "Trân châu đen" , "Trân châu cam"];
+        case 12000:
+            $toppingInfo = ["Chân trâu baby", "Trân châu cam"];
         break;
         case 6000:
             $toppingInfo = ["Khoai môn"];
@@ -86,17 +86,20 @@ function handleTopping($topping){
         case 13000:
             $toppingInfo = ["Khoai môn" , "Trân châu đen"];
         break;
-        case 21000:
-            $toppingInfo = ["Khoai môn", "Trân châu đen" , "Trân châu cam"];
-        break;
-        case 7000:
-            $toppingInfo = ["Trân châu đen"];
+        case 14000:
+            $toppingInfo = ["Khoai môn", "Trân châu cam"];
         break;
         case 15000:
             $toppingInfo = ["Trân châu đen" , "Trân châu cam"];
         break;
-        case 8000:
-            $toppingInfo = ["Trân châu cam"];
+        case 17000:
+            $toppingInfo = ["Chân trâu baby","Khoai môn", "Trân châu đen"];
+        break;
+        case 21000:
+            $toppingInfo = ["Khoai môn","Trân châu đen" , "Trân châu cam"];
+        break;
+        case 25000:
+            $toppingInfo = ["Chân trâu baby","Khoai môn","Trân châu đen" , "Trân châu cam"];
         break;
     
         default:

@@ -39,6 +39,7 @@
     border: none;
     font-size: 1.7rem;
     cursor: no-drop;
+    /* pointer-events: none; */
 
 }
 .contain-upgrade-cart{
@@ -49,6 +50,8 @@
     font-size: 1.7rem;
     cursor: no-drop;
     background-color: #f1f1f1   ;
+    pointer-events :none;
+
 }
 .continue-buy{
     padding: 10px 20px ;

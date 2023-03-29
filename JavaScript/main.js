@@ -29,6 +29,7 @@ const likeheart =(index)=>{
   const productHeartLink = document.querySelectorAll(".product-heart");
   let isLike = false;
   productHeartLink[index].addEventListener("click",()=>{
+    console.log(index);
     isLike = true;
     heartNumber++;
     console.log(heartNumber);
@@ -40,7 +41,7 @@ const likeheart =(index)=>{
       productHeartLink[index].classList.remove("isLike");
       isLike = true;
 
-    },500)
+    },300)
   })
 
 

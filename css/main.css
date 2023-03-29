@@ -75,10 +75,10 @@ transition-delay: 0.2s;
   margin-top: 3px;
 }
 .product-heart{
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .isLike{
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out !important;
 
   transform: scale(1.6);
 }

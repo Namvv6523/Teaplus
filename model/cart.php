@@ -201,9 +201,9 @@ function handleInsertToCart($productValue, $priceValue, $sugarValue, $iceValue, 
 
 
     insert_giohang($id, $id_user, $product_name, $image, $sugar, $size, $ice, $stringTopping, $product_price, $quantity, $result, $status);
-    $addProductCart = [$id, $image, $product_name, $product_price, $sugar, $size, $ice, $topping, $quantity, $result];
+    // $addProductCart = [$id, $image, $product_name, $product_price, $sugar, $size, $ice, $topping, $quantity, $result];
 
-    array_push($_SESSION['mycart'], $addProductCart);
+    // array_push($_SESSION['mycart'], $addProductCart);
 
     // $_SESSION['mycart'] = [];
    

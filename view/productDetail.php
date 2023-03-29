@@ -16,7 +16,7 @@
         $image_name = $productDetail['img'];
         $image_url = "upload/";
         $image = $image_url . $image_name;
-        $number = 5000 + 2000 + 5000;
+        $number = 4000 + 2000 + 5000;
         $totalPrice = $price + $number;
         ?>
 
@@ -215,12 +215,12 @@
                                     type="checkbox"
                                     name="topping[]"
                                     class="input"
-                                    value="5000"
+                                    value="4000"
                                     checked
                                   />
                                   <label for="">Chân trâu baby </label>
                                 </div>
-                                <span class="price-beside">(5000 VNĐ)</span>
+                                <span class="price-beside">(4000 VNĐ)</span>
 
                                 </div>
 

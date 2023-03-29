@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="css/banner.css" />
     <link rel="stylesheet" href="css/slide.css" />
     <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/dangnhap.css" />
+
     <title>Trang chủ</title>
   </head>
   <body>
@@ -76,6 +78,15 @@
               <a ><?=$user?></a>
               <ul>
                 <li><a href="index.php?act=thongtintk&header=headerSecond">Thông tin tài khoản</a></li>
+
+            <?php
+            if($_SESSION['user']['role']==1){
+              ?>
+                <li><a href="admin/index.php">Đăng nhập admin</a></li>
+
+              <?php
+            }
+            ?>
                 <!-- <li><a href="#">Đơn hàng</a></li> -->
                 <li><a href="index.php?act=viewCart&header=headerSecond">Giỏ hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
@@ -84,6 +95,9 @@
               <?php } else { ?>
                 <a href="index.php?act=dangnhap&header=headerSecond">  
                   <input type="button" value="đăng nhập" class="input-login">
+                </a>
+                <a href="index.php?act=dangky&header=headerSecond">  
+                  <input type="button" value="đăng ký" class="input-login">
                 </a>
               <?php } ?>
 
@@ -121,7 +135,7 @@
                 for ($i = 0; $i < count($category_home); $i++) {
                   $category_name = $category_home[$i]["name"];                                    
                   $id =  $category_home[$i]["id"];            
-                  $url_productByType = "index.php?act=productByType&id=$id&header=headerSecond";
+                  $url_productByType = "index.php?act=productByType&id=$id&header=headerprd";
                   
 
                 ?>

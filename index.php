@@ -141,27 +141,26 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
         
                     include "view/productDetail.php";
                     break;
-            case 'dangnhap': 
-                        echo '<div> đăng nhập </div>';
+                    case 'dangnhap': 
                         if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
-                         $user= $_POST['user'];
-                         $pass= $_POST['pass'];
-                         $checkuser=checkuser($user,$pass);
-                 
-                     if(is_array($checkuser)){
-                         $_SESSION['user']= $checkuser;
-                         $thongbao="đăng nhập thành công ";
-                 
-                         header('location: index.php');
-                     }else{
-                         $thongbao="đăng nhập không  thành công , kiểm tra lại user and password ";
+                            $user= $_POST['user'];
+                            $pass= $_POST['pass'];
+                            $checkuser=checkuser($user,$pass);
+                    
+                        if(is_array($checkuser)){
+                            $_SESSION['user']= $checkuser;
+                            $thongbao="đăng nhập thành công ";
+                    
+                            header('location: index.php');
+                        }else{
+                            $thongbao="đăng nhập không  thành công , kiểm tra lại user and password ";
+                            
+                        }
+                            
+                    }
                          
-                     }
-                         
-                 }
-                 
-                        include "./view/taikhoan/dangnhap.php";
-                        break;
+                                include "./view/taikhoan/dangnhap2.php";
+                                break;
             case 'dangky': 
                         if (isset($_POST['dangky']) && ($_POST['dangky'])) {
                             $email= $_POST['email'];
@@ -228,7 +227,8 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         }
                         }
                         else{
-                            header("Location: index.php");
+                            include "./view/taikhoan/dangnhap2.php";
+                            
                         }
                         
                         break;
@@ -243,14 +243,23 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     header("Location:index.php?act=viewCart&&header=headerSecond&f=1");
                     break;
             case 'viewCart':
+                if(isset($_SESSION['user'])){
                 $id_user = $_SESSION['user']['id'];
                 $cart_result = loadall_cart_idUser($id_user);
                     include "view/cart/view_cart.php";
+                }
+                else{
+                    header("Location: index.php");
+                }
                     break;
             case 'orderCart':
+                if(isset($_SESSION['user'])){
                     $id_user = $_SESSION['user']['id'];
                     $cart_result = loadall_cart_idUser($id_user);
                     include "view/cart/bill.php";
+                }else{
+                    header("Location: index.php");
+                }
                     break;
             case 'upgradeGiohang':
                 
@@ -281,11 +290,12 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             $bill_date = date('H:i:sa d/m/Y');
                             $total = isset($_POST['total']) ? $_POST['total'] : 0;
                             $status = 0;
+                            if($userName != ""){
                             $id_bill = insert_bill($id_user,$userName,$bill_address,$bill_tele,$payment_method,$bill_date,$total,$status);
                             // $id_user = $_SESSION['user']['id'];
                             $giohang_id = isset($_POST['giohang_id']) ? $_POST['giohang_id'] : 0;
                             $cart_result = loadall_cart_idUser($id_user);
-                            for($i = 0 ; $i < count($_SESSION['mycart']);$i++){
+                            for($i = 0 ; $i < count($cart_result);$i++){
                                 insert_cart($id_user,
                                 $cart_result[$i]['idsp'],                    
                                  $cart_result[$i]['image'],
@@ -302,10 +312,14 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             
             
                         }
-                        $_SESSION['mycart'] = [];
+                        // $_SESSION['mycart'] = [];
                         $list_bill = select_bill_one($id_bill);                        
-                        $list_cart = select_cart_idBill($id_bill);                        
+                        $list_cart = select_cart_idBill($id_bill);   
                         include "view/cart/bill_confirm.php";
+                    }     
+                    else{
+                        header("Location: index.php");
+                    }                
                     }
                     else{
                         include "view/home.php";
@@ -315,10 +329,15 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                                
                     break;
                 case 'myBill':
+                    if(isset($_SESSION['user'])){
                         $id_user = $_SESSION['user']['id'];   
                         $list_bill = select_bill_idUser($id_user);                        
                          
                         include "view/cart/mybill.php";
+                    }else{
+                        include "./view/taikhoan/dangnhap2.php";
+                        
+                    }
                         break;
                 case 'changeStatusBill' : 
                     var_dump($_POST['cancelCart']);

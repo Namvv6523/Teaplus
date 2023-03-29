@@ -6,10 +6,10 @@ export default function handleUpgradeCart(isClickQuantity) {
   if (isClickQuantity) {
     upgradeCart.classList.add("active-upgrade-cart");
     containUpgradeCart.classList.add("active-upgrade-cart");
+    containUpgradeCart.style.pointerEvents = "auto";
     upgradeCart.addEventListener("click", function (e) {
         e.preventDefault();
         rotateUpgradeCart.style.display="inline-block";
-
         setTimeout(() => {        
         rotateUpgradeCart.style.display="none";
         upgradeCart.classList.remove("active-upgrade-cart");
