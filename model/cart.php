@@ -162,7 +162,7 @@
 // }
 function loadall_thongke() {
     // Build SQL query to select data from 'sanpham' and 'danhmuc' tables
-    $sql = "SELECT danhmuc.id AS madm, danhmuc.namedm AS tendm, COUNT(sanpham.id) AS countsp, MIN(sanpham.price) AS minprice, MAX(sanpham.price) AS maxprice, AVG(sanpham.price) AS avgprice";
+    $sql = "SELECT danhmuc.id AS madm, danhmuc.namedm AS tendm, COUNT(sanpham.id) AS countsp, MIN(sanpham.price) AS minprice, MAX(sanpham.price) AS maxprice, AVG(sanpham.price) AS avgprice, SUM(sanpham.price) AS sumprice";
     $sql .= " FROM sanpham";
     $sql .= " LEFT JOIN danhmuc ON danhmuc.id = sanpham.iddm";
     $sql .= " GROUP BY danhmuc.id";
@@ -172,5 +172,16 @@ function loadall_thongke() {
     $listtk = pdo_query($sql);
     return $listtk;
   }
+function loadall_thongke_khachhang() {
+  // Build SQL query to select data from 'sanpham' and 'taikhoan' tables
+    $sql = "SELECT COUNT(taikhoan.id) AS counttk";
+    $sql .= " FROM sanpham";
+    $sql .= " LEFT JOIN taikhoan ON taikhoan.id = sanpham.id";
+    $sql .= " GROUP BY taikhoan.id";
+    $sql .= " ORDER BY taikhoan.id DESC";
+    // Execute SQL query and return the result set
+    $listtk = pdo_query($sql);
+    return $listtk;
+}
 ?>
 
