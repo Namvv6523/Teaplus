@@ -30,7 +30,7 @@ function select_bill_all(){
     $listsanpham=pdo_query($sql);
     return  $listsanpham;
 }
-function datele_bill($id){
+function detele_bill($id){
     $sql="delete from bill where id=".$id;
     pdo_execute($sql);
 }

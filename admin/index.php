@@ -122,6 +122,7 @@ if (isset($_GET['act'])) {
                 update_sanpham($id,$iddm, $tensp,$giasp,$mota,$hinh);
                 $thongbao = "Cập nhật thành công";
             }
+            
             $listdanhmuc = loadall_danhmuc();
             $listsanpham = loadall_sanpham("",0);
             include "sanpham/list.php";
