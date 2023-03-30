@@ -300,6 +300,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             $bill_tele = isset($_POST['number-phone']) ? $_POST['number-phone'] : 0;
                             $note = isset($_POST['note']) ? $_POST['note'] : "";
                             $payment_method = isset($_POST['credit']) ? $_POST['credit'] : 0;
+                            date_default_timezone_set('Asia/Ho_Chi_Minh');
                             $bill_date = date('H:i:sa d/m/Y');
                             $total = isset($_POST['total']) ? $_POST['total'] : 0;
                             $status = 0;
@@ -353,7 +354,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     }
                         break;
                 case 'changeStatusBill' : 
-                    var_dump($_POST['cancelCart']);
+                    
                     if(isset($_SESSION['user'])){
                         if(isset($_POST['cancelCart'])){
                             $id = isset($_POST['idBill']) ? $_POST['idBill'] : 0;

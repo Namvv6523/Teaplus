@@ -11,7 +11,7 @@ product.forEach((element, index) => {
     const productHeart = document.querySelectorAll(".product_heart");
     productCart[index].classList.add("active_rotate");
     productHeart[index].classList.add("active_rotate");
-    return likeheart(index);
+    return  getValueHeart(index);
   });
   element.addEventListener("mouseout", function () {
     const activeShow = document.querySelectorAll(".product-icon-cart-heart");
@@ -24,28 +24,36 @@ product.forEach((element, index) => {
 
   });
 });
+const heartArr = {};
+
+function getValueHeart(index){
+  let valueHeart = index;
+  
 let heartNumber = 0;
-const likeheart =(index)=>{
-  const productHeartLink = document.querySelectorAll(".product-heart");
+let icClickLike = 0;
+
+
+  const heart = document.querySelectorAll(".heart");
   let isLike = false;
-  productHeartLink[index].addEventListener("click",()=>{
-    console.log(index);
+  heart[valueHeart].addEventListener("click",()=>{
     isLike = true;
     heartNumber++;
-    console.log(heartNumber);
     if(isLike){
-      productHeartLink[index].classList.add("isLike");
+      heart[valueHeart].classList.add("isLike");
+      heartArr[valueHeart]
 
     }
+    const productHeartActive = document.querySelector(".heart.isLike");
     setTimeout(()=>{
-      productHeartLink[index].classList.remove("isLike");
-      isLike = true;
+      productHeartActive.classList.remove("isLike");
+      isLike = false;
 
-    },300)
+    },250)
   })
 
-
 }
+
+
 
 // ---------------show menu choice---------------
 // ----------- close and open menu ----------------

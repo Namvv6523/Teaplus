@@ -73,19 +73,14 @@
                     <!-- <td ><input class="btn-userprofilee" type="submit" value="Câp Nhật"></td> -->
 
                    <td>
-                       <input class="btn-userprofilee" type="submit" value="cập nhật" name="capnhat">
+                       <input class="btn-userprofilee" type="submit" value="cập nhật" onclick="alert('Đã cập nhật thành công')" name="capnhat">
                    </td>
 
                 </tr>
             </table>
             
            </form>
-           <h3 style="text-align: center;" class="thongbao">   <?php 
-            if(isset($thongbao) && $thongbao!=""){
-                echo $thongbao;
-            }
-            ?>
-            </h3>
+ 
         </div>
 
     </div>

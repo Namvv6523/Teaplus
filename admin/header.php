@@ -17,6 +17,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/admin/admin.css" />
+    <link rel="stylesheet" href="../css/admin/bill.css" />
+    <link rel="stylesheet" href="../css/admin/taikhoan.css" />
     <title>Admin</title>
   </head>
   <body>
@@ -52,14 +54,23 @@
 
             </li>
             <!-- --------------------------------------- -->
-            <li class="li-side-bar">
-              <a href="#" class="a-side-bar">
+            <li >
+              <a  href="index.php?act=listbill">
+                <div>
+                <i class="fa-solid fa-cart-shopping"></i>
+                  <span>Đơn hàng</span>
+                </div>
+              </a>
+
+            </li>
+            <!-- --------------------------------------- -->
+            <!-- <li class="li-side-bar">
+              <a href="index.php?act=listbill" class="a-side-bar">
                 <div>
                   <i class="fa-solid fa-cart-shopping"></i>
                   <span>Đơn hàng</span>
                 </div>
-                <i class="fa-solid fa-chevron-down d-none"></i>
-                <i class="fa-solid fa-chevron-left"></i>
+               
               </a>
               <ul class="sub-menu">
                 <li>
@@ -80,7 +91,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> -->
 
             <!-- ----------------------------- -->
 <!-- --------------------------------------- -->
@@ -136,7 +147,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=addtk">
                     <div>
                       <i class="fa-regular fa-circle"></i>
                       <span>Thêm tài khoản</span>
@@ -183,7 +194,7 @@
                <li class="li-side-bar">
               <a href="#" class="a-side-bar">
                 <div>
-                  <i class="fa-solid fa-mug-hot"></i>
+                <i class="fa-solid fa-comment"></i>
                   <span>Bình luận</span>
                 </div>
                 <i class="fa-solid fa-chevron-down d-none"></i>
@@ -195,12 +206,12 @@
                 <li>
                   <a href="index.php?act=dsbl">
                     <div>
-                      <i class="fa-regular fa-circle"></i>
+                    <i class="fa-regular fa-circle"></i>
                       <span>Quản lý bình luận</span>
                     </div>
                   </a>
                 </li>
-<li>
+                <li>
                   <a href="index.php?act=addsp">
                     <div>
                       <i class="fa-regular fa-circle"></i>
@@ -225,18 +236,18 @@
 
               <ul class="sub-menu">
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=thongke">
                     <div>
                       <i class="fa-regular fa-circle"></i>
-                      <span>Dashboard</span>
+                      <span>Thống kê</span>
                     </div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=bieudo">
                     <div>
                       <i class="fa-regular fa-circle"></i>
-                      <span>Dashboard</span>
+                      <span>Biểu đồ</span>
                     </div>
                   </a>
                 </li>

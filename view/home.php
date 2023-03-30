@@ -25,7 +25,7 @@
         <img src="<?= $image ?>" alt="" />
       </a>
       <div class="product-icon-cart-heart d-f jf-c">
-        <div href="#" class="product_icon product-heart  d-f jf-c al-c">
+        <div href="#" class="product_icon product-heart heart  d-f jf-c al-c">
           <i class="fa-solid fa-heart product_heart"></i>
         </div>
         <a href="<?= $url_productDetail ?>" class="product_icon d-f jf-c al-c">

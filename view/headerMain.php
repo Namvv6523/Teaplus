@@ -83,7 +83,7 @@
             <?php
             if($_SESSION['user']['role']==1){
               ?>
-                <li><a href="admin/index.php">Đăng nhập admin</a></li>
+                <li><a href="admin/index.php" target="_blank"> Đăng nhập admin</a></li>
 
               <?php
             }

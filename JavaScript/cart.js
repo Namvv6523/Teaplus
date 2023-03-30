@@ -184,10 +184,10 @@ inputInfo.forEach((input,index)=>{
     const inputPhone = document.querySelector("input[name='number-phone']").value;
     const inputAddress = document.querySelector("input[name='address']").value;
     if(inputUser.length != 0 && inputPhone.length != 0 && inputAddress.length != 0){
-      buyNow.classList.add("active-upgrade-cart")
+      buyNow.classList.add("active-upgrade-cart");
     }
     else{
-      buyNow.classList.remove("active-upgrade-cart")
+      buyNow.classList.remove("active-upgrade-cart");
 
     }
   })

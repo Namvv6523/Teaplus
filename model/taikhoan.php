@@ -56,4 +56,8 @@
         $sql ="delete from taikhoan where id=".$id;
         pdo_execute($sql);
     }
+
+
+
+    
 ?>

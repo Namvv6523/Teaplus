@@ -1,14 +1,26 @@
 <main class="w-100 d-f f-d">
-          <h3>Quản Lý Bình Luận</h3>
+          <h3 style="margin: 10px 0px;">Quản Lý Bình Luận</h3>
           <div class="search_list-product-admin w-100">
-            <form action="" class="d-f form-search">
-                <table class="w-100 table">
+          <form action="" style="margin-bottom: 5px;" class="d-f form-search">
+              <input
+                type="text"
+                placeholder="Tìm kiếm theo ID bình luận..."
+                class="input-search"
+              />
+              <input
+                type="submit"
+                class="submit-search-form"
+                value="Tìm kiếm"
+              />
+            </form>  
+            <form action="" class="d-f ">
+                <table class="w-100 table_bill-admin">
                     <thead>  
-                       <th> ID </th>
-                        <th> Nội dung </th>
-                        <th> MẬT KHẨU</th>
-                        <th>  Iduser</th>
-                        <th>Idpro</th>
+                       <th> Check </th>
+                        <th> ID </th>
+                        <th> Nội dung</th>
+                        <th> Khách hàng</th>
+                        <th>Mã sản phẩm</th>
                         <th>  Ngày bình luận</th>
                         <th>Chức Năng </th>
 
@@ -20,11 +32,15 @@
                         echo '<tr>
                                 <td><input type="checkbox" name="" id=""></td>
                                 <td>' . $id . '</td>
-                                <td>' . $noidung . '</td>
+                                <td style="width:300px"> ' . $noidung . '</td>
                                 <td>' . $iduser . '</td>
                                 <td>' . $idpro . '</td>
-                                <td>' . $ngaybinhluan . '</td>
-                                <td> </a> <a href="'. $xoabl.'"><input type="button" value="Xóa"></a> </td>
+                                <td style="width:100px">' . $ngaybinhluan . '</td>
+                                <td >                                
+                                    <a class="url-delete" href="'. $xoabl.'">
+                                      <i class="fa-solid fa-trash"></i>
+                                    </a> 
+                                 </td>
                                 
                             </tr>';
                     }
