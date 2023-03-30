@@ -134,10 +134,12 @@ if (isset($_GET['act'])) {
             $listtaikhoan = loadall_taikhoan();
             include "taikhoan/list.php";
             break;
+
         case 'dsbl':
             $listbinhluan = loadall_binhluan(0);
             include "binhluan/list.php";
             break;
+
         case 'xoabl':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 delete_binhluan($_GET['id']);
@@ -145,21 +147,47 @@ if (isset($_GET['act'])) {
             $listbinhluan=loadall_binhluan(0);
             include "binhluan/list.php";
             break;
+
         case 'thongke':
             $listthongke=loadall_thongke();
             include "thongke/list.php";
             break;
+
         case 'bieudo':
             $listthongke=loadall_thongke();
             include "thongke/bieudo.php";
             break;
+
         case 'listbill':
+            $listtrangthaidonhang=loadall_trangthaidonhang(0);
+            include "bill/listbill.php";
            break;
-        
-        case 'db':
-            $listdb =loadall_thongke_khachhang();
-            include "dashboard/db.php";
+
+           case 'xoabill':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_trangthaidonhang($_GET['id']);
+            }
+            $listtrangthaidonhang=loadall_trangthaidonhang("",0);
+            include "bill/list.php";
             break;
+
+        case 'suabill':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $listtrangthaidonhang = loadone_trangthaidonhang($_GET['id']);
+            }
+
+            $listtrangthaidonhang = loadall_trangthaidonhang(0);
+            include "bill/update.php";
+            break;
+
+        case 'updatebill':
+            if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
+                $id = $_POST["id"];
+                $ttdh = $_POST["ttdh"];
+            }
+            $listtrangthaidonhang=loadall_trangthaidonhang(0);
+            include "bill/listbill.php";
+           break;
 
         default:
             include "home.php";

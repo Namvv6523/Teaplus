@@ -43,7 +43,7 @@
         <div class="contain-list-menu w-100">
           <ul>
             <li >
-              <a href="index.php?act=db" >
+              <a href="#" >
                 <div>
                   <i class="fa-solid fa-gauge"></i>
                   <span>Dashboard</span>
@@ -225,7 +225,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=bieudo">
                     <div>
                       <i class="fa-regular fa-circle"></i>
                       <span>Biểu đồ thống kê</span>

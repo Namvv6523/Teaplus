@@ -1,103 +1,81 @@
-<form class="form_sp" action="index.php?act=listbill" method="post">
-    DANH MỤC
-        <input class="ten_addsp" type="text" name="kyw" placeholder="Nhập mã đơn hàng">
-        <input class="" type="submit" name="listok" value="Tìm Kiếm">
-</form>
-<!-- Danh sách bình luận -->
-<h1>DANH SÁCH ĐƠN HÀNG</h1> 
-    <table class="table_sp">
-        <thead>
-        <tr>
-            <th class="th_sp">MÃ ĐƠN HÀNG</th>
-            <th class="th_sp">KHÁCH HÀNG</th>
-            <th class="th_sp">SÔ LƯỢNG ĐẶT HÀNG</th>
-            <th class="th_sp">GIÁ TRỊ ĐƠN HÀNG</th>
-            <th class="th_sp">TÌNH TRẠNG ĐƠN HÀNG</th>
-            <th class="th_sp">NGÀY ĐẶT HÀNG</th>
-            <th class="th_sp">THAO TÁC</th>
-          </tr>
-          <!-- php -->
-            <?php 
-                    foreach ($listbill as $bill) {
-                        extract($bill);
-                        $kh = $bill["bill_name"].'
-                        <br>'.$bill["bill_email"].'
-                        <br>'.$bill["bill_address"].'
-                        <br>'.$bill["bill_tel"];
-                        $ttdh = get_ttdh($bill["bill_status"]);
-                        $countsp = loadall_cart_count($bill["id"]);
+
+               
+               <h1 class="title_product_new">Sản phẩm </h1>
+               <div class="product-page-banner">
+                   <span class="product-page-banner_title">Trang chủ - Đơn hàng</span>
+              </div>
+     
+              <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
+              <section class="contain-form-submit-cart w-100">
+               
+              <form action="index.php?act=listbill" class="form-submit-cart w-100">         
+               <table class="table-cart w-100">
+      
+                <thead>
+                  <tr>
+                   
+                    <th>MÃ ĐƠN HÀNG</th>
+                    <th>KHÁCH HÀNG</th>
+                    <th>SỐ LƯỢNG HÀNG</th>
+                    <th>GIÁ TRỊ ĐƠN HÀNG</th>
+                    <th>TÌNH TRẠNG ĐƠN HÀNG</th>
+                    <th>NGÀY ĐẶT HÀNG</th>
+                    <th>THAO TÁC</th>
+                  </tr>
+                </thead>
+                  <tbody>
+                <?php
+                    foreach($listtrangthaidonhang as $trangthaidonhang){
+                      extract($trangthaidonhang);
+                      $suatrangthaidonhang="index.php?act=suatrangthaidonhang&id=".$id;
+                      $xoatrangthaidonhang="index.php?act=xoatrangthaidonhang&id=".$id;
+                        $kh=$trangthaidonhang["trangthaidonhang_name"].'
+                        <br> '.$trangthaidonhang["trangthaidonhang_address"].'
+                        <br>'.$trangthaidonhang["trangthaidonhang_tel"];
+                        $ttdh= getStatus($trangthaidonhang["trangthaidonhang_status"]);
+                        $countsp=loadall_cart_count($trangthaidonhang["id"]);
                         
                         echo '<tr>
-                                <td class="td_sp">DAM-' .$bill['id']. '</td>
-                                <td class="td_sp">' .$kh. '</td>
-                                <td class="td_sp">' .$countsp. '</td>
-                                <td class="td_sp"><strong>'. $bill['total'] . '</strong></td>
-                                <td class="td_sp">' .$bill. '</td>
-                                <td class="td_sp">' .$ttdh. '</td>
-                                <td class="td_sp">' .$bill['ngaydathang']. '</td>
-                                <td class="td_sp"> 
-                                    <input type="button" value="Sửa">
-                                    <input type="button" value="Xóa">
+                        
+                        <td>'.$trangthaidonhang['id'].'</td>
+                        <td>'.$kh.'</td>
+                        <td>'.$countsp.'</td>
+                        <td><strong>'.$trangthaidonhang["tatal"].'</strong>VNĐ</td>
+                        <td>'.$ttdh.'</td>
+                        <td>'.$trangthaidonhang['ngaydathang'].'</td>
+                        <td class="td_sp"> 
+                                  <a class="url-edit" href="'. $suabill.'">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                  </a> 
+                                  <a class="url-delete" href="'. $xoabill.'">
+                                    <i class="fa-solid fa-trash"></i>
+                                  </a> 
                                 </td>
-                                
-                            </tr>';
+                    </tr>';
                     }
-                    ?>
-                    <tr>DAM-2</th>
-                        <td class="td_sp">
-                            Trần Nguyên Anh
-                            <br> anhtnph23799@fpt.edu.vn
-                            <br> Xuy Xá - Mỹ Đức - Hà Nội
-                            <br> 0866868301
-                        </td>
-                        <td class="td_sp"><strong>25000</strong>VNĐ</td>
-                        <td class="td_sp">Đơn hàng mới</td>
-                        <td class="td_sp">
-                    </tr>
 
-          <!-- <tr>
-            <th class="th_sp">MÃ LOẠI</th>
-            <th class="th_sp">TÊN SẢN PHẨM</th>
-            <th class="th_sp">GIÁ</th>
-            <th class="th_sp">HÌNH</th>
-            <th class="th_sp">SỐ LƯỢNG</th>
-            <th class="th_sp">LƯỢT XEM</th>
-            <th class="th_sp">HÀNH ĐỘNG</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="td_sp">1</td>
-            <td class="td_sp">Áo phông nam</td>
-            <td class="td_sp">200.000đ</td>
-            <td class="td_sp"><img src="../upload/img/logo/logo.jpg" alt="" style="width: 50px; height: 50px;"></td>
-            <td class="td_sp">10</td>
-            <td class="td_sp">98</td>
-            <td class="td_sp">
-              <a href="#">Sửa</a> / <a href="#">Xóa</a>
-            </td>
-          </tr>
-          <tr>
-            <td class="td_sp">1</td>
-            <td class="td_sp">Áo phông nam</td>
-            <td class="td_sp">200.000đ</td>
-            <td class="td_sp"><img src="../upload/img/logo/logo.jpg" alt="" style="width: 50px; height: 50px;"></td>
-            <td class="td_sp">10</td>
-            <td class="td_sp">98</td>
-            <td class="td_sp">
-              <a href="#">Sửa</a> / <a href="#">Xóa</a>
-            </td>
-          </tr>
-          <tr>
-            <td class="td_sp">1</td>
-            <td class="td_sp">Áo phông nam</td>
-            <td class="td_sp">200.000đ</td>
-            <td class="td_sp"><img src="../upload/img/logo/logo.jpg" alt="" style="width: 50px; height: 50px;"></td>
-            <td class="td_sp">10</td>
-            <td class="td_sp">98</td>
-            <td class="td_sp">
-              <a href="#">Sửa</a> / <a href="#">Xóa</a>
-            </td>
-          </tr> -->
-        </tbody>
-      </table>
+                
+                
+                ?>
+              
+                 <!-- ----------------------------- -->
+                 <!-- <th>Vũ Hồng Minh </th>
+                    <th>Trà Sữa </th>
+                    <th><img src="" alt=""></th>
+                    <th>trân châu</th>
+                    <th>đường 70%+size L</th>
+                    <th>43.000đ</th>
+                    <th>1</th>
+                    <th>43.000đ</th>
+                    <th>đang giao hàng</th>
+                    <th><button type="submit">Xác nhận</button> <button type="submit">Sửa</button></th> -->
+                  
+                   
+     
+                </tbody>
+      
+      
+               </table>
+               
+              </form>
+              </section>

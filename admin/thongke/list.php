@@ -13,7 +13,6 @@
                     <th class="th_sp">GIÁ CAO NHẤT</th>
                     <th class="th_sp">GIÁ THẤP NHẤT</th>
                     <th class="th_sp">GIÁ TRUNG BÌNH</th>
-                    <th class="th_sp">KHÁCH HÀNG</th>
                     <th class="th_sp">TỔNG TIỀN</th>
                 </tr>
                 <?php
@@ -26,7 +25,6 @@
                                 <td class="td_sp">'.$maxprice.'</td>
                                 <td class="td_sp">'.$minprice.'</td>
                                 <td class="td_sp">'.$avgprice.'</td>
-                                <td class="td_sp">'.$counttk.'</td>
                                 <td class="td_sp">'.$sumprice.'</td>
                             </tr>';
                     }
