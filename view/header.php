@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="css/product/product-detail.css">
     <link rel="stylesheet" href="css/comment.css">
     <link rel="stylesheet" href="css/dangnhap.css" />
+    <link rel="stylesheet" href="css/profileUser.css" />
+
 
     <title>Trang chủ</title>
   </head>
@@ -119,8 +121,10 @@
               <div class="number">1</div>
             </div>
             <div class="cart">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <div class="number">1</div>
+            <a href="index.php?act=myBill&header=headerSecond">
+                  <i style="color:#333" class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <div class="number"><?php if(isset($count_bill)){echo $count_bill;}else{ echo 0;} ?></div>
             </div>
           </div>
           </div>

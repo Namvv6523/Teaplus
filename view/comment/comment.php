@@ -84,6 +84,7 @@ $comment = loadall_binhluan($id_pro);
         $id_product = isset($_POST['id_pro']) ? $_POST['id_pro'] : 0;
         $user_id = $_SESSION['user']['id'];
         $content = isset($_POST['comment']) ? $_POST['comment'] : 0;
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
         $date_comment = date('H:i:sa d/m/Y');
         insert_binhluan($content, $id_product,$user_id,$date_comment);
         

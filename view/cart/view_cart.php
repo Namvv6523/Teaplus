@@ -107,11 +107,17 @@
                      Tiếp tục mua hàng
                    </a>
                  </button>
+                 <form action="">
+                  <?php
+                  $_SESSION['check'] = "hello";
+                  
+                  ?>
                  <button>
-                   <a href="index.php?act=orderCart&header=headerSecond" class="continue-buy">
+                   <a href="index.php?act=orderCart&header=headerSecond"  class="continue-buy">
                      Thanh toán
                    </a>
                  </button>
+                 </form>
                  <div class="contain-upgrade-cart ">
                    <i class="fa-solid fa-spinner rotate-upgrade-cart"></i>
      

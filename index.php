@@ -18,6 +18,11 @@ if(!isset($_SESSION['mycart'])){
 // $_SESSION['mycart'] = [];
 // var_dump($_SESSION['mycart']);
 $category_home = loadall_danhmuc();
+if(isset($_SESSION['user'])){
+    $idUser = $_SESSION['user']['id'];
+    $count_bill = select_bill_count($idUser);
+}
+
 
 if (isset($_GET['header'])  && $_GET['header'] != "") {
 
@@ -33,7 +38,8 @@ if (isset($_GET['header'])  && $_GET['header'] != "") {
                 $info_id = $_SESSION['userId']['id'];
                 $info_password = $_SESSION['userId']['password'];
                 $info_email = $_SESSION['userId']['email'];
-
+                $iduser = $_SESSION['user']['id'];
+                $billCount = select_bill_count($iduser);
                 include "view/headerMain.php";
             } else {
 
@@ -198,7 +204,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                  
                              }
                              
-                            include "./view/taikhoan/edit_taikhoan.php";
+                            include "./view/taikhoan/profileUser.php";
                              
                              
                             break;
@@ -253,10 +259,17 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                 }
                     break;
             case 'orderCart':
+                
                 if(isset($_SESSION['user'])){
+                    if(isset($_SESSION['check']) && $_SESSION['check'] != null){
                     $id_user = $_SESSION['user']['id'];
                     $cart_result = loadall_cart_idUser($id_user);
+                    $_SESSION['check'] = [];
                     include "view/cart/bill.php";
+                    }
+                    else{
+                        header("Location: index.php");
+                    }
                 }else{
                     header("Location: index.php");
                 }
@@ -291,7 +304,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             $total = isset($_POST['total']) ? $_POST['total'] : 0;
                             $status = 0;
                             if($userName != ""){
-                            $id_bill = insert_bill($id_user,$userName,$bill_address,$bill_tele,$payment_method,$bill_date,$total,$status);
+                            $id_bill = insert_bill($id_user,$userName,$bill_address,$bill_tele,$payment_method,$bill_date,$total,$status,$note);
                             // $id_user = $_SESSION['user']['id'];
                             $giohang_id = isset($_POST['giohang_id']) ? $_POST['giohang_id'] : 0;
                             $cart_result = loadall_cart_idUser($id_user);

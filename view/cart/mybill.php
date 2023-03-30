@@ -1,6 +1,5 @@
 <main class="w-100 d-f f-d al-c">
 
-    <h1 class="title_product_new">Sản phẩm </h1>
     <div class="product-page-banner">
         <span class="product-page-banner_title">Trang chủ - Đơn hàng</span>
     </div>
@@ -35,9 +34,7 @@
             $tatal =   $list_bill[$i]['tatal'];
             $bill_status =   $list_bill[$i]['bill_status'];
             $list_cart = select_cart_idBill($id_bill);
-            echo "<pre>";
-            // var_dump($list_cart);
-            echo "</pre>";
+          
 
 
 
@@ -252,7 +249,7 @@
 
                             </ul>
                             <div class="w-100 d-f jf-b  " style="margin-top: 3.5%;">
-                                    <input type="submit" value="Đã nhận được hàng " class="continue-buy receive-product" >    
+                                    <input type="button" value="Đã nhận được hàng " class="continue-buy receive-product" >    
                                     <input type="text" value="<?= $id_bill ?>" hidden name="idBill">                           
                                     <input type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" >
                                                                               
