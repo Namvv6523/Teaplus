@@ -12,19 +12,35 @@
             ?>
         </select>
         <input class="" type="submit" name="listok" value="Tìm Kiếm">
-      </form>
-    <h3>Danh sách sản phẩm</h3>
-    <div class="search_list-product-admin w-100">
-            <form action="" class="d-f form-search">
+        <!-- <h3>Danh sách sản phẩm</h3>
+        <div class="search_list-product-admin w-100">
+        <form action="" class="d-f form-search">
               <input
                 type="text"
                 placeholder="Tìm kiếm theo tên sản phẩm..."
-                class="input-search"
+                class="input-search" name="kyw"
               />
               <input
                 type="submit"
                 class="submit-search-form"
                 value="Tìm kiếm"
+                name="listok"
+              />
+            </form>   -->
+      </form>
+        <h3>Danh sách sản phẩm</h3>
+        <div class="search_list-product-admin w-100">
+        <form action="index.php?act=listsp" class="d-f form-search" method="post">
+              <input
+                type="text"
+                placeholder="Tìm kiếm theo tên sản phẩm..."
+                class="input-search" name="kyw"
+              />
+              <input
+                type="submit"
+                class="submit-search-form"
+                value="Tìm kiếm"
+                name="listok"
               />
             </form>  
                       

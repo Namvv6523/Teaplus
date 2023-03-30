@@ -53,7 +53,7 @@
             </li>
             <!-- --------------------------------------- -->
             <li class="li-side-bar">
-              <a href="#" class="a-side-bar">
+              <a href="index.php?act=listbill" class="a-side-bar">
                 <div>
                   <i class="fa-solid fa-cart-shopping"></i>
                   <span>Đơn hàng</span>
@@ -136,7 +136,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=addtk">
                     <div>
                       <i class="fa-regular fa-circle"></i>
                       <span>Thêm tài khoản</span>
@@ -225,18 +225,18 @@
 
               <ul class="sub-menu">
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=thongke">
                     <div>
                       <i class="fa-regular fa-circle"></i>
-                      <span>Dashboard</span>
+                      <span>Thống Kê</span>
                     </div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="index.php?act=bieudo">
                     <div>
                       <i class="fa-regular fa-circle"></i>
-                      <span>Dashboard</span>
+                      <span>Biểu đồ</span>
                     </div>
                   </a>
                 </li>

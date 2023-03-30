@@ -5,7 +5,7 @@
 ?>
 
 <main class="w-100 d-f f-d">
-          <h3>Thêm sản phẩm</h3>
+          <h3>Sửa  sản phẩm</h3>
           <div class="search_list-product-admin w-100 d-f jf-c">
             <form action="index.php?act=updatedm" method="post" enctype="multipart/form-data" class="general-form">
 

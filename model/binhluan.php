@@ -11,4 +11,8 @@ function loadall_binhluan($idpro){
     $listbl=pdo_query($sql);
     return  $listbl;
 }
+function datele_binhluan($id){
+    $sql="delete from binhluan where id=".$id;
+    pdo_execute($sql);
+}
 ?>

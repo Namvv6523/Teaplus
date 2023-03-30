@@ -1,6 +1,8 @@
 <?php
     if(is_array($sanpham)){
         extract($sanpham);
+    $idsp=$id;
+    $tensp=$name;
     }
     $hinhpath="../upload/img/product/".$img;
           if(is_file($hinhpath)){
@@ -26,7 +28,7 @@
       </select>
 
       <label class="label_addsp" for="">Tên sản phẩm</label>
-      <input class="ten_addsp" type="text" name="tensp" value="<?=$name?>" />
+      <input class="ten_addsp" type="text" name="tensp" value="<?=$tensp?>" />
       
       <label class="label_addsp" for="">Giá</label>
       <input class="ten_addsp" type="text" name="giasp" value="<?=$price?>" />
@@ -38,7 +40,7 @@
       <label class="label_addsp" for="">Mô tả</label>
       <textarea name="mota" cols="30" rows="10"> <?=$mota?> </textarea> <br>
 
-      <input type="hidden" name="id" value="<?=$id?>">
+      <input type="hidden" name="id" value="<?=$idsp?>">
       <input class="input_addsp" type="submit" name="capnhat" value="CẬP NHẬT">
       
       <input class="input_addsp" type="reset" value="NHẬP LẠI">

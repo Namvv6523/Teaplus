@@ -6,7 +6,6 @@
                     <thead>  
                        <th>  MÃ TÀI KHOẢN </th>
                        <th>Avatar</th>
-
                         <th> TÊN ĐĂNG NHẬP </th>
                         <th> MẬT KHẨU</th>
                         <th>  EMAIL</th>
@@ -20,6 +19,13 @@
                         extract($taikhoan);
                         $suatk="index.php?act=suatk&id=".$id;
                         $xoatk="index.php?act=xoatk&id=".$id;
+                        $hinhpath="../upload/img/avatar/".$avatar;
+                        if(is_file($hinhpath)){
+                            $avatar=" <img src='".$hinhpath."' height='80' width='60'>";
+                        }else{
+                            $avatar="no photo";
+                        }
+  
                         echo '<tr>
                                 
                                 <td>' . $id . '</td>
