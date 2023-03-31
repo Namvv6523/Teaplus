@@ -2,6 +2,7 @@
 // import handleUpgradeCart from "./cart.js"
 const product = document.querySelectorAll(".product");
 
+
 product.forEach((element, index) => {
   element.addEventListener("mouseover", function () {
     const activeShow = document.querySelectorAll(".product-icon-cart-heart");
@@ -10,6 +11,7 @@ product.forEach((element, index) => {
     const productHeart = document.querySelectorAll(".product_heart");
     productCart[index].classList.add("active_rotate");
     productHeart[index].classList.add("active_rotate");
+    return  getValueHeart(index);
   });
   element.addEventListener("mouseout", function () {
     const activeShow = document.querySelectorAll(".product-icon-cart-heart");
@@ -18,8 +20,40 @@ product.forEach((element, index) => {
     const productHeart = document.querySelectorAll(".product_heart");
     productCart[index].classList.remove("active_rotate");
     productHeart[index].classList.remove("active_rotate");
+    
+
   });
 });
+const heartArr = {};
+
+function getValueHeart(index){
+  let valueHeart = index;
+  
+let heartNumber = 0;
+let icClickLike = 0;
+
+
+  const heart = document.querySelectorAll(".heart");
+  let isLike = false;
+  heart[valueHeart].addEventListener("click",()=>{
+    isLike = true;
+    heartNumber++;
+    if(isLike){
+      heart[valueHeart].classList.add("isLike");
+      heartArr[valueHeart]
+
+    }
+    const productHeartActive = document.querySelector(".heart.isLike");
+    setTimeout(()=>{
+      productHeartActive.classList.remove("isLike");
+      isLike = false;
+
+    },250)
+  })
+
+}
+
+
 
 // ---------------show menu choice---------------
 // ----------- close and open menu ----------------
@@ -109,7 +143,7 @@ const handleResult = (sugarValue = 0,  sizeValue = 0, iceValue = 0,  toppingValu
   parseInt(toppingValue, 10);
   if(totalMenu == 0 ){
 
-    var total = (12000 + parseInt(blockUpPrice, 10)) * quantity
+    var total = (7000 + parseInt(blockUpPrice, 10)) * quantity
   }
   else{
   

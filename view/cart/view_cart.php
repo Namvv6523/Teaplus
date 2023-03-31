@@ -73,7 +73,7 @@
                            <i style="margin-left: 1px;" class="fa-solid fa-minus"></i>
                          </div>
                          <div class="product_quantity"><?= $quantity ?></div>
-                         <input style="width:30px" type="number" name="quantity1[]" value="<?= $quantity ?>">
+                         <input style="width:30px" type="number" name="quantity1[]" hidden value="<?= $quantity ?>">
                          <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
                          <div class="add circle_border">
                            <i style="margin-left: 1px;" class="fa-solid fa-plus"></i>
@@ -107,11 +107,17 @@
                      Tiếp tục mua hàng
                    </a>
                  </button>
+                 <form action="">
+                  <?php
+                  $_SESSION['check'] = "hello";
+                  
+                  ?>
                  <button>
-                   <a href="index.php?act=orderCart&header=headerSecond" class="continue-buy">
+                   <a href="index.php?act=orderCart&header=headerSecond"  class="continue-buy">
                      Thanh toán
                    </a>
                  </button>
+                 </form>
                  <div class="contain-upgrade-cart ">
                    <i class="fa-solid fa-spinner rotate-upgrade-cart"></i>
      

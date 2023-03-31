@@ -1,6 +1,5 @@
 <main class="w-100 d-f f-d al-c">
 
-    <h1 class="title_product_new">Sản phẩm </h1>
     <div class="product-page-banner">
         <span class="product-page-banner_title">Trang chủ - Đơn hàng</span>
     </div>
@@ -35,7 +34,7 @@
             $tatal =   $list_bill[$i]['tatal'];
             $bill_status =   $list_bill[$i]['bill_status'];
             $list_cart = select_cart_idBill($id_bill);
-
+          
 
 
 
@@ -70,17 +69,17 @@
                                 <?php
 
                                 $totalSum = 0;
-                                
-                                    $id = $list_cart[0]['id'];
-                                    $image =  $list_cart[0]['img'];
-                                    $product =  $list_cart[0]['name'];
-                                    $price =  $list_cart[0]['price'];
-                                    $sugar =  $list_cart[0]['sugar'];
-                                    $size =  $list_cart[0]['size'];
-                                    $ice =  $list_cart[0]['ice'];
-                                    $topping =  $list_cart[0]['topping'];
-                                    $quantity =  $list_cart[0]['soluong'];
-                                    $total =  $list_cart[0]['thanhtien'];
+                                for($j = 0 ; $j < count($list_cart);$j++){
+                                    $id = $list_cart[$j]['id'];
+                                    $image =  $list_cart[$j]['img'];
+                                    $product =  $list_cart[$j]['name'];
+                                    $price =  $list_cart[$j]['price'];
+                                    $sugar =  $list_cart[$j]['sugar'];
+                                    $size =  $list_cart[$j]['size'];
+                                    $ice =  $list_cart[$j]['ice'];
+                                    $topping =  $list_cart[$j]['topping'];
+                                    $quantity =  $list_cart[$j]['soluong'];
+                                    $total =  $list_cart[$j]['thanhtien'];
                                     $totalSum += $total;
                                     $billTotal = $totalSum + 10000;
 
@@ -88,7 +87,7 @@
 
                                     $toppingInfo = handleTopping($topping);
                                    
-
+                                
                                 ?>
 
                                     <!-- ----------------------------- -->
@@ -123,6 +122,7 @@
                                         <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
 
                                     </tr>
+                                    <?php } ?>
                                 
                                 <!-- ----------------------------- -->
 
@@ -157,7 +157,7 @@
                             <div class="info_user w-100 d-f">
                                 <div class="d-f w-100">
                                     <span style="color: var(--primary-color);font-weight: 600;">Trạng thái đơn hàng : </span>
-                                    <span style="color: red" ><?= getStatus($bill_status) ?></span>
+                                    <span style="color: red" ><?= getStatus($bill_status,0) ?></span>
                                 </div>                                                                   
                                
                             </div>
@@ -249,9 +249,12 @@
 
                             </ul>
                             <div class="w-100 d-f jf-b  " style="margin-top: 3.5%;">
-                                    <input type="submit" value="Đã nhận được hàng " class="continue-buy receive-product" >    
-                                    <input type="text" value="<?= $id_bill ?>" hidden name="idBill">                           
-                                    <input type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" >
+                                    <input type="submit" value="Đã nhận được hàng " name="receive_cart" class="continue-buy receive-product" >    
+                                    <input type="text" value="<?= $id_bill ?>" hidden name="idBill">   
+                                    <?php if($bill_status != 2 && $bill_status != 3){ ?>
+
+                                        <input type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" >
+                                    <?php }  ?>                        
                                                                               
                             </div>
                         </div>

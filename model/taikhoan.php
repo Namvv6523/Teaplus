@@ -16,15 +16,15 @@
     }
 
 
-    function insert_taikhoan($email,$user,$pass){
-        $sql = "insert into taikhoan(email,user,pass) values('$email','$user','$pass')";
+    function insert_taikhoan($email,$user,$pass,$avatar){
+        $sql = "insert into taikhoan(user,pass,email,avatar) values('$email','$user','$pass','$avatar')";
                 pdo_execute($sql);
     }
     
     function checkuser($user,$pass){
         $sql ="select * from taikhoan where user='".$user."' and pass='".$pass."'"; 
-        $user = pdo_query_one($sql);
-        return $user;
+        $sp = pdo_query_one($sql);
+        return $sp;
     
     }
     function checkemail($email){
@@ -56,4 +56,8 @@
         $sql ="delete from taikhoan where id=".$id;
         pdo_execute($sql);
     }
+
+
+
+    
 ?>

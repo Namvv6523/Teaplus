@@ -74,6 +74,14 @@ transition-delay: 0.2s;
 .product_icon i {
   margin-top: 3px;
 }
+.product-heart{
+  transition: all 0.2s ease-in-out;
+}
+.isLike{
+  transition: all 0.2s ease-in-out !important;
+
+  transform: scale(1.6);
+}
 .product-heart i {
   margin-top: 1px;
 }
@@ -253,3 +261,4 @@ color: rgb(206, 175, 2);
   opacity: 0.7;
   cursor: pointer;
 }
+

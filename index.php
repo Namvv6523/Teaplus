@@ -9,6 +9,7 @@ include "model/cart.php";
 include "model/convert.php";
 include "model/bill.php";
 include "model/binhluan.php";
+include "model/lienhe.php";
 
 
 include "global.php";
@@ -18,6 +19,11 @@ if(!isset($_SESSION['mycart'])){
 // $_SESSION['mycart'] = [];
 // var_dump($_SESSION['mycart']);
 $category_home = loadall_danhmuc();
+if(isset($_SESSION['user'])){
+    $idUser = $_SESSION['user']['id'];
+    $count_bill = select_bill_count($idUser);
+}
+
 
 if (isset($_GET['header'])  && $_GET['header'] != "") {
 
@@ -33,7 +39,8 @@ if (isset($_GET['header'])  && $_GET['header'] != "") {
                 $info_id = $_SESSION['userId']['id'];
                 $info_password = $_SESSION['userId']['password'];
                 $info_email = $_SESSION['userId']['email'];
-
+                $iduser = $_SESSION['user']['id'];
+                $billCount = select_bill_count($iduser);
                 include "view/headerMain.php";
             } else {
 
@@ -118,15 +125,14 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         $price2 = $_POST['price2'];
                         $str_replace_price2 = str_replace(",","", $price2);
 
-                        if ($str_replace_price1>=0 && $str_replace_price2>0 ) {
+                        if ($price1>0 && $price2>0 ) {
 
                             $searchProductByprice = loadall_sanpham_price($str_replace_price1,$str_replace_price2 );
                             include "view/product-page.php";
                         }
                       else{
-                        header("Location: view/product-page.php");
-
-                        // include "view/product-page.php";    
+                        // header("Location:index.php");
+                        include "view/product-page.php";
 
                       }
                     }
@@ -142,33 +148,33 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
         
                     include "view/productDetail.php";
                     break;
-            case 'dangnhap': 
-                if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
-                    $user= $_POST['user'];
-                    $pass= $_POST['pass'];
-                    $checkuser=checkuser($user,$pass);
-            
-                if(is_array($checkuser)){
-                    $_SESSION['user']= $checkuser;
-                    $thongbao="đăng nhập thành công ";
-            
-                    header('location: index.php');
-                }else{
-                    $thongbao="đăng nhập không  thành công , kiểm tra lại user and password ";
+                    case 'dangnhap': 
+                        if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
+                            $user= $_POST['user'];
+                            $pass= $_POST['pass'];
+                            $checkuser=checkuser($user,$pass);
                     
-                }
+                        if(is_array($checkuser)){
+                            $_SESSION['user']= $checkuser;
+                            $thongbao="đăng nhập thành công ";
                     
-            }
-                 
-                        include "./view/taikhoan/dangnhap2.php";
-                        break;
+                            header('location: index.php');
+                        }else{
+                            $thongbao="đăng nhập không  thành công , kiểm tra lại user and password ";
+                            
+                        }
+                            
+                    }
+                         
+                                include "./view/taikhoan/dangnhap2.php";
+                                break;
             case 'dangky': 
                         if (isset($_POST['dangky']) && ($_POST['dangky'])) {
                             $email= $_POST['email'];
                             $user= $_POST['user'];
                             $pass= $_POST['password'];
-                            insert_taikhoan($email,$user,$pass);
-                            $thongbao="đã đăng ký thành công .";                 
+                            insert_taikhoan($user,$pass,$email,"");
+                            $thongbao="đã đăng ký thành công .vui lòng đăng nhập để sử dụng thêm chức năng bình luận";                 
                         }
                  
                         include "./view/taikhoan/dangky.php";
@@ -199,7 +205,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                  
                              }
                              
-                            include "./view/taikhoan/proFileUser.php";
+                            include "./view/taikhoan/profileUser.php";
                              
                              
                             break;
@@ -213,7 +219,12 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                 if(isset($_SESSION['user']['id'])){
                         if(isset($_POST['buynow']) && $_POST['buynow'] ){
                             $id_user = $_SESSION['user']['id'];
-                        handleInsertToCart($_POST['product_name'], $_POST['product_price'], $_POST['sugar'], $_POST['ice-rock'], $_POST['size'], $_POST['topping'], $_POST['image'], $_POST['id'], $_SESSION['user']['id'], $_POST['quantity']);
+                            if(is_array($_POST['topping']) &&  isset($_POST['topping']) ){
+                                $checkTopping = $_POST['topping'];
+                            }else{
+                                $checkTopping = 0;
+                            }
+                        handleInsertToCart($_POST['product_name'], $_POST['product_price'], $_POST['sugar'], $_POST['ice-rock'], $_POST['size'], $checkTopping, $_POST['image'], $_POST['id'], $_SESSION['user']['id'], $_POST['quantity']);
                         $cart_result = loadall_cart_idUser($id_user);
                         include "view/cart/view_cart.php";
                         }
@@ -223,7 +234,8 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         }
                         }
                         else{
-                            header("Location: index.php");
+                            include "./view/taikhoan/dangnhap2.php";
+                            
                         }
                         
                         break;
@@ -238,14 +250,30 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     header("Location:index.php?act=viewCart&&header=headerSecond&f=1");
                     break;
             case 'viewCart':
+                if(isset($_SESSION['user'])){
                 $id_user = $_SESSION['user']['id'];
                 $cart_result = loadall_cart_idUser($id_user);
                     include "view/cart/view_cart.php";
+                }
+                else{
+                    header("Location: index.php");
+                }
                     break;
             case 'orderCart':
+                
+                if(isset($_SESSION['user'])){
+                    if(isset($_SESSION['check']) && $_SESSION['check'] != null){
                     $id_user = $_SESSION['user']['id'];
                     $cart_result = loadall_cart_idUser($id_user);
+                    $_SESSION['check'] = [];
                     include "view/cart/bill.php";
+                    }
+                    else{
+                        header("Location: index.php");
+                    }
+                }else{
+                    header("Location: index.php");
+                }
                     break;
             case 'upgradeGiohang':
                 
@@ -273,14 +301,16 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             $bill_tele = isset($_POST['number-phone']) ? $_POST['number-phone'] : 0;
                             $note = isset($_POST['note']) ? $_POST['note'] : "";
                             $payment_method = isset($_POST['credit']) ? $_POST['credit'] : 0;
+                            date_default_timezone_set('Asia/Ho_Chi_Minh');
                             $bill_date = date('H:i:sa d/m/Y');
                             $total = isset($_POST['total']) ? $_POST['total'] : 0;
                             $status = 0;
-                            $id_bill = insert_bill($id_user,$userName,$bill_address,$bill_tele,$payment_method,$bill_date,$total,$status);
+                            if($userName != ""){
+                            $id_bill = insert_bill($id_user,$userName,$bill_address,$bill_tele,$payment_method,$bill_date,$total,$status,$note);
                             // $id_user = $_SESSION['user']['id'];
                             $giohang_id = isset($_POST['giohang_id']) ? $_POST['giohang_id'] : 0;
                             $cart_result = loadall_cart_idUser($id_user);
-                            for($i = 0 ; $i < count($_SESSION['mycart']);$i++){
+                            for($i = 0 ; $i < count($cart_result);$i++){
                                 insert_cart($id_user,
                                 $cart_result[$i]['idsp'],                    
                                  $cart_result[$i]['image'],
@@ -297,10 +327,14 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             
             
                         }
-                        $_SESSION['mycart'] = [];
+                        // $_SESSION['mycart'] = [];
                         $list_bill = select_bill_one($id_bill);                        
-                        $list_cart = select_cart_idBill($id_bill);                        
+                        $list_cart = select_cart_idBill($id_bill);   
                         include "view/cart/bill_confirm.php";
+                    }     
+                    else{
+                        header("Location: index.php");
+                    }                
                     }
                     else{
                         include "view/home.php";
@@ -310,25 +344,37 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                                
                     break;
                 case 'myBill':
+                    if(isset($_SESSION['user'])){
                         $id_user = $_SESSION['user']['id'];   
                         $list_bill = select_bill_idUser($id_user);                        
                          
                         include "view/cart/mybill.php";
+                    }else{
+                        include "./view/taikhoan/dangnhap2.php";
+                        
+                    }
                         break;
                 case 'changeStatusBill' : 
-                    var_dump($_POST['cancelCart']);
+                    
                     if(isset($_SESSION['user'])){
                         if(isset($_POST['cancelCart'])){
                             $id = isset($_POST['idBill']) ? $_POST['idBill'] : 0;
                             $id_user = $_SESSION['user']['id'];
-                            update_bill_status($id,$id_user);
+                            update_bill_status($id,$id_user,5);
 
 
                             $list_bill = select_bill_idUser($id_user);   
                             include "view/cart/mybill.php";                        
                         }
+                        else if(isset($_POST['receive_cart'])){
+                            $id = isset($_POST['idBill']) ? $_POST['idBill'] : 0;
+                            $id_user = $_SESSION['user']['id'];
+                            update_bill_status($id,$id_user,6);
 
 
+                            $list_bill = select_bill_idUser($id_user);   
+                            include "view/cart/mybill.php";   
+                        }
 
                     }
                     else{
@@ -338,7 +384,22 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
 
 
 
-                    break;                
+                    break;  
+                case 'lienhe':
+                    if (isset($_POST['submit']) && ($_POST['submit'])) {
+                        $hovaten= $_POST['hovaten'];
+                        $diachi= $_POST['diachi'];
+                        $dienthoai= $_POST['dienthoai'];
+                        $email= $_POST['email'];
+                        $loinhan= $_POST['loinhan'];
+                        insert_lienhe($hovaten,$dienthoai,$email,$diachi,$loinhan);
+                        $thongbao="đã gửi thông tin liên hệ thành công .";                 
+                    }
+                    
+                    // include "./view/taikhoan/dangky.php";
+                        
+                    include "view/lienhe.php"; 
+                    break;             
             default:
             include "view/home.php";
             break;

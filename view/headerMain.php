@@ -22,9 +22,10 @@
     <link rel="stylesheet" href="css/slide.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/dangnhap.css" />
-    <!-- <link rel="stylesheet" href="css/proFileUser.css"> -->
-    <link rel="stylesheet" href="css/proFileUser.css">
-    
+    <link rel="stylesheet" href="css/profileUser.css" />
+    <link rel="stylesheet" href="css/lienhe.css">
+
+
     <title>Trang chủ</title>
   </head>
   <body>
@@ -34,11 +35,12 @@
       <main class="w-100 d-f f-d al-c">
         <header class="w-100 d-f f-d header-main">
       
+
           <!-- --------------header phần logo và menu bar----------------- -->
           <div class="header-logo-menu w-100 d-f">
             <div class="contain_logo_menu d-f">
               <div class="logo d-f al-c">
-                <a href="index.php" class="d-f al-c jf-c">
+                <a href="#" class="d-f al-c jf-c">
                   <img style="width: 80px" src="./img/logo/logo_png.png" alt="" />
                 </a>
               </div>
@@ -48,7 +50,7 @@
                   <li><a class="header-main-link" href="index.php">Trang chủ</a></li>
                   <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
                   <li><a class="header-main-link" href="#">Tin tức</a></li>
-                  <li><a class="header-main-link" href="#">Liên hệ</a></li>
+                  <li><a class="header-main-link" href="index.php?act=lienhe&header=headerSecond">Liên hệ</a></li>
                 </ul>
               </div>
             </div>
@@ -83,7 +85,7 @@
             <?php
             if($_SESSION['user']['role']==1){
               ?>
-                <li><a href="admin/index.php">Đăng nhập admin</a></li>
+                <li><a href="admin/index.php" target="_blank"> Đăng nhập admin</a></li>
 
               <?php
             }
@@ -115,7 +117,7 @@
                 <a href="index.php?act=myBill&header=headerSecond">
                   <i class="fa-solid fa-cart-shopping"></i>
                 </a>
-                <div class="number">1</div>
+                <div class="number"><?php if(isset($count_bill)){echo $count_bill;}else{ echo 0;} ?></div>
               </div>
             </div>
             </div>
@@ -136,7 +138,7 @@
                 for ($i = 0; $i < count($category_home); $i++) {
                   $category_name = $category_home[$i]["name"];                                    
                   $id =  $category_home[$i]["id"];            
-                  $url_productByType = "index.php?act=productByType&id=$id&header=headerSecond";
+                  $url_productByType = "index.php?act=productByType&id=$id&header=headerprd";
                   
 
                 ?>

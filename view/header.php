@@ -20,8 +20,8 @@
       rel="stylesheet"
     />
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/header.css" />
@@ -31,10 +31,13 @@
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/product/product-page.css" />
     <link rel="stylesheet" href="css/product/product-detail.css">
-    <link rel="stylesheet" href="css/dangnhap.css" />
     <link rel="stylesheet" href="css/comment.css">
-    <!-- <link rel="stylesheet" href="css/proFileUser.css"> -->
-    <link rel="stylesheet" href="css/proFileUser.css">
+    <link rel="stylesheet" href="css/dangnhap.css" />
+    <link rel="stylesheet" href="css/profileUser.css" />
+    <link rel="stylesheet" href="css/lienhe.css">
+
+
+
     <title>Trang chủ</title>
   </head>
   <body>
@@ -46,7 +49,7 @@
         <div class="header-logo-menu w-100 d-f">
           <div class="contain_logo_menu d-f">
             <div class="logo d-f al-c">
-              <a href="index.php" class="d-f al-c jf-c">
+              <a href="#" class="d-f al-c jf-c">
                 <img style="width: 80px" src="./img/logo/logo.jpg" alt="" />
               </a>
             </div>
@@ -54,14 +57,14 @@
             <div class="menu_bar d-f al-c">
               <ul class="d-f al-c">
                 <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="#">Sản phẩm</a></li>
+                <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
                 <li><a href="#">Tin tức</a></li>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a href="index.php?act=lienhe&header=headerSecond">Liên hệ</a></li>
               </ul>
             </div>
           </div>
           <div class="d-f">
-            <div class="login d-f al-c">
+          <div class="login d-f al-c">
               <!-- -------------- Chưa đăng nhập-------------- -->
   
               <!-- <a href="">
@@ -87,22 +90,23 @@
               <a ><?=$user?></a>
               <ul>
                 <li><a href="index.php?act=thongtintk&header=headerSecond">Thông tin tài khoản</a></li>
-                <?php
+
+            <?php
             if($_SESSION['user']['role']==1){
               ?>
-                <li><a href="admin/index.php">Đăng nhập admin</a></li>
+                <li><a href="admin/index.php" target="_blank">Đăng nhập admin</a></li>
 
               <?php
             }
             ?>
-                <li><a href="#">Đơn hàng</a></li>
-                <li><a href="#">Giỏ hàng</a></li>
+                <!-- <li><a href="#">Đơn hàng</a></li> -->
+                <li><a href="index.php?act=viewCart&header=headerSecond">Giỏ hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
               <?php } else { ?>
                 <a href="index.php?act=dangnhap&header=headerSecond">  
-                <input type="button" value="đăng nhập" class="input-login">
+                  <input type="button" value="đăng nhập" class="input-login">
                 </a>
                 <a href="index.php?act=dangky&header=headerSecond">  
                   <input type="button" value="đăng ký" class="input-login">
@@ -119,8 +123,10 @@
               <div class="number">1</div>
             </div>
             <div class="cart">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <div class="number">1</div>
+            <a href="index.php?act=myBill&header=headerSecond">
+                  <i style="color:#333" class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <div class="number"><?php if(isset($count_bill)){echo $count_bill;}else{ echo 0;} ?></div>
             </div>
           </div>
           </div>

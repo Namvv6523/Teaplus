@@ -154,14 +154,7 @@ function loadall_cart_count($idbill)
     return sizeof($bill);
 }
 
-function loadall_thongke()
-{
-    $sql = "select danhmuc.id as madm, danhmuc.name as tendm, count(sanpham.id) as countsp, min(sanpham.price) as minprice, max(sanpham.price) as maxprice, avg(sanpham.price) as avgprice";
-    $sql .= " from sanpham left join danhmuc on danhmuc.id=sanpham.iddm";
-    $sql .= " group by danhmuc.id order by danhmuc.id desc";
-    $listtk = pdo_query($sql);
-    return $listtk;
-}
+
 
 
 
@@ -184,20 +177,26 @@ function handleInsertToCart($productValue, $priceValue, $sugarValue, $iceValue, 
     else{
         $quantity = 1;
     }
+    if($topping == null){
+        $topping = 0;
+    }
     $stringTopping = 0;
     if (is_array($topping) && $topping != null) {
         for ($i = 0; $i < count($topping); $i++) {
             $stringTopping += floatval($topping[$i]);
         }
     }
+    else{
+        $stringTopping = 0;
+    }
     $result = ($product_price + floatval($sugar) + floatval($size) + floatval($ice) + floatval($stringTopping)) * floatval($quantity);
     $status = 1;
 
 
     insert_giohang($id, $id_user, $product_name, $image, $sugar, $size, $ice, $stringTopping, $product_price, $quantity, $result, $status);
-    $addProductCart = [$id, $image, $product_name, $product_price, $sugar, $size, $ice, $topping, $quantity, $result];
+    // $addProductCart = [$id, $image, $product_name, $product_price, $sugar, $size, $ice, $topping, $quantity, $result];
 
-    array_push($_SESSION['mycart'], $addProductCart);
+    // array_push($_SESSION['mycart'], $addProductCart);
 
     // $_SESSION['mycart'] = [];
    

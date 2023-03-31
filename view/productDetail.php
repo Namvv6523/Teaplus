@@ -16,7 +16,7 @@
         $image_name = $productDetail['img'];
         $image_url = "upload/";
         $image = $image_url . $image_name;
-        $number = 5000 + 2000 + 5000;
+        $number =  2000 + 5000;
         $totalPrice = $price + $number;
         ?>
 
@@ -97,6 +97,16 @@
                                   <label for="">70% </label>
                                 </div>
                                 <span>(1,000 VNĐ)</span>
+
+                               </div>
+                               <!-- ------------------ -->
+                               <div class="d-f f-d">
+
+                               <div class="d-f g-10">
+                                  <input type="radio" value="0" class="input" name="sugar" />
+                                  <label for="">0% </label>
+                                </div>
+                                <span>(0 VNĐ)</span>
 
                                </div>
                               </div>
@@ -205,12 +215,11 @@
                                     type="checkbox"
                                     name="topping[]"
                                     class="input"
-                                    value="5000"
-                                    checked
+                                    value="4000"
                                   />
                                   <label for="">Chân trâu baby </label>
                                 </div>
-                                <span class="price-beside">(5000 VNĐ)</span>
+                                <span class="price-beside">(4000 VNĐ)</span>
 
                                 </div>
 
@@ -247,6 +256,14 @@
                                     name="topping[]"
                                     class="input"
                                     value="8000"
+                                  />
+                                  <input
+                                    type="checkbox"
+                                    name="topping[]"
+                                    class="input"
+                                    value="0"
+                                    checked
+                                    hidden
                                   />
                                   <label for="">Trân châu cam</label>
                                 </div>

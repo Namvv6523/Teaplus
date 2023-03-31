@@ -3,7 +3,7 @@
 
 .form-submit-cart{
     padding: 0px 10%;
-    margin-top: 30px;
+    margin-top: 10px;
    
 }
 .table-cart{
@@ -39,6 +39,7 @@
     border: none;
     font-size: 1.7rem;
     cursor: no-drop;
+    /* pointer-events: none; */
 
 }
 .contain-upgrade-cart{
@@ -49,6 +50,8 @@
     font-size: 1.7rem;
     cursor: no-drop;
     background-color: #f1f1f1   ;
+    pointer-events :none;
+
 }
 .continue-buy{
     padding: 10px 20px ;
@@ -165,6 +168,12 @@
     padding-left: 15px; 
     border-bottom: 1px solid var(--border-cart);
     padding-bottom: 20px;
+    flex-direction: column;
+}
+.form-confirm{
+    padding-left: 15px; 
+    border-bottom: 1px solid var(--border-cart);
+    padding-bottom: 20px;
 }
 .form-my-bill{
     padding-left: 15px; 
@@ -176,4 +185,19 @@
     font-size: 2rem;
     margin-bottom: 15px;
     color: var(--text-color);
+}
+.form-payment {
+    padding: 0px 10%;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: flex-end;
+    display: flex;
+}
+.form-payment input{
+    font-size: 2rem;
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--white);
+    border-radius: 5px;
+
 }

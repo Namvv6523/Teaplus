@@ -88,8 +88,7 @@
                          
                          <div class="product_quantity"><?= $quantity ?></div>
                          <input style="width:30px" type="number" name="quantity1[]" hidden value="<?= $quantity ?>">
-                         
-                         
+                                                  
                        </div>
                      </td>
                      <td class="totalCash">
@@ -216,7 +215,7 @@
                        Tổng tiền
                        </span>
                        <span class="cash">
-                         <?= number_format( $billTotal) ?>đ
+                         <?php if(isset($billTotal))echo number_format( $billTotal) ?>đ
                          <input hidden type="text" value="<?=  $billTotal ?>" name="total">
                        </span>
                      </li>

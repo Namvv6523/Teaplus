@@ -65,9 +65,9 @@ tr{
 
 }
 .img-userr{
-    border-radius: 50%;
-    max-width: 200px;
-    max-height: 250px;
+    border-radius: 50% 50%;
+    width: 200px;
+    height: 200px;
     
 }
 .input-userr{
