@@ -3,7 +3,7 @@
 
 .form-submit-cart{
     padding: 0px 10%;
-    margin-top: 30px;
+    margin-top: 10px;
    
 }
 .table-cart{
@@ -39,6 +39,7 @@
     border: none;
     font-size: 1.7rem;
     cursor: no-drop;
+    /* pointer-events: none; */
 
 }
 .contain-upgrade-cart{
@@ -49,14 +50,26 @@
     font-size: 1.7rem;
     cursor: no-drop;
     background-color: #f1f1f1   ;
+    pointer-events :none;
+
 }
 .continue-buy{
     padding: 10px 20px ;
     border-radius: 5px;
-    color: #999;
+    /* color: #999; */
     border: none;
     font-size: 1.7rem;
     cursor: pointer;
+   
+}
+.continue-buy:hover{
+    opacity: 0.7;
+}
+.receive-product{
+    background-color:var(--primary-color);
+    color:var(--white);
+    text-align: center;
+    padding: 10px 10px;
 }
 .buy-now{
     padding: 10px 0px ;
@@ -85,8 +98,8 @@
 }
 /* <!-- ------------------ Nhập thông tin người dùng và thanh toán----------------v--------------- --> */
 .contain-info_user-pay{
-    padding: 0px 15%;
-    margin-top: 50px;
+    padding: 0px 10%;
+    margin-top: 40px;
 }
 .info_user h4{
     margin-top: 8px;
@@ -124,6 +137,8 @@
     background-color: #f0f0f0;
     padding: 8px 13px;
     padding-bottom: 3px;
+    border: 1px solid var(--border-cart);
+    border-bottom: none;
 }
 .block-pay_ul{
     border: 1px solid var(--border-cart);
@@ -147,4 +162,42 @@
     color: var(--white) !important;
     background-color: red;
     padding: 8px 10px;
+    text-align: center;
+}
+.form-pay{
+    padding-left: 15px; 
+    border-bottom: 1px solid var(--border-cart);
+    padding-bottom: 20px;
+    flex-direction: column;
+}
+.form-confirm{
+    padding-left: 15px; 
+    border-bottom: 1px solid var(--border-cart);
+    padding-bottom: 20px;
+}
+.form-my-bill{
+    padding-left: 15px; 
+    border-bottom: 1px solid var(--border-cart);
+    padding-bottom: 20px;
+}
+.bill_id{
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+.form-payment {
+    padding: 0px 10%;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: flex-end;
+    display: flex;
+}
+.form-payment input{
+    font-size: 2rem;
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--white);
+    border-radius: 5px;
+
 }

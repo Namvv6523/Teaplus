@@ -18,7 +18,7 @@
               <h3>Liên kết hữu ích</h3>
               <ul class="footer-list">
                 <li>Về chúng tôi</li>
-                <li>Liên hệ</li>
+                <li><a href="index.php?act=lienhe&header=headerSecond">Liên hệ</a> </li>
                 <li>Chính sách bảo mật</li>
                 <li>Chính sách đổi trả</li>
               </ul>

@@ -2,16 +2,22 @@
     if(is_array($sanpham)){
         extract($sanpham);
     }
-    $hinhpath="../upload/img/product/".$img;
+    
+          $idProduct = $id;
+          $nameProduct = $name;
+          $priceProduct = $price;
+          $imgProduct = $img;
+          $motaProduct = $mota;
+
+          $hinhpath="../upload/".$imgProduct;
           if(is_file($hinhpath)){
-            $hinh=" <img src='".$hinhpath."' height='80' width='60'>";
+            $hinh=" <img src='".$hinhpath."'  width='60'>";
           }else{
             $hinh="no photo";
           }
-
 ?>
 <h1>CẬP NHẬP SẢN PHẨM</h1>
-<form class="form_sp" action="index.php?act=updatesp" method="post" enctype="multipart/form-data">
+<form class="form_sp" action="index.php?act=updatesp" method="POST" enctype="multipart/form-data">
       <!-- <label class="label_addsp" for="">Mã sản phẩm:</label>
       <input class="ten_addsp" type="text" name="masp" /> -->
       <select name="iddm">
@@ -26,19 +32,19 @@
       </select>
 
       <label class="label_addsp" for="">Tên sản phẩm</label>
-      <input class="ten_addsp" type="text" name="tensp" value="<?=$name?>" />
+      <input class="ten_addsp" type="text" name="tensp" value="<?=$nameProduct?>" />
       
       <label class="label_addsp" for="">Giá</label>
-      <input class="ten_addsp" type="text" name="giasp" value="<?=$price?>" />
+      <input class="ten_addsp" type="text" name="giasp" value="<?=$priceProduct?>" />
 
       <label class="label_addsp" for="">Hình</label>
       <input class="ten_addsp" type="file" name="hinh" />
       <?=$hinh?>
 
       <label class="label_addsp" for="">Mô tả</label>
-      <textarea name="mota" cols="30" rows="10"> <?=$mota?> </textarea> <br>
+      <textarea name="mota" cols="30" rows="10"> <?=$motaProduct?> </textarea> <br>
 
-      <input type="hidden" name="id" value="<?=$id?>">
+      <input type="hidden" name="id" value="<?=$idProduct?>">
       <input class="input_addsp" type="submit" name="capnhat" value="CẬP NHẬT">
       
       <input class="input_addsp" type="reset" value="NHẬP LẠI">

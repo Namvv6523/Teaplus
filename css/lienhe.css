@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+.container-lienhe{
+    width: 1000px;
+    height: 460px;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 10px -1px 34px -2px rgba(0,0,0,0.75);
+    margin-left: 260px; 
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.container-lienhe_left{
+    width: 50%;
+    height: 100%;
+    background: url('../img/banner/banner-ts.jpg') no-repeat;
+    border-radius: 25px 0 0 50px;
+}
+.container-lienhe_right{
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    border-radius: 0 50px 50px 0;
+}
+.container-lienhe_right_form_title{
+    margin: 0 0 10px 10px;
+    color: #000;
+    text-align: center;
+
+}
+.container-lienhe_right_form_data{
+    font-family: 'Arial', sans-serif;
+    list-style: none;
+    padding-left: 10px;
+}
+.container-lienhe_right_form p{
+    font-size: 17px;
+    font-weight: 800;
+    color: #838B8B;
+}
+.container-lienhe_right_form li{
+    margin-top: 15px;
+}
+.container-lienhe_right_form input{
+    width: 260px;
+    height: 25px;
+    border-radius: 80px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.container-lienhe_right_form_bt{
+    padding: 8px 15px;
+    margin: 10px 10px;
+    border-radius: 100px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 16px;
+    background: #1CCD1C;
+    color: #fff;
+}

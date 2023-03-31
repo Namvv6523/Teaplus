@@ -32,6 +32,11 @@
     <link rel="stylesheet" href="css/product/product-page.css" />
     <link rel="stylesheet" href="css/product/product-detail.css">
     <link rel="stylesheet" href="css/comment.css">
+    <link rel="stylesheet" href="css/dangnhap.css" />
+    <link rel="stylesheet" href="css/profileUser.css" />
+    <link rel="stylesheet" href="css/lienhe.css">
+
+
     <title>Trang chủ</title>
   </head>
   <body>
@@ -51,14 +56,14 @@
             <div class="menu_bar d-f al-c">
               <ul class="d-f al-c">
                 <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="#">Sản phẩm</a></li>
+                <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
                 <li><a href="#">Tin tức</a></li>
                 <li><a href="#">Liên hệ</a></li>
               </ul>
             </div>
           </div>
-          <div class="line"></div>
-            <div class="login d-f al-c">
+          <div class="d-f">
+          <div class="login d-f al-c">
               <!-- -------------- Chưa đăng nhập-------------- -->
   
               <!-- <a href="">
@@ -84,14 +89,26 @@
               <a ><?=$user?></a>
               <ul>
                 <li><a href="index.php?act=thongtintk&header=headerSecond">Thông tin tài khoản</a></li>
-                <li><a href="#">Đơn hàng</a></li>
-                <li><a href="#">Giỏ hàng</a></li>
+
+            <?php
+            if($_SESSION['user']['role']==1){
+              ?>
+                <li><a href="admin/index.php">Đăng nhập admin</a></li>
+
+              <?php
+            }
+            ?>
+                <!-- <li><a href="#">Đơn hàng</a></li> -->
+                <li><a href="index.php?act=viewCart&header=headerSecond">Giỏ hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
               <?php } else { ?>
                 <a href="index.php?act=dangnhap&header=headerSecond">  
-                  <input type="button" value="đăng nhập">
+                  <input type="button" value="đăng nhập" class="input-login">
+                </a>
+                <a href="index.php?act=dangky&header=headerSecond">  
+                  <input type="button" value="đăng ký" class="input-login">
                 </a>
               <?php } ?>
 
@@ -105,9 +122,12 @@
               <div class="number">1</div>
             </div>
             <div class="cart">
-              <a href="index.php?act=myBill">  <i class="fa-solid fa-cart-shopping"></i></a>
-              <div class="number">1</div>
+            <a href="index.php?act=myBill&header=headerSecond">
+                  <i style="color:#333" class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <div class="number"><?php if(isset($count_bill)){echo $count_bill;}else{ echo 0;} ?></div>
             </div>
+          </div>
           </div>
         </div>
 
@@ -150,10 +170,7 @@
             <div class="icon-phone">
               <i class="fa-solid fa-phone"></i>
             </div>
-            <div class="numberPhone d-f f-d">
-              <span class="numberPhone_number">0123456678</span>
-              <span class="numberPhone_24">Hỗ trợ 24/07</span>
-            </div>
+           
           </div>
         </div>
       </header>

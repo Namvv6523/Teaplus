@@ -6,10 +6,10 @@ export default function handleUpgradeCart(isClickQuantity) {
   if (isClickQuantity) {
     upgradeCart.classList.add("active-upgrade-cart");
     containUpgradeCart.classList.add("active-upgrade-cart");
+    containUpgradeCart.style.pointerEvents = "auto";
     upgradeCart.addEventListener("click", function (e) {
         e.preventDefault();
         rotateUpgradeCart.style.display="inline-block";
-
         setTimeout(() => {        
         rotateUpgradeCart.style.display="none";
         upgradeCart.classList.remove("active-upgrade-cart");
@@ -184,13 +184,15 @@ inputInfo.forEach((input,index)=>{
     const inputPhone = document.querySelector("input[name='number-phone']").value;
     const inputAddress = document.querySelector("input[name='address']").value;
     if(inputUser.length != 0 && inputPhone.length != 0 && inputAddress.length != 0){
-      buyNow.classList.add("active-upgrade-cart")
+      buyNow.classList.add("active-upgrade-cart");
     }
     else{
-      buyNow.classList.remove("active-upgrade-cart")
+      buyNow.classList.remove("active-upgrade-cart");
 
     }
   })
 })
 }
+
+
 

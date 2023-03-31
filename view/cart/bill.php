@@ -21,9 +21,10 @@
 
         ?>
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
-              <section class="contain-form-submit-cart w-100">
-               
-              <form action="index.php?act=upgradeGiohang&header=headerSecond&f=1" class="form-submit-cart w-100" method="POST">         
+              <form action="index.php?act=confirm_bill&header=headerSecond" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;" method="POST">
+                <section class="contain-form-submit-cart w-100">
+
+                <div  class="form-submit-cart w-100" method="POST">         
                <table class="table-cart w-100">
       
                 <thead>
@@ -87,8 +88,7 @@
                          
                          <div class="product_quantity"><?= $quantity ?></div>
                          <input style="width:30px" type="number" name="quantity1[]" hidden value="<?= $quantity ?>">
-                         <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
-                         
+                                                  
                        </div>
                      </td>
                      <td class="totalCash">
@@ -99,6 +99,7 @@
                     <input type="text" hidden name="size" style="width:60px" value="<?= $size ?>">
                     <input type="text" hidden name="toppping" style="width:60px" value="<?= $topping ?>">
                     <input type="text" hidden name="price" style="width:60px" value="<?= $price ?>">
+                    <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
                     
                   </tr>
                   <?php } ?>
@@ -119,7 +120,7 @@
                 
                  
                </div>
-              </form>
+              </div>
               </section>
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----^--------------------- -->
      
@@ -128,7 +129,7 @@
                <section class="contain-info_user-pay w-100 ">
      
                  <!-- --------------Thông tin người dùng---------v----- -->
-                 <form action="index.php?act=confirm_bill&header=headerSecond" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;" method="POST">
+                 <div class="d-f jf-b w-100">
                  <div class="info_user w-45">
                    <h4>Thông tin mua hàng</h4>
                    <div>
@@ -214,26 +215,30 @@
                        Tổng tiền
                        </span>
                        <span class="cash">
-                         <?= number_format( $billTotal) ?>đ
+                         <?php if(isset($billTotal))echo number_format( $billTotal) ?>đ
                          <input hidden type="text" value="<?=  $billTotal ?>" name="total">
                        </span>
                      </li>
                      <li class="d-f jf-c">
+
                       <!-- <span class="w-100 d-f jf-c buy-now " >Mua ngay</span> -->
                       <input type="submit" style="text-align: center;" class="w-100 d-f jf-c buy-now " value="Mua ngay" name="order">
                      </li>
                      
                    </ul>
                  </div>
+                 </div>
      
      
                  <!-- -------------------- Thanh toán -----------^----- -->
      
+
+                 </section>
                </form>
                
      
      
-               </section>
+           
                                                             
              <!-- ------------------ Nhập thông tin người dùng và thanh toán---------------^--------------- -->
                                            

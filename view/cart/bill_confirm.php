@@ -58,6 +58,8 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                         $quantity = $list_cart[$i]['soluong'];
                         $result = $list_cart[$i]['thanhtien'];
                         $toppingInfo = handleTopping($topping);
+                                                
+
                         ?>
 
      
@@ -104,7 +106,7 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                <section class="contain-info_user-pay w-100 ">
      
                  <!-- --------------Thông tin người dùng---------v----- -->
-                 <form action="" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;">
+                 <form action="index.php?act=changeStatusBill&header=headerSecond" method="POST" class="w-100 d-f jf-b form-confirm" style="padding-left: 15px;">
                  <div class="info_user w-45">
                      <div>
                          <span style="color: var(--primary-color);font-weight: 600;">Trạng thái đơn hàng : </span>
@@ -112,9 +114,9 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                        </div>
                    <div>
                      
-                       <a class="get-old-info" href="">
+                       <!-- <a class="get-old-info" href="">
                          Cập nhật trạng thái 
-                       </a>
+                       </a> -->
                      
                        <!-- ------- -->
                        <div class="d-f w-100 m-t-b10">
@@ -200,9 +202,8 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                    </ul>
                    <div class="w-100 d-f jf-b  jf-e" style="margin-top: 2.5%;">
                                       
-                       <a href="" style="display: block;" class="continue-buy delete-cart-confirm">
-                        Hủy đơn hàng
-                       </a>
+                        <input type="text" value="<?= $id ?>" hidden name="idBill">    
+                       <input type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" >
                                                                
                    </div>
                  </div>     
