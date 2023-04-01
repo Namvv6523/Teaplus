@@ -157,7 +157,7 @@
                             <div class="info_user w-100 d-f">
                                 <div class="d-f w-100">
                                     <span style="color: var(--primary-color);font-weight: 600;">Trạng thái đơn hàng : </span>
-                                    <span style="color: red" ><?= getStatus($bill_status) ?></span>
+                                    <span style="color: red" ><?= getStatus($bill_status,0) ?></span>
                                 </div>                                                                   
                                
                             </div>
@@ -249,9 +249,12 @@
 
                             </ul>
                             <div class="w-100 d-f jf-b  " style="margin-top: 3.5%;">
-                                    <input type="button" value="Đã nhận được hàng " class="continue-buy receive-product" >    
-                                    <input type="text" value="<?= $id_bill ?>" hidden name="idBill">                           
-                                    <input type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" >
+                                    <input type="submit" value="Đã nhận được hàng " name="receive_cart" class="continue-buy receive-product" >    
+                                    <input type="text" value="<?= $id_bill ?>" hidden name="idBill">   
+                                    <?php if($bill_status != 2 && $bill_status != 3){ ?>
+
+                                        <input type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" >
+                                    <?php }  ?>                        
                                                                               
                             </div>
                         </div>

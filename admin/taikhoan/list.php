@@ -33,27 +33,33 @@
                         $suatk="index.php?act=suatk&id=".$id;
                         $xoatk="index.php?act=xoatk&id=".$id;
                         $img = "../upload/" .$avatar;
-                        echo '<tr>
+                        $address = isset($address) ? $address : "null";
+                        $tel = isset($tel) ? $tel : "null";
+                     ?>
+                        <tr>
                                 <td><input type="checkbox"></td>                        
-                                <td style="width:40px;" >' . $id . '</td>
-                                <td> <div class="border-avatar"><img style="width:40px;" src="' . $img  . '" alt=""></div></td>
-                                <td style="width:140px;">' . $user . '</td>
-                                <td>' . $pass . '</td>
-                                <td>' . $email . '</td>
-                                <td style="width:180px;">' . $address . '</td>
-                                <td>' . $tel . '</td>
-                                <td>' . $role . '</td>
+                                <td style="width:40px;" > <?= $id ?> </td>
                                 <td> 
-                                  <a class="url-edit" href="'. $suatk.'">
+                                  <div class="border-avatar">
+                                    <img style="width:40px;" src="<?= $img ?> " alt="">
+                                  </div>
+                                </td>
+                                <td style="width:140px;"> <?= $user ?>  </td>
+                                <td> <?= $pass ?>  </td>
+                                <td> <?= $email ?>  </td>
+                                <td style="width:180px;"> <?= $address ?>  </td>
+                                <td> <?= $tel ?>  </td>
+                                <td> <?= $role ?>  </td>
+                                <td> 
+                                  <a class="url-edit" href="<?= $suatk ?>">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                   </a> 
-                                  <a class="url-delete" href="'. $xoatk.'">
+                                  <a  class="url-delete" href="<?= $xoatk ?>" onclick='return confirm("Delete entry?")'>
                                     <i class="fa-solid fa-trash"></i>
                                   </a> 
                                 </td>
-                            </tr>';
-                    }
-                    ?>
+                            </tr>
+                   <?php } ?>
                   </table>
             </form>
                  

@@ -4,7 +4,7 @@
                
      
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
-              <section class="contain-form-submit-cart w-100">
+              <section class="contain-form-submit-cart w-100 d-f f-d al-c">
               <div class="search_list-product-admin w-100">
               <form action="" class="d-f form-search">
               <input
@@ -42,7 +42,7 @@
                         $kh=$bill["bill_name"].'
                         <br> '.$bill["bill_address"].'
                         <br>'.$bill["bill_tel"];
-                        $ttdh= getStatus($bill["bill_status"]);
+                        $ttdh= getStatus($bill["bill_status"],1);
                         $countsp=loadall_cart_count($bill["id"]);
                         
                         echo '<tr>
@@ -76,8 +76,10 @@
       
       
                </table>
+              
                
               </form>
-                  </div>
+            </div>
+            <a href="index.php?act=listbill" class="upgradeStatusAdmin" href="">Cập nhật trạng thái</a>
               </section>
               </main>

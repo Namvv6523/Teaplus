@@ -31,3 +31,13 @@
 .table_bill-admin>thead>tr>th{
     text-align: center;
 }
+.upgradeStatusAdmin{
+    padding: 10px 20px ;
+    background-color: var(--primary-color);
+    color: var(--white) !important;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 5px;
+
+    
+}

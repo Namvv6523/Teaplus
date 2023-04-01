@@ -133,7 +133,7 @@ if (isset($_GET['act'])) {
             include "taikhoan/list.php";
             break;
             case 'addtk':
-                if (isset($_POST['add']) && ($_POST['add'])) {
+                if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                     $hinh = $_FILES['hinh']['name'];
                     $tentk= $_POST["tentk"];
                     $matkhau = $_POST["matkhau"];
@@ -145,7 +145,7 @@ if (isset($_GET['act'])) {
                     } else {
                         //echo "Sorry, there was an error uploading your file.";
                     }
-                    insert_taikhoan($hinh,$tentk,$matkhau,$email);
+                    insert_taikhoan($tentk,$matkhau,$email,$hinh);
                     $thongbao = "Thêm thành công";
                 }
     
@@ -210,7 +210,7 @@ if (isset($_GET['act'])) {
             include "thongke/bieudo.php";
             break;
         case 'listbill':
-            // if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
+            // if(isset($_POST['kyw'])&&($_POST['kyw']!="")) {
             //     $kyw=$_POST['kyw'];
             // }else{
             //     $kyw="";
@@ -234,7 +234,7 @@ if (isset($_GET['act'])) {
             break;
         case 'updatebill':
             if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
-                $ttdh = $_POST["ttdh"];
+                $ttdh = isset($_POST["ttdh"]) ? $_POST["ttdh"] : 0 ;
                 $id = $_POST["id"];
                 update_bill($id, $ttdh);
                 $thongbao = "Cập nhật thành công";

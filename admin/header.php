@@ -23,7 +23,7 @@
   </head>
   <body>
     <div class="container d-f w-100">
-      <div class="side-bar" style="height: 200vh" >
+      <div class="side-bar " style="height: 200vh" >
         <div class="shop_name block">
           <div class="image">
             <img src="../upload/img/logo/logo.jpg" alt="" />
@@ -257,12 +257,15 @@
             <!-- ----------------------------- -->
           </ul>
         </div>
+        <button class="hidden">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
       </div>
       <div class="dash-board">
         <header class="w-100">
           <div class="admin-bar w-100">
             <div class="left-menu d-f">
-              <div class="left-menu-bar">
+              <div class="left-menu-bar menu-bar-admin">
                 <i class="fa-solid fa-bars"></i>
               </div>
               <div class="left-menu-bar">Home</div>

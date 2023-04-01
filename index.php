@@ -172,7 +172,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             $email= $_POST['email'];
                             $user= $_POST['user'];
                             $pass= $_POST['password'];
-                            insert_taikhoan($email,$user,$pass);
+                            insert_taikhoan($user,$pass,$email,"");
                             $thongbao="đã đăng ký thành công .vui lòng đăng nhập để sử dụng thêm chức năng bình luận";                 
                         }
                  
@@ -293,6 +293,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     break;
                 case 'confirm_bill':
                     if(isset($_SESSION['user'])){ 
+                        if(isset($_POST['order']) ){
                             $id_user = $_SESSION['user']['id'];                                                   
                             $userName = isset($_POST['user']) ? $_POST['user'] : "";
                             $email = isset($_POST['email']) ? $_POST['email'] : "";
@@ -333,8 +334,10 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     }     
                     else{
                         header("Location: index.php");
-                    }                
-                    }
+                    }             
+                 }
+                   
+                        }
                     else{
                         include "view/home.php";
                     }
@@ -342,6 +345,61 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         // $list_cart = select_cart_idBill($id_bill);
                                
                     break;
+                // case 'confirm_bill':
+                //     var_dump($_GET['order']);
+                //     if(isset($_SESSION['user'])){ 
+                //         if(isset($_GET['order']) ){
+                //             $id_user = $_SESSION['user']['id'];                                                   
+                //             $userName = isset($_GET['user']) ? $_GET['user'] : "";
+                //             $email = isset($_GET['email']) ? $_GET['email'] : "";
+                //             $bill_address = isset($_GET['address']) ? $_GET['address'] : "";
+                //             $bill_tele = isset($_GET['number-phone']) ? $_GET['number-phone'] : 0;
+                //             $note = isset($_GET['note']) ? $_GET['note'] : "";
+                //             $payment_method = isset($_GET['credit']) ? $_GET['credit'] : 0;
+                //             date_default_timezone_set('Asia/Ho_Chi_Minh');
+                //             $bill_date = date('H:i:sa d/m/Y');
+                //             $total = isset($_GET['total']) ? $_GET['total'] : 0;
+                //             $status = 0;
+                //             if($userName != ""){
+                //             $id_bill = insert_bill($id_user,$userName,$bill_address,$bill_tele,$payment_method,$bill_date,$total,$status,$note);
+                //             // $id_user = $_SESSION['user']['id'];
+                //             $giohang_id = isset($_GET['giohang_id']) ? $_GET['giohang_id'] : 0;
+                //             $cart_result = loadall_cart_idUser($id_user);
+                //             for($i = 0 ; $i < count($cart_result);$i++){
+                //                 insert_cart($id_user,
+                //                 $cart_result[$i]['idsp'],                    
+                //                  $cart_result[$i]['image'],
+                //                  $cart_result[$i]['tensp'],
+                //                  $cart_result[$i]['gia'],
+                //                  $cart_result[$i]['sugar'],
+                //                  $cart_result[$i]['size'],
+                //                  $cart_result[$i]['ice'],
+                //                  $cart_result[$i]['topping'],
+                //                  $cart_result[$i]['soluong'],
+                //                  $cart_result[$i]['thanhtien'],                                 
+                //                     $id_bill);
+                //                     upgrade_status_giohang(2,$giohang_id[$i]);
+                            
+            
+                //         }
+                //         // $_SESSION['mycart'] = [];
+                //         $list_bill = select_bill_one($id_bill);                        
+                //         $list_cart = select_cart_idBill($id_bill);   
+                //         include "view/cart/bill_confirm.php";
+                //     }     
+                //     else{
+                //         header("Location: index.php");
+                //     }             
+                //  }
+                   
+                //         }
+                //     else{
+                //         include "view/home.php";
+                //     }
+                //         $list_bill = select_bill_one($id_bill);
+                //         $list_cart = select_cart_idBill($id_bill);
+                               
+                //     break;
                 case 'myBill':
                     if(isset($_SESSION['user'])){
                         $id_user = $_SESSION['user']['id'];   
@@ -359,14 +417,21 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         if(isset($_POST['cancelCart'])){
                             $id = isset($_POST['idBill']) ? $_POST['idBill'] : 0;
                             $id_user = $_SESSION['user']['id'];
-                            update_bill_status($id,$id_user);
+                            update_bill_status($id,$id_user,5);
 
 
                             $list_bill = select_bill_idUser($id_user);   
                             include "view/cart/mybill.php";                        
                         }
+                        else if(isset($_POST['receive_cart'])){
+                            $id = isset($_POST['idBill']) ? $_POST['idBill'] : 0;
+                            $id_user = $_SESSION['user']['id'];
+                            update_bill_status($id,$id_user,6);
 
 
+                            $list_bill = select_bill_idUser($id_user);   
+                            include "view/cart/mybill.php";   
+                        }
 
                     }
                     else{
@@ -376,7 +441,10 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
 
 
 
-                    break;                
+                    break;  
+                case 'lienhe':
+                    include "view/lienhe.php"; 
+                    break;             
             default:
             include "view/home.php";
             break;

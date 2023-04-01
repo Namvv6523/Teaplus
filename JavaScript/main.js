@@ -143,7 +143,7 @@ const handleResult = (sugarValue = 0,  sizeValue = 0, iceValue = 0,  toppingValu
   parseInt(toppingValue, 10);
   if(totalMenu == 0 ){
 
-    var total = (12000 + parseInt(blockUpPrice, 10)) * quantity
+    var total = (7000 + parseInt(blockUpPrice, 10)) * quantity
   }
   else{
   

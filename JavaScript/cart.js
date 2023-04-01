@@ -115,7 +115,6 @@ const handleTotalCash = (index) =>{
 
   const inputQuan = handleQuantity(index)
   const sum = ( parseInt(inputPrice[index].value,10) +  parseInt(inputSugar[index].value,10) + parseInt(inputSize[index].value,10) + parseInt(inputToppping[index].value,10)) * parseInt(inputQuan,10)
-  console.log(sum);
   inputTotalCash[index].value = sum;
   const localStringSum = sum.toLocaleString();
   totalCash[index].innerHTML = localStringSum + "đ";
@@ -127,6 +126,7 @@ add.forEach((ele, index) => {
   ele.addEventListener("click", () => {
     handleAdd(index);
     isClickQuantity = true;
+  console.log(index);
    
     handleUpgradeCart(isClickQuantity);
     handleTotalCash(index);
@@ -148,7 +148,7 @@ const  validate = (e)=>{
   // const listener = function (e) {
   //   e.preventDefault();
   // };
-    e.preventDefault()
+    // e.preventDefault()
     const inputUser = document.querySelector("input[name='user']").value;
     const inputPhone = document.querySelector("input[name='number-phone']").value;
     const inputAddress = document.querySelector("input[name='address']").value;

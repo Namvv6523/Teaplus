@@ -16,7 +16,7 @@
         $image_name = $productDetail['img'];
         $image_url = "upload/";
         $image = $image_url . $image_name;
-        $number = 4000 + 2000 + 5000;
+        $number =  2000 + 5000;
         $totalPrice = $price + $number;
         ?>
 
@@ -216,7 +216,6 @@
                                     name="topping[]"
                                     class="input"
                                     value="4000"
-                                    checked
                                   />
                                   <label for="">Chân trâu baby </label>
                                 </div>

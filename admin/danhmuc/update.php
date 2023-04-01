@@ -15,7 +15,7 @@
                 <div class="block_form d-f f-d">
                 <label for=""> Tên Sản Phẩm </label>
                 
-                <input type="text" placeholder="Mã sản phẩm" name="tenloai" value="<?php if (isset($name)&&($name!="")) echo $name; ?>">
+                <input type="text" style="padding: 10px;" placeholder="Mã sản phẩm" name="tenloai" value="<?php if (isset($name)&&($name!="")) echo $name; ?>">
               <!-- </div>
               <div class="block_form d-f f-d">
                 <label for=""> Ảnh </label>

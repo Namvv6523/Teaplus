@@ -40,3 +40,27 @@ if(aSideBar){
 
 
 }
+const hidden = document.querySelector(".hidden");
+let isHidden = false; 
+const menuBarAdmin = document.querySelector(".menu-bar-admin");
+hidden.addEventListener("click",()=>{
+    isHidden = true;  
+    return  changeMenuBar(isHidden)
+})
+menuBarAdmin.addEventListener("click",()=>{
+    isHidden = false;
+    return  changeMenuBar(isHidden)
+
+})
+function changeMenuBar(isHidden){
+    const sideBar = document.querySelector(".side-bar");
+    const dashBoard = document.querySelector(".dash-board");
+    if(isHidden){
+        sideBar.classList.add("hidden-side-bar");
+        dashBoard.classList.add("widen")
+    }
+    else{
+        sideBar.classList.remove("hidden-side-bar");
+        dashBoard.classList.remove("widen")
+    }
+}

@@ -110,7 +110,7 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                  <div class="info_user w-45">
                      <div>
                          <span style="color: var(--primary-color);font-weight: 600;">Trạng thái đơn hàng : </span>
-                         <span style="color: red" ><?= getStatus($status) ?></span>
+                         <span style="color: red" ><?= getStatus($status,0) ?></span>
                        </div>
                    <div>
                      

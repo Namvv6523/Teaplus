@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="css/comment.css">
     <link rel="stylesheet" href="css/dangnhap.css" />
     <link rel="stylesheet" href="css/profileUser.css" />
+    <link rel="stylesheet" href="css/lienhe.css">
+
 
 
     <title>Trang chủ</title>
@@ -57,7 +59,7 @@
                 <li><a href="index.php">Trang chủ</a></li>
                 <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
                 <li><a href="#">Tin tức</a></li>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a href="index.php?act=lienhe&header=headerSecond">Liên hệ</a></li>
               </ul>
             </div>
           </div>
@@ -92,7 +94,7 @@
             <?php
             if($_SESSION['user']['role']==1){
               ?>
-                <li><a href="admin/index.php">Đăng nhập admin</a></li>
+                <li><a href="admin/index.php" target="_blank">Đăng nhập admin</a></li>
 
               <?php
             }
