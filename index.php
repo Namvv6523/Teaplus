@@ -21,6 +21,7 @@ $category_home = loadall_danhmuc();
 if(isset($_SESSION['user'])){
     $idUser = $_SESSION['user']['id'];
     $count_bill = select_bill_count($idUser);
+    $cartCount = count_giohang_idUser($idUser);
 }
 
 
@@ -32,7 +33,7 @@ if (isset($_GET['header'])  && $_GET['header'] != "") {
             if (isset($_SESSION['login'])  && $_SESSION['login'] != "") {
                 $id = $_SESSION['user']['id'];
                 $info_id = $id;
-                // $checkUserId =  checkUserId($info_id);
+                
                 $_SESSION['userId'] = $checkUserId;
                 $info_user = $_SESSION['userId']['user'];
                 $info_id = $_SESSION['userId']['id'];
@@ -40,6 +41,7 @@ if (isset($_GET['header'])  && $_GET['header'] != "") {
                 $info_email = $_SESSION['userId']['email'];
                 $iduser = $_SESSION['user']['id'];
                 $billCount = select_bill_count($iduser);
+                
                 include "view/headerMain.php";
             } else {
 
@@ -48,17 +50,11 @@ if (isset($_GET['header'])  && $_GET['header'] != "") {
          
             break;
         case 'headerSecond':
-
             
             if (isset($_SESSION['login'])  && $_SESSION['login'] != "") {
-                // $id = $_SESSION['user']['id'];
-                // $info_id = $id;
-                // // $checkUserId =  checkUserId($info_id);
-                // $_SESSION['userId'] = $checkUserId;
-                // $info_user = $_SESSION['userId']['user'];
-                // $info_id = $_SESSION['userId']['id'];
-                // $info_password = $_SESSION['userId']['password'];
-                // $info_email = $_SESSION['userId']['email'];
+               
+
+                
 
                 include "view/header.php";
             } else {
@@ -68,7 +64,7 @@ if (isset($_GET['header'])  && $_GET['header'] != "") {
 
             break;
         case 'headerprd':
-
+              
                 include "view/headerProduct.php";
     
                 break;

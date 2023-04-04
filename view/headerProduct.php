@@ -125,7 +125,7 @@
                 <a href="index.php?act=myBill&header=headerSecond">
                   <i style="color:#333" class="fa-solid fa-cart-shopping"></i>
                 </a>
-                <div class="number"><?php if(isset($count_bill)){echo $count_bill;}else{ echo 0;} ?></div>
+                <div class="number"><?php if(isset($cartCount)){echo $cartCount;}else{ echo 0;} ?></div>
               </div>
             </div>
             </div>

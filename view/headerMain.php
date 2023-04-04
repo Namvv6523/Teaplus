@@ -91,7 +91,7 @@
             }
             ?>
                 <!-- <li><a href="#">Đơn hàng</a></li> -->
-                <li><a href="index.php?act=viewCart&header=headerSecond">Giỏ hàng</a></li>
+                <li><a href="index.php?act=myBill&header=headerSecond">Đơn hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
@@ -114,10 +114,10 @@
                 <div class="number">1</div>
               </div>
               <div class="cart">
-                <a href="index.php?act=myBill&header=headerSecond">
+                <a href="index.php?act=viewCart&header=headerSecond" >
                   <i class="fa-solid fa-cart-shopping"></i>
                 </a>
-                <div class="number"><?php if(isset($count_bill)){echo $count_bill;}else{ echo 0;} ?></div>
+                <div class="number"><?php if(isset($cartCount)){echo $cartCount;}else{ echo 0;} ?></div>
               </div>
             </div>
             </div>

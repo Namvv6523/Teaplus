@@ -147,6 +147,12 @@ function loadall_cart_idUser($idUser)
     $bill = pdo_query($sql);
     return $bill;
 }
+function count_giohang_idUser($idUser)
+{
+    $sql = "SELECT * FROM giohang WHERE id_user= $idUser AND status = 1 ";
+    $bill = pdo_query($sql);
+    return sizeof($bill);
+}
 function loadall_cart_count($idbill)
 {
     $sql = "select*from cart where idbill=" . $idbill;
