@@ -211,14 +211,7 @@
                     </div>
                   </a>
                 </li>
-                <li>
-                  <a href="index.php?act=addsp">
-                    <div>
-                      <i class="fa-regular fa-circle"></i>
-                      <span>Thêm sản phẩm</span>
-                    </div>
-                  </a>
-                </li>
+              
               </ul>
             </li>
 
@@ -255,6 +248,28 @@
             </li>
 
             <!-- ----------------------------- -->
+            <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
+                <div>
+                <i class="fa-solid fa-address-book"></i>
+                  <span>Liên hệ </span>
+                </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <!-- --------------- menu con --------------------- -->
+
+              <ul class="sub-menu">
+                <li>
+                  <a href="index.php?act=lienhe">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Danh sách liên hệ</span>
+                    </div>
+                  </a>
+                </li>
+            <!-- ----------------------------- -->
+
           </ul>
         </div>
         <button class="hidden">

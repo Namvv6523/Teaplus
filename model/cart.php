@@ -129,6 +129,11 @@ function  upgrade_quantity_giohang($id, $quantity)
     $sql = "UPDATE giohang SET soluong ='$quantity' WHERE id =$id";
     pdo_execute($sql);
 }
+function  upgrade_quantity_total_giohang($id, $quantity,$total)
+{
+    $sql = "UPDATE giohang SET soluong ='$quantity',thanhtien = '$total' WHERE id =$id";
+    pdo_execute($sql);
+}
 function  upgrade_status_giohang($status, $id)
 {
     $sql = "UPDATE giohang SET status ='$status' WHERE id =$id";
@@ -158,6 +163,20 @@ function loadall_cart_count($idbill)
     $sql = "select*from cart where idbill=" . $idbill;
     $bill = pdo_query($sql);
     return sizeof($bill);
+}
+function loadall_alreadyHav_giohang(
+$sugarValue,
+$iceValue,
+$sizeValue,
+$toppingValue,
+$idValue,
+$id_userValue,
+){
+
+    $sql = "SELECT * FROM giohang WHERE id_user= $id_userValue AND idsp  = $idValue AND sugar = $sugarValue AND size = $sizeValue AND ice = $iceValue AND topping = $toppingValue AND status = 1  ";
+    $bill = pdo_query_one($sql);
+    return $bill;
+
 }
 
 
@@ -197,14 +216,30 @@ function handleInsertToCart($productValue, $priceValue, $sugarValue, $iceValue, 
     }
     $result = ($product_price + floatval($sugar) + floatval($size) + floatval($ice) + floatval($stringTopping)) * floatval($quantity);
     $status = 1;
+    $product_giohang = loadall_alreadyHav_giohang(
+        $sugarValue,
+        $iceValue,
+        $sizeValue,
+        $stringTopping,
+        $idValue,
+        $id_userValue,
+    );
+    
+    if(is_array($product_giohang) && $product_giohang !== null){
+        $idGioHang = $product_giohang['id'];
+        $quantityBeforeProduct = $product_giohang['soluong'];
+        $totalQuantity = $quantityBeforeProduct + $quantity;
+        $totalBeforeProduct = $product_giohang['thanhtien'];
+        $total = $totalBeforeProduct * $totalQuantity;
+        upgrade_quantity_total_giohang($idGioHang, $totalQuantity,$total);
+    }
+    else{
+        insert_giohang($id, $id_user, $product_name, $image, $sugar, $size, $ice, $stringTopping, $product_price, $quantity, $result, $status);
+    }
 
 
-    insert_giohang($id, $id_user, $product_name, $image, $sugar, $size, $ice, $stringTopping, $product_price, $quantity, $result, $status);
-    // $addProductCart = [$id, $image, $product_name, $product_price, $sugar, $size, $ice, $topping, $quantity, $result];
-
-    // array_push($_SESSION['mycart'], $addProductCart);
-
-    // $_SESSION['mycart'] = [];
+    
+  
    
     
 }

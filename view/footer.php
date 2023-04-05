@@ -5,14 +5,14 @@
               <img src="./img/logo/logo_png.png" alt="" />
             </a>
             <ul class="footer-list">
-              <li>FPT Phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội</li>
+              <li>FPT Phố Trịnh Văn Bô, Xuân Phương, <br> Nam Từ Liêm, Hà Nội</li>
               <li>01224345465</li>
               <li>user@gmail.com</li>
             </ul>
           </div>
         </div>
         <!-- ---------------------------------- -->
-        <div class="d-f jf-b">
+        <div class="d-f jf-b " style="width:57%">
           <div class="column2 logo-address">
             <div class="footer-logo2">
               <h3>Liên kết hữu ích</h3>

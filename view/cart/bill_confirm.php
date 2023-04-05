@@ -161,8 +161,8 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                        <!-- <input type="radio" name="bank"> -->
                        <label for="">
                        <?php
-                        if($payment_method == 1)echo "Trả tiền khi nhận hàng";
-                        else if ($payment_method == 2)echo "Chuyển khoản ngân hàng";
+                        if($payment_method == 1)echo "Chuyển khoản ngân hàng";
+                        else if ($payment_method == 2)echo "Trả tiền khi nhận hàng ";
                         
 
                     ?>
@@ -203,7 +203,7 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                    <div class="w-100 d-f jf-b  jf-e" style="margin-top: 2.5%;">
                                       
                         <input type="text" value="<?= $id ?>" hidden name="idBill">    
-                       <input type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" >
+                       <input  type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" onclick="return confirm('Bạn có chắc muốn xóa đơn hàng không ?')">
                                                                
                    </div>
                  </div>     

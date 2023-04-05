@@ -16,7 +16,7 @@
         $image_name = $productDetail['img'];
         $image_url = "upload/";
         $image = $image_url . $image_name;
-        $number =  2000 + 5000;
+        $number =  0;
         $totalPrice = $price + $number;
         ?>
 
@@ -84,7 +84,8 @@
                               <div class="d-f jf-b contain-choice">
                                 <div class="d-f f-d">
                                 <div class="d-f g-10">
-                                  <input type="radio" value="2000" class="input" name="sugar" checked />
+                                  <input type="radio" value="2000" class="input" name="sugar"  />
+                                  <input type="radio" value="0" class="input" name="sugar" checked hidden />
                                   <label for="">100% </label>
                                 </div>
                                 <span>(2,000 VNĐ)</span>
@@ -127,7 +128,17 @@
                                     class="input"
                                     id="size"
                                     name="size"
+                                    
+                                  />
+                                  <input
+                                    type="radio"
+                                    value="0"
+                                    class="input"
+                                    id="size"
+                                    name="size"
+                                    hidden
                                     checked
+                                    
                                   />
                                   <label for="">M </label>
                                 </div>
@@ -158,7 +169,16 @@
                                     value="5"
                                     class="input"
                                     name="ice-rock"
+                                    
+                                  />
+                                  <input
+                                    type="radio"
+                                    value="0"
+                                    class="input"
+                                    name="ice-rock"
+                                    hidden
                                     checked
+                                    
                                   />
                                   <label for="">100%</label>
                                 </div>

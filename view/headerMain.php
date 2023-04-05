@@ -114,7 +114,7 @@
                 <div class="number">1</div>
               </div>
               <div class="cart">
-                <a href="index.php?act=viewCart&header=headerSecond" >
+                <a class="" href="index.php?act=viewCart&header=headerSecond" >
                   <i class="fa-solid fa-cart-shopping"></i>
                 </a>
                 <div class="number"><?php if(isset($cartCount)){echo $cartCount;}else{ echo 0;} ?></div>
@@ -149,13 +149,16 @@
               </ul>
             </div>
             <div class="search">
-              <form action="index.php?act=search_product&header=headerprd" class="d-f" method="POST">
+              <form action="index.php?act=search_product&header=headerprd"  class="d-f form_search_main" method="POST">
                 <input
                   type="text"
                   class="input-search"
                   placeholder="Bạn cần tìm kiếm sản phẩm..."
                   name="value-search"
                 />
+                <div class="clear_search">
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
                 <input type="submit" value="Tìm kiếm" class="search-btn" name="submit-value-search" />
               </form>
             </div>

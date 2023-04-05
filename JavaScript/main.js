@@ -31,16 +31,17 @@ function getValueHeart(index){
   
 let heartNumber = 0;
 let icClickLike = 0;
+const heart = document.querySelectorAll(".heart");
+console.log(heart)
+if(heart){
 
-
-  const heart = document.querySelectorAll(".heart");
   let isLike = false;
   heart[valueHeart].addEventListener("click",()=>{
     isLike = true;
     heartNumber++;
     if(isLike){
       heart[valueHeart].classList.add("isLike");
-      heartArr[valueHeart]
+      
 
     }
     const productHeartActive = document.querySelector(".heart.isLike");
@@ -50,7 +51,7 @@ let icClickLike = 0;
 
     },250)
   })
-
+}
 }
 
 
@@ -143,7 +144,7 @@ const handleResult = (sugarValue = 0,  sizeValue = 0, iceValue = 0,  toppingValu
   parseInt(toppingValue, 10);
   if(totalMenu == 0 ){
 
-    var total = (7000 + parseInt(blockUpPrice, 10)) * quantity
+    var total = ( parseInt(blockUpPrice, 10)) * quantity
   }
   else{
   

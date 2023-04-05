@@ -9,6 +9,7 @@ include "model/cart.php";
 include "model/convert.php";
 include "model/bill.php";
 include "model/binhluan.php";
+include "model/lienhe.php";
 
 
 include "global.php";
@@ -221,7 +222,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             }
                         handleInsertToCart($_POST['product_name'], $_POST['product_price'], $_POST['sugar'], $_POST['ice-rock'], $_POST['size'], $checkTopping, $_POST['image'], $_POST['id'], $_SESSION['user']['id'], $_POST['quantity']);
                         $cart_result = loadall_cart_idUser($id_user);
-                        include "view/cart/view_cart.php";
+                        include "view/cart/view_cart.php"; 
                         }
                         else if(isset($_POST['addToCart']) && $_POST['addToCart'] ){
                             handleInsertToCart($_POST['product_name'], $_POST['product_price'], $_POST['sugar'], $_POST['ice-rock'], $_POST['size'], $_POST['topping'], $_POST['image'], $_POST['id'], $_SESSION['user']['id'], $_POST['quantity']);
@@ -255,7 +256,6 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                 }
                     break;
             case 'orderCart':
-                
                 if(isset($_SESSION['user'])){
                     if(isset($_SESSION['check']) && $_SESSION['check'] != null){
                     $id_user = $_SESSION['user']['id'];
@@ -269,10 +269,21 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                 }else{
                     header("Location: index.php");
                 }
+               
                     break;
             case 'upgradeGiohang':
+
+                if(isset($_SESSION['user'])){
+                    if(isset($_POST['orderCart']) && $_POST['orderCart'] != null){
+                    $id_user = $_SESSION['user']['id'];
+                    $cart_result = loadall_cart_idUser($id_user);
+                    $_SESSION['check'] = [];
+                    include "view/cart/bill.php";
+                    }
+                   
                 
-                if(isset($_SESSION['user']['id']) && $_SESSION['user']['id'] ){
+                else if($_POST['randcheck']==$_SESSION['rand']){
+                
                     $id = isset($_POST['giohang_id']) ? $_POST['giohang_id'] : 0; 
                     $quantity1 = isset($_POST['quantity1']) ? $_POST['quantity1'] : 1;                                  
                     $totalCash = isset($_POST['totalCash']) ? $_POST['totalCash'] : 1;                                  
@@ -281,15 +292,24 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         pdo_execute($sql);
                     }
                     
-                    }
+
                     $id_user = $_SESSION['user']['id'];
                     $cart_result = loadall_cart_idUser($id_user);
                     include "view/cart/view_cart.php";
+                    }
+                    else{
+                        header("Location: index.php");
+                    }
+                   
+                }
+                else{
+                    header("Location: index.php");
+                }
                     
                     break;
                 case 'confirm_bill':
                     if(isset($_SESSION['user'])){ 
-                        if(isset($_POST['order']) ){
+                        
                             $id_user = $_SESSION['user']['id'];                                                   
                             $userName = isset($_POST['user']) ? $_POST['user'] : "";
                             $email = isset($_POST['email']) ? $_POST['email'] : "";
@@ -319,7 +339,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                                  $cart_result[$i]['soluong'],
                                  $cart_result[$i]['thanhtien'],                                 
                                     $id_bill);
-                                    upgrade_status_giohang(2,$giohang_id[$i]);
+                                upgrade_status_giohang(2,$giohang_id[$i]);
                             
             
                         }
@@ -331,7 +351,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     else{
                         header("Location: index.php");
                     }             
-                 }
+                 
                    
                         }
                     else{
@@ -438,9 +458,21 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
 
 
                     break;  
-                case 'lienhe':
-                    include "view/lienhe.php"; 
-                    break;             
+                    case 'lienhe':
+                        if (isset($_POST['submit']) && ($_POST['submit'])) {
+                            $hovaten= $_POST['hovaten'];
+                            $diachi= $_POST['diachi'];
+                            $dienthoai= $_POST['dienthoai'];
+                            $email= $_POST['email'];
+                            $loinhan= $_POST['loinhan'];
+                            insert_lienhe($hovaten,$dienthoai,$email,$diachi,$loinhan);
+                            $thongbao="đã gửi thông tin liên hệ thành công .";                 
+                        }
+                        
+                        // include "./view/taikhoan/dangky.php";
+                            
+                        include "view/lienhe.php"; 
+                        break;      
             default:
             include "view/home.php";
             break;

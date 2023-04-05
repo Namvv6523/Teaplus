@@ -244,5 +244,5 @@
              <!-- ------------------ Nhập thông tin người dùng và thanh toán---------------^--------------- -->
                                            
            </main>
-    <!-- <script type="module" src="JavaScript/cart.js"></script> -->
+    <script type="module" src="JavaScript/cart.js"></script>
     

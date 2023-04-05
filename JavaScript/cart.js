@@ -148,7 +148,7 @@ const  validate = (e)=>{
   // const listener = function (e) {
   //   e.preventDefault();
   // };
-    // e.preventDefault()
+    e.preventDefault()
     const inputUser = document.querySelector("input[name='user']").value;
     const inputPhone = document.querySelector("input[name='number-phone']").value;
     const inputAddress = document.querySelector("input[name='address']").value;

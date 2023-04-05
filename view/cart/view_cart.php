@@ -107,17 +107,23 @@
                      Tiếp tục mua hàng
                    </a>
                  </button>
-                 <form action="">
+                 
                   <?php
                   $_SESSION['check'] = "hello";
                   
                   ?>
-                 <button>
-                   <a href="index.php?act=orderCart&header=headerSecond"  class="continue-buy">
+                   <?php
+                    $rand=rand();
+                    $_SESSION['rand']=$rand;
+                    ?>
+                    <input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
+                 <!-- <button>
+                   <a href="index.php?act=orderCart&header=headerSecond&rand="  class="continue-buy">
                      Thanh toán
                    </a>
-                 </button>
-                 </form>
+                 </button> -->
+                 <input type="submit" value="Thanh toán" name="orderCart" style="padding: 0px 10px;font-size:1.7rem">
+                 
                  <div class="contain-upgrade-cart ">
                    <i class="fa-solid fa-spinner rotate-upgrade-cart"></i>
      
