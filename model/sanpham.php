@@ -83,4 +83,12 @@
         $countSanphamByiddm=pdo_query($sql);
         return  $countSanphamByiddm;
     }
+    function count_product(){
+        $sql="SELECT * FROM sanpham ";
+
+        $countSanpham=pdo_query($sql);
+        return  sizeof($countSanpham);
+    }
+   
+    
 ?>

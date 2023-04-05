@@ -56,6 +56,12 @@
         $sql ="delete from taikhoan where id=".$id;
         pdo_execute($sql);
     }
+    function count_taikhoan(){
+        $sql="SELECT * FROM taikhoan ";
+
+        $countSanpham=pdo_query($sql);
+        return  sizeof($countSanpham);
+    }
 
 
 

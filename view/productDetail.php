@@ -171,15 +171,7 @@
                                     name="ice-rock"
                                     
                                   />
-                                  <input
-                                    type="radio"
-                                    value="0"
-                                    class="input"
-                                    name="ice-rock"
-                                    hidden
-                                    checked
-                                    
-                                  />
+                                 
                                   <label for="">100%</label>
                                 </div>
                                 <div class="d-f g-10">
@@ -215,6 +207,7 @@
                                     value="1"
                                     class="input"
                                     name="ice-rock"
+                                    checked
                                   />
                                   <label for="">Không đá</label>
                                 </div>

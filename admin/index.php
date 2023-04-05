@@ -13,7 +13,8 @@ include "../model/convert.php";
 include "../model/lienhe.php";
 include "header.php";
 //controller
-
+$count_product = count_product();
+$count_taikhoan = count_taikhoan();
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {

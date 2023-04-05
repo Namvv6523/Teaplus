@@ -48,7 +48,7 @@
         <div class="contain-list-menu w-100">
           <ul>
             <li >
-              <a href="" >
+              <a href="index.php" >
                 <div>
                   <i class="fa-solid fa-gauge"></i>
                   <span>Dashboard</span>
