@@ -217,3 +217,4 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                                                             
              <!-- ------------------ Nhập thông tin người dùng và thanh toán---------------^--------------- -->                                           
            </main>
+           

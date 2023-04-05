@@ -157,13 +157,16 @@
             </ul>
           </div>
           <div class="search">
-          <form action="index.php?act=search_product&header=headerSecond" class="d-f" method="POST">
+          <form action="index.php?act=search_product&header=headerSecond" class="d-f form_search_main" method="POST">
                 <input
                   type="text"
                   class="input-search"
                   placeholder="Bạn cần tìm kiếm sản phẩm..."
                   name="value-search"
                 />
+                <div class="clear_search">
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
                 <input type="submit" value="Tìm kiếm" class="search-btn" name="submit-value-search" />
             </form>
           </div>

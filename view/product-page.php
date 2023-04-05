@@ -1,6 +1,5 @@
 <main class="w-100 d-f f-d al-c">
 
-  <h1 class="title_product_new">Sản phẩm </h1>
   <div class="product-page-banner">
     <span class="product-page-banner_title">Trang chủ - Sản phẩm</span>
   </div>
@@ -18,6 +17,8 @@
       <input type="submit" value="Tìm kiếm" class="search-btn" name="submit-value-search" />
     </form>
   </div>
+  <h1 class="title_product_new" style="margin-top: 20px;">Sản phẩm </h1>
+
   <!--  -->
 
   <div class="contain_sideBar-filter_list-product w-100 d-f al-t">
@@ -30,9 +31,11 @@
           $category_name = $category_home[$i]["name"];
           $id =  $category_home[$i]["id"];
           $url_productByType = "index.php?act=productByType&id=$id&header=headerprd";
+          $count = count_productByiddm($id);
+                  extract($count);
         ?>
 
-          <li style="text-transform:capitalize;"><a id="name_categorys" href="<?= $url_productByType ?>"><?= $category_name ?></a></li>
+          <li style="text-transform:capitalize;"><a id="name_categorys" href="<?= $url_productByType ?>"><?= $category_name ?> (<?php echo $count['0']['count'];?>)</a></li>
 
         <?php } ?>
       </ul>

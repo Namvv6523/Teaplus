@@ -139,11 +139,14 @@
                   $category_name = $category_home[$i]["name"];                                    
                   $id =  $category_home[$i]["id"];            
                   $url_productByType = "index.php?act=productByType&id=$id&header=headerprd";
-                  
+                  $count = count_productByiddm($id);
+                  extract($count);
 
                 ?>
 
-                <li><a href="<?= $url_productByType ?>"><?= $category_name ?></a></li>
+                <li>
+                  <a class="d-f jf-b" href="<?= $url_productByType ?>"><?= $category_name ?> <span style="padding-right: 10px;color:#888"> x <?php echo $count['0']['count'];?></span></a>
+                </li>
               
                 <?php } ?>
               </ul>

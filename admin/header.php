@@ -26,7 +26,10 @@
       <div class="side-bar " style="height: 200vh" >
         <div class="shop_name block">
           <div class="image">
-            <img src="../upload/img/logo/logo.jpg" alt="" />
+            <a href="../index.php">
+
+              <img src="../upload/img/logo/logo.jpg" alt="" />
+            </a>
           </div>
           <span>Tea plus</span>
         </div>

@@ -229,7 +229,12 @@ function handleInsertToCart($productValue, $priceValue, $sugarValue, $iceValue, 
         $idGioHang = $product_giohang['id'];
         $quantityBeforeProduct = $product_giohang['soluong'];
         $totalQuantity = $quantityBeforeProduct + $quantity;
-        $totalBeforeProduct = $product_giohang['thanhtien'];
+        $priceBeforeProduct = $product_giohang['gia'];
+        $sugarBeforeProduct = $product_giohang['sugar'];
+        $sizeBeforeProduct = $product_giohang['size'];
+        $iceBeforeProduct = $product_giohang['ice'];
+        $toppingBeforeProduct = $product_giohang['topping'];
+        $totalBeforeProduct = $priceBeforeProduct + $sugarBeforeProduct + $sizeBeforeProduct + $iceBeforeProduct + $toppingBeforeProduct ;
         $total = $totalBeforeProduct * $totalQuantity;
         upgrade_quantity_total_giohang($idGioHang, $totalQuantity,$total);
     }
