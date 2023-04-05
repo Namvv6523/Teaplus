@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../css/admin/admin.css" />
     <link rel="stylesheet" href="../css/admin/bill.css" />
     <link rel="stylesheet" href="../css/admin/taikhoan.css" />
+    <link rel="stylesheet" href="../css/admin/pagin.css" />
     <title>Admin</title>
   </head>
   <body>
