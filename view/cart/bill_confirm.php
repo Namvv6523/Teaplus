@@ -1,5 +1,9 @@
 <main class="w-100 d-f f-d al-c">
-
+<script>
+  if(window.history.replaceState){
+    window.history.replaceState(null,null,"index.php?act=myBill&header=headerSecond");
+  }
+</script>
 
 <?php
 if(isset($list_bill) && is_array($list_bill)){

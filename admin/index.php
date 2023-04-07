@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // session_start();
 // if(isset($_SESSION['user'])&&($_SESSION['user']['role']==1)){
 include "../model/pdo.php";
@@ -237,7 +238,8 @@ if (isset($_GET['act'])) {
                 $thongbao = "Cập nhật thành công";
             }
             $listbill=loadall_bill(0);
-            include "bill/listbill.php";
+            // include "bill/listbill.php";
+            header("Location: index.php?act=listbill");
             break;  
         case 'lienhe':
             $listlienhe = loadall_lienhe();
@@ -263,5 +265,8 @@ include "footer.php";
 // }else{
 //     header('Location: ../index.php');
 // }
+ob_end_flush()
 ?>
+
+
 

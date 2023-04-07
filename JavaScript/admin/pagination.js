@@ -42,9 +42,9 @@ const setCurrentPage = (pageNum) => {
  
 
   listItems.forEach((item, index) => {
-    item.classList.add("hidden");
+    item.classList.add("hiddenPagin");
     if (index >= prevRange && index < currRange) {
-      item.classList.remove("hidden");
+      item.classList.remove("hiddenPagin");
     }
   });
 };
