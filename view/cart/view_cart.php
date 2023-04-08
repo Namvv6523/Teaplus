@@ -1,5 +1,9 @@
 <main class="w-100 d-f f-d al-c">
-               
+<script>
+  if(window.history.replaceState){
+    window.history.replaceState(null,null,"index.php?act=viewCart&header=headerSecond&f=1");
+  }
+</script>
                <h1 class="title_product_new">Sản phẩm </h1>
                <div class="product-page-banner">
                    <span class="product-page-banner_title">Trang chủ - Giỏ hàng</span>

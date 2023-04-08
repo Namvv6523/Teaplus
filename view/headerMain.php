@@ -114,7 +114,7 @@
                 <div class="number">1</div>
               </div>
               <div class="cart">
-                <a class="" href="index.php?act=viewCart&header=headerSecond" >
+                <a class="" href="index.php?act=viewCart&header=headerSecond&f=1" >
                   <i class="fa-solid fa-cart-shopping"></i>
                 </a>
                 <div class="number"><?php if(isset($cartCount)){echo $cartCount;}else{ echo 0;} ?></div>

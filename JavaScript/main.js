@@ -118,7 +118,7 @@ const handleAdd = () => {
 const handleSubtract = () => {
   quantity--;
   if (quantity <= 0) {
-    quantity = 0;
+    quantity = 1;
   }
   return handleQuantity();
 };

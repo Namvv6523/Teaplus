@@ -25,7 +25,7 @@ function insert_bill($iduser,$name,$address,$tel,$pttt,$ngaydathang,$tongdonhang
     return pdo_execute_return_lastInsertId($sql);
 }
 function select_bill_idUser($id_user){
-    $sql="SELECT * FROM bill WHERE iduser = $id_user AND bill_status <> 4 AND bill_status <> 5";
+    $sql="SELECT * FROM bill WHERE iduser = $id_user AND bill_status <> 4 AND bill_status <> 5 order by id desc";
     $listBill=pdo_query($sql);
     return  $listBill;
 }

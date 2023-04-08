@@ -179,7 +179,7 @@
                      <h4>Hình thức chuyển khoản</h4>
                      <div  class="w-100">
                      <div class="m-t-b10">
-                       <input type="radio" name="credit" value="1" checked>
+                       <input type="radio" name="credit" value="1" >
                        <label for="">Chuyển khoản ngân hàng</label>
                      </div>
                      <div class="m-t-b10">
@@ -244,5 +244,76 @@
              <!-- ------------------ Nhập thông tin người dùng và thanh toán---------------^--------------- -->
                                            
            </main>
+           <div class="contain-overlay-product-detail">
+            <div class="contain-product-detail">
+
+            <!-- ------------------------------ -->
+                  <div class="sideBar_pay">
+                    <div class="timePay blockPayment" >
+                      <span>Đơn hàng hết hạn sau</span>
+                      <span class="timeRestPay">10:00</span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <span><i class="fa-solid fa-shop"></i> Nhà cung cấp</span>
+                      <span>Shop</span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <span><i class="fa-solid fa-money-bill"></i> Số tiền</span>
+                      <span>450,000đ</span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <span><i class="fa-solid fa-circle-info"></i> Thông tin</span>
+                      <span>Thanh toán bằng MBbank</span>
+                      <span>STK : 123456789</span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <span><i class="fa-solid fa-bars"></i> Mã đơn hàng</span>
+                      <span>11</span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <button>
+                        
+                      </button>
+                    </div>
+                  </div>
+            <!-- ------------------------------ -->
+                  <div class="contain_QR_code">
+                    <div class="w-100 d-f jf-e">
+                        <div class="close_show">
+                          <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                
+                    <div class="contain_logo_MBbank">
+                          <div class="logo_MBbank">
+                            <img width="120px" src="img/logo/mbbank.png" alt="">
+                          </div>
+                          <div class="logo_MBbank">
+                          <img width="120px" src="img/logo/mbbank.png" alt="">
+                          </div>
+                    </div>
+                    <div class="line_pay"></div>
+                    <div class="qr_code w-100 d-f al-c f-d">
+                      <h4 class="m-t-b10">Quét mã để thanh toán</h4>
+                      <div class="img_QR_code">
+                        <img src="img/logo/qr.jpg" width="230px" alt="">
+                      </div>
+                      <p>
+                         Sử dụng app MBBank để quét mã
+                      </p>
+                      <div>
+                        <span class="loading-pay "><i class="fa-solid fa-spinner loading-pay-icon loading-pay-icon-ani"></i></span>
+                        <span class="processing-pay">
+                        Đang chờ quét mã
+                        </span>
+                      </div>
+                    </div>
+                    <div class="notePay">
+                      * Sau khi chuyển khoản hãy chờ để ngân hàng xác nhận
+                    </div>
+
+                  </div>
+              </div>
+            </div>
     <script type="module" src="JavaScript/cart.js"></script>
     
