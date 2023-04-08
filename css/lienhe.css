@@ -1,36 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 .container-lienhe{
-    width: 1000px;
+    width: 100%;
     height: 460px;
     display: flex;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    box-shadow: 10px -1px 34px -2px rgba(0,0,0,0.75);
-    margin-left: 260px; 
+    /* border: 1px solid #ccc; */
+    padding: 0px 10%;
     margin-top: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 90px;
+    justify-content: center;
+    
+    box-sizing: border-box;
+}
+.wrapper-lienhe{
+    box-shadow: 0px -0px 34px  rgba(196, 195, 195, 0.75);
+    width: 100%;
+    display: flex;
+    border-radius: 25px;
+
 }
 .container-lienhe_left{
     width: 50%;
-    height: 100%;
     background: url('../img/banner/banner-ts.jpg') no-repeat;
     border-radius: 25px 0 0 50px;
 }
 .container-lienhe_right{
     width: 50%;
-    height: 100%;
     background: #fff;
     border-radius: 0 50px 50px 0;
 }
 .container-lienhe_right_form_title{
-    margin: 0 0 10px 10px;
+    margin: 10px 0 10px 10px;
     color: #000;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
+
 
 }
 .container-lienhe_right_form_data{
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     list-style: none;
     padding-left: 10px;
 }

@@ -21,10 +21,11 @@
 
         ?>
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
-              <form action="index.php?act=confirm_bill&header=headerSecond" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;" method="POST">
+              <form method="POST" action="index.php?act=confirm_bill&header=headerSecond" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;" >
+             
                 <section class="contain-form-submit-cart w-100">
 
-                <div  class="form-submit-cart w-100" method="POST">         
+                <div  class="form-submit-cart w-100" >         
                <table class="table-cart w-100">
       
                 <thead>
@@ -141,19 +142,19 @@
                        <!-- ------- -->
                        <div class="d-f w-100 m-t-b10">
                          <label class="label_input-info-user" for=""><i class="fa-solid fa-user"></i></label>
-                         <input type="text" placeholder="Tên người nhận" class="input-info" name="user" value="<?= $info_user ?>">
+                         <input type="text" placeholder="Tên người nhận" class="input-info" id="user" name="user" value="<?= $info_user ?>">
                        </div>
                        <!-- --------- -->
                        <!-- ------- -->
                        <div class="d-f w-100 m-t-b10">
                          <label class="label_input-info-user" for=""><i class="fa-solid fa-phone"></i></label>
-                         <input type="text" placeholder="Số điện thoại" class="input-info" name="number-phone" value="<?= $info_tele ?>">
+                         <input type="text" placeholder="Số điện thoại" class="input-info" id="number-phone" name="number-phone" value="<?= $info_tele ?>">
                        </div>
                        <!-- --------- --> 
                        <!-- ------- -->
                        <div class="d-f w-100 m-t-b10">
                          <label class="label_input-info-user" for=""><i class="fa-solid fa-location-dot"></i></label>
-                         <input type="text" placeholder="Địa chỉ" class="input-info" name="address" value="<?= $info_address ?>">
+                         <input type="text" placeholder="Địa chỉ" class="input-info" id="address" name="address" value="<?= $info_address ?>">
                        </div>
                        <!-- --------- -->
                        <!-- ------- -->
@@ -161,7 +162,7 @@
                          <label class="label_input-info-user" for="">
                            <i class="fa-regular fa-clipboard"></i>
                          </label>
-                         <input type="text" placeholder="Ghi chú thêm địa chỉ" class="input-info" name="note">
+                         <input type="text" placeholder="Ghi chú thêm địa chỉ" class="input-info" id="note" name="note">
                        </div>
                        <!-- --------- -->
                        
@@ -244,3 +245,4 @@
                                            
            </main>
     <script type="module" src="JavaScript/cart.js"></script>
+    

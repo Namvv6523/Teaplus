@@ -19,14 +19,18 @@
     <link rel="stylesheet" href="../css/admin/admin.css" />
     <link rel="stylesheet" href="../css/admin/bill.css" />
     <link rel="stylesheet" href="../css/admin/taikhoan.css" />
+    <link rel="stylesheet" href="../css/admin/pagin.css" />
     <title>Admin</title>
   </head>
   <body>
     <div class="container d-f w-100">
-      <div class="side-bar" style="height: 200vh" >
+      <div class="side-bar " style="height: 200vh" >
         <div class="shop_name block">
           <div class="image">
-            <img src="../upload/img/logo/logo.jpg" alt="" />
+            <a href="../index.php">
+
+              <img src="../upload/img/logo/logo.jpg" alt="" />
+            </a>
           </div>
           <span>Tea plus</span>
         </div>
@@ -45,7 +49,7 @@
         <div class="contain-list-menu w-100">
           <ul>
             <li >
-              <a href="" >
+              <a href="index.php" >
                 <div>
                   <i class="fa-solid fa-gauge"></i>
                   <span>Dashboard</span>
@@ -211,14 +215,7 @@
                     </div>
                   </a>
                 </li>
-                <li>
-                  <a href="index.php?act=addsp">
-                    <div>
-                      <i class="fa-regular fa-circle"></i>
-                      <span>Thêm sản phẩm</span>
-                    </div>
-                  </a>
-                </li>
+              
               </ul>
             </li>
 
@@ -255,14 +252,39 @@
             </li>
 
             <!-- ----------------------------- -->
+            <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
+                <div>
+                <i class="fa-solid fa-address-book"></i>
+                  <span>Liên hệ </span>
+                </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
+              </a>
+              <!-- --------------- menu con --------------------- -->
+
+              <ul class="sub-menu">
+                <li>
+                  <a href="index.php?act=lienhe">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Danh sách liên hệ</span>
+                    </div>
+                  </a>
+                </li>
+            <!-- ----------------------------- -->
+
           </ul>
         </div>
+        <button class="hidden">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
       </div>
       <div class="dash-board">
         <header class="w-100">
           <div class="admin-bar w-100">
             <div class="left-menu d-f">
-              <div class="left-menu-bar">
+              <div class="left-menu-bar menu-bar-admin">
                 <i class="fa-solid fa-bars"></i>
               </div>
               <div class="left-menu-bar">Home</div>

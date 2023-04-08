@@ -4,8 +4,20 @@
                
      
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
-              <section class="contain-form-submit-cart w-100">
+              <section class="contain-form-submit-cart w-100 d-f f-d al-c">
               <div class="search_list-product-admin w-100">
+              <form action="" class="d-f form-search">
+              <input
+                type="text"
+                placeholder="Tìm kiếm theo tên sản phẩm..."
+                class="input-search"
+              />
+              <input
+                type="submit"
+                class="submit-search-form"
+                value="Tìm kiếm"
+              />
+            </form>  
               <form action="index.php?act=listbill" class="form-submit-cart w-100">         
                <table class="w-100 table_bill-admin">
       
@@ -30,7 +42,7 @@
                         $kh=$bill["bill_name"].'
                         <br> '.$bill["bill_address"].'
                         <br>'.$bill["bill_tel"];
-                        $ttdh= getStatus($bill["bill_status"]);
+                        $ttdh= getStatus($bill["bill_status"],1);
                         $countsp=loadall_cart_count($bill["id"]);
                         
                         echo '<tr>
@@ -45,9 +57,7 @@
                                   <a class="url-edit" href="'. $suabill.'">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                   </a> 
-                                  <a class="url-delete" href="'. $xoabill.'">
-                                    <i class="fa-solid fa-trash"></i>
-                                  </a> 
+                                
                                 </td>
                     </tr>';
                     }
@@ -64,8 +74,10 @@
       
       
                </table>
+              
                
               </form>
-                  </div>
+            </div>
+            <a href="index.php?act=listbill" class="upgradeStatusAdmin" href="">Cập nhật trạng thái</a>
               </section>
               </main>

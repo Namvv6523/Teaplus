@@ -108,25 +108,49 @@ function handleTopping($topping){
     }
     return $toppingInfo;
 }
+function getRole($role){
+    $roleUser = "";
+    if($role == 1){
+        $roleUser = "(admin)";
+        
+    }
+    else{
+        $roleUser = "";
+    }
+    return $roleUser;
+}
 
-function getStatus($id)
+function getStatus($id,$role)
 {
+  
+  
+
 
     switch ($id) {
         case 0:
-            $status = "Đơn hàng mới";
+            $status = "Đơn hàng mới" . " " . getRole($role)  ;
             break;
         case 1:
-            $status = "Đang xử lý";
+            $status = "Đang xử lý". " "  . getRole($role)  ;
             break;
         case 2:
-            $status = "Đang giao hàng";
+            $status = "Đang giao hàng". " "  . getRole($role) ;
             break;
         case 3:
-            $status = "Hoàn tất";
+            $status = "Đã giao hàng". " "  . getRole($role) ;
             break;
+        case 4 :
+            $status = "Đã hủy đơn hàng". " "  . getRole($role) ;
+            break;
+        case 5:
+            $status = "Đã hủy đơn hàng (Khách hàng)" ;
+            break;
+        case 6 :
+            $status = "Đã nhận đơn hàng (Khách hàng)" ;
+            break;
+
         default:
-            $status = "Đơn hàng mới";
+            $status = "Đơn hàng mới" . " " . getRole($role);
             break;
     }
     return $status;

@@ -16,8 +16,8 @@
     }
 
 
-    function insert_taikhoan($email,$user,$pass){
-        $sql = "insert into taikhoan(email,user,pass) values('$email','$user','$pass')";
+    function insert_taikhoan($email,$user,$pass,$avatar){
+        $sql = "insert into taikhoan(user,pass,email,avatar) values('$email','$user','$pass','$avatar')";
                 pdo_execute($sql);
     }
     
@@ -36,13 +36,13 @@
     
     function update_taikhoan($id,$user,$pass,$email,$img,$address,$tel){
             $sql = "update taikhoan set  user='".$user."', pass='".$pass."', email='".$email."',avatar='".$img."',address='".$address."',tel='".$tel."' where id=".$id;
-        pdo_execute($sql);
+            pdo_execute($sql);
         
     }
    
     
     function update_taikhoanad($id,$user,$pass,$email,$address,$tel,$rol){
-        $sql = "update taikhoan set  user='".$user."', pass='".$pass."', email='".$email."',address='".$address."',tel='".$tel."',rol='".$rol."' where id=".$id;
+        $sql = "update taikhoan set  user='".$user."', pass='".$pass."', email='".$email."',address='".$address."',tel='".$tel."',role='".$rol."' where id=".$id;
     
     pdo_execute($sql);
     
@@ -55,6 +55,12 @@
     function delete_taikhoan($id){
         $sql ="delete from taikhoan where id=".$id;
         pdo_execute($sql);
+    }
+    function count_taikhoan(){
+        $sql="SELECT * FROM taikhoan ";
+
+        $countSanpham=pdo_query($sql);
+        return  sizeof($countSanpham);
     }
 
 

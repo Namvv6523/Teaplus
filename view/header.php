@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="css/lienhe.css">
 
 
+
     <title>Trang chủ</title>
   </head>
   <body>
@@ -58,7 +59,7 @@
                 <li><a href="index.php">Trang chủ</a></li>
                 <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
                 <li><a href="#">Tin tức</a></li>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a href="index.php?act=lienhe&header=headerSecond">Liên hệ</a></li>
               </ul>
             </div>
           </div>
@@ -93,13 +94,13 @@
             <?php
             if($_SESSION['user']['role']==1){
               ?>
-                <li><a href="admin/index.php">Đăng nhập admin</a></li>
+                <li><a href="admin/index.php" target="_blank">Đăng nhập admin</a></li>
 
               <?php
             }
             ?>
                 <!-- <li><a href="#">Đơn hàng</a></li> -->
-                <li><a href="index.php?act=viewCart&header=headerSecond">Giỏ hàng</a></li>
+                <li><a href="index.php?act=myBill&header=headerSecond">Đơn hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
@@ -122,10 +123,10 @@
               <div class="number">1</div>
             </div>
             <div class="cart">
-            <a href="index.php?act=myBill&header=headerSecond">
+                <a href="index.php?act=viewCart&header=headerSecond">
                   <i style="color:#333" class="fa-solid fa-cart-shopping"></i>
                 </a>
-                <div class="number"><?php if(isset($count_bill)){echo $count_bill;}else{ echo 0;} ?></div>
+                <div class="number"><?php if(isset($cartCount)){echo $cartCount;}else{ echo 0;} ?></div>
             </div>
           </div>
           </div>
@@ -156,13 +157,16 @@
             </ul>
           </div>
           <div class="search">
-          <form action="index.php?act=search_product&header=headerSecond" class="d-f" method="POST">
+          <form action="index.php?act=search_product&header=headerSecond" class="d-f form_search_main" method="POST">
                 <input
                   type="text"
                   class="input-search"
                   placeholder="Bạn cần tìm kiếm sản phẩm..."
                   name="value-search"
                 />
+                <div class="clear_search">
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
                 <input type="submit" value="Tìm kiếm" class="search-btn" name="submit-value-search" />
             </form>
           </div>
