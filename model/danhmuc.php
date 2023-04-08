@@ -1,6 +1,6 @@
 <?php
     function insert_danhmuc($tenloai){
-        $sql="insert into danhmuc(namedm) values('$tenloai')";
+        $sql="insert into danhmuc(name) values('$tenloai')";
         pdo_execute($sql);// Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
     }
 
@@ -22,7 +22,7 @@
     }
 
     function update_danhmuc($id,$tenloai){
-        $sql="update danhmuc set namedm='".$tenloai."' where id=".$id;
+        $sql="update danhmuc set name='".$tenloai."' where id=".$id;
         pdo_execute($sql);//Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
     }
 ?>

@@ -1,3 +1,7 @@
-<?php 
-    $img_path="upload/img/product/";
+<?php
+
+$image_path = "upload/";
+
+
+
 ?>

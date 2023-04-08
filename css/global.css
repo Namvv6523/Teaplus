@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 :root {
-  --primary-color: rgb(3, 179, 3);
+  --primary-color: rgb(28, 205, 28);
   --white: rgb(255, 255, 255);
   --black: black;
   --font-family: "Montserrat", sans-serif;
@@ -12,8 +12,22 @@
   --bg-header-contact: rgb(237, 237, 237);
   --font-weight: 500;
   --font-size: 1.6em;
-  --padding-website : 15%;
+  --padding-website : 5%;
   --admin-sideBar-border : #7c7c7c;
+  --border-cart :rgb(193, 193, 193);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d2d2d2;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
 }
 html {
   font-size: 62.5%;
@@ -44,89 +58,34 @@ li{
 .jf-c {
   justify-content: center;
 }
+.jf-b {
+  justify-content: space-between;
+}
 .f-d {
   flex-direction: column;
 }
 .al-c {
   align-items: center;
 }
+.al-t {
+  align-items: flex-start;
+}
 
 .w-100 {
   width: 100%;
 }
-
- /* Style cho bảng sản phẩm */
-.table_sp {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 20px;
+.w-45 {
+  width: 49%;
 }
-
-.th_sp,
-.td_sp {
-  padding: 10px;
-  text-align: center;
+.g-10{
+  gap: 10px;
 }
-
-.th_sp {
-  background-color: #333;
-  color: #fff;
+.m-t-b10{
+  margin: 10px 0px;
 }
-
-.sua,
-.xoa {
-  background-color: green;
-  border: none;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
+.m-t-b5{
+  margin: 5px 0px;
 }
-
-/*style cho addsp*/
-h1{
-  text-align: center;
-}
-.form_sp { 
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  width: 90%;
-  margin-bottom: 20px;
-  margin-left: 5%;
-}
-
-.label_addsp {
-  display: block;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  
-}
-
-.ten_addsp[type="text"] {
-  background: white;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  padding: 5px;
-  width: 100%;
-  margin-bottom: 10px;
-  color: black;
-}
-.ten_addsp[type="file"] {
-  background: white;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  width: 100%;
-  color: black;
-}
-
-.input_addsp{
-  background-color: green;
-  border: none;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
+.jf-e{
+justify-content: flex-end;
 }

@@ -1,3 +1,5 @@
+// Slide của sản phẩm
+
 const slideProduct = document.querySelector(".slide_product");
 const slideProductImg = document.querySelectorAll(".slide_product_img");
 const backSlideProduct = document.querySelector(".slide_product_back");
@@ -67,6 +69,9 @@ function autoSlide1() {
     slideInfoProduct1(slide1);
   }, 5000);
 }
+if(backSlideProduct){
+
+
 backSlideProduct.addEventListener("click", () => {
   slideBackBanner1();
   slideInfoProduct1(slide1);
@@ -90,3 +95,4 @@ nextSlideProduct.addEventListener("mouseout", () => {
 choseInfoProduct1();
 
 autoSlide1();
+}

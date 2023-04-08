@@ -1,23 +1,35 @@
-.d-f {
-  display: flex;
-}
-.jf-c {
-  justify-content: center;
-}
-.f-d {
-  flex-direction: column;
-}
-.al-c {
-  align-items: center;
-}
 
-.w-100 {
-  width: 100%;
-}
 
-/* --------------header---------------- */
+/* -------------------------header------------------------ */
 
  /* ---------header phần liên hệ và đăng nhập--------------  */
+ .header-main{
+  position: absolute;
+  top: 0px ;
+  z-index: 15;
+  left: 0px;
+  color: var(--white);
+ }
+ .header-main li a{
+  color: var(--white);
+
+ }
+ 
+ .active-header{
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: down 0.3s ease-in-out;
+ }
+ @keyframes down {
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+ }
 .header_contact {
   background-color: var(--bg-header-contact);
   padding: 10px var(--padding-website);
@@ -44,7 +56,7 @@
 }
 .login {
   position: relative;
-  margin-left: 10px;
+  margin-right: 30px;
 }
 
 .login ul {
@@ -110,13 +122,26 @@ cursor: pointer;
     margin: 0px 20px;
     margin-right: 10px;
 }
+.input-login{
+  padding: 10px 15px ;
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+  background-color: var(--primary-color);
+  margin-right: 30px;
+}
+.input-login:hover{
+
+  opacity: 0.8;
+  cursor: pointer;
+}
 
  /* --------------header phần logo và menu bar-----------------  */
  .header-logo-menu{
     padding: 0px var(--padding-website);
     display: flex;
     box-sizing: border-box;
-    margin-top: 20px;
+    margin-top: 5px;
     justify-content: space-between;
     align-items: center;
 
@@ -136,6 +161,45 @@ cursor: pointer;
     display: flex;
     align-items: center ;
 }
+.cart:hover:after{
+  display: flex;
+}
+.cart:hover::before{
+  display: flex;
+}
+.cart::after{
+  content: "Giỏ hàng";
+  position: absolute;
+  width: 100px;
+  top: 35px;
+  height: 40px;
+  left: -32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  color: var(--white);
+  background-color: var(--primary-color);
+  z-index: 10;
+  border-radius: 5px;
+}
+.cart::before{
+  content: "";
+  position: absolute;
+  z-index: 1;
+ 
+  top: 24px;
+  border-bottom:  20px solid var(--primary-color) ;
+  border-right:  15px solid transparent ;
+  border-left:  15px solid transparent ;
+ 
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  
+}
 .like,
 .cart i{
     font-size: 2.2rem;
@@ -146,6 +210,10 @@ cursor: pointer;
 }
 .like i{
     font-size: 2.25rem;
+    margin-bottom: 7px;
+}
+ .cart a i{
+  color: var(--white);
 }
 .number{
     position: absolute;
@@ -166,7 +234,7 @@ cursor: pointer;
     padding: 0px var(--padding-website);
     display: flex;
     box-sizing: border-box;
-    height: 80px;
+    height: 60px;
     justify-content: space-between;
     align-items: center;
  }
@@ -200,6 +268,8 @@ cursor: pointer;
     border: none;
     outline: none;
     font-weight: 600;
+    border-bottom-right-radius: 92px;
+    border-top-right-radius: 92px;
  }
  .search-btn:hover{
   opacity: 0.7;
@@ -211,6 +281,8 @@ cursor: pointer;
     outline: none;
     border: 1.2px solid #d7d7d7;
     border-right: none;
+    border-bottom-left-radius: 92px;
+    border-top-left-radius: 92px;
   
  }
  .input-search:focus-within{
@@ -271,7 +343,7 @@ cursor: pointer;
   color: var(--text-color);
   padding: 10px 10px;
   width: 100%;
-  display: block;
+  display: flex;
   box-sizing: border-box;
   background-color: var(--bg-header-contact);
   transition: 0.2s;
@@ -304,6 +376,42 @@ cursor: pointer;
 /* ---------------main----------------------- */
 
 
+.avatar{
+  border-radius: 50%;
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+  margin: 0px 10px;
+  
+
+}
+.form_search_main{
+  position: relative;
+}
+.clear_search i{
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-top: 0.5px;
+  margin-left: 0.5px;
+}
+.clear_search{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 23.5%;
+  width: 17px;
+  border-radius: 50%;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #bababa;
+  color: var(--black);
+  display: none;
+}
+.active_clearSearch{
+  display: flex;
+}
 
 
 

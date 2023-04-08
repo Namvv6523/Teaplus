@@ -1,10 +1,9 @@
-// const btn_menu = document.querySelector(".btn_show_menu");
-// const show_menu = document.querySelector(".show_menu");
+// slide của banner
+
 const banner = document.querySelector(".banner");
 const bannerImg = document.querySelectorAll(".banner_img")
 const backBanner = document.querySelector(".banner_back");
 const nextBanner = document.querySelector(".banner_next");
-// const productSlideContain = document.querySelectorAll(".contain_product_slide")
 function slideInfoProduct(slide) {
     const infoProduct = document.querySelectorAll(".info_product");
     const activeInfoProduct = document.querySelector(".info_product.active_info");
@@ -37,10 +36,7 @@ function choseInfoProduct() {
 
 
 
-// btn_menu.addEventListener("click", function () {
-//     show_menu.classList.toggle("active_menu");
-//     btn_menu.classList.toggle("active");
-// })
+
 var slide = 0;
 function slideNextBanner() {
     slide++;
@@ -76,6 +72,7 @@ function autoSlide() {
     }, 10000);
 
 }
+if(backBanner){
 backBanner.addEventListener("click", () => {
 
     slideBackBanner();
@@ -105,3 +102,4 @@ nextBanner.addEventListener("mouseout", () => {
 choseInfoProduct()
 
 autoSlide();
+}
