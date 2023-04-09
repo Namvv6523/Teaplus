@@ -472,7 +472,15 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         // include "./view/taikhoan/dangky.php";
                             
                         include "view/lienhe.php"; 
-                        break;      
+                        break; 
+                        
+                        case 'tintuc':
+                            
+                            
+                            
+                                
+                            include "view/tintuc.php"; 
+                            break;  
             default:
             include "view/home.php";
             break;

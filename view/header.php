@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="css/dangnhap.css" />
     <link rel="stylesheet" href="css/profileUser.css" />
     <link rel="stylesheet" href="css/lienhe.css">
+    <link rel="stylesheet" href="css/tintuc.css">
 
 
 
@@ -58,7 +59,7 @@
               <ul class="d-f al-c">
                 <li><a href="index.php">Trang chủ</a></li>
                 <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
-                <li><a href="#">Tin tức</a></li>
+                <li><a href="index.php?act=tintuc&header=headerSecond">Tin tức</a></li>
                 <li><a href="index.php?act=lienhe&header=headerSecond">Liên hệ</a></li>
               </ul>
             </div>
