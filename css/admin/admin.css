@@ -12,10 +12,14 @@
   padding: 0px 10px;
   height: 100vh;
   position: fixed;
+  transition: all 0.3s ease-in-out;
+  z-index: 100;
+
 }
 .dash-board {
   position: relative;
   left: 18%;
+  transition: all 0.3s ease-in-out;
   
   width: calc(100% - 18%);
 }
@@ -169,6 +173,9 @@ main{
     font-weight: 500;
     color:var(--white)
 
+}
+textarea{
+    resize: none;
 }
 .info_product{
     background-color: rgb(9, 158, 196);
@@ -336,5 +343,39 @@ background-color: orange;
     opacity: 0.7;
     cursor: pointer;
 
+}
+.hidden-side-bar{
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in-out;
+    box-shadow: none;
+}
+.widen{
+    left: 0%;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+}
+.hidden{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.6rem;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #dddcdc;
+}
+.hidden i{
+    margin-top: 1px;
+}
+.hidden:hover{
+    background-color: var(--white);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.menu-bar-admin:hover i{
+opacity: 0.8;
+cursor: pointer;
 }
 
