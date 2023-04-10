@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="css/comment.css">
     <link rel="stylesheet" href="css/profileUser.css" />
     <link rel="stylesheet" href="css/lienhe.css">
+    <link rel="stylesheet" href="css/tintuc.css">
 
 
     <title>Trang chủ</title>
@@ -56,8 +57,8 @@
             <div class="menu_bar d-f al-c">
               <ul class="d-f al-c">
                 <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="index.php?act=sanpham&header=headerSecond">Sản phẩm</a></li>
-                <li><a href="#">Tin tức</a></li>
+                <li><a href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
+                <li><a href="index.php?act=tintuc&header=headerSecond">Tin tức</a></li>
                 <li><a href="index.php?act=lienhe&header=headerSecond">Liên hệ</a></li>
               </ul>
             </div>
@@ -99,8 +100,10 @@
             }
             ?>
                 <!-- <li><a href="#">Đơn hàng</a></li> -->
-                <li><a href="index.php?act=viewCart&header=headerSecond">Giỏ hàng</a></li>
+                <li><a href="index.php?act=myBill&header=headerSecond">Đơn hàng</a></li>
+                <li><a href="index.php?act=cart-bought&header=headerSecond">Đơn mua</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
+                <li><a href="index.php?act=doimk&header=headerSecond">Đổi mật khẩu</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
               <?php } else { ?>
@@ -122,10 +125,10 @@
                 <div class="number">1</div>
               </div>
               <div class="cart">
-                <a href="index.php?act=myBill&header=headerSecond">
+                <a href="index.php?act=viewCart&header=headerSecond&f=1">
                   <i style="color:#333" class="fa-solid fa-cart-shopping"></i>
                 </a>
-                <div class="number"><?php if(isset($count_bill)){echo $count_bill;}else{ echo 0;} ?></div>
+                <div class="number"><?php if(isset($cartCount)){echo $cartCount;}else{ echo 0;} ?></div>
               </div>
             </div>
             </div>

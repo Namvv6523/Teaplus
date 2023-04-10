@@ -57,9 +57,7 @@
                                   <a class="url-edit" href="'. $suabill.'">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                   </a> 
-                                  <a class="url-delete" href="'. $xoabill.'">
-                                    <i class="fa-solid fa-trash"></i>
-                                  </a> 
+                                
                                 </td>
                     </tr>';
                     }

@@ -7,32 +7,30 @@
     <div class="wrapper-lienhe">
         <div class="container-lienhe_left"></div>
         <div class="container-lienhe_right">
-
-            <form action="index.php?act=lienhe&header=headerSecond" method="post" class="container-lienhe_right_form">
+            <div class="container-lienhe_right_form">
                 <h1 class="container-lienhe_right_form_title">Liên hệ</h1>
                 <ul class="container-lienhe_right_form_data">
                     <li>
                         <p>Họ và Tên
-                        </p> <input name="hovaten" placeholder="Họ và Tên" class="container-lienhe_right_form_text" type="text" required></li>
                     </li>
+                    </p> <input placeholder="Họ và Tên" class="container-lienhe_right_form_text" type="text"></li>
                     <li>
-                        <p>Địa chỉ</p> <input name="diachi" placeholder="Địa chỉ..." class="container-lienhe_right__form_text" type="text" required>
+                        <p>Địa chỉ</p> <input placeholder="Địa chỉ..." class="container-lienhe_right__form_text" type="text">
                     </li>
                     <li>
                         <p>Điện thoại
-                        <p> <input name="dienthoai" placeholder="Điện thoại" class="container-lienhe_right_form_text" type="text" required>
+                        <p> <input placeholder="Điện thoại" class="container-lienhe_right_form_text" type="text">
                     </li>
                     <li>
-                        <p>Email</p> <input name="email" placeholder="Email..." class="container-lienhe_right_form_text" type="email" required>
+                        <p>Email</p> <input placeholder="Email..." class="container-lienhe_right_form_text" type="text">
                     </li>
                     <li>
-                        <p>Lời nhắn</p> <textarea name="loinhan" style="resize: none;" id="" cols="33" rows="2" required></textarea>
+                        <p>Lời nhắn</p> <textarea style="resize: none;" name="" id="" cols="33" rows="2"></textarea>
                     </li>
                 </ul>
-                <input style="width: 180px; height: 39px;" name="submit" type="submit" class="container-lienhe_right_form_bt" value="Gửi liên hệ">
-                <input style="width: 180px; height: 39px;" type="reset" class="container-lienhe_right_form_bt" value="Soạn lại">
-
-            </form>
+                <button class="container-lienhe_right_form_bt">Gửi liên hệ</button>
+                <button class="container-lienhe_right_form_bt">Soạn lại</button>
+            </div>
         </div>
     </div>
 </div>

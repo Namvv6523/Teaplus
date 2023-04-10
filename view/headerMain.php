@@ -49,7 +49,7 @@
                 <ul class="d-f al-c">
                   <li><a class="header-main-link" href="index.php">Trang chủ</a></li>
                   <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
-                  <li><a class="header-main-link" href="#">Tin tức</a></li>
+                  <li><a href="index.php?act=tintuc&header=headerSecond">Tin tức</a></li>
                   <li><a class="header-main-link" href="index.php?act=lienhe&header=headerSecond">Liên hệ</a></li>
                 </ul>
               </div>
@@ -85,14 +85,16 @@
             <?php
             if($_SESSION['user']['role']==1){
               ?>
-                <li><a href="admin/index.php" target="_blank"> Đăng nhập admin</a></li>
+                <li><a target="_blank"  onclick="redirect ('admin/index.php',1500)" > Đăng nhập admin</a></li>
 
               <?php
             }
             ?>
                 <!-- <li><a href="#">Đơn hàng</a></li> -->
-                <li><a href="index.php?act=viewCart&header=headerSecond">Giỏ hàng</a></li>
+                <li><a href="index.php?act=myBill&header=headerSecond">Đơn hàng</a></li>
+                <li><a href="index.php?act=cart-bought&header=headerSecond">Đơn mua</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
+                <li><a href="index.php?act=doimk&header=headerSecond">Đổi mật khẩu</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
               <?php } else { ?>
@@ -114,10 +116,10 @@
                 <div class="number">1</div>
               </div>
               <div class="cart">
-                <a href="index.php?act=myBill&header=headerSecond">
+                <a class="" href="index.php?act=viewCart&header=headerSecond&f=1" >
                   <i class="fa-solid fa-cart-shopping"></i>
                 </a>
-                <div class="number"><?php if(isset($count_bill)){echo $count_bill;}else{ echo 0;} ?></div>
+                <div class="number"><?php if(isset($cartCount)){echo $cartCount;}else{ echo 0;} ?></div>
               </div>
             </div>
             </div>
@@ -139,23 +141,29 @@
                   $category_name = $category_home[$i]["name"];                                    
                   $id =  $category_home[$i]["id"];            
                   $url_productByType = "index.php?act=productByType&id=$id&header=headerprd";
-                  
+                  $count = count_productByiddm($id);
+                  extract($count);
 
                 ?>
 
-                <li><a href="<?= $url_productByType ?>"><?= $category_name ?></a></li>
+                <li>
+                  <a class="d-f jf-b" href="<?= $url_productByType ?>"><?= $category_name ?> <span style="padding-right: 10px;color:#888"> x <?php echo $count['0']['count'];?></span></a>
+                </li>
               
                 <?php } ?>
               </ul>
             </div>
             <div class="search">
-              <form action="index.php?act=search_product&header=headerprd" class="d-f" method="POST">
+              <form action="index.php?act=search_product&header=headerprd"  class="d-f form_search_main" method="POST">
                 <input
                   type="text"
                   class="input-search"
                   placeholder="Bạn cần tìm kiếm sản phẩm..."
                   name="value-search"
                 />
+                <div class="clear_search">
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
                 <input type="submit" value="Tìm kiếm" class="search-btn" name="submit-value-search" />
               </form>
             </div>

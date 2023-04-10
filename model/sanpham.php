@@ -77,4 +77,23 @@
         $listsanpham=pdo_query($sql);
         return  $listsanpham;
     }
+    function loadall_product_byProduct($idpro){
+        $sql="SELECT iddm FROM sanpham WHERE  id = $idpro";
+        $listsanpham=pdo_query($sql);
+        return  $listsanpham;
+    }
+    function count_productByiddm($iddm){
+        $sql="SELECT COUNT(id) AS count FROM sanpham where iddm=".$iddm;
+
+        $countSanphamByiddm=pdo_query($sql);
+        return  $countSanphamByiddm;
+    }
+    function count_product(){
+        $sql="SELECT * FROM sanpham ";
+
+        $countSanpham=pdo_query($sql);
+        return  sizeof($countSanpham);
+    }
+   
+    
 ?>

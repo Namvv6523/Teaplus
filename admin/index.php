@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // session_start();
 // if(isset($_SESSION['user'])&&($_SESSION['user']['role']==1)){
 include "../model/pdo.php";
@@ -13,7 +14,8 @@ include "../model/convert.php";
 include "../model/lienhe.php";
 include "header.php";
 //controller
-
+$count_product = count_product();
+$count_taikhoan = count_taikhoan();
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -85,7 +87,7 @@ if (isset($_GET['act'])) {
                 $kyw=$_POST['kyw'];// key word = $_post kyw
                 $iddm=$_POST['iddm'];// key word = $_post iddm
             }else{
-                $kyw="";
+                $kyw="";    
                 $iddm=0;
             }
             $listdanhmuc = loadall_danhmuc();
@@ -107,7 +109,8 @@ if (isset($_GET['act'])) {
             include "sanpham/update.php";
             break;
         case 'updatesp':
-            if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
+            
+            if (isset($_POST['capnhat'])) {
                 $id = $_POST["id"];
                 $iddm = $_POST["iddm"];
                 $tensp = $_POST["tensp"];
@@ -175,15 +178,10 @@ if (isset($_GET['act'])) {
                     $diachi=$_POST['diachi'];
                     $dienthoai=$_POST['dienthoai'];
                     $vaitro=$_POST['vaitro'];
-                    $hinh = $_FILES['hinh']['name'];
-                    $target_dir = "../upload/";
-                    $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-                    if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                        // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-                    } else {
-                        //echo "Sorry, there was an error uploading your file.";
-                    }
-                    update_taikhoan($id,$hinh,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
+                   
+                   
+                    
+                    update_taikhoanad($id,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
                     
                     $thongbao = "Cập nhật thành công";
                 }
@@ -203,9 +201,16 @@ if (isset($_GET['act'])) {
             include "binhluan/list.php";
             break;
         case 'thongke':
-            $listthongke=loadall_thongke();
+            case 'listtk':
+                if (isset($_POST['listok']) && ($_POST['listok'])) {
+                    $kyw = $_POST['kyw'];
+                }else{
+                    $kyw="";
+                }
+            $listthongke=loadall_thongke($kyw);
             include "thongke/list.php";
             break;
+    
         case 'bieudo':
             $listthongke=loadall_thongke();
             include "thongke/bieudo.php";
@@ -241,21 +246,26 @@ if (isset($_GET['act'])) {
                 $thongbao = "Cập nhật thành công";
             }
             $listbill=loadall_bill(0);
-            include "bill/listbill.php";
-            break;   
-            case 'lienhe':
-                $listlienhe = loadall_lienhe();
+            // include "bill/listbill.php";
+            header("Location: index.php?act=listbill");
+            break;  
+        case 'lienhe':
+            $listlienhe = loadall_lienhe();
+            include "lienhe/listLienHe.php";
+            break; 
+           
+        case 'xoalh':
+                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                        delete_lienhe($_GET['id']);
+                    }
+                    $listlienhe = loadall_lienhe();
                 include "lienhe/listLienHe.php";
-                break; 
-                // case 'dsbl':
-                //     include "binhluan/list.php";
-                //     break;
-                case 'xoalh':
-                        if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                            delete_lienhe($_GET['id']);
-                        }
-                        $listlienhe = loadall_lienhe();
-                    include "lienhe/listLienHe.php";
+                break;  
+        case 'orderhistory':
+
+                
+                    $listorder = loadall_order(0);
+                    include "order-history.php";
                     break;
         default:
             include "home.php";
@@ -269,5 +279,8 @@ include "footer.php";
 // }else{
 //     header('Location: ../index.php');
 // }
+ob_end_flush()
 ?>
+
+
 

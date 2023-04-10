@@ -20,7 +20,7 @@ $comment = loadall_binhluan($id_pro);
 <body>
     <div class="product_category contain_comment w-100">
         <ul>
-            <li style="position: sticky;top:0px;left:0px;" class="li-comment" >Comment</li>
+            <li style="position: sticky;top:0px;left:0px;" class="li-comment" >Bình luận</li>
             <table class="table-comment">
             <?php 
                 $count ;

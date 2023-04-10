@@ -20,12 +20,17 @@
 //     return $result;
 // }
 
-// function insert_bill($iduser,$name,$address,$tel,$pttt,$ngaydathang,$tongdonhang,$status,$note){
-//     $sql="insert into bill(iduser,bill_name,bill_address,bill_tel,bill_pttt,ngaydathang,tatal,bill_status,note) values('$iduser','$name','$address','$tel','$pttt','$ngaydathang','$tongdonhang','$status','$note')";
-//     return pdo_execute_return_lastInsertId($sql);
-// }
+function insert_bill($iduser,$name,$address,$tel,$pttt,$ngaydathang,$tongdonhang,$status,$note){
+    $sql="insert into bill(iduser,bill_name,bill_address,bill_tel,bill_pttt,ngaydathang,tatal,bill_status,note) values('$iduser','$name','$address','$tel','$pttt','$ngaydathang','$tongdonhang','$status','$note')";
+    return pdo_execute_return_lastInsertId($sql);
+}
 function select_bill_idUser($id_user){
-    $sql="SELECT * FROM bill WHERE iduser = $id_user AND bill_status <> 4 AND bill_status <> 5";
+    $sql="SELECT * FROM bill WHERE iduser = $id_user AND bill_status <> 4 AND bill_status <> 5 order by id desc";
+    $listBill=pdo_query($sql);
+    return  $listBill;
+}
+function select_bill_idUser_done($id_user){
+    $sql="SELECT * FROM bill WHERE iduser = $id_user AND bill_status = 3  order by id desc";
     $listBill=pdo_query($sql);
     return  $listBill;
 }
@@ -71,15 +76,13 @@ function select_bill_one($id)
     return $result;
 }
 
-function insert_bill($iduser,$name,$address,$tel,$pttt,$ngaydathang,$tongdonhang,$status){
-    $sql="insert into bill(iduser,bill_name,bill_address,bill_tel,bill_pttt,ngaydathang,tatal,bill_status) values('$iduser','$name','$address','$tel','$pttt','$ngaydathang','$tongdonhang','$status')";
-    return pdo_execute_return_lastInsertId($sql);
-}
+
 function select_bill_all(){
     $sql="SELECT * FROM sanpham where 1 order by id desc limit 0,8";
     $listsanpham=pdo_query($sql);
     return  $listsanpham;
 }
+
 function delete_bill($id){
     $sql="delete from bill where id=".$id;
     pdo_execute($sql);

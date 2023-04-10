@@ -4,18 +4,20 @@
     <div class="row formtitle ">
         <h1>THỐNG KÊ SẢN PHẨM THEO LOẠI</h1>
     </div>
-    <!-- <div class="row formcontent"> -->
+    
     <div class="search_list-product-admin w-100">
-    <form action="" class="d-f form-search">
+    <form action="" class="d-f form-search" method="post">
               <input
                 type="text"
-                placeholder="Tìm kiếm theo ID danh mục..."
+                placeholder="Tìm kiếm theo tên danh mục..."
                 class="input-search"
+                name="kyw"
               />
               <input
                 type="submit"
                 class="submit-search-form"
                 value="Tìm kiếm"
+                name="listok"
               />
             </form>  
             <table class="w-100 table_bill-admin">

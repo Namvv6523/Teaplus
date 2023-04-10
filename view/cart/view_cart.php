@@ -1,5 +1,9 @@
 <main class="w-100 d-f f-d al-c">
-               
+<script>
+  if(window.history.replaceState){
+    window.history.replaceState(null,null,"index.php?act=viewCart&header=headerSecond&f=1");
+  }
+</script>
                <h1 class="title_product_new">Sản phẩm </h1>
                <div class="product-page-banner">
                    <span class="product-page-banner_title">Trang chủ - Giỏ hàng</span>
@@ -68,7 +72,7 @@
                      <td><?= handleSugar($sugar) ?> đường <?= handleIce($ice) ?> đá</td>
                      <td><?= number_format($price) ?>đ</td>
                      <td>
-                       <div class="quantity d-f al-c jf-c">
+                       <div class="quantity d-f al-c ">
                          <div class="subtract circle_border">
                            <i style="margin-left: 1px;" class="fa-solid fa-minus"></i>
                          </div>
@@ -80,7 +84,7 @@
                          </div>
                        </div>
                      </td>
-                     <td class="totalCash">
+                     <td style="width: 100px;" class="totalCash">
                       <?= number_format($result[0])  ?>đ
                     </td>
                     <input type="text" hidden name="totalCash[]" style="width:60px" value="<?= $result[0] ?>">
@@ -88,6 +92,7 @@
                     <input type="text" hidden name="size" style="width:60px" value="<?= $size ?>">
                     <input type="text" hidden name="toppping" style="width:60px" value="<?= $topping ?>">
                     <input type="text" hidden name="price" style="width:60px" value="<?= $price ?>">
+                    
                      <td>
                      <a href="<?= $url_delete ?>">Xóa</a>
                      </td>
@@ -107,17 +112,23 @@
                      Tiếp tục mua hàng
                    </a>
                  </button>
-                 <form action="">
+                 
                   <?php
                   $_SESSION['check'] = "hello";
                   
                   ?>
-                 <button>
-                   <a href="index.php?act=orderCart&header=headerSecond"  class="continue-buy">
+                   <?php
+                    $rand=rand();
+                    $_SESSION['rand']=$rand;
+                    ?>
+                    <input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
+                 <!-- <button>
+                   <a href="index.php?act=orderCart&header=headerSecond&rand="  class="continue-buy">
                      Thanh toán
                    </a>
-                 </button>
-                 </form>
+                 </button> -->
+                 <input type="submit" value="Thanh toán" name="orderCart" style="padding: 0px 10px;font-size:1.7rem">
+                 
                  <div class="contain-upgrade-cart ">
                    <i class="fa-solid fa-spinner rotate-upgrade-cart"></i>
      

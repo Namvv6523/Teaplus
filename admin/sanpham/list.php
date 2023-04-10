@@ -1,29 +1,27 @@
 <main class="w-100 d-f f-d">
-      <form class="form_sp" action="index.php?act=listsp" method="post">
-        DANH MỤC
-        <input class="ten_addsp" type="text" name="kyw">
-        <select name="iddm">
-            <option value="0" selected>Tất cả</option>
-            <?php 
-                foreach($listdanhmuc as $danhmuc){
-                extract($danhmuc);
-                echo ' <option value="'.$id.'">'.$name.'</option>';
-                }
-            ?>
-        </select>
-        <input class="" type="submit" name="listok" value="Tìm Kiếm">
-      </form>
+     
     <h3>Danh sách sản phẩm</h3>
     <div class="search_list-product-admin w-100">
-            <form action="" class="d-f form-search">
+    <form action="index.php?act=listsp" class="d-f form-search" method="post">
               <input
                 type="text"
                 placeholder="Tìm kiếm theo tên sản phẩm..."
                 class="input-search"
+                name="kyw"
               />
+              <select name="iddm">
+                  <option value="0" selected>Tất cả</option>
+                  <?php 
+                      foreach($listdanhmuc as $danhmuc){
+                      extract($danhmuc);
+                      echo ' <option value="'.$id.'">'.$name.'</option>';
+                      }
+                  ?>
+              </select>
               <input
                 type="submit"
                 class="submit-search-form"
+                name="listok"
                 value="Tìm kiếm"
               />
             </form>  
@@ -44,7 +42,7 @@
                   <th>Danh mục</th>
                   <th>Tạo mới</th>
               </thead>
-              <tbody>
+              <tbody class="tbody">
                 <!-- php -->
               <?php foreach ($listsanpham as $sanpham) {
                         extract($sanpham);
@@ -59,7 +57,7 @@
                         }
 
 
-                        echo '<tr>
+                        echo '<tr class="trItem">
                                 <td><input type="checkbox"></td>
                                 <td class="td_sp">' . $id . '</td>
                                 <td class="td_sp">' . $name . '</td>
@@ -86,5 +84,19 @@
       
        
       </table>
-
+     
+    
       </main>
+      <nav class="pagination-container">
+  <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
+    &lt;
+  </button>
+  
+  <div id="pagination-numbers">
+  </div>
+  
+  <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
+    &gt;
+  </button>
+</nav>
+      <script src="../JavaScript/admin/pagination.js"></script>

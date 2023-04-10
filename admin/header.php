@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../css/admin/admin.css" />
     <link rel="stylesheet" href="../css/admin/bill.css" />
     <link rel="stylesheet" href="../css/admin/taikhoan.css" />
+    <link rel="stylesheet" href="../css/admin/pagin.css" />
     <title>Admin</title>
   </head>
   <body>
@@ -26,7 +27,10 @@
       <div class="side-bar " style="height: 200vh" >
         <div class="shop_name block">
           <div class="image">
-            <img src="../upload/img/logo/logo.jpg" alt="" />
+            <a href="../index.php">
+
+              <img src="../upload/img/logo/logo.jpg" alt="" />
+            </a>
           </div>
           <span>Tea plus</span>
         </div>
@@ -45,7 +49,7 @@
         <div class="contain-list-menu w-100">
           <ul>
             <li >
-              <a href="" >
+              <a href="index.php" >
                 <div>
                   <i class="fa-solid fa-gauge"></i>
                   <span>Dashboard</span>
@@ -211,14 +215,7 @@
                     </div>
                   </a>
                 </li>
-                <li>
-                  <a href="index.php?act=addsp">
-                    <div>
-                      <i class="fa-regular fa-circle"></i>
-                      <span>Thêm sản phẩm</span>
-                    </div>
-                  </a>
-                </li>
+              
               </ul>
             </li>
 
@@ -254,13 +251,12 @@
               </ul>
             </li>
 
-            <!-- ------------------- -->
-
+            <!-- ----------------------------- -->
             <li class="li-side-bar">
               <a href="#" class="a-side-bar">
                 <div>
-                  <i class="fa-solid fa-list"></i>
-                  <span>liên hệ </span>
+                <i class="fa-solid fa-address-book"></i>
+                  <span>Liên hệ </span>
                 </div>
                 <i class="fa-solid fa-chevron-down d-none"></i>
                 <i class="fa-solid fa-chevron-left"></i>
@@ -276,17 +272,8 @@
                     </div>
                   </a>
                 </li>
-                <!-- <li>
-                  <a href="index.php?act=bieudo">
-                    <div>
-                      <i class="fa-regular fa-circle"></i>
-                      <span>Biểu đồ</span>
-                    </div>
-                  </a>
-                </li> -->
-              </ul>
-            </li>
             <!-- ----------------------------- -->
+
           </ul>
         </div>
         <button class="hidden">

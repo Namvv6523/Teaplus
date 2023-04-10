@@ -21,10 +21,11 @@
 
         ?>
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
-              <form action="index.php?act=confirm_bill&header=headerSecond" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;" method="POST">
+              <form method="POST" action="index.php?act=confirm_bill&header=headerSecond" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;" >
+             
                 <section class="contain-form-submit-cart w-100">
 
-                <div  class="form-submit-cart w-100" method="POST">         
+                <div  class="form-submit-cart w-100" >         
                <table class="table-cart w-100">
       
                 <thead>
@@ -56,16 +57,10 @@
                     $quantity =   $cart_result[$i]['soluong'] ;
                     $total =   $cart_result[$i]['thanhtien'] ;
                     $totalSum += $total;
-                    $billTotal = $totalSum + 10000;
-                    
+                    $billTotal = $totalSum + 10000;                    
                     $result = [($price + floatval($sugar) + floatval($size) + floatval($ice) + floatval($topping)) * floatval($quantity)];
-
-                    $toppingInfo = handleTopping($topping);
-                    
+                    $toppingInfo = handleTopping($topping);                    
                     $url_delete = "index.php?act=delete_cart&id_Cart=$id&header=headerSecond";
-
-
-
                     ?>
      
                  <!-- ----------------------------- -->
@@ -100,6 +95,8 @@
                     <input type="text" hidden name="toppping" style="width:60px" value="<?= $topping ?>">
                     <input type="text" hidden name="price" style="width:60px" value="<?= $price ?>">
                     <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
+                    
+
                     
                   </tr>
                   <?php } ?>
@@ -141,19 +138,19 @@
                        <!-- ------- -->
                        <div class="d-f w-100 m-t-b10">
                          <label class="label_input-info-user" for=""><i class="fa-solid fa-user"></i></label>
-                         <input type="text" placeholder="Tên người nhận" class="input-info" name="user" value="<?= $info_user ?>">
+                         <input type="text" placeholder="Tên người nhận" class="input-info" id="user" name="user" value="<?= $info_user ?>">
                        </div>
                        <!-- --------- -->
                        <!-- ------- -->
                        <div class="d-f w-100 m-t-b10">
                          <label class="label_input-info-user" for=""><i class="fa-solid fa-phone"></i></label>
-                         <input type="text" placeholder="Số điện thoại" class="input-info" name="number-phone" value="<?= $info_tele ?>">
+                         <input type="text" placeholder="Số điện thoại" class="input-info" id="number-phone" name="number-phone" value="<?= $info_tele ?>">
                        </div>
                        <!-- --------- --> 
                        <!-- ------- -->
                        <div class="d-f w-100 m-t-b10">
                          <label class="label_input-info-user" for=""><i class="fa-solid fa-location-dot"></i></label>
-                         <input type="text" placeholder="Địa chỉ" class="input-info" name="address" value="<?= $info_address ?>">
+                         <input type="text" placeholder="Địa chỉ" class="input-info" id="address" name="address" value="<?= $info_address ?>">
                        </div>
                        <!-- --------- -->
                        <!-- ------- -->
@@ -161,7 +158,7 @@
                          <label class="label_input-info-user" for="">
                            <i class="fa-regular fa-clipboard"></i>
                          </label>
-                         <input type="text" placeholder="Ghi chú thêm địa chỉ" class="input-info" name="note">
+                         <input type="text" placeholder="Ghi chú thêm địa chỉ" class="input-info" id="note" name="note">
                        </div>
                        <!-- --------- -->
                        
@@ -178,11 +175,11 @@
                      <h4>Hình thức chuyển khoản</h4>
                      <div  class="w-100">
                      <div class="m-t-b10">
-                       <input type="radio" name="credit" value="1" checked>
+                       <input type="radio" class="input-info"  required  name="credit" value="1" >
                        <label for="">Chuyển khoản ngân hàng</label>
                      </div>
                      <div class="m-t-b10">
-                       <input type="radio" name="credit" value="2">
+                       <input type="radio" class="input-info" name="credit" value="2">
                        <label for="">Thanh toán tiền mặt</label>
                      </div>
                    </div>
@@ -243,4 +240,76 @@
              <!-- ------------------ Nhập thông tin người dùng và thanh toán---------------^--------------- -->
                                            
            </main>
+           <div class="contain-overlay-product-detail">
+            <div class="contain-product-detail">
+
+            <!-- ------------------------------ -->
+                  <div class="sideBar_pay">
+                    <div class="timePay blockPayment" >
+                      <span>Đơn hàng hết hạn sau</span>
+                      <span class="timeRestPay">10:00</span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <span><i class="fa-solid fa-shop"></i> Nhà cung cấp</span>
+                      <span>Shop</span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <span><i class="fa-solid fa-money-bill"></i> Số tiền</span>
+                      <span><?=  number_format($billTotal) ?> đ</span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <span><i class="fa-solid fa-circle-info"></i> Thông tin</span>
+                      <span>Thanh toán bằng MBbank</span>
+                      <span>STK : 123456789</span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <span><i class="fa-solid fa-id-card-clip"></i> Mã đơn hàng</span>
+                      <span > <?= $id ?></span>
+                    </div>
+                    <div class="timePay blockPayment">
+                      <button class="button-back-pay">
+                      <i class="fa-solid fa-arrow-left"></i> Quay lại
+                      </button>
+                    </div>
+                  </div>
+            <!-- ------------------------------ -->
+                  <div class="contain_QR_code">
+                    <div class="w-100 d-f jf-e">
+                        <div class="close_show">
+                          <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                
+                    <div class="contain_logo_MBbank">
+                          <div class="logo_MBbank">
+                            <img width="120px" src="img/logo/mbbank.png" alt="">
+                          </div>
+                          <div class="logo_MBbank">
+                          <img width="120px" src="img/logo/mbbank.png" alt="">
+                          </div>
+                    </div>
+                    <div class="line_pay"></div>
+                    <div class="qr_code w-100 d-f al-c f-d">
+                      <h4 class="m-t-b10">Quét mã để thanh toán</h4>
+                      <div class="img_QR_code">
+                        <img src="img/logo/qr.jpg" width="230px" alt="">
+                      </div>
+                      <p>
+                         Sử dụng app MBBank để quét mã
+                      </p>
+                      <div>
+                        <span class="loading-pay "><i class="fa-solid fa-spinner loading-pay-icon loading-pay-icon-ani"></i></span>
+                        <span class="processing-pay">
+                        Đang chờ quét mã
+                        </span>
+                      </div>
+                    </div>
+                    <div class="notePay">
+                      * Sau khi chuyển khoản hãy chờ để ngân hàng xác nhận
+                    </div>
+
+                  </div>
+              </div>
+            </div>
     <script type="module" src="JavaScript/cart.js"></script>
+    
