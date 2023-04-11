@@ -122,23 +122,34 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                
                     if(isset($_POST['submit-price-search'])){
                         $price1 = $_POST['price1'];
-                        $str_replace_price1 = str_replace(",","", $price1);
                         $price2 = $_POST['price2'];
+                        $str_replace_price1 = str_replace(",","", $price1);
                         $str_replace_price2 = str_replace(",","", $price2);
 
-                        if ($price1>0 && $price2>0 ) {
+                        if ($price1>=0 && $price2>=0 ) {
+                            $thongbao = "Khoảng giá đầu tiên nhỏ hơn hoặc bằng sau đó";
+                            $loi=false;
+                            if($price1<=$price2){
+                            $thongbao = "Khoảng giá đầu tiên nhỏ hơn hoặc bằng sau đó";
+                            $loi=false;
+                            }
 
-                            $searchProductByprice = loadall_sanpham_price($str_replace_price1,$str_replace_price2 );
-                            include "view/product-page.php";
-                        }
-                      else{
+                        }else{
+                            $thongbao = "Khoảng giá phải lớn hơn hoặc bằng 0";
+                            $loi=false;
+
+
                         // header("Location:index.php");
                         include "view/product-page.php";
 
                       }
+                      if($loi==true){
+                        $searchProductByprice = loadall_sanpham_price($str_replace_price1,$str_replace_price2 );
+                        include "view/product-page.php";
                     }
-         
-                    // include "view/product-page.php";
+
+                }
+                    include "view/product-page.php";
                       
                     break;
             case 'productDetail':

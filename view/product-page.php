@@ -48,6 +48,11 @@
             <input name="price2" type="number" required placeholder="Đến">
           </div>
           <input name="submit-price-search" type="submit" value="Tìm kiếm" class="submit-price-search">
+          <?php 
+          if(!empty($thongbao)){
+            echo '<span style="color: red;">'.$thongbao.'</span>';
+          }
+          ?>
         </form>
 
       </div>
@@ -216,6 +221,7 @@
         <?php
         }
       } else {
+        if(isset($home_product_page)){
         ?>
         <?php
         for ($i = 0; $i < count($home_product_page); $i++) {
@@ -225,8 +231,6 @@
           $image = $image_path . $name_image;
           $id =  $home_product_page[$i]["id"];
           $url_productDetail = "index.php?act=productDetail&id=$id&header=headerSecond";
-
-
         ?>
 
           <div class="product d-f f-d al-c">
@@ -266,6 +270,7 @@
       <?php
 
       }
+    }
 
       ?>
 
