@@ -63,6 +63,12 @@ function loadall_bill($iduser){
     $listbill=pdo_query($sql);
     return $listbill;
 }
+function loadall_bill_by_day(){
+    $sql= "SELECT * FROM  bill WHERE bill_status = 3";
+   
+    $listbill=pdo_query($sql);
+    return $listbill;
+}
 
 function loadone_bill($id){
     $sql= "select*from bill where id=".$id;

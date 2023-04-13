@@ -49,7 +49,7 @@
                 <ul class="d-f al-c">
                   <li><a class="header-main-link" href="index.php">Trang chủ</a></li>
                   <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
-                  <li><a href="index.php?act=tintuc&header=headerSecond">Tin tức</a></li>
+                  <li><a class="header-main-link" href="index.php?act=tintuc&header=headerSecond">Tin tức</a></li>
                   <li><a class="header-main-link" href="index.php?act=lienhe&header=headerSecond">Liên hệ</a></li>
                 </ul>
               </div>

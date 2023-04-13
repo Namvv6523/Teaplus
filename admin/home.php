@@ -1,7 +1,13 @@
 
         <main class="w-100 d-f f-d">
           <div class="contain_product_user_cash d-f">
+<?php
+$sum = 0;
+for($i = 0 ; $i < count($sum_total_cash); $i++ ){
+    $sum += $sum_total_cash[$i]['tatal'];
+}
 
+?>
 
             <div class="product d-f f-d admin-block-dashboard">
               <div class="parameter d-f">
@@ -26,7 +32,7 @@
             <div class=" d-f f-d admin-block-dashboard">
                 <div class="parameter d-f admin_money">
                   <div>
-                    <div class="admin_numberProduct">120,000,000</div>
+                    <div class="admin_numberProduct"><?= number_format($sum) ?></div>
                     <div class="admin_textProduct">Tổng doanh thu</div>
                   </div>
                   <div class="admin_icon_product">

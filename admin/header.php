@@ -58,14 +58,33 @@
 
             </li>
             <!-- --------------------------------------- -->
-            <li >
-              <a  href="index.php?act=listbill">
+            <li class="li-side-bar">
+              <a href="#" class="a-side-bar">
                 <div>
-                <i class="fa-solid fa-cart-shopping"></i>
+                  <i class="fa-solid fa-cart-shopping"></i>
                   <span>Đơn hàng</span>
                 </div>
+                <i class="fa-solid fa-chevron-down d-none"></i>
+                <i class="fa-solid fa-chevron-left"></i>
               </a>
-
+              <ul class="sub-menu">
+                <li>
+                  <a href="index.php?act=listbill">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Quản lý đơn hàng</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="index.php?act=orderhistory">
+                    <div>
+                      <i class="fa-regular fa-circle"></i>
+                      <span>Lịch sử đơn hàng</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </li>
             <!-- --------------------------------------- -->
             <!-- <li class="li-side-bar">

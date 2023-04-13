@@ -12,10 +12,13 @@ include "../model/thongke.php";
 include "../model/bill.php";
 include "../model/convert.php";
 include "../model/lienhe.php";
+include "../model/order.php";
 include "header.php";
 //controller
 $count_product = count_product();
 $count_taikhoan = count_taikhoan();
+$sum_total_cash = loadall_bill_by_day();
+
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
