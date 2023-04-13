@@ -3,22 +3,22 @@
         extract($taikhoan);
         // var_dump($taikhoan);
       } 
-    $hinhpath="../upload/img/avatar/".$avatar;
-          if(is_file($hinhpath)){
-            $avatar=" <img src='".$hinhpath."' height='80' width='60'>";
-          }else{
-            $avatar="no photo";
-          }
+    // $hinhpath="../upload/img/avatar/".$avatar;
+    //       if(is_file($hinhpath)){
+    //         $avatar=" <img src='".$hinhpath."' height='80' width='60'>";
+    //       }else{
+    //         $avatar="no photo";
+    //       }
 ?>
 <main class="w-100 d-f f-d">
           <h3>Update Khách Hàng</h3>
           <div class="search_list-product-admin w-100 d-f jf-c">
             <form action="index.php?act=updatetk" class="general-form" method="post" enctype="multipart/form-data">
-              <label class="label_addsp" for="">Avatar</label>
-               <input class="ten_addsp" type="file" name="hinh" /> <?=$avatar?>
+              <!-- <label class="label_addsp" for="">Avatar</label>
+               <input class="ten_addsp" type="file" name="hinh" /> <? //=$avatar ?> -->
               <div class="block_form d-f f-d">
                 <label for=""> TÊN ĐĂNG NHẬP  </label>
-                <input type="text" placeholder="Tên Đang Nhập" name="tentk"  value="<?=$user?>"> 
+                <input type="text" placeholder="Tên Đang Nhập" name="tentk"  value="<?=$user?>" > 
               </div>
               <div class="block_form d-f f-d">
                 <label for="">MẬT KHẨU</label>

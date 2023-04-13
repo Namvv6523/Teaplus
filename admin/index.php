@@ -173,16 +173,20 @@ if (isset($_GET['act'])) {
                     $diachi=$_POST['diachi'];
                     $dienthoai=$_POST['dienthoai'];
                     $vaitro=$_POST['vaitro'];
-                    $hinh = $_FILES['hinh']['name'];
-                    $target_dir = "../upload/";
-                    $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-                    if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                        // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-                    } else {
-                        //echo "Sorry, there was an error uploading your file.";
-                    }
-                    update_taikhoan($id,$hinh,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
-                    
+                    // $img = $_FILES['hinh']['name'];
+                    // $target_dir = "../upload/";
+                    // $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
+                    // if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                    //     // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                    // } else {
+                    //     //echo "Sorry, there was an error uploading your file.";
+                    // }
+                    update_taikhoan($id,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
+                    // if ($img!="") {
+                    //     update_taikhoan($id,$img,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
+                    // }else{
+                    // update_taikhoanad($id,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
+                    // }
                     $thongbao = "Cập nhật thành công";
                 }
                 $listtaikhoan = loadall_taikhoan();
