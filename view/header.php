@@ -32,6 +32,12 @@
     <link rel="stylesheet" href="css/product/product-page.css" />
     <link rel="stylesheet" href="css/product/product-detail.css">
     <link rel="stylesheet" href="css/comment.css">
+    <link rel="stylesheet" href="css/dangnhap.css" />
+    <link rel="stylesheet" href="css/profileUser.css" />
+    <link rel="stylesheet" href="css/lienhe.css">
+
+
+
     <title>Trang chủ</title>
   </head>
   <body>
@@ -51,14 +57,14 @@
             <div class="menu_bar d-f al-c">
               <ul class="d-f al-c">
                 <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="#">Sản phẩm</a></li>
+                <li><a class="header-main-link" href="index.php?act=sanpham&header=headerprd">Sản phẩm</a></li>
                 <li><a href="#">Tin tức</a></li>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a href="index.php?act=lienhe&header=headerSecond">Liên hệ</a></li>
               </ul>
             </div>
           </div>
-          <div class="line"></div>
-            <div class="login d-f al-c">
+          <div class="d-f">
+          <div class="login d-f al-c">
               <!-- -------------- Chưa đăng nhập-------------- -->
   
               <!-- <a href="">
@@ -84,14 +90,26 @@
               <a ><?=$user?></a>
               <ul>
                 <li><a href="index.php?act=thongtintk&header=headerSecond">Thông tin tài khoản</a></li>
-                <li><a href="#">Đơn hàng</a></li>
-                <li><a href="#">Giỏ hàng</a></li>
+
+            <?php
+            if($_SESSION['user']['role']==1){
+              ?>
+                <li><a href="admin/index.php" target="_blank">Đăng nhập admin</a></li>
+
+              <?php
+            }
+            ?>
+                <!-- <li><a href="#">Đơn hàng</a></li> -->
+                <li><a href="index.php?act=myBill&header=headerSecond">Đơn hàng</a></li>
                 <li><a href="#">Địa chỉ nhận hàng</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>
               <?php } else { ?>
                 <a href="index.php?act=dangnhap&header=headerSecond">  
-                  <input type="button" value="đăng nhập">
+                  <input type="button" value="đăng nhập" class="input-login">
+                </a>
+                <a href="index.php?act=dangky&header=headerSecond">  
+                  <input type="button" value="đăng ký" class="input-login">
                 </a>
               <?php } ?>
 
@@ -105,9 +123,12 @@
               <div class="number">1</div>
             </div>
             <div class="cart">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <div class="number">1</div>
+                <a href="index.php?act=viewCart&header=headerSecond&f=1">
+                  <i style="color:#333" class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <div class="number"><?php if(isset($cartCount)){echo $cartCount;}else{ echo 0;} ?></div>
             </div>
+          </div>
           </div>
         </div>
 
@@ -136,13 +157,16 @@
             </ul>
           </div>
           <div class="search">
-          <form action="index.php?act=search_product&header=headerSecond" class="d-f" method="POST">
+          <form action="index.php?act=search_product&header=headerSecond" class="d-f form_search_main" method="POST">
                 <input
                   type="text"
                   class="input-search"
                   placeholder="Bạn cần tìm kiếm sản phẩm..."
                   name="value-search"
                 />
+                <div class="clear_search">
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
                 <input type="submit" value="Tìm kiếm" class="search-btn" name="submit-value-search" />
             </form>
           </div>
@@ -150,10 +174,7 @@
             <div class="icon-phone">
               <i class="fa-solid fa-phone"></i>
             </div>
-            <div class="numberPhone d-f f-d">
-              <span class="numberPhone_number">0123456678</span>
-              <span class="numberPhone_24">Hỗ trợ 24/07</span>
-            </div>
+           
           </div>
         </div>
       </header>

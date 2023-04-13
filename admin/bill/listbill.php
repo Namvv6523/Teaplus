@@ -1,26 +1,36 @@
-
+<main class="w-100 d-f f-d">
                
-               <h1 class="title_product_new">Sản phẩm </h1>
-               <div class="product-page-banner">
-                   <span class="product-page-banner_title">Trang chủ - Đơn hàng</span>
-              </div>
+               <h1 class="title_product_new">Đơn hàng </h1>
+               
      
               <!-- ----------------------------------- Form hiển thị giỏ hàng ----v--------------------- -->
-              <section class="contain-form-submit-cart w-100">
-               
+              <section class="contain-form-submit-cart w-100 d-f f-d al-c">
+              <div class="search_list-product-admin w-100">
+              <form action="" class="d-f form-search">
+              <input
+                type="text"
+                placeholder="Tìm kiếm theo tên sản phẩm..."
+                class="input-search"
+              />
+              <input
+                type="submit"
+                class="submit-search-form"
+                value="Tìm kiếm"
+              />
+            </form>  
               <form action="index.php?act=listbill" class="form-submit-cart w-100">         
-               <table class="table-cart w-100">
+               <table class="w-100 table_bill-admin">
       
                 <thead>
                   <tr>
-                   
-                    <th>MÃ ĐƠN HÀNG</th>
-                    <th>KHÁCH HÀNG</th>
-                    <th>SỐ LƯỢNG HÀNG</th>
-                    <th>GIÁ TRỊ ĐƠN HÀNG</th>
-                    <th>TÌNH TRẠNG ĐƠN HÀNG</th>
-                    <th>NGÀY ĐẶT HÀNG</th>
-                    <th>THAO TÁC</th>
+                    <th>Check</th>                   
+                    <th>ID</th>
+                    <th>Khách hàng</th>
+                    <th>Số lượng</th>
+                    <th>Giá trị đơn </th>
+                    <th>Tình trạng đơn </th>
+                    <th>Ngày đặt </th>
+                    <th>Thao tác</th>
                   </tr>
                 </thead>
                   <tbody>
@@ -32,24 +42,22 @@
                         $kh=$bill["bill_name"].'
                         <br> '.$bill["bill_address"].'
                         <br>'.$bill["bill_tel"];
-                        $ttdh= getStatus($bill["bill_status"]);
+                        $ttdh= getStatus($bill["bill_status"],1);
                         $countsp=loadall_cart_count($bill["id"]);
                         
                         echo '<tr>
-                        
-                        <td>'.$bill['id'].'</td>
-                        <td>'.$kh.'</td>
-                        <td>'.$countsp.'</td>
-                        <td><strong>'.$bill["tatal"].'</strong>VNĐ</td>
-                        <td>'.$ttdh.'</td>
-                        <td>'.$bill['ngaydathang'].'</td>
+                        <td><input type="checkbox"></td>                        
+                        <td class="td_sp">'.$bill['id'].'</td>
+                        <td class="td_sp">'.$kh.'</td>
+                        <td class="td_sp">'.$countsp.'</td>
+                        <td class="td_sp"><strong>'.number_format($bill["tatal"]).'</strong> VNĐ</td>
+                        <td class="td_sp">'.$ttdh.'</td>
+                        <td style="width:70px;" class="td_sp">'.$bill['ngaydathang'].'</td>
                         <td class="td_sp"> 
                                   <a class="url-edit" href="'. $suabill.'">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                   </a> 
-                                  <a class="url-delete" href="'. $xoabill.'">
-                                    <i class="fa-solid fa-trash"></i>
-                                  </a> 
+                                
                                 </td>
                     </tr>';
                     }
@@ -58,17 +66,7 @@
                 
                 ?>
               
-                 <!-- ----------------------------- -->
-                 <!-- <th>Vũ Hồng Minh </th>
-                    <th>Trà Sữa </th>
-                    <th><img src="" alt=""></th>
-                    <th>trân châu</th>
-                    <th>đường 70%+size L</th>
-                    <th>43.000đ</th>
-                    <th>1</th>
-                    <th>43.000đ</th>
-                    <th>đang giao hàng</th>
-                    <th><button type="submit">Xác nhận</button> <button type="submit">Sửa</button></th> -->
+                
                   
                    
      
@@ -76,6 +74,10 @@
       
       
                </table>
+              
                
               </form>
+            </div>
+            <a href="index.php?act=listbill" class="upgradeStatusAdmin" href="">Cập nhật trạng thái</a>
               </section>
+              </main>

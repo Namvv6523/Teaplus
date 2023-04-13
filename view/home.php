@@ -13,6 +13,8 @@
             $image = $image_path . $name_image;
             $id =  $home_product[$i]["id"];
             $url_productDetail = "index.php?act=productDetail&id=$id&header=headerSecond";
+            $comment_count = select_comment_count($id);
+            // var_dump($comment_count);
 
 
         ?>
@@ -23,10 +25,10 @@
         <img src="<?= $image ?>" alt="" />
       </a>
       <div class="product-icon-cart-heart d-f jf-c">
-        <a href="#" class="product_icon product-heart d-f jf-c al-c">
+        <div href="#" class="product_icon product-heart heart  d-f jf-c al-c">
           <i class="fa-solid fa-heart product_heart"></i>
-        </a>
-        <a href="#" class="product_icon d-f jf-c al-c">
+        </div>
+        <a href="<?= $url_productDetail ?>" class="product_icon d-f jf-c al-c">
           <i class="fa-solid fa-cart-shopping product_cart"></i>
         </a>
       </div>
@@ -37,11 +39,11 @@
       <div class="d-f m-t-b5 g-10 al-c">
         <a href="#" class=" product-heart d-f jf-c al-c">
           <i class="fa-solid fa-heart product_heart_number"></i>
-          <span class="number_show">10</span>
+          <span class="number_show number_show_heart">10</span>
         </a>
         <a href="#" class=" product-heart d-f jf-c al-c">
           <i class="fa-regular fa-comment product_comment_number"></i>
-          <span class="number_show">10 comment</span>
+          <span class="number_show"><?= $comment_count ?> comment</span>
         </a>
       </div>
     </div>

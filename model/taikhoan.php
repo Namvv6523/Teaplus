@@ -16,8 +16,8 @@
     }
 
 
-    function insert_taikhoan($email,$user,$pass){
-        $sql = "insert into taikhoan(email,user,pass) values('$email','$user','$pass')";
+    function insert_taikhoan($email,$user,$pass,$avatar){
+        $sql = "insert into taikhoan(user,pass,email,avatar) values('$email','$user','$pass','$avatar')";
                 pdo_execute($sql);
     }
     
@@ -34,25 +34,19 @@
     
     }
     
-    function update_taikhoan($id,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro){
-            $sql = "update taikhoan set  user='".$tentk."', pass='".$matkhau."', email='".$email."',address='".$diachi."',tel='".$dienthoai."',role='".$vaitro."' where id=".$id;
-        pdo_execute($sql);
+    function update_taikhoan($id,$user,$pass,$email,$img,$address,$tel){
+            $sql = "update taikhoan set  user='".$user."', pass='".$pass."', email='".$email."',avatar='".$img."',address='".$address."',tel='".$tel."' where id=".$id;
+            pdo_execute($sql);
         
     }
    
-    // function update_taikhoan($id,$img,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro){
-    //     if($img!="")
-    //     $sql = "update taikhoan set avatar='".$img."  user='".$tentk."', pass='".$matkhau."', email='".$email."',address='".$diachi."',tel='".$vaitro."' where id=".$id;    
-    //     else
-    //     $sql = "update taikhoan set  user='".$tentk."', pass='".$matkhau."', email='".$email."',address='".$diachi."',tel='".$vaitro."' where id=".$id;
-    //     pdo_execute($sql);
-    // }
-    // function  update_taikhoanad($id,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro){
-    //     $sql = "update taikhoan set  user='".$tentk."', pass='".$matkhau."', email='".$email."',address='".$diachi."',tel='".$vaitro."' where id=".$id;
-    //     pdo_execute($sql);
-        
     
-    // }
+    function update_taikhoanad($id,$user,$pass,$email,$address,$tel,$rol){
+        $sql = "update taikhoan set  user='".$user."', pass='".$pass."', email='".$email."',address='".$address."',tel='".$tel."',role='".$rol."' where id=".$id;
+    
+    pdo_execute($sql);
+    
+    }
    
     function loadOne_taikhoan($id){
         $sql ="select *from taikhoan where id=?"; 
@@ -62,4 +56,14 @@
         $sql ="delete from taikhoan where id=".$id;
         pdo_execute($sql);
     }
+    function count_taikhoan(){
+        $sql="SELECT * FROM taikhoan ";
+
+        $countSanpham=pdo_query($sql);
+        return  sizeof($countSanpham);
+    }
+
+
+
+    
 ?>

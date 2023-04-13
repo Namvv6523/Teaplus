@@ -1,5 +1,9 @@
 <main class="w-100 d-f f-d al-c">
-
+<script>
+  if(window.history.replaceState){
+    window.history.replaceState(null,null,"index.php?act=myBill&header=headerSecond");
+  }
+</script>
 
 <?php
 if(isset($list_bill) && is_array($list_bill)){
@@ -12,6 +16,9 @@ $bill_date = isset($list_bill['ngaydathang']) ? $list_bill['ngaydathang'] : 0;
 $total = isset($list_bill['tatal']) ? $list_bill['tatal'] : 0;
 $status = isset($list_bill['bill_status']) ? $list_bill['bill_status'] : 0;
 $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
+
+
+
 
 }
 
@@ -55,6 +62,8 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                         $quantity = $list_cart[$i]['soluong'];
                         $result = $list_cart[$i]['thanhtien'];
                         $toppingInfo = handleTopping($topping);
+                                                
+
                         ?>
 
      
@@ -101,17 +110,17 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                <section class="contain-info_user-pay w-100 ">
      
                  <!-- --------------Thông tin người dùng---------v----- -->
-                 <form action="" class="w-100 d-f jf-b form-pay" style="padding-left: 15px;">
+                 <form action="index.php?act=changeStatusBill&header=headerSecond" method="POST" class="w-100 d-f jf-b form-confirm" style="padding-left: 15px;">
                  <div class="info_user w-45">
                      <div>
                          <span style="color: var(--primary-color);font-weight: 600;">Trạng thái đơn hàng : </span>
-                         <span style="color: red" ><?= getStatus($status) ?></span>
+                         <span style="color: red" ><?= getStatus($status,0) ?></span>
                        </div>
                    <div>
                      
-                       <a class="get-old-info" href="">
+                       <!-- <a class="get-old-info" href="">
                          Cập nhật trạng thái 
-                       </a>
+                       </a> -->
                      
                        <!-- ------- -->
                        <div class="d-f w-100 m-t-b10">
@@ -156,8 +165,8 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                        <!-- <input type="radio" name="bank"> -->
                        <label for="">
                        <?php
-                        if($payment_method == 1)echo "Trả tiền khi nhận hàng";
-                        else if ($payment_method == 2)echo "Chuyển khoản ngân hàng";
+                        if($payment_method == 1)echo "Chuyển khoản ngân hàng";
+                        else if ($payment_method == 2)echo "Trả tiền khi nhận hàng ";
                         
 
                     ?>
@@ -197,9 +206,8 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                    </ul>
                    <div class="w-100 d-f jf-b  jf-e" style="margin-top: 2.5%;">
                                       
-                       <a href="" style="display: block;" class="continue-buy delete-cart-confirm">
-                        Hủy đơn hàng
-                       </a>
+                        <input type="text" value="<?= $id ?>" hidden name="idBill">    
+                       <input  type="submit" value="Hủy đơn hàng" name="cancelCart" class="delete-cart-confirm continue-buy" onclick="return confirm('Bạn có chắc muốn xóa đơn hàng không ?')">
                                                                
                    </div>
                  </div>     
@@ -213,3 +221,4 @@ $note = isset($list_bill['note']) ? $list_bill['note'] : "Không có";
                                                             
              <!-- ------------------ Nhập thông tin người dùng và thanh toán---------------^--------------- -->                                           
            </main>
+           

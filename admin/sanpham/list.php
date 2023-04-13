@@ -12,35 +12,19 @@
             ?>
         </select>
         <input class="" type="submit" name="listok" value="Tìm Kiếm">
-        <!-- <h3>Danh sách sản phẩm</h3>
-        <div class="search_list-product-admin w-100">
-        <form action="" class="d-f form-search">
-              <input
-                type="text"
-                placeholder="Tìm kiếm theo tên sản phẩm..."
-                class="input-search" name="kyw"
-              />
-              <input
-                type="submit"
-                class="submit-search-form"
-                value="Tìm kiếm"
-                name="listok"
-              />
-            </form>   -->
       </form>
-        <h3>Danh sách sản phẩm</h3>
-        <div class="search_list-product-admin w-100">
-        <form action="index.php?act=listsp" class="d-f form-search" method="post">
+    <h3>Danh sách sản phẩm</h3>
+    <div class="search_list-product-admin w-100">
+            <form action="" class="d-f form-search">
               <input
                 type="text"
                 placeholder="Tìm kiếm theo tên sản phẩm..."
-                class="input-search" name="kyw"
+                class="input-search"
               />
               <input
                 type="submit"
                 class="submit-search-form"
                 value="Tìm kiếm"
-                name="listok"
               />
             </form>  
                       
@@ -60,7 +44,7 @@
                   <th>Danh mục</th>
                   <th>Tạo mới</th>
               </thead>
-              <tbody>
+              <tbody class="tbody">
                 <!-- php -->
               <?php foreach ($listsanpham as $sanpham) {
                         extract($sanpham);
@@ -75,11 +59,11 @@
                         }
 
 
-                        echo '<tr>
+                        echo '<tr class="trItem">
                                 <td><input type="checkbox"></td>
                                 <td class="td_sp">' . $id . '</td>
                                 <td class="td_sp">' . $name . '</td>
-                                <td class="td_sp">' . $price . '</td>
+                                <td class="td_sp">' . number_format($price) . '</td>
                                 <td class="td_sp">' . $hinh . '</td>
                                 <td class="td_sp">' . $mota . '</td>
                                 <td class="td_sp">' . $luotxem . '</td>
@@ -102,5 +86,19 @@
       
        
       </table>
-
+     
+    
       </main>
+      <nav class="pagination-container">
+  <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
+    &lt;
+  </button>
+  
+  <div id="pagination-numbers">
+  </div>
+  
+  <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
+    &gt;
+  </button>
+</nav>
+      <script src="../JavaScript/admin/pagination.js"></script>

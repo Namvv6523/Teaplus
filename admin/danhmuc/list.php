@@ -1,7 +1,19 @@
 <main class="w-100 d-f f-d">
           <h3>Quản Lý Loại Hàng</h3>
           <div class="search_list-product-admin w-100">
-            <form action="" class="d-f form-search">
+          <form action="" class="d-f form-search">
+              <input
+                type="text"
+                placeholder="Tìm kiếm theo mã sản phẩm..."
+                class="input-search"
+              />
+              <input
+                type="submit"
+                class="submit-search-form"
+                value="Tìm kiếm"
+              />
+            </form>  
+            <form action="" class="d-f ">
                 <table class="w-100 table">
                     <thead>  
                        <th> <h1> Mã Loại </h1></th>

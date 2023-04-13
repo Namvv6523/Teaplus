@@ -1,5 +1,9 @@
 <main class="w-100 d-f f-d al-c">
-               
+<script>
+  if(window.history.replaceState){
+    window.history.replaceState(null,null,"index.php?act=viewCart&header=headerSecond&f=1");
+  }
+</script>
                <h1 class="title_product_new">Sản phẩm </h1>
                <div class="product-page-banner">
                    <span class="product-page-banner_title">Trang chủ - Giỏ hàng</span>
@@ -73,7 +77,7 @@
                            <i style="margin-left: 1px;" class="fa-solid fa-minus"></i>
                          </div>
                          <div class="product_quantity"><?= $quantity ?></div>
-                         <input style="width:30px" type="number" name="quantity1[]" value="<?= $quantity ?>">
+                         <input style="width:30px" type="number" name="quantity1[]" hidden value="<?= $quantity ?>">
                          <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
                          <div class="add circle_border">
                            <i style="margin-left: 1px;" class="fa-solid fa-plus"></i>
@@ -107,11 +111,23 @@
                      Tiếp tục mua hàng
                    </a>
                  </button>
-                 <button>
-                   <a href="index.php?act=orderCart&header=headerSecond" class="continue-buy">
+                 
+                  <?php
+                  $_SESSION['check'] = "hello";
+                  
+                  ?>
+                   <?php
+                    $rand=rand();
+                    $_SESSION['rand']=$rand;
+                    ?>
+                    <input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
+                 <!-- <button>
+                   <a href="index.php?act=orderCart&header=headerSecond&rand="  class="continue-buy">
                      Thanh toán
                    </a>
-                 </button>
+                 </button> -->
+                 <input type="submit" value="Thanh toán" name="orderCart" style="padding: 0px 10px;font-size:1.7rem">
+                 
                  <div class="contain-upgrade-cart ">
                    <i class="fa-solid fa-spinner rotate-upgrade-cart"></i>
      

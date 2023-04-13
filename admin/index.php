@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // session_start();
 // if(isset($_SESSION['user'])&&($_SESSION['user']['role']==1)){
 include "../model/pdo.php";
@@ -7,11 +8,15 @@ include "../model/sanpham.php";
 include "../model/binhluan.php";
 include "../model/taikhoan.php";
 include "../model/cart.php";
-include "../model/convert.php";
+include "../model/thongke.php";
 include "../model/bill.php";
+include "../model/convert.php";
+include "../model/lienhe.php";
 include "header.php";
 //controller
-
+$count_product = count_product();
+$count_taikhoan = count_taikhoan();
+$count_tien=  count_doangthu();
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -132,7 +137,7 @@ if (isset($_GET['act'])) {
             include "taikhoan/list.php";
             break;
             case 'addtk':
-                if (isset($_POST['add']) && ($_POST['add'])) {
+                if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                     $hinh = $_FILES['hinh']['name'];
                     $tentk= $_POST["tentk"];
                     $matkhau = $_POST["matkhau"];
@@ -144,7 +149,7 @@ if (isset($_GET['act'])) {
                     } else {
                         //echo "Sorry, there was an error uploading your file.";
                     }
-                    insert_taikhoan($hinh,$tentk,$matkhau,$email);
+                    insert_taikhoan($tentk,$matkhau,$email,$hinh);
                     $thongbao = "Thêm thành công";
                 }
     
@@ -173,20 +178,11 @@ if (isset($_GET['act'])) {
                     $diachi=$_POST['diachi'];
                     $dienthoai=$_POST['dienthoai'];
                     $vaitro=$_POST['vaitro'];
-                    // $img = $_FILES['hinh']['name'];
-                    // $target_dir = "../upload/";
-                    // $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-                    // if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                    //     // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-                    // } else {
-                    //     //echo "Sorry, there was an error uploading your file.";
-                    // }
-                    update_taikhoan($id,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
-                    // if ($img!="") {
-                    //     update_taikhoan($id,$img,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
-                    // }else{
-                    // update_taikhoanad($id,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
-                    // }
+                   
+                   
+                    
+                    update_taikhoanad($id,$tentk,$matkhau,$email,$diachi,$dienthoai,$vaitro);
+                    
                     $thongbao = "Cập nhật thành công";
                 }
                 $listtaikhoan = loadall_taikhoan();
@@ -213,12 +209,12 @@ if (isset($_GET['act'])) {
             include "thongke/bieudo.php";
             break;
         case 'listbill':
-            // if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
+            // if(isset($_POST['kyw'])&&($_POST['kyw']!="")) {
             //     $kyw=$_POST['kyw'];
             // }else{
             //     $kyw="";
             // }
-            $listbill=loadall_bill(0);
+            $listbill= loadall_bill(0);
             include "bill/listbill.php";
             break;
         case 'xoabill':
@@ -237,14 +233,27 @@ if (isset($_GET['act'])) {
             break;
         case 'updatebill':
             if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
-                $ttdh = $_POST["ttdh"];
+                $ttdh = isset($_POST["ttdh"]) ? $_POST["ttdh"] : 0 ;
                 $id = $_POST["id"];
                 update_bill($id, $ttdh);
                 $thongbao = "Cập nhật thành công";
             }
             $listbill=loadall_bill(0);
-            include "bill/listbill.php";
-            break;    
+            // include "bill/listbill.php";
+            header("Location: index.php?act=listbill");
+            break;  
+        case 'lienhe':
+            $listlienhe = loadall_lienhe();
+            include "lienhe/listLienHe.php";
+            break; 
+           
+        case 'xoalh':
+                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                        delete_lienhe($_GET['id']);
+                    }
+                    $listlienhe = loadall_lienhe();
+                include "lienhe/listLienHe.php";
+                break;  
         default:
             include "home.php";
             break;
@@ -257,5 +266,8 @@ include "footer.php";
 // }else{
 //     header('Location: ../index.php');
 // }
+ob_end_flush()
 ?>
+
+
 

@@ -1,17 +1,30 @@
 <main class="w-100 d-f f-d">
-          <h3>Quản Lý Loại Hàng</h3>
+          <h3>Quản Lý Tài Khoản</h3>
           <div class="search_list-product-admin w-100">
-            <form action="" class="d-f form-search" >
-                <table class="w-100 table">
+          <form action="" class="d-f form-search">
+              <input
+                type="text"
+                placeholder="Tìm kiếm theo ID tài khoản..."
+                class="input-search"
+              />
+              <input
+                type="submit"
+                class="submit-search-form"
+                value="Tìm kiếm"
+              />
+            </form>  
+            <form action="" class="d-f " >
+                <table class="w-100 table_bill-admin">
                     <thead>  
-                       <th>  MÃ TÀI KHOẢN </th>
-                       <th>Avatar</th>
-                        <th> TÊN ĐĂNG NHẬP </th>
-                        <th> MẬT KHẨU</th>
-                        <th>  EMAIL</th>
-                        <th>  ĐỊA CHỈ</th>
-                        <th>  ĐIỆN THOẠI</th>
-                        <th>  VAI TRÒ</th>
+                        <th>Check</th>                      
+                        <th>ID</th>
+                        <th>Avatar</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Mật khẩu</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Điện thoại</th>
+                        <th>Vai trò</th>
                         <th>Chức Năng </th>
 
                     </thead>
@@ -19,27 +32,34 @@
                         extract($taikhoan);
                         $suatk="index.php?act=suatk&id=".$id;
                         $xoatk="index.php?act=xoatk&id=".$id;
-                        $hinhpath="../upload/img/avatar/".$avatar;
-                        if(is_file($hinhpath)){
-                            $avatar=" <img src='".$hinhpath."' height='80' width='60'>";
-                        }else{
-                            $avatar="no photo";
-                        }
-  
-                        echo '<tr>
-                                
-                                <td>' . $id . '</td>
-                                <td>' . $avatar . '</td>
-                                <td>' . $user . '</td>
-                                <td>' . $pass . '</td>
-                                <td>' . $email . '</td>
-                                <td>' . $address . '</td>
-                                <td>' . $tel . '</td>
-                                <td>' . $role . '</td>
-                                <td> <a href="'. $suatk.'"><input type="button" value="Sửa"></a> <a href="'. $xoatk.'"><input type="button" value="Xóa"></a> </td>
-                            </tr>';
-                    }
-                    ?>
+                        $img = "../upload/" .$avatar;
+                        $address = isset($address) ? $address : "null";
+                        $tel = isset($tel) ? $tel : "null";
+                     ?>
+                        <tr>
+                                <td><input type="checkbox"></td>                        
+                                <td style="width:40px;" > <?= $id ?> </td>
+                                <td> 
+                                  <div class="border-avatar">
+                                    <img style="width:40px;" src="<?= $img ?> " alt="">
+                                  </div>
+                                </td>
+                                <td style="width:140px;"> <?= $user ?>  </td>
+                                <td> <?= $pass ?>  </td>
+                                <td> <?= $email ?>  </td>
+                                <td style="width:180px;"> <?= $address ?>  </td>
+                                <td> <?= $tel ?>  </td>
+                                <td> <?= $role ?>  </td>
+                                <td> 
+                                  <a class="url-edit" href="<?= $suatk ?>">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                  </a> 
+                                  <a  class="url-delete" href="<?= $xoatk ?>" onclick='return confirm("Delete entry?")'>
+                                    <i class="fa-solid fa-trash"></i>
+                                  </a> 
+                                </td>
+                            </tr>
+                   <?php } ?>
                   </table>
             </form>
                  

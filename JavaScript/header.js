@@ -26,3 +26,23 @@ window.addEventListener("scroll",()=>{
 })
 
 }
+
+const inputSearch = document.querySelector(".input-search");
+console.log(inputSearch)
+if(inputSearch){
+    const clearSearch = document.querySelector(".clear_search");
+    inputSearch.addEventListener("input",(e)=>{
+        if(e.target.value !== "" ){
+            clearSearch.classList.add("active_clearSearch");
+        }
+        else{
+            clearSearch.classList.remove("active_clearSearch");
+
+        }
+    })
+
+    clearSearch.addEventListener("click",()=>{
+        inputSearch.value = "";
+        clearSearch.classList.remove("active_clearSearch");
+    })
+}

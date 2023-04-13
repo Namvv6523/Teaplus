@@ -5,7 +5,7 @@
 ?>
 
 <main class="w-100 d-f f-d">
-          <h3>Sửa  sản phẩm</h3>
+          <h3>Thêm sản phẩm</h3>
           <div class="search_list-product-admin w-100 d-f jf-c">
             <form action="index.php?act=updatedm" method="post" enctype="multipart/form-data" class="general-form">
 
@@ -15,7 +15,7 @@
                 <div class="block_form d-f f-d">
                 <label for=""> Tên Sản Phẩm </label>
                 
-                <input type="text" placeholder="Mã sản phẩm" name="tenloai" value="<?php if (isset($name)&&($name!="")) echo $name; ?>">
+                <input type="text" style="padding: 10px;" placeholder="Mã sản phẩm" name="tenloai" value="<?php if (isset($name)&&($name!="")) echo $name; ?>">
               <!-- </div>
               <div class="block_form d-f f-d">
                 <label for=""> Ảnh </label>

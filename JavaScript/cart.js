@@ -6,10 +6,10 @@ export default function handleUpgradeCart(isClickQuantity) {
   if (isClickQuantity) {
     upgradeCart.classList.add("active-upgrade-cart");
     containUpgradeCart.classList.add("active-upgrade-cart");
+    containUpgradeCart.style.pointerEvents = "auto";
     upgradeCart.addEventListener("click", function (e) {
         e.preventDefault();
         rotateUpgradeCart.style.display="inline-block";
-
         setTimeout(() => {        
         rotateUpgradeCart.style.display="none";
         upgradeCart.classList.remove("active-upgrade-cart");
@@ -89,6 +89,7 @@ const handleSubtract = (index) => {
     if (cart[index].quantity) {
       // Nếu đã có sản phẩm trong đơn hàng, giảm số lượng sản phẩm 
     cart[index].quantity--;
+    console.log(cart[index].quantity);
   } else {
     // Nếu chưa có sản phẩm trong đơn hàng, khởi tạo số lượng sản phẩm là 1
     cart[index] = 1;
@@ -97,9 +98,18 @@ const handleSubtract = (index) => {
 };
 
 const handleQuantity = (index) => {
+  
   if (index || index === 0) {
+    if(cart[index].quantity >= 1){
     productQuantity[index].innerHTML = cart[index].quantity;
     inputQuantity1[index].value = cart[index].quantity;
+      return cart[index].quantity;
+    }
+    else{
+      productQuantity[index].innerHTML = 1;
+      inputQuantity1[index].value = 1;
+      return cart[index].quantity = 1
+    }
   }
   return cart[index].quantity;
 };
@@ -115,7 +125,6 @@ const handleTotalCash = (index) =>{
 
   const inputQuan = handleQuantity(index)
   const sum = ( parseInt(inputPrice[index].value,10) +  parseInt(inputSugar[index].value,10) + parseInt(inputSize[index].value,10) + parseInt(inputToppping[index].value,10)) * parseInt(inputQuan,10)
-  console.log(sum);
   inputTotalCash[index].value = sum;
   const localStringSum = sum.toLocaleString();
   totalCash[index].innerHTML = localStringSum + "đ";
@@ -127,6 +136,7 @@ add.forEach((ele, index) => {
   ele.addEventListener("click", () => {
     handleAdd(index);
     isClickQuantity = true;
+  // console.log(index);
    
     handleUpgradeCart(isClickQuantity);
     handleTotalCash(index);
@@ -145,9 +155,7 @@ const formPay = document.querySelector(".form-pay");
 
 
 const  validate = (e)=>{
-  // const listener = function (e) {
-  //   e.preventDefault();
-  // };
+ 
     e.preventDefault()
     const inputUser = document.querySelector("input[name='user']").value;
     const inputPhone = document.querySelector("input[name='number-phone']").value;
@@ -184,13 +192,126 @@ inputInfo.forEach((input,index)=>{
     const inputPhone = document.querySelector("input[name='number-phone']").value;
     const inputAddress = document.querySelector("input[name='address']").value;
     if(inputUser.length != 0 && inputPhone.length != 0 && inputAddress.length != 0){
-      buyNow.classList.add("active-upgrade-cart")
+      buyNow.classList.add("active-upgrade-cart");
     }
     else{
-      buyNow.classList.remove("active-upgrade-cart")
+      buyNow.classList.remove("active-upgrade-cart");
 
     }
   })
 })
 }
+
+
+
+// ---------------show menu choice---------------
+// ----------- close and open menu ----------------
+const containOverlayProductDetail = document.querySelector(
+  ".contain-overlay-product-detail"
+);
+
+const closeShow = document.querySelector(".close_show");
+const closeText = document.querySelector(".close-text");
+const credit = document.querySelectorAll("input[name='credit']");
+let isClose = false;
+let clearTimer ;
+var timerId;
+const arrInforPay = ["Đang chờ quét mã","Đang xác nhận","Đã chuyển khoản thành công"];
+
+if(credit.length != 0 ){
+
+credit[0].addEventListener("click", () => {
+    isClose = true;
+    if (isClose) {
+      containOverlayProductDetail.style.display = "flex";
+      handlePayMoney(isClose);
+      var fiveMinutes = 60 * 10,
+      display = document.querySelector('.timeRestPay');
+      startTimer(fiveMinutes, display);
+
+    }  
+    
+  });
+
+}
+// ----------------------------Đóng mở menu--------------------------------
+if(closeShow){
+  closeShow.addEventListener("click", () => {
+    isClose = false;
+    
+    clearInterval(clearTimer);
+    clearInterval(timerId);
+ const processingPay = document.querySelector(".processing-pay");
+  
+    processingPay.innerHTML = arrInforPay[0];
+    if (!isClose) {
+      containOverlayProductDetail.style.display = "none"; 
+    }
+  });
+
+
+  // closeText.addEventListener("click", () => {
+  //   isClose = false;
+  //   console.log(isClose);
+  
+  //   if (!isClose) {
+  //     containOverlayProductDetail.style.display = "none";
+  //   }
+  // });
+
+}
+
+
+function startTimer(duration, display) {
+  var timer = duration, minutes, seconds;
+  clearTimer = setInterval(function () {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      display.textContent = minutes + ":" + seconds;
+
+      if (--timer < 0) {
+          timer = duration;
+      }
+  }, 1000);
+}
+
+// window.onload = function () {
+//   var fiveMinutes = 60 * 10,
+//       display = document.querySelector('.timeRestPay');
+//   startTimer(fiveMinutes, display);
+// };
+
+function handlePayMoney(isCLose){
+  
+ let pay = -1;
+ const processingPay = document.querySelector(".processing-pay");
+ const loadingPayIcon = document.querySelector(".loading-pay-icon.loading-pay-icon-ani");
+ if(isCLose){
+ function getInforPay(){
+  pay++;
+  if(pay >= arrInforPay.length - 1 ){
+    clearInterval(timerId);
+  }
+  if(pay == 2){
+    loadingPayIcon.classList.remove("loading-pay-icon-ani");
+    console.log(pay)
+  }
+  processingPay.innerHTML = arrInforPay[pay];
+ }
+ 
+  timerId = setInterval(()=>{
+  getInforPay();
+ },3000);
+  // console.log(timerId);
+ 
+}
+// console.log(pay)
+
+}
+
+
 

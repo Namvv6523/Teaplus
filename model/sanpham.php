@@ -54,10 +54,41 @@
     }
 
     function update_sanpham($id,$iddm,$tensp,$giasp,$mota,$hinh){
-        if($hinh!="")
+        if($hinh!=""){
             $sql="update sanpham set iddm='".$iddm."',name='".$tensp."',price='".$giasp."',mota='".$mota."',img='".$hinh."' where id=".$id;
-        else
+        }
+        else{
             $sql="update sanpham set iddm='".$iddm."',name='".$tensp."',price='".$giasp."',mota='".$mota."' where id=".$id;
+        }
         pdo_execute($sql);
     }
+    function loadall_sanpham_price($price1,$price2){
+        
+        $sql="SELECT * FROM sanpham where 1";
+        if($price1!=""&& $price2!=""){
+            $sql.=" and price >= '".$price1."' and price <='".$price2."'";
+        }
+        $sql.=" order by id desc";
+        $listsanpham=pdo_query($sql);
+        return  $listsanpham;
+    }
+    function loadall_product_page(){
+        $sql="SELECT * FROM sanpham where 1 order by id desc ";
+        $listsanpham=pdo_query($sql);
+        return  $listsanpham;
+    }
+    function count_productByiddm($iddm){
+        $sql="SELECT COUNT(id) AS count FROM sanpham where iddm=".$iddm;
+
+        $countSanphamByiddm=pdo_query($sql);
+        return  $countSanphamByiddm;
+    }
+    function count_product(){
+        $sql="SELECT * FROM sanpham ";
+
+        $countSanpham=pdo_query($sql);
+        return  sizeof($countSanpham);
+    }
+   
+    
 ?>
