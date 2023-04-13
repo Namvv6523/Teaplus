@@ -102,9 +102,9 @@ function tongdonhang()
 }
 
 
-function insert_cart($id_user, $id_product, $image, $name, $price, $sugar, $size, $ice, $topping, $quantity, $cash, $id_bill)
+function insert_cart($id_user, $id_product, $image, $name, $price, $sugar, $size, $ice, $topping, $quantity, $cash, $id_bill,$id_giohang)
 {
-    $sql = "INSERT INTO cart (iduser ,idpro ,img,name,price,sugar,size,ice,topping,soluong,thanhtien,idbill ) VALUES ($id_user,'$id_product','$image','$name','$price','$sugar','$size','$ice','$topping','$quantity','$cash','$id_bill') ";
+    $sql = "INSERT INTO cart (iduser ,idpro ,img,name,price,sugar,size,ice,topping,soluong,thanhtien,idbill,id_giohang ) VALUES ($id_user,'$id_product','$image','$name','$price','$sugar','$size','$ice','$topping','$quantity','$cash','$id_bill','$id_giohang') ";
     pdo_execute($sql);
 }
 function  insert_giohang($id, $id_user, $product_name, $image, $sugar, $size, $ice, $topping, $product_price, $quantity, $total, $status)
@@ -152,6 +152,12 @@ function loadall_cart_idUser($idUser)
     $bill = pdo_query($sql);
     return $bill;
 }
+// function loadall_cart_idUser_done($idUser)
+// {
+//     $sql = "SELECT * FROM giohang WHERE id_user= $idUser AND status = 3 ";
+//     $bill = pdo_query($sql);
+//     return $bill;
+// }
 function count_giohang_idUser($idUser)
 {
     $sql = "SELECT * FROM giohang WHERE id_user= $idUser AND status = 1 ";
@@ -164,15 +170,7 @@ function loadall_cart_count($idbill)
     $bill = pdo_query($sql);
     return sizeof($bill);
 }
-function loadall_alreadyHav_giohang(
-$sugarValue,
-$iceValue,
-$sizeValue,
-$toppingValue,
-$idValue,
-$id_userValue,
-){
-
+function loadall_alreadyHav_giohang($sugarValue,$iceValue,$sizeValue,$toppingValue,$idValue,$id_userValue){
     $sql = "SELECT * FROM giohang WHERE id_user= $id_userValue AND idsp  = $idValue AND sugar = $sugarValue AND size = $sizeValue AND ice = $iceValue AND topping = $toppingValue AND status = 1  ";
     $bill = pdo_query_one($sql);
     return $bill;
@@ -241,8 +239,6 @@ function handleInsertToCart($productValue, $priceValue, $sugarValue, $iceValue, 
     }
 
 
-    
-  
-   
+         
     
 }

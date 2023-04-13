@@ -57,16 +57,10 @@
                     $quantity =   $cart_result[$i]['soluong'] ;
                     $total =   $cart_result[$i]['thanhtien'] ;
                     $totalSum += $total;
-                    $billTotal = $totalSum + 10000;
-                    
+                    $billTotal = $totalSum + 10000;                    
                     $result = [($price + floatval($sugar) + floatval($size) + floatval($ice) + floatval($topping)) * floatval($quantity)];
-
-                    $toppingInfo = handleTopping($topping);
-                    
+                    $toppingInfo = handleTopping($topping);                    
                     $url_delete = "index.php?act=delete_cart&id_Cart=$id&header=headerSecond";
-
-
-
                     ?>
      
                  <!-- ----------------------------- -->
@@ -101,6 +95,8 @@
                     <input type="text" hidden name="toppping" style="width:60px" value="<?= $topping ?>">
                     <input type="text" hidden name="price" style="width:60px" value="<?= $price ?>">
                     <input type="text" hidden name="giohang_id[]" value="<?= $id ?>">
+                    
+
                     
                   </tr>
                   <?php } ?>
@@ -179,11 +175,11 @@
                      <h4>Hình thức chuyển khoản</h4>
                      <div  class="w-100">
                      <div class="m-t-b10">
-                       <input type="radio" name="credit" value="1" >
+                       <input type="radio" class="input-info"  required  name="credit" value="1" >
                        <label for="">Chuyển khoản ngân hàng</label>
                      </div>
                      <div class="m-t-b10">
-                       <input type="radio" name="credit" value="2">
+                       <input type="radio" class="input-info" name="credit" value="2">
                        <label for="">Thanh toán tiền mặt</label>
                      </div>
                    </div>
@@ -259,7 +255,7 @@
                     </div>
                     <div class="timePay blockPayment">
                       <span><i class="fa-solid fa-money-bill"></i> Số tiền</span>
-                      <span>450,000đ</span>
+                      <span><?=  number_format($billTotal) ?> đ</span>
                     </div>
                     <div class="timePay blockPayment">
                       <span><i class="fa-solid fa-circle-info"></i> Thông tin</span>
@@ -267,12 +263,12 @@
                       <span>STK : 123456789</span>
                     </div>
                     <div class="timePay blockPayment">
-                      <span><i class="fa-solid fa-bars"></i> Mã đơn hàng</span>
-                      <span>11</span>
+                      <span><i class="fa-solid fa-id-card-clip"></i> Mã đơn hàng</span>
+                      <span > <?= $id ?></span>
                     </div>
                     <div class="timePay blockPayment">
-                      <button>
-                        
+                      <button class="button-back-pay">
+                      <i class="fa-solid fa-arrow-left"></i> Quay lại
                       </button>
                     </div>
                   </div>

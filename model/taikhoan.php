@@ -20,6 +20,10 @@
         $sql = "insert into taikhoan(user,pass,email,avatar) values('$email','$user','$pass','$avatar')";
                 pdo_execute($sql);
     }
+    function insert_taikhoan2($email,$user,$pass){
+        $sql = "insert into taikhoan(user,pass,email) values('$email','$user','$pass')";
+                pdo_execute($sql);
+    }
     
     function checkuser($user,$pass){
         $sql ="select * from taikhoan where user='".$user."' and pass='".$pass."'"; 
@@ -29,6 +33,12 @@
     }
     function checkemail($email){
         $sql ="select * from taikhoan where email='".$email."'"; 
+        $sp = pdo_query_one($sql);
+        return $sp;
+    
+    }
+    function checkUsername($user){
+        $sql ="select * from taikhoan where user='".$user."'"; 
         $sp = pdo_query_one($sql);
         return $sp;
     
@@ -47,6 +57,14 @@
     pdo_execute($sql);
     
     }
+    function update_taikhoan_ByForgot_password($id,$pass){
+        $sql = "update taikhoan set pass='".$pass."' where id=".$id;
+    pdo_execute($sql);
+}
+function update_taikhoan_doimk($id,$pass){
+    $sql = "update taikhoan set pass='".$pass."' where id=".$id;
+pdo_execute($sql);
+}
    
     function loadOne_taikhoan($id){
         $sql ="select *from taikhoan where id=?"; 

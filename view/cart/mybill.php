@@ -106,7 +106,7 @@
                                         <td><?= handleSugar($sugar) ?> đường <?= handleIce($ice) ?> đá</td>
                                         <td><?= number_format($price) ?>đ</td>
                                         <td>
-                                            <div class="quantity d-f al-c jf-c">
+                                            <div class="quantity d-f al-c ">
 
                                                 <div class="product_quantity"><?= $quantity ?></div>
                                                

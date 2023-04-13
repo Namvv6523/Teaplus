@@ -12,18 +12,23 @@
 }
 .table-cart thead tr th {
   padding: 10px 0px;
+  padding-left: 15px;
 }
 
 .table-cart thead tr th {
   font-size: 1.4rem;
+  text-align: left;
+
 }
 .table-cart tbody tr {
   border: 1px solid var(--border-cart);
   border-top: none;
 }
 .table-cart tbody tr td {
-  text-align: center;
+  text-align: left;
   padding: 10px 0px;
+  padding-left: 15px;
+
   font-size: 1.4rem;
 }
 .upgrade-cart {

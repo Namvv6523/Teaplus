@@ -184,6 +184,8 @@ formPay.addEventListener("submit",validate);
     const required = ["user","number-phone","address"];
     const inputInfo = document.querySelectorAll(".input-info");
     const buyNow = document.querySelector(".buy-now");
+    const inputCredit = document.querySelectorAll("input[name='credit']");
+
 
 inputInfo.forEach((input,index)=>{
     const nameAtribute = input.getAttribute("name");
@@ -191,8 +193,21 @@ inputInfo.forEach((input,index)=>{
     const inputUser = document.querySelector("input[name='user']").value;
     const inputPhone = document.querySelector("input[name='number-phone']").value;
     const inputAddress = document.querySelector("input[name='address']").value;
-    if(inputUser.length != 0 && inputPhone.length != 0 && inputAddress.length != 0){
-      buyNow.classList.add("active-upgrade-cart");
+    if(inputUser.length != 0 && inputPhone.length != 0 && inputAddress.length != 0 ){
+    
+      let isPay = false;
+      inputCredit.forEach((element,index)=>{
+        element.addEventListener("click",()=>{                      
+              isPay = true;
+              if(isPay){ 
+                buyNow.classList.add("active-upgrade-cart")
+              }
+        })
+      })
+      
+    
+      
+      
     }
     else{
       buyNow.classList.remove("active-upgrade-cart");
@@ -200,6 +215,7 @@ inputInfo.forEach((input,index)=>{
     }
   })
 })
+
 }
 
 
@@ -211,8 +227,10 @@ const containOverlayProductDetail = document.querySelector(
 );
 
 const closeShow = document.querySelector(".close_show");
-const closeText = document.querySelector(".close-text");
+const closeText = document.querySelector(".button-back-pay");
 const credit = document.querySelectorAll("input[name='credit']");
+const buttonPayBack = document.querySelector(".button-back-pay");
+
 let isClose = false;
 let clearTimer ;
 var timerId;
@@ -241,8 +259,10 @@ if(closeShow){
     
     clearInterval(clearTimer);
     clearInterval(timerId);
- const processingPay = document.querySelector(".processing-pay");
-  
+    const processingPay = document.querySelector(".processing-pay");
+    const loadingPayIcon = document.querySelector(".loading-pay-icon");
+    loadingPayIcon.classList.add("loading-pay-icon-ani");
+    buttonPayBack.style.display = "none"  ;
     processingPay.innerHTML = arrInforPay[0];
     if (!isClose) {
       containOverlayProductDetail.style.display = "none"; 
@@ -250,21 +270,22 @@ if(closeShow){
   });
 
 
-  // closeText.addEventListener("click", () => {
-  //   isClose = false;
-  //   console.log(isClose);
-  
-  //   if (!isClose) {
-  //     containOverlayProductDetail.style.display = "none";
-  //   }
-  // });
+  closeText.addEventListener("click", () => {
+    const loadingPayIcon = document.querySelector(".loading-pay-icon");
+    loadingPayIcon.classList.add("loading-pay-icon-ani");
+    buttonPayBack.style.display = "none"  ;  
+    isClose = false;  
+    if (!isClose) {
+      containOverlayProductDetail.style.display = "none";
+    }
+  });
 
 }
 
 
 function startTimer(duration, display) {
-  var timer = duration, minutes, seconds;
-  clearTimer = setInterval(function () {
+      var timer = duration, minutes, seconds;
+      clearTimer = setInterval(function () {
       minutes = parseInt(timer / 60, 10);
       seconds = parseInt(timer % 60, 10);
 
@@ -279,11 +300,7 @@ function startTimer(duration, display) {
   }, 1000);
 }
 
-// window.onload = function () {
-//   var fiveMinutes = 60 * 10,
-//       display = document.querySelector('.timeRestPay');
-//   startTimer(fiveMinutes, display);
-// };
+
 
 function handlePayMoney(isCLose){
   
@@ -298,19 +315,15 @@ function handlePayMoney(isCLose){
   }
   if(pay == 2){
     loadingPayIcon.classList.remove("loading-pay-icon-ani");
-    console.log(pay)
+    buttonPayBack.style.display = 'block';
   }
   processingPay.innerHTML = arrInforPay[pay];
  }
  
   timerId = setInterval(()=>{
   getInforPay();
- },3000);
-  // console.log(timerId);
- 
+ },3000);   
 }
-// console.log(pay)
-
 }
 
 

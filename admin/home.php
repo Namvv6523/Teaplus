@@ -84,13 +84,6 @@
               borderColor: "rgb(53, 208, 247)",
               data: yValues,
               
-            },{
-              fill: false,
-              lineTension: 0,
-              backgroundColor: "rgba(0,0,255,1.0)",
-              borderColor: "black",
-              data: zValues,
-              
             }]
           },
           options: {

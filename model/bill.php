@@ -29,6 +29,11 @@ function select_bill_idUser($id_user){
     $listBill=pdo_query($sql);
     return  $listBill;
 }
+function select_bill_idUser_done($id_user){
+    $sql="SELECT * FROM bill WHERE iduser = $id_user AND bill_status = 3  order by id desc";
+    $listBill=pdo_query($sql);
+    return  $listBill;
+}
 
 function update_bill_status($id,$id_user,$idStatus){
     if($idStatus == 5 ){
@@ -77,6 +82,7 @@ function select_bill_all(){
     $listsanpham=pdo_query($sql);
     return  $listsanpham;
 }
+
 function delete_bill($id){
     $sql="delete from bill where id=".$id;
     pdo_execute($sql);

@@ -20,6 +20,11 @@
         $dm=pdo_query_one($sql);// lấy 1 giá trị
         return $dm;
     }
+    function load_danhmuc_by_id($id){
+        $sql= "select * from danhmuc where id=".$id;
+        $dm= pdo_query($sql);// lấy 1 giá trị
+        return $dm;
+    }
 
     function update_danhmuc($id,$tenloai){
         $sql="update danhmuc set name='".$tenloai."' where id=".$id;

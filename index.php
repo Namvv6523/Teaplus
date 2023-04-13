@@ -10,6 +10,11 @@ include "model/convert.php";
 include "model/bill.php";
 include "model/binhluan.php";
 include "model/lienhe.php";
+// thư viện mailer
+include "model/guimail.php";
+include('class.smtp.php');
+include "class.phpmailer.php"; 
+
 
 
 include "global.php";
@@ -117,23 +122,34 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                
                     if(isset($_POST['submit-price-search'])){
                         $price1 = $_POST['price1'];
-                        $str_replace_price1 = str_replace(",","", $price1);
                         $price2 = $_POST['price2'];
+                        $str_replace_price1 = str_replace(",","", $price1);
                         $str_replace_price2 = str_replace(",","", $price2);
 
-                        if ($price1>0 && $price2>0 ) {
+                        if ($price1>=0 && $price2>=0 ) {
+                            $thongbao = "Khoảng giá đầu tiên nhỏ hơn hoặc bằng sau đó";
+                            $loi=false;
+                            if($price1<=$price2){
+                            $thongbao = "Khoảng giá đầu tiên nhỏ hơn hoặc bằng sau đó";
+                            $loi=false;
+                            }
 
-                            $searchProductByprice = loadall_sanpham_price($str_replace_price1,$str_replace_price2 );
-                            include "view/product-page.php";
-                        }
-                      else{
+                        }else{
+                            $thongbao = "Khoảng giá phải lớn hơn hoặc bằng 0";
+                            $loi=false;
+
+
                         // header("Location:index.php");
                         include "view/product-page.php";
 
                       }
+                      if($loi==true){
+                        $searchProductByprice = loadall_sanpham_price($str_replace_price1,$str_replace_price2 );
+                        include "view/product-page.php";
                     }
-         
-                    // include "view/product-page.php";
+
+                }
+                    include "view/product-page.php";
                       
                     break;
             case 'productDetail':
@@ -146,36 +162,122 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     break;
                     case 'dangnhap': 
                         if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
+                            $error = true;
                             $user= $_POST['user'];
                             $pass= $_POST['pass'];
-                            $checkuser=checkuser($user,$pass);
+
+                            if(empty($user)){
+                                $thongbaousername="Tên đăng nhập không để trống";
+                            $error = false;
+                            }else{
+                                // $username=$_POST['username'];
+                                $partten="/^[A-Z,a-z0-9_]{6,32}$/";
+                                if(!preg_match($partten, $user)){
+                                    $thongbaousername="username phải từ 6 đến 32 ký tự";
+                                $error = false;
+                                }
+                            }
+                            if(empty($pass)){
+                                $thongbaopassword="không được trống password";
+                            }else{
+                                // $password=$_POST['password'];
+                                // $username=$_POST['password'];
+                                $partten="/^[A-Z,a-z0-9_]{6,32}$/";
+                                if(!preg_match($partten,$pass)){
+                                    $thongbaopassword="password phải từ 6 đến 32 ký tự";
+                                $error = false;
+                                }
+                            }
+                            if($error==true){
+                                $checkuser=checkuser($user,$pass);
+                                if(is_array($checkuser)){
+                                    $_SESSION['user']= $checkuser;
+                                    // $thongbao="đăng nhập thành công ";
+                                    header('location: index.php');
+                                }else{
+                                    $thongbao="Username hoặc password không đúng";
+        
+                                }
+                            }
                     
-                        if(is_array($checkuser)){
-                            $_SESSION['user']= $checkuser;
-                            $thongbao="đăng nhập thành công ";
-                    
-                            header('location: index.php');
-                        }else{
-                            $thongbao="đăng nhập không  thành công , kiểm tra lại user and password ";
-                            
-                        }
                             
                     }
                          
                                 include "./view/taikhoan/dangnhap2.php";
-                                break;
-            case 'dangky': 
-                        if (isset($_POST['dangky']) && ($_POST['dangky'])) {
-                            $email= $_POST['email'];
-                            $user= $_POST['user'];
-                            $pass= $_POST['password'];
-                            insert_taikhoan($user,$pass,$email,"");
-                            $thongbao="đã đăng ký thành công .vui lòng đăng nhập để sử dụng thêm chức năng bình luận";                 
-                        }
-                 
-                        include "./view/taikhoan/dangky.php";
-                             
-                        break;
+            break;
+                        case 'dangky':
+                        
+                                    if (isset($_POST['dangky']) && ($_POST['dangky'])) {
+                                        $error = true;
+                                        $email= $_POST['email'];
+                                        $user= $_POST['user'];
+                                        $pass= $_POST['password'];
+                                        // validate email
+                                        
+                                        if (empty($email)) 
+                                        {
+                                            $thongbaoemail = "Email bắt buộc phải nhập";
+                                        } else {
+                                           if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                            $thongbaoemail = " Email nhập chưa đúng định dạng.";
+                                         $error = false;
+                                        } else {
+                                            // $error = true;
+                                            }
+                                         }
+                                        // validate user
+                                        // 
+                                        if(empty($user)){
+                                            $thongbaousername="Tên đăng nhập không để trống";
+                                        $error = false;
+                                        }else{
+                                            // $username=$_POST['username'];
+                                            $partten="/^[A-Z,a-z0-9_]{6,32}$/";
+                                            if(!preg_match($partten, $user)){
+                                                $thongbaousername="username phải từ 6 đến 32 ký tự";
+                                            $error = false;
+                                            }else{
+                                                // $username=$_POST['username'];
+                                                // $error=true;
+                                            }
+                                        }
+                                        // validate pass
+                                        if(empty($pass)){
+                                            $thongbaopassword="không được trống password";
+                                        }else{
+                                            // $password=$_POST['password'];
+                                            $username=$_POST['password'];
+                                            $partten="/^[A-Z,a-z0-9_]{6,32}$/";
+                                            if(!preg_match($partten,$pass)){
+                                                $thongbaopassword="password phải từ 6 đến 32 ký tự";
+                                                $error = false;
+            
+                                            }else{
+                                                // $error = true;
+                                            }
+                                        }
+                                        // 
+                                        $checkuserByEmail=checkemail($email);
+                                        $checkuserByusername=checkUsername($user);
+                                        if($checkuserByEmail!=""){
+                                            $thongbaoemail = "email đã tồn tại";
+                                        $error = false;
+                                        }else if($checkuserByusername!=""){
+                                            $thongbaousername = "Username đã tồn tại";
+                                            $error = false;
+                                        }else{
+                                            // $error=true;
+                                        }
+            
+                                        if($error==true){
+                                            insert_taikhoan2($user,$pass,$email);
+                                            $thongbao="đã đăng ký thành công .";                 
+                                        }
+                                    }
+                                    
+                                    include "./view/taikhoan/dangky.php";
+                                         
+                                    break;
             case 'thongtintk':
                  
                             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
@@ -193,6 +295,9 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                             } else {
 
                             }
+                            if(empty($img)){
+                                $img = $_SESSION['user']['avatar'];
+                            }
                                  
                                  update_taikhoan($id,$user,$pass,$email,$img,$address,$tel);
                                  $_SESSION['user']= checkuser($user,$pass);  
@@ -205,6 +310,65 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                              
                              
                             break;
+                            case 'quenmk':
+                                if (isset($_POST['quemmk']) && ($_POST['quemmk'])) {
+                                    $email = $_POST['email'];
+                                    $checkuserByEmail = checkemail($email);
+                                    if(is_array($checkuserByEmail)){
+                                        $id = $checkuserByEmail['id'];
+                                        $usernamebyEmail = $checkuserByEmail['user'];
+                                        $matkhaumoi= substr( md5( rand(0,999999) ),0,8);
+                                    update_taikhoan_ByForgot_password($id,$matkhaumoi);
+                                    $title = "Cung cấp lại mật khẩu mới cho khách hàng";
+                                    $content = "Bạn đang yêu cầu tìm lại mật khẩu lên hệ thống TeaPlus .Username đăng nhập của bạn là :<b> ".$usernamebyEmail."</b> mật khẩu mới của bạn là :<b>".$matkhaumoi."</b> <br> vui lòng không cung cấp thông tin này để tránh các rủi ro không cần thiết <br> <b>Trân trọng</b>";
+                                    $nTo = $checkuserByEmail['user'];
+                                    $mTo = $checkuserByEmail['email'];
+                                    $diachicc = "xcc@gmail.com";
+                                    //test gui mail
+                                    $mail = sendMail($title, $content, $nTo, $mTo,$diachicc='');
+                                    if($mail==1)
+                                    $thongbao ='mail của bạn đã được gửi đi hãy kiếm tra hộp thư đến để xem kết quả. ';
+                                    else $thongbao = 'Co loi!';
+                                    }else{
+                                        $thongbao ="Email bạn nhập chưa đăng ký tài khoản";
+                                    }
+                                    } 
+                                    
+                                    // $thongbao ="Email bạn nhập chưa đăng ký tài khoản";
+                                        
+                                include "./view/taikhoan/quenmk.php";
+                                        break;
+                         case 'doimk':
+                                            if (isset($_POST['doimk']) && ($_POST['doimk'])) {
+                                                $idUsser = $_SESSION['user']['id'];
+                                                $PasswordOld = $_SESSION['user']['pass'];
+                                                $PasswordOldCheck = $_POST['passwordOld'];
+                                                $PasswordNew = $_POST['passwordnew'];
+                                                $PasswordCheck = $_POST['passwordCheck'];
+                                                $checkPass= false;
+                                                if($PasswordOld==$PasswordOldCheck){
+                                                    if($PasswordNew==$PasswordCheck){
+                                                        $checkPass= true;
+                                                    }else{
+                                                    $thongbao = "Mật khẩu Mới không trùng khớp vui lòng kiểm tra lại";
+                                                    $checkPass = false;
+                                                        
+                                                    }
+                                                }else{
+                                                    $thongbao = "Mật khẩu cũ của bạn không đúng vui lòng kiểm tra lại";
+                                                    $checkPass = false;
+                                                }
+                                                if($checkPass==true){
+                                                    update_taikhoan_doimk($idUser,$PasswordNew);
+                                                    $_SESSION['user']['pass'] = $PasswordNew;
+                                                    $thongbao = "đã đổi mật khẩu thành công";
+                                                }
+                                                } 
+                                                
+                                                // $thongbao ="Email bạn nhập chưa đăng ký tài khoản";
+                                                    
+                                    include "./view/taikhoan/doimk.php";
+                                break;
             case 'logout': 
                         session_destroy();
                         header('location: index.php');
@@ -238,7 +402,8 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
             case 'delete_cart':
                     if(isset($_GET['id_Cart'])){
                                 $id = $_GET['id_Cart'];
-                        delete_giohang($id)    ;        
+                        // delete_giohang($id)    ;    
+                        upgrade_status_giohang(3, $id);    
                     }
                     else{
                         $_SESSION['mycart'] = [];
@@ -277,8 +442,14 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     if(isset($_POST['orderCart']) && $_POST['orderCart'] != null){
                     $id_user = $_SESSION['user']['id'];
                     $cart_result = loadall_cart_idUser($id_user);
+                    if(is_array($cart_result) && $cart_result != null){
+
+                        include "view/cart/bill.php";
+                    }
+                    else{
+                        include "view/cart/view_cart.php";
+                    }
                     $_SESSION['check'] = [];
-                    include "view/cart/bill.php";
                     }
                    
                 
@@ -297,6 +468,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                     $cart_result = loadall_cart_idUser($id_user);
                     include "view/cart/view_cart.php";
                     }
+                   
                     else{
                         header("Location: index.php");
                     }
@@ -312,6 +484,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         
                             $id_user = $_SESSION['user']['id'];                                                   
                             $userName = isset($_POST['user']) ? $_POST['user'] : "";
+                            $id_giohang = isset($_POST['user']) ? $_POST['user'] : "";
                             $email = isset($_POST['email']) ? $_POST['email'] : "";
                             $bill_address = isset($_POST['address']) ? $_POST['address'] : "";
                             $bill_tele = isset($_POST['number-phone']) ? $_POST['number-phone'] : 0;
@@ -338,7 +511,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                                  $cart_result[$i]['topping'],
                                  $cart_result[$i]['soluong'],
                                  $cart_result[$i]['thanhtien'],                                 
-                                    $id_bill);
+                                    $id_bill,$giohang_id[$i]);
                                 upgrade_status_giohang(2,$giohang_id[$i]);
                             
             
@@ -418,7 +591,36 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
                         // include "./view/taikhoan/dangky.php";
                             
                         include "view/lienhe.php"; 
-                        break;      
+                        break;    
+                    case 'cart-bought':
+                        if(isset($_SESSION['user'])){
+                            $id_user = $_SESSION['user']['id'];   
+                            $list_cartBought = select_bill_idUser_done($id_user);                        
+                             
+                            include "view/cart/cartBought.php"; 
+                        }else{
+                            include "./view/taikhoan/dangnhap2.php";
+                            
+                        }               
+                         
+
+                        break;   
+                        case 'rebuy' : 
+                           if(isset($_POST['rebuy'])){
+                                $idGioHang = isset($_POST['idGioHang']) ? $_POST['idGioHang'] : 0; 
+                                for($i = 0 ; $i < count($idGioHang);$i++){
+                                    $sql = "UPDATE giohang SET status ='1' WHERE id =$idGioHang[$i]";
+                                    pdo_execute($sql);
+                                }
+                                $id_user = $_SESSION['user']['id'];
+                                $cart_result = loadall_cart_idUser($id_user);
+                                include "view/cart/view_cart.php";
+        
+                            }
+                            break;  
+                        case 'tintuc':                                                                                                                    
+                            include "view/tintuc.php"; 
+                            break;
             default:
             include "view/home.php";
             break;

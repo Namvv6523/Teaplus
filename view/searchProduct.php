@@ -6,8 +6,6 @@
      
 <div class="contain-product w-100 d-f">
   <!-- ---------------------------------- -->
-
-  
   <?php
         for ($i = 0; $i < count($searchProduct); $i++) {
             $product_name = $searchProduct [$i]["name"];

@@ -2,7 +2,6 @@
             if (isset($_SESSION['user'])&&(is_array($_SESSION['user']))){
                 extract($_SESSION['user']);
             }
-
             $hinhpath="./upload/" . $avatar;
             // var_dump($hinhuser) ;
             //   $hinhuser='<img style="width: 100px; height: auto;" src="./upload/img/user/img_user.jpg" alt="">';
@@ -34,8 +33,7 @@
                    <!-- <img class="img-userr" src="upload/img_user.jpg" alt=""> <br> -->
                    <!-- <input type="file" name="" id=""> -->
            <img class="img-userr" src="<?= $hinhpath ?>" alt=""> <br>
-           <input type="file" name="hinh" value="<?=$avatar?>" required> 
-
+           <input type="file" name="hinh" value="" > 
                </div>
             <table class="tablee">
                 <tr>
@@ -44,7 +42,6 @@
                     <td>
                         <input class="input-userr" type="text"  value="<?=$user?>" disabled>
                     </td>
-
                 </tr>
                 <tr>
                     <td class="title-rightt">Email: </td>

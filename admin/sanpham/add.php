@@ -35,7 +35,7 @@
 
       <div class="block_form d-f f-d">
 
-        <label for=""> Mô tả sản phẩm </label>
+        <label for=""> Danh mục </label>
         <select name="iddm">
           <?php
           foreach ($listdanhmuc as $danhmuc) {

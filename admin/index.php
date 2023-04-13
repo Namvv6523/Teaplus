@@ -87,7 +87,7 @@ if (isset($_GET['act'])) {
                 $kyw=$_POST['kyw'];// key word = $_post kyw
                 $iddm=$_POST['iddm'];// key word = $_post iddm
             }else{
-                $kyw="";
+                $kyw="";    
                 $iddm=0;
             }
             $listdanhmuc = loadall_danhmuc();
@@ -109,7 +109,8 @@ if (isset($_GET['act'])) {
             include "sanpham/update.php";
             break;
         case 'updatesp':
-            if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
+            
+            if (isset($_POST['capnhat'])) {
                 $id = $_POST["id"];
                 $iddm = $_POST["iddm"];
                 $tensp = $_POST["tensp"];
@@ -200,9 +201,16 @@ if (isset($_GET['act'])) {
             include "binhluan/list.php";
             break;
         case 'thongke':
-            $listthongke=loadall_thongke();
+            case 'listtk':
+                if (isset($_POST['listok']) && ($_POST['listok'])) {
+                    $kyw = $_POST['kyw'];
+                }else{
+                    $kyw="";
+                }
+            $listthongke=loadall_thongke($kyw);
             include "thongke/list.php";
             break;
+    
         case 'bieudo':
             $listthongke=loadall_thongke();
             include "thongke/bieudo.php";
@@ -253,6 +261,12 @@ if (isset($_GET['act'])) {
                     $listlienhe = loadall_lienhe();
                 include "lienhe/listLienHe.php";
                 break;  
+        case 'orderhistory':
+
+                
+                    $listorder = loadall_order(0);
+                    include "order-history.php";
+                    break;
         default:
             include "home.php";
             break;
