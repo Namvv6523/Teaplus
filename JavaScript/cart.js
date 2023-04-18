@@ -62,13 +62,13 @@ var cart = [
     quantity: arrayBooleanValue[5] ? inputQuantity1[5].value : null,
   },
   {
-    quantity: 1,
+    quantity: arrayBooleanValue[6] ? inputQuantity1[6].value : null,
   },
   {
-    quantity: 1,
+    quantity: arrayBooleanValue[7] ? inputQuantity1[7].value : null
   },
   {
-    quantity: 1,
+    quantity: arrayBooleanValue[8] ? inputQuantity1[8].value : null
   },
 ];
 

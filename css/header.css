@@ -153,6 +153,7 @@ cursor: pointer;
  }
  .menu_bar li a:hover{
     opacity: 0.6;
+    cursor: pointer;
  }
  .like,
 .cart{

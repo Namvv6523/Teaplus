@@ -23,7 +23,7 @@ if(!isset($_SESSION['mycart'])){
 }
 // $_SESSION['mycart'] = [];
 // var_dump($_SESSION['mycart']);
-$category_home = loadall_danhmuc();
+$category_home = loadall_danhmuc(0);
 if(isset($_SESSION['user'])){
     $idUser = $_SESSION['user']['id'];
     $count_bill = select_bill_count($idUser);

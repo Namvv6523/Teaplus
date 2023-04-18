@@ -1,6 +1,10 @@
 <?php
-    function loadall_taikhoan(){
-        $sql="SELECT * FROM taikhoan order by id desc";
+    function loadall_taikhoan($id){
+        $sql="SELECT * FROM taikhoan WHERE 1";
+        if($id != 0 && $id != ""){
+            $sql.=" and id like '%".$id."%'";
+        }
+        $sql.=" order by id desc";
         $listtaikhoan=pdo_query($sql);
         return  $listtaikhoan;
     }

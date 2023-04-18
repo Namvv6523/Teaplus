@@ -13,3 +13,13 @@ function redirect (link,time){
     },time)
 
 }
+function redirect2(link,time){
+    container.style.display="none";
+    loading.style.display="flex";
+    setTimeout(()=>{
+        window.location.href = link;
+        // container.style.display="flex";
+        // loading.style.display="none";
+    },time)
+
+}

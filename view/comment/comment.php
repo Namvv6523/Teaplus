@@ -5,7 +5,7 @@ include "../../model/pdo.php";
 include "../../model/binhluan.php";
 include "../../model/taikhoan.php";
 $id_pro = $_REQUEST['id_pro'];
-$comment = loadall_binhluan($id_pro);
+$comment = loadall_binhluan($id_pro,0);
 ?>
 
 <!DOCTYPE html>

@@ -2,8 +2,8 @@
 // 
 function sendMail($title, $content, $nTo, $mTo,$diachicc=''){
     $nFrom = 'TeaPlus';
-    $mFrom = 'quagsulu1911@gmail.com';  //dia chi email cua ban 
-    $mPass = 'ciatmyihzvwobafb';       //mat khau email cua ban
+    $mFrom = 'quagsulu191123@gmail.com';  //dia chi email cua ban 
+    $mPass = 'cwuhwoidgirvtosa';       //mat khau email cua ban
     $mail             = new PHPMailer();
     $body             = $content;
     $mail->IsSMTP(); 
@@ -28,7 +28,7 @@ function sendMail($title, $content, $nTo, $mTo,$diachicc=''){
     $mail->MsgHTML($body);
     $address = $mTo;
     $mail->AddAddress($address, $nTo);
-    $mail->AddReplyTo('quagsulu1911@gmail.com', 'TeaPlus');
+    $mail->AddReplyTo('quagsulu191123@gmail.com', 'TeaPlus');
     if(!$mail->Send()) {
         return 0;
     } else {

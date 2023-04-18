@@ -36,9 +36,8 @@
                   <th>Giá</th>
                   <th>Ảnh</th>
                   <th>Mô tả</th>
-                  <th>Like</th>
                   <th>Thời gian tạo</th>
-                  <th>Thời gian sửa</th>
+                  
                   <th>Danh mục</th>
                   <th>Tạo mới</th>
               </thead>
@@ -64,9 +63,8 @@
                                 <td class="td_sp">' . number_format($price) . '</td>
                                 <td class="td_sp">' . $hinh . '</td>
                                 <td class="td_sp">' . $mota . '</td>
-                                <td class="td_sp">' . $luotxem . '</td>
-                                <td class="td_sp">' . $luotxem . '</td>
-                                <td class="td_sp">' . $luotxem . '</td>
+                                <td class="td_sp">' . $date . '</td>
+                                
                                 <td class="td_sp">' . $iddm . '</td>
                                 <td class="td_sp"> 
                                   <a class="url-edit" href="'. $suasp.'">
