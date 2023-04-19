@@ -1,7 +1,7 @@
 <?php
 ob_start();
-// session_start();
-// if(isset($_SESSION['user'])&&($_SESSION['user']['role']==1)){
+session_start();
+if(isset($_SESSION['user'])&&($_SESSION['user']['role']==1)){
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
@@ -263,9 +263,9 @@ if (isset($_GET['act'])) {
 }
 
 include "footer.php";
-// }else{
-//     header('Location: ../index.php');
-// }
+}else{
+    header('Location: ../index.php');
+}
 ob_end_flush()
 ?>
 
