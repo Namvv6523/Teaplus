@@ -1,4 +1,4 @@
-<main class="w-100 d-f f-d al-c" style="background-color:#f3f3f3 ;">
+<main  class="w-100 d-f f-d al-c" style="background-color:#f3f3f3 ;">
 
                <!-- <h1 class="title_product_new">Sản phẩm </h1> -->
                <div class="product-page-banner">

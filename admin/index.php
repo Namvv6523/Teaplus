@@ -1,7 +1,7 @@
 <?php
 ob_start();
-// session_start();
-// if(isset($_SESSION['user'])&&($_SESSION['user']['role']==1)){
+session_start();
+if(isset($_SESSION['user'])&&($_SESSION['user']['role']==1)){
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
@@ -18,7 +18,8 @@ include "header.php";
 $count_product = count_product();
 $count_taikhoan = count_taikhoan();
 $sum_total_cash = loadall_bill_by_day();
-
+// if($_SESSION['user']['role'] == 1){
+     echo $_SESSION['user']['role'];
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -242,14 +243,23 @@ if (isset($_GET['act'])) {
             $listthongke=loadall_thongke();
             include "thongke/bieudo.php";
             break;
+        // vvvvs
         case 'listbill':
-            // if(isset($_POST['kyw'])&&($_POST['kyw']!="")) {
-            //     $kyw=$_POST['kyw'];
-            // }else{
-            //     $kyw="";
-            // }
+
+            if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
+                $ttdh = $_POST["ttdh"] ;
+                $id = $_POST["id"];
+                // $id = 121;
+                
+                update_bill($id, $ttdh);
+                // $thongbao = $id.",".$ttdh;
+                $listbill= loadall_bill(0);
+
+            }
+
             $listbill= loadall_bill(0);
             include "bill/listbill.php";
+
             break;
         case 'xoabill':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -258,24 +268,36 @@ if (isset($_GET['act'])) {
             $listbill=loadall_bill("",0);
             include "bill/listbill.php";
         break;
-        case 'suabill':
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $bill= loadone_bill($_GET['id']);
-            }
-            $listbill=loadall_bill(0);
-            include "bill/update.php";
-            break;
-        case 'updatebill':
-            if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
-                $ttdh = isset($_POST["ttdh"]) ? $_POST["ttdh"] : 0 ;
-                $id = $_POST["id"];
-                update_bill($id, $ttdh);
-                $thongbao = "Cập nhật thành công";
-            }
-            $listbill=loadall_bill(0);
-            // include "bill/listbill.php";
-            header("Location: index.php?act=listbill");
-            break;  
+        // case 'suabill':
+        //     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+        //         $bill= loadone_bill($_GET['id']);
+        //     }
+        //     $listbill=loadall_bill(0);
+        //     include "bill/update.php";
+
+        //     if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
+        //         $ttdh = isset($_POST["ttdh"]) ? $_POST["ttdh"] : 0 ;
+        //         $id = $_POST["id"];
+        //         update_bill($id, $ttdh);
+        //         $thongbao = "Cập nhật thành công";
+        //     }
+        //     $listbill=loadall_bill("",0);
+
+        //     include "bill/listbill.php";
+
+        //     break;
+        // case 'updatebill':
+        //     if (isset($_POST['capnhap']) && ($_POST['capnhap'])) {
+        //         $ttdh = isset($_POST["ttdh"]) ? $_POST["ttdh"] : 0 ;
+        //         $id = $_POST["id"];
+        //         update_bill($id, $ttdh);
+        //         $thongbao = "Cập nhật thành công";
+        //     }
+        //     $listbill=loadall_bill(0);
+        //     // include "bill/listbill.php";
+        //     header("Location: index.php?act=listbill");
+        //     break;  
+
         case 'lienhe':
             $listlienhe = loadall_lienhe();
             include "lienhe/listLienHe.php";
@@ -307,9 +329,9 @@ if (isset($_GET['act'])) {
 }
 
 include "footer.php";
-// }else{
-//     header('Location: ../index.php');
-// }
+}else{
+    header('Location: ../index.php');
+}
 ob_end_flush()
 ?>
 

@@ -57,9 +57,9 @@ function select_bill_count($iduser)
 
 
 function loadall_bill($iduser){
-    $sql= "select*from bill where 1";
+    $sql= "select*from bill where 1 ";
     if ($iduser) $sql="AND iduser=".$iduser;
-    // $sql.='order by id desc';
+    $sql.="order by id desc";
     $listbill=pdo_query($sql);
     return $listbill;
 }
@@ -95,7 +95,7 @@ function delete_bill($id){
 }
 function update_bill($id,$ttdh){
     $sql="update bill set bill_status='".$ttdh."' where id=".$id;
+    
     pdo_execute($sql);//Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
 }
-
 ?>

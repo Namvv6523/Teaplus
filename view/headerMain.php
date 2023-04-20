@@ -85,7 +85,7 @@
             <?php
             if($_SESSION['user']['role']==1){
               ?>
-                <li><a target="_blank"  onclick="redirect ('admin/index.php',1500)" > Đăng nhập admin</a></li>
+                <li><a target="_blank"  onclick="redirect ('admin/index.php',500)" > Đăng nhập admin</a></li>
 
               <?php
             }
@@ -93,7 +93,6 @@
                 <!-- <li><a href="#">Đơn hàng</a></li> -->
                 <li><a href="index.php?act=myBill&header=headerSecond">Đơn hàng</a></li>
                 <li><a href="index.php?act=cart-bought&header=headerSecond">Đơn mua</a></li>
-                <li><a href="#">Địa chỉ nhận hàng</a></li>
                 <li><a href="index.php?act=doimk&header=headerSecond">Đổi mật khẩu</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>

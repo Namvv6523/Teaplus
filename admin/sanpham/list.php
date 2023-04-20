@@ -55,7 +55,7 @@
                             $hinh="no photo";
                         }
 
-
+// <td class="td_sp">' . $date . '</td> dưới mota
                         echo '<tr class="trItem">
                                 <td><input type="checkbox"></td>
                                 <td class="td_sp">' . $id . '</td>
@@ -64,7 +64,6 @@
                                 <td class="td_sp">' . $hinh . '</td>
                                 <td class="td_sp">' . $mota . '</td>
                                 <td class="td_sp">' . $date . '</td>
-                                
                                 <td class="td_sp">' . $iddm . '</td>
                                 <td class="td_sp"> 
                                   <a class="url-edit" href="'. $suasp.'">
@@ -82,7 +81,6 @@
       
        
       </table>
-     
     
       </main>
       <nav class="pagination-container">

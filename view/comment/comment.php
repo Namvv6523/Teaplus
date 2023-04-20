@@ -56,10 +56,10 @@ $comment = loadall_binhluan($id_pro,0);
                     <li style="position:<?php if($count > 2){echo "sticky";}else{echo "absolute";}?>;bottom:-0.5px;box-sizing:border-box;width:100%;">
                         <form action="<?= $_SERVER['PHP_SELF'];  ?>" class="d-f " method="POST">
                             <input hidden type="text" id="search_product" name="id_pro" value="<?= $id_pro ?>">
-                            <textarea class="comment_textarea" style="width:90%;resize: none;" name="comment" id="" rows="5"  placeholder="Nhập phần bình luận của bạn ở đây"></textarea>
+                            <textarea class="comment_textarea" style="width:90%;resize: none;" name="comment" id="" rows="5"  placeholder="Nhập phần bình luận của bạn ở đây" required></textarea>
                             <button class="comment_product_btn">
                                 <div class="btn_send_comment">
-                                    <input type="submit" value="Send" name="sendComment">
+                                    <input type="submit" value="Send" name="sendComment" >
                                 </div>
                             </button>
                         </form>

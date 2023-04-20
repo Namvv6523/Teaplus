@@ -3,7 +3,6 @@
         extract($bill);
        $idBill = $bill["bill_status"];
       //  echo $bill["bill_status"];
-        
     }
     $arr = [
       "Đơn hàng mới (admin)",
@@ -32,7 +31,7 @@
                         value="<?= $i ?>">
                         <?= $arr[$i] ;?>
                       </option>
-
+                      
                     <?php } ?>
                     </select>
                     </div>
@@ -61,6 +60,7 @@
                    
                   </select>
                   </div>
+          
                   <div class="block_form d-f g-10 al-c">
                   <input type="hidden" name="id" value="<?=$id?>">
                   <input type="button" onclick="alert('Khách hàng đã hủy đơn hàng, không thể cập nhật')" value="Cập Nhập" class="submit-general-form" name="capnhap">
@@ -68,6 +68,7 @@
                   <a href="index.php?act=listbill" style="display:block">
                   <input type="button" value="Quay trở lại" style="padding: 8.5px;" class="" >
                   </a>
+
                   <!-- <a href="index.php?act=lisdm"><input type="button" value="Danh Mục"></a> -->
                   </div>
 

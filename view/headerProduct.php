@@ -102,7 +102,6 @@
                 <!-- <li><a href="#">Đơn hàng</a></li> -->
                 <li><a href="index.php?act=myBill&header=headerSecond">Đơn hàng</a></li>
                 <li><a href="index.php?act=cart-bought&header=headerSecond">Đơn mua</a></li>
-                <li><a href="#">Địa chỉ nhận hàng</a></li>
                 <li><a href="index.php?act=doimk&header=headerSecond">Đổi mật khẩu</a></li>
                 <li><a href="index.php?act=logout">Đăng xuất</a></li>
               </ul>

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../css/admin/bill.css" />
     <link rel="stylesheet" href="../css/admin/taikhoan.css" />
     <link rel="stylesheet" href="../css/admin/pagin.css" />
+    <link rel="stylesheet" href="../css/admin/listbill.css" />
     <title>Admin</title>
   </head>
   <body>
