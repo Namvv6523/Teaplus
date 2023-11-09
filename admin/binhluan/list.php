@@ -1,16 +1,18 @@
 <main class="w-100 d-f f-d">
           <h3 style="margin: 10px 0px;">Quản Lý Bình Luận</h3>
           <div class="search_list-product-admin w-100">
-          <form action="" style="margin-bottom: 5px;" class="d-f form-search">
+          <form action="index.php?act=dsbl" method="POST" style="margin-bottom: 5px;" class="d-f form-search">
               <input
                 type="text"
                 placeholder="Tìm kiếm theo ID bình luận..."
                 class="input-search"
+                name="findComment"
               />
               <input
                 type="submit"
                 class="submit-search-form"
                 value="Tìm kiếm"
+                name="findCommentSubmit"
               />
             </form>  
             <form action="" class="d-f ">

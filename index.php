@@ -23,7 +23,7 @@ if(!isset($_SESSION['mycart'])){
 }
 // $_SESSION['mycart'] = [];
 // var_dump($_SESSION['mycart']);
-$category_home = loadall_danhmuc();
+$category_home = loadall_danhmuc(0);
 if(isset($_SESSION['user'])){
     $idUser = $_SESSION['user']['id'];
     $count_bill = select_bill_count($idUser);
@@ -128,7 +128,7 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
 
                         if ($price1>=0 && $price2>=0 ) {
                             $thongbao = "Khoảng giá đầu tiên nhỏ hơn hoặc bằng sau đó";
-                            $loi=false;
+                            $loi=true;
                             if($price1<=$price2){
                             $thongbao = "Khoảng giá đầu tiên nhỏ hơn hoặc bằng sau đó";
                             $loi=false;
@@ -144,6 +144,8 @@ if ((isset($_GET['act'])) && $_GET['act'] != "") {
 
                       }
                       if($loi==true){
+                        
+                        $loi=false;
                         $searchProductByprice = loadall_sanpham_price($str_replace_price1,$str_replace_price2 );
                         include "view/product-page.php";
                     }

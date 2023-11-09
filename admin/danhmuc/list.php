@@ -1,16 +1,18 @@
 <main class="w-100 d-f f-d">
           <h3>Quản Lý Loại Hàng</h3>
           <div class="search_list-product-admin w-100">
-          <form action="" class="d-f form-search">
+          <form action="index.php?act=listdm" method="POST" class="d-f form-search">
               <input
                 type="text"
-                placeholder="Tìm kiếm theo mã sản phẩm..."
+                placeholder="Tìm kiếm theo mã danh mục..."
                 class="input-search"
+                name="findCate"
               />
               <input
                 type="submit"
                 class="submit-search-form"
                 value="Tìm kiếm"
+                name="SubmitFindCate"
               />
             </form>  
             <form action="" class="d-f ">

@@ -2,6 +2,15 @@
 /**
  * Mở kết nối đến CSDL sử dụng PDO
  */
+// function pdo_get_connection(){
+//     $dburl = "mysql:host=sql209.infinityfree.com;dbname=if0_35380400_envidi_database;charset=utf8";
+//     $username = 'if0_35380400';
+//     $password = 'DMf8uW8s32';
+
+//     $conn = new PDO($dburl, $username, $password);
+//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     return $conn;
+// }
 function pdo_get_connection(){
     $dburl = "mysql:host=localhost;dbname=teaplussss;charset=utf8";
     $username = 'root';

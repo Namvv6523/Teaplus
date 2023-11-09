@@ -44,8 +44,8 @@
 
         <form action="index.php?act=search_productByPrice&header=headerprd" class="d-f w-100 filter-price m-t-b10 f-d" method="post">
           <div class="m-t-b10 d-f jf-b">
-            <input name="price1" type="number" required placeholder="Từ">
-            <input name="price2" type="number" required placeholder="Đến">
+            <input name="price1" type="text " required placeholder="Từ">
+            <input name="price2" type="text" required placeholder="Đến">
           </div>
           <input name="submit-price-search" type="submit" value="Tìm kiếm" class="submit-price-search">
           <?php 

@@ -1,16 +1,18 @@
 <main class="w-100 d-f f-d">
           <h3>Quản Lý Tài Khoản</h3>
           <div class="search_list-product-admin w-100">
-          <form action="" class="d-f form-search">
+          <form action="index.php?act=dskh" method="POST" class="d-f form-search">
               <input
                 type="text"
                 placeholder="Tìm kiếm theo ID tài khoản..."
                 class="input-search"
+                name="findAcc"
               />
               <input
                 type="submit"
                 class="submit-search-form"
                 value="Tìm kiếm"
+                name="findAccSubmit"
               />
             </form>  
             <form action="" class="d-f " >

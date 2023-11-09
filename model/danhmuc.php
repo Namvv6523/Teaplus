@@ -9,11 +9,22 @@
         pdo_execute($sql); //Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
     }
 
-    function loadall_danhmuc(){
-        $sql="SELECT * FROM danhmuc order by id desc";
+    function loadall_danhmuc($id){
+        $sql="SELECT * FROM danhmuc WHERE 1 ";
+        if($id != 0 && $id != ""){
+            $sql.=" and id like '%".$id."%'";
+        }
+       $sql.=" order by id desc";
+
         $listdanhmuc=pdo_query($sql);// lấy tất cả giá trị
         return  $listdanhmuc;
     }
+    function find_cate($id){
+        $sql="SELECT * FROM danhmuc WHERE id = $id order by id desc";
+        $listdanhmuc=pdo_query($sql);// lấy tất cả giá trị
+        return  $listdanhmuc;
+    }
+    
 
     function loadone_danhmuc($id){
         $sql= "select*from danhmuc where id=".$id;
